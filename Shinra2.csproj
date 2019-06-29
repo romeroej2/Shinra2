@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{54023436-F0A0-475C-9BA8-C9E1DCB25B38}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Shinra2</RootNamespace>
+    <AssemblyName>Shinra2</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GreyMagic">
+      <HintPath>..\..\GreyMagic.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="RebornBuddy">
+      <HintPath>..\..\RebornBuddy.exe</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\Aura.cs" />
+    <Compile Include="Helpers\Boss.cs" />
+    <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\DotManager.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\Healing.cs" />
+    <Compile Include="Helpers\Item.cs" />
+    <Compile Include="Helpers\Managers.cs" />
+    <Compile Include="Helpers\Opener.cs" />
+    <Compile Include="Helpers\Unit.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rotations\Behaviors\Astrologian.cs" />
+    <Compile Include="Rotations\Behaviors\Bard.cs" />
+    <Compile Include="Rotations\Behaviors\BasicClass.cs" />
+    <Compile Include="Rotations\Behaviors\BlackMage.cs" />
+    <Compile Include="Rotations\Behaviors\DarkKnight.cs" />
+    <Compile Include="Rotations\Behaviors\Default.cs" />
+    <Compile Include="Rotations\Behaviors\Dragoon.cs" />
+    <Compile Include="Rotations\Behaviors\Machinist.cs" />
+    <Compile Include="Rotations\Behaviors\Monk.cs" />
+    <Compile Include="Rotations\Behaviors\Ninja.cs" />
+    <Compile Include="Rotations\Behaviors\Paladin.cs" />
+    <Compile Include="Rotations\Behaviors\RedMage.cs" />
+    <Compile Include="Rotations\Behaviors\Samurai.cs" />
+    <Compile Include="Rotations\Behaviors\Scholar.cs" />
+    <Compile Include="Rotations\Behaviors\Summoner.cs" />
+    <Compile Include="Rotations\Behaviors\Warrior.cs" />
+    <Compile Include="Rotations\Behaviors\WhiteMage.cs" />
+    <Compile Include="Rotations\Methods\Astrologian.cs" />
+    <Compile Include="Rotations\Methods\Bard.cs" />
+    <Compile Include="Rotations\Methods\BasicClass.cs" />
+    <Compile Include="Rotations\Methods\BlackMage.cs" />
+    <Compile Include="Rotations\Methods\DarkKnight.cs" />
+    <Compile Include="Rotations\Methods\Default.cs" />
+    <Compile Include="Rotations\Methods\Dragoon.cs" />
+    <Compile Include="Rotations\Methods\Machinist.cs" />
+    <Compile Include="Rotations\Methods\Monk.cs" />
+    <Compile Include="Rotations\Methods\Ninja.cs" />
+    <Compile Include="Rotations\Methods\Paladin.cs" />
+    <Compile Include="Rotations\Methods\RedMage.cs" />
+    <Compile Include="Rotations\Methods\Samurai.cs" />
+    <Compile Include="Rotations\Methods\Scholar.cs" />
+    <Compile Include="Rotations\Methods\Summoner.cs" />
+    <Compile Include="Rotations\Methods\Warrior.cs" />
+    <Compile Include="Rotations\Methods\WhiteMage.cs" />
+    <Compile Include="Rotations\Rotation.cs" />
+    <Compile Include="Settings\Forms\Design\CustomControls.cs" />
+    <Compile Include="Settings\Forms\Design\UserNumeric.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\Forms\Design\UserNumeric.Designer.cs">
+      <DependentUpon>UserNumeric.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\Forms\ShinraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\Forms\ShinraForm.Designer.cs">
+      <DependentUpon>ShinraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\Forms\ShinraOverlay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\Forms\ShinraOverlay.Designer.cs">
+      <DependentUpon>ShinraOverlay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ShinraSettings.cs" />
+    <Compile Include="Shinra.cs" />
+    <Compile Include="Spells\Main\AstrologianSpells.cs" />
+    <Compile Include="Spells\Main\BardSpells.cs" />
+    <Compile Include="Spells\Main\BasicClassSpells.cs" />
+    <Compile Include="Spells\Main\BlackMageSpells.cs" />
+    <Compile Include="Spells\Main\DarkKnightSpells.cs" />
+    <Compile Include="Spells\Main\DragoonSpells.cs" />
+    <Compile Include="Spells\Main\MachinistSpells.cs" />
+    <Compile Include="Spells\Main\MonkSpells.cs" />
+    <Compile Include="Spells\Main\NinjaSpells.cs" />
+    <Compile Include="Spells\Main\PaladinSpells.cs" />
+    <Compile Include="Spells\Main\RedMageSpells.cs" />
+    <Compile Include="Spells\Main\SamuraiSpells.cs" />
+    <Compile Include="Spells\Main\ScholarSpells.cs" />
+    <Compile Include="Spells\Main\SummonerSpells.cs" />
+    <Compile Include="Spells\Main\WarriorSpells.cs" />
+    <Compile Include="Spells\Main\WhiteMageSpells.cs" />
+    <Compile Include="Spells\Opener\BardOpener.cs" />
+    <Compile Include="Spells\Opener\BlackMageOpener.cs" />
+    <Compile Include="Spells\Opener\DarkKnightOpener.cs" />
+    <Compile Include="Spells\Opener\DragoonOpener.cs" />
+    <Compile Include="Spells\Opener\MachinistOpener.cs" />
+    <Compile Include="Spells\Opener\MonkOpener.cs" />
+    <Compile Include="Spells\Opener\NinjaOpener.cs" />
+    <Compile Include="Spells\Opener\PaladinOpener.cs" />
+    <Compile Include="Spells\Opener\RedMageOpener.cs" />
+    <Compile Include="Spells\Opener\SamuraiOpener.cs" />
+    <Compile Include="Spells\Opener\SummonerOpener.cs" />
+    <Compile Include="Spells\Opener\WarriorOpener.cs" />
+    <Compile Include="Spells\PVP\BardPVP.cs" />
+    <Compile Include="Spells\PVP\BlackMagePVP.cs" />
+    <Compile Include="Spells\PVP\DragoonPVP.cs" />
+    <Compile Include="Spells\PVP\MonkPVP.cs" />
+    <Compile Include="Spells\PVP\PaladinPVP.cs" />
+    <Compile Include="Spells\PVP\RedMagePVP.cs" />
+    <Compile Include="Spells\PVP\SamuraiPVP.cs" />
+    <Compile Include="Spells\PVP\SummonerPVP.cs" />
+    <Compile Include="Spells\Role\CasterSpells.cs" />
+    <Compile Include="Spells\Role\HealerSpells.cs" />
+    <Compile Include="Spells\Role\MeleeSpells.cs" />
+    <Compile Include="Spells\Role\RangedSpells.cs" />
+    <Compile Include="Spells\Role\TankSpells.cs" />
+    <Compile Include="Spells\Spell.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Settings\Forms\Design\UserNumeric.resx">
+      <DependentUpon>UserNumeric.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\Forms\ShinraForm.resx">
+      <DependentUpon>ShinraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\Forms\ShinraOverlay.resx">
+      <DependentUpon>ShinraOverlay.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
