@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shinra2", "Shinra2.csproj", "{54023436-F0A0-475C-9BA8-C9E1DCB25B38}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShinraEx", "ShinraEx.csproj", "{54023436-F0A0-475C-9BA8-C9E1DCB25B38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8EC06EBC-BFDE-4862-BED3-28E9087B4904}
 	EndGlobalSection
 EndGlobal

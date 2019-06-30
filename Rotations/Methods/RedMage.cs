@@ -135,7 +135,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> CorpsACorps()
         {
-            if (Shinra.Settings.RedMageCorpsACorps)
+            if (ShinraEx.Settings.RedMageCorpsACorps)
             {
                 if (!MovementManager.IsMoving && WhiteMana >= 80 && BlackMana >= 80 && Core.Player.TargetDistance(5))
                 {
@@ -147,7 +147,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Displacement()
         {
-            if (Shinra.Settings.RedMageDisplacement)
+            if (ShinraEx.Settings.RedMageDisplacement)
             {
                 if (ActionManager.LastSpell.Name == MySpells.EnchantedRedoublement.Name)
                 {
@@ -183,9 +183,9 @@ namespace ShinraCo.Rotations
         {
             if (UseOffGCD)
             {
-                var count = Shinra.Settings.CustomAoE ? Shinra.Settings.CustomAoECount : 3;
+                var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
 
-                if (Shinra.Settings.RotationMode == Modes.Single || Shinra.Settings.RotationMode == Modes.Smart &&
+                if (ShinraEx.Settings.RotationMode == Modes.Single || ShinraEx.Settings.RotationMode == Modes.Smart &&
                     Helpers.EnemiesNearTarget(5) < count)
                 {
                     return await MySpells.Acceleration.Cast();
@@ -196,7 +196,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Embolden()
         {
-            if (Shinra.Settings.RedMageEmbolden && Shinra.LastSpell.Name == MySpells.EnchantedRiposte.Name)
+            if (ShinraEx.Settings.RedMageEmbolden && ShinraEx.LastSpell.Name == MySpells.EnchantedRiposte.Name)
             {
                 return await MySpells.Embolden.Cast(null, false);
             }
@@ -205,7 +205,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Manafication()
         {
-            if (Shinra.Settings.RedMageManafication)
+            if (ShinraEx.Settings.RedMageManafication)
             {
                 if (UseOffGCD && WhiteMana >= 40 && WhiteMana < 60 && BlackMana >= 40 && BlackMana < 60)
                 {
@@ -221,7 +221,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> UpdateHealing()
         {
-            if (Shinra.Settings.RedMageVerraise)
+            if (ShinraEx.Settings.RedMageVerraise)
             {
                 if (!await Helpers.UpdateHealManager())
                 {
@@ -233,7 +233,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Vercure()
         {
-            if (Shinra.Settings.RedMageVercure && Core.Player.CurrentHealthPercent < Shinra.Settings.RedMageVercurePct)
+            if (ShinraEx.Settings.RedMageVercure && Core.Player.CurrentHealthPercent < ShinraEx.Settings.RedMageVercurePct)
             {
                 var target = Core.Player;
 
@@ -247,7 +247,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Verraise()
         {
-            if (Shinra.Settings.RedMageVerraise && Core.Player.CurrentManaPercent > 50)
+            if (ShinraEx.Settings.RedMageVerraise && Core.Player.CurrentManaPercent > 50)
             {
                 if (Core.Player.HasAura("Dualcast") || Core.Player.HasAura("Swiftcast"))
                 {
@@ -268,7 +268,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Drain()
         {
-            if (Shinra.Settings.RedMageDrain && Core.Player.CurrentHealthPercent < Shinra.Settings.RedMageDrainPct)
+            if (ShinraEx.Settings.RedMageDrain && Core.Player.CurrentHealthPercent < ShinraEx.Settings.RedMageDrainPct)
             {
                 return await MySpells.Role.Drain.Cast();
             }
@@ -277,7 +277,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> LucidDreaming()
         {
-            if (Shinra.Settings.RedMageLucidDreaming && Core.Player.CurrentManaPercent < Shinra.Settings.RedMageLucidDreamingPct)
+            if (ShinraEx.Settings.RedMageLucidDreaming && Core.Player.CurrentManaPercent < ShinraEx.Settings.RedMageLucidDreamingPct)
             {
                 return await MySpells.Role.LucidDreaming.Cast();
             }
@@ -286,7 +286,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Swiftcast()
         {
-            if (Shinra.Settings.RedMageSwiftcast && UseOffGCD && !Core.Player.HasAura("Verfire Ready") &&
+            if (ShinraEx.Settings.RedMageSwiftcast && UseOffGCD && !Core.Player.HasAura("Verfire Ready") &&
                 !Core.Player.HasAura("Verstone Ready"))
             {
                 return await MySpells.Role.Swiftcast.Cast();

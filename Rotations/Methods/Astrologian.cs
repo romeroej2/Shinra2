@@ -84,11 +84,11 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> EarthlyStar()
         {
-            if (Shinra.Settings.AstrologianEarthlyStar)
+            if (ShinraEx.Settings.AstrologianEarthlyStar)
             {
-                var count = Shinra.Settings.CustomAoE ? Shinra.Settings.CustomAoECount : 3;
+                var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
 
-                if (Shinra.Settings.RotationMode == Modes.Multi || Helpers.EnemiesNearTarget(8) >= count)
+                if (ShinraEx.Settings.RotationMode == Modes.Multi || Helpers.EnemiesNearTarget(8) >= count)
                 {
                     return await MySpells.EarthlyStar.Cast();
                 }
@@ -98,7 +98,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> StellarDetonation()
         {
-            if (Shinra.Settings.AstrologianStellarDetonation)
+            if (ShinraEx.Settings.AstrologianStellarDetonation)
             {
                 return await MySpells.StellarDetonation.Cast(null, false);
             }
@@ -111,10 +111,10 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Lightspeed()
         {
-            if (Shinra.Settings.AstrologianLightspeed && Shinra.Settings.AstrologianPartyHeal)
+            if (ShinraEx.Settings.AstrologianLightspeed && ShinraEx.Settings.AstrologianPartyHeal)
             {
-                if (Helpers.HealManager.Count(hm => hm.CurrentHealthPercent < Shinra.Settings.AstrologianLightspeedPct) >=
-                    Shinra.Settings.AstrologianLightspeedCount)
+                if (Helpers.HealManager.Count(hm => hm.CurrentHealthPercent < ShinraEx.Settings.AstrologianLightspeedPct) >=
+                    ShinraEx.Settings.AstrologianLightspeedCount)
                 {
                     return await MySpells.Lightspeed.Cast(null, false);
                 }
@@ -124,10 +124,10 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Synastry()
         {
-            if (Shinra.Settings.AstrologianPartyHeal && Shinra.Settings.AstrologianSynastry)
+            if (ShinraEx.Settings.AstrologianPartyHeal && ShinraEx.Settings.AstrologianSynastry)
             {
-                if (Helpers.HealManager.Count(hm => hm.CurrentHealthPercent < Shinra.Settings.AstrologianSynastryPct) >=
-                    Shinra.Settings.AstrologianSynastryCount)
+                if (Helpers.HealManager.Count(hm => hm.CurrentHealthPercent < ShinraEx.Settings.AstrologianSynastryPct) >=
+                    ShinraEx.Settings.AstrologianSynastryCount)
                 {
                     var target = Helpers.HealManager.FirstOrDefault(hm => hm.IsTank());
 
@@ -142,7 +142,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> TimeDilation()
         {
-            if (Shinra.Settings.AstrologianPartyHeal && Shinra.Settings.AstrologianTimeDilation)
+            if (ShinraEx.Settings.AstrologianPartyHeal && ShinraEx.Settings.AstrologianTimeDilation)
             {
                 var target = Helpers.HealManager.FirstOrDefault(hm => hm.IsDPS() && IsBuffed(hm) || hm.IsTank() && hm.HasAura("The Bole"));
 
@@ -156,7 +156,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> CelestialOpposition()
         {
-            if (Shinra.Settings.AstrologianCelestialOpposition && Core.Player.HasAura(MySpells.Role.LucidDreaming.Name))
+            if (ShinraEx.Settings.AstrologianCelestialOpposition && Core.Player.HasAura(MySpells.Role.LucidDreaming.Name))
             {
                 return await MySpells.CelestialOpposition.Cast(null, false);
             }
@@ -169,7 +169,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> UpdateHealing()
         {
-            if (Shinra.Settings.AstrologianPartyHeal || Shinra.Settings.AstrologianDraw)
+            if (ShinraEx.Settings.AstrologianPartyHeal || ShinraEx.Settings.AstrologianDraw)
             {
                 if (!await Helpers.UpdateHealManager())
                 {
@@ -181,21 +181,21 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> StopCasting()
         {
-            if (Shinra.Settings.AstrologianInterruptOverheal && Core.Player.IsCasting)
+            if (ShinraEx.Settings.AstrologianInterruptOverheal && Core.Player.IsCasting)
             {
                 var target = GameObjectManager.GetObjectByObjectId(Core.Player.SpellCastInfo.TargetId);
                 var spellName = Core.Player.SpellCastInfo.Name;
 
                 if (target != null)
                 {
-                    if (spellName == MySpells.Benefic.Name && target.CurrentHealthPercent >= Shinra.Settings.AstrologianBeneficPct + 10 ||
-                        spellName == MySpells.BeneficII.Name && target.CurrentHealthPercent >= Shinra.Settings.AstrologianBeneficIIPct + 10)
+                    if (spellName == MySpells.Benefic.Name && target.CurrentHealthPercent >= ShinraEx.Settings.AstrologianBeneficPct + 10 ||
+                        spellName == MySpells.BeneficII.Name && target.CurrentHealthPercent >= ShinraEx.Settings.AstrologianBeneficIIPct + 10)
                     {
-                        var debugSetting = spellName == MySpells.Benefic.Name ? Shinra.Settings.AstrologianBeneficPct
-                            : Shinra.Settings.AstrologianBeneficIIPct;
+                        var debugSetting = spellName == MySpells.Benefic.Name ? ShinraEx.Settings.AstrologianBeneficPct
+                            : ShinraEx.Settings.AstrologianBeneficIIPct;
                         Helpers.Debug($@"Target HP: {target.CurrentHealthPercent}, Setting: {debugSetting}, Adjusted: {debugSetting + 10}");
 
-                        Logging.Write(Colors.Yellow, $@"[Shinra] Interrupting >>> {spellName}");
+                        Logging.Write(Colors.Yellow, $@"[ShinraEx] Interrupting >>> {spellName}");
                         ActionManager.StopCasting();
                         await Coroutine.Wait(500, () => !Core.Player.IsCasting);
                     }
@@ -206,11 +206,11 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Benefic()
         {
-            if (Shinra.Settings.AstrologianBenefic)
+            if (ShinraEx.Settings.AstrologianBenefic)
             {
-                var target = Shinra.Settings.AstrologianPartyHeal
-                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < Shinra.Settings.AstrologianBeneficPct)
-                    : Core.Player.CurrentHealthPercent < Shinra.Settings.AstrologianBeneficPct ? Core.Player : null;
+                var target = ShinraEx.Settings.AstrologianPartyHeal
+                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.AstrologianBeneficPct)
+                    : Core.Player.CurrentHealthPercent < ShinraEx.Settings.AstrologianBeneficPct ? Core.Player : null;
 
                 if (target != null)
                 {
@@ -222,11 +222,11 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BeneficII()
         {
-            if (Shinra.Settings.AstrologianBeneficII)
+            if (ShinraEx.Settings.AstrologianBeneficII)
             {
-                var target = Shinra.Settings.AstrologianPartyHeal
-                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < Shinra.Settings.AstrologianBeneficIIPct)
-                    : Core.Player.CurrentHealthPercent < Shinra.Settings.AstrologianBeneficIIPct ? Core.Player : null;
+                var target = ShinraEx.Settings.AstrologianPartyHeal
+                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.AstrologianBeneficIIPct)
+                    : Core.Player.CurrentHealthPercent < ShinraEx.Settings.AstrologianBeneficIIPct ? Core.Player : null;
 
                 if (target != null)
                 {
@@ -238,11 +238,11 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> EssentialDignity()
         {
-            if (Shinra.Settings.AstrologianEssDignity)
+            if (ShinraEx.Settings.AstrologianEssDignity)
             {
-                var target = Shinra.Settings.AstrologianPartyHeal
-                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < Shinra.Settings.AstrologianEssDignityPct)
-                    : Core.Player.CurrentHealthPercent < Shinra.Settings.AstrologianEssDignityPct ? Core.Player : null;
+                var target = ShinraEx.Settings.AstrologianPartyHeal
+                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.AstrologianEssDignityPct)
+                    : Core.Player.CurrentHealthPercent < ShinraEx.Settings.AstrologianEssDignityPct ? Core.Player : null;
 
                 if (target != null)
                 {
@@ -254,12 +254,12 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> AspectedBenefic()
         {
-            if (Shinra.Settings.AstrologianAspBenefic && SectActive)
+            if (ShinraEx.Settings.AstrologianAspBenefic && SectActive)
             {
-                var target = Shinra.Settings.AstrologianPartyHeal
-                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < Shinra.Settings.AstrologianAspBeneficPct &&
+                var target = ShinraEx.Settings.AstrologianPartyHeal
+                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.AstrologianAspBeneficPct &&
                                                                !hm.HasAura(MySpells.AspectedBenefic.Name, true))
-                    : Core.Player.CurrentHealthPercent < Shinra.Settings.AstrologianAspBeneficPct &&
+                    : Core.Player.CurrentHealthPercent < ShinraEx.Settings.AstrologianAspBeneficPct &&
                       !Core.Player.HasAura(MySpells.AspectedBenefic.Name, true) ? Core.Player : null;
 
                 if (target != null)
@@ -272,9 +272,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Helios()
         {
-            if (Shinra.Settings.AstrologianHelios && Shinra.Settings.AstrologianPartyHeal && UseAoEHeals)
+            if (ShinraEx.Settings.AstrologianHelios && ShinraEx.Settings.AstrologianPartyHeal && UseAoEHeals)
             {
-                var count = Helpers.FriendsNearPlayer(Shinra.Settings.AstrologianHeliosPct);
+                var count = Helpers.FriendsNearPlayer(ShinraEx.Settings.AstrologianHeliosPct);
 
                 if (count > 2)
                 {
@@ -286,10 +286,10 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> AspectedHelios()
         {
-            if (Shinra.Settings.AstrologianAspHelios && Shinra.Settings.AstrologianPartyHeal && SectActive && UseAoEHeals &&
+            if (ShinraEx.Settings.AstrologianAspHelios && ShinraEx.Settings.AstrologianPartyHeal && SectActive && UseAoEHeals &&
                 !Core.Player.HasAura(MySpells.AspectedHelios.Name, true))
             {
-                var count = Helpers.FriendsNearPlayer(Shinra.Settings.AstrologianAspHeliosPct);
+                var count = Helpers.FriendsNearPlayer(ShinraEx.Settings.AstrologianAspHeliosPct);
 
                 if (count > 2)
                 {
@@ -301,15 +301,15 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Ascend()
         {
-            if (Shinra.Settings.AstrologianAscend &&
-                (Shinra.Settings.AstrologianSwiftcast && ActionManager.CanCast(MySpells.Role.Swiftcast.Name, Core.Player) ||
-                 !Helpers.HealManager.Any(hm => hm.CurrentHealthPercent < Shinra.Settings.AstrologianBeneficPct)))
+            if (ShinraEx.Settings.AstrologianAscend &&
+                (ShinraEx.Settings.AstrologianSwiftcast && ActionManager.CanCast(MySpells.Role.Swiftcast.Name, Core.Player) ||
+                 !Helpers.HealManager.Any(hm => hm.CurrentHealthPercent < ShinraEx.Settings.AstrologianBeneficPct)))
             {
                 var target = Helpers.RessManager.FirstOrDefault(pm => !pm.HasAura("Raise"));
 
                 if (target != null)
                 {
-                    if (Shinra.Settings.AstrologianSwiftcast && ActionManager.CanCast(MySpells.Ascend.Name, target))
+                    if (ShinraEx.Settings.AstrologianSwiftcast && ActionManager.CanCast(MySpells.Ascend.Name, target))
                     {
                         if (await MySpells.Role.Swiftcast.Cast(null, false))
                         {
@@ -437,9 +437,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> LadyOfCrowns()
         {
-            if (Shinra.Settings.AstrologianDraw && CardLady)
+            if (ShinraEx.Settings.AstrologianDraw && CardLady)
             {
-                var target = Shinra.Settings.AstrologianPartyHeal ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < 80)
+                var target = ShinraEx.Settings.AstrologianPartyHeal ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < 80)
                     : Core.Player.CurrentHealthPercent < 80 ? Core.Player : null;
 
                 if (target != null)
@@ -461,7 +461,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SleeveDraw()
         {
-            if (Shinra.Settings.AstrologianSleeveDraw && !HasCard && (!HasSpread || !BuffShared))
+            if (ShinraEx.Settings.AstrologianSleeveDraw && !HasCard && (!HasSpread || !BuffShared))
             {
                 return await MySpells.SleeveDraw.Cast();
             }
@@ -474,8 +474,8 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> DiurnalSect()
         {
-            if (Shinra.Settings.AstrologianSect == AstrologianSects.Diurnal ||
-                Shinra.Settings.AstrologianSect == AstrologianSects.Nocturnal && !ActionManager.HasSpell(MySpells.NocturnalSect.Name))
+            if (ShinraEx.Settings.AstrologianSect == AstrologianSects.Diurnal ||
+                ShinraEx.Settings.AstrologianSect == AstrologianSects.Nocturnal && !ActionManager.HasSpell(MySpells.NocturnalSect.Name))
             {
                 if (!Core.Player.HasAura(MySpells.DiurnalSect.Name))
                 {
@@ -487,7 +487,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> NocturnalSect()
         {
-            if (Shinra.Settings.AstrologianSect == AstrologianSects.Nocturnal && !Core.Player.HasAura(MySpells.NocturnalSect.Name))
+            if (ShinraEx.Settings.AstrologianSect == AstrologianSects.Nocturnal && !Core.Player.HasAura(MySpells.NocturnalSect.Name))
             {
                 return await MySpells.NocturnalSect.Cast();
             }
@@ -500,7 +500,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> ClericStance()
         {
-            if (Shinra.Settings.AstrologianClericStance)
+            if (ShinraEx.Settings.AstrologianClericStance)
             {
                 return await MySpells.Role.ClericStance.Cast();
             }
@@ -509,9 +509,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Protect()
         {
-            if (Shinra.Settings.AstrologianProtect)
+            if (ShinraEx.Settings.AstrologianProtect)
             {
-                var target = Shinra.Settings.AstrologianPartyHeal
+                var target = ShinraEx.Settings.AstrologianPartyHeal
                     ? Helpers.HealManager.FirstOrDefault(hm => !hm.HasAura(MySpells.Role.Protect.Name) && hm.Type == GameObjectType.Pc)
                     : !Core.Player.HasAura(MySpells.Role.Protect.Name) ? Core.Player : null;
 
@@ -525,9 +525,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Esuna()
         {
-            if (Shinra.Settings.AstrologianEsuna)
+            if (ShinraEx.Settings.AstrologianEsuna)
             {
-                var target = Shinra.Settings.AstrologianPartyHeal ? Helpers.HealManager.FirstOrDefault(hm => hm.HasDispellable())
+                var target = ShinraEx.Settings.AstrologianPartyHeal ? Helpers.HealManager.FirstOrDefault(hm => hm.HasDispellable())
                     : Core.Player.HasDispellable() ? Core.Player : null;
 
                 if (target != null)
@@ -540,7 +540,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> LucidDreaming()
         {
-            if (Shinra.Settings.AstrologianLucidDreaming && Core.Player.CurrentManaPercent < Shinra.Settings.AstrologianLucidDreamingPct)
+            if (ShinraEx.Settings.AstrologianLucidDreaming && Core.Player.CurrentManaPercent < ShinraEx.Settings.AstrologianLucidDreamingPct)
             {
                 return await MySpells.Role.LucidDreaming.Cast(null, false);
             }
@@ -549,10 +549,10 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> EyeForAnEye()
         {
-            if (Shinra.Settings.AstrologianPartyHeal && Shinra.Settings.AstrologianEyeForAnEye)
+            if (ShinraEx.Settings.AstrologianPartyHeal && ShinraEx.Settings.AstrologianEyeForAnEye)
             {
                 var target = Helpers.HealManager.FirstOrDefault(hm => hm.IsTank() &&
-                                                                      hm.CurrentHealthPercent < Shinra.Settings.AstrologianEyeForAnEyePct &&
+                                                                      hm.CurrentHealthPercent < ShinraEx.Settings.AstrologianEyeForAnEyePct &&
                                                                       !hm.HasAura("Eye for an Eye"));
 
                 if (target != null)
@@ -565,10 +565,10 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Largesse()
         {
-            if (Shinra.Settings.AstrologianPartyHeal && Shinra.Settings.AstrologianLargesse)
+            if (ShinraEx.Settings.AstrologianPartyHeal && ShinraEx.Settings.AstrologianLargesse)
             {
-                if (Helpers.HealManager.Count(hm => hm.CurrentHealthPercent < Shinra.Settings.AstrologianLargessePct) >=
-                    Shinra.Settings.AstrologianLargesseCount)
+                if (Helpers.HealManager.Count(hm => hm.CurrentHealthPercent < ShinraEx.Settings.AstrologianLargessePct) >=
+                    ShinraEx.Settings.AstrologianLargesseCount)
                 {
                     return await MySpells.Role.Largesse.Cast(null, false);
                 }
@@ -585,8 +585,8 @@ namespace ShinraCo.Rotations
             return unit.HasAura("The Balance") || unit.HasAura("The Arrow") || unit.HasAura("The Spear");
         }
 
-        private static bool StopDamage => Shinra.Settings.AstrologianStopDamage && Core.Player.CurrentManaPercent <= Shinra.Settings.AstrologianStopDamagePct;
-        private static bool StopDots => Shinra.Settings.AstrologianStopDots && Core.Player.CurrentManaPercent <= Shinra.Settings.AstrologianStopDotsPct;
+        private static bool StopDamage => ShinraEx.Settings.AstrologianStopDamage && Core.Player.CurrentManaPercent <= ShinraEx.Settings.AstrologianStopDamagePct;
+        private static bool StopDots => ShinraEx.Settings.AstrologianStopDots && Core.Player.CurrentManaPercent <= ShinraEx.Settings.AstrologianStopDotsPct;
 
         private static bool HasCard => Resource.Cards[0] != Resource.AstrologianCard.None;
         private static bool HasSpread => Resource.Cards[1] != Resource.AstrologianCard.None;
@@ -606,7 +606,7 @@ namespace ShinraCo.Rotations
         private static bool SpreadOffensive => Resource.Cards[1] == Resource.AstrologianCard.Balance || Resource.Cards[1] == Resource.AstrologianCard.Arrow ||
                                              Resource.Cards[1] == Resource.AstrologianCard.Spear;
 
-        private bool UseAoEHeals => Shinra.LastSpell.Name != MySpells.Helios.Name && Shinra.LastSpell.Name != MySpells.AspectedHelios.Name;
+        private bool UseAoEHeals => ShinraEx.LastSpell.Name != MySpells.Helios.Name && ShinraEx.LastSpell.Name != MySpells.AspectedHelios.Name;
         private bool SectActive => Core.Player.HasAura(MySpells.DiurnalSect.Name) || Core.Player.HasAura(MySpells.NocturnalSect.Name);
 
         #endregion

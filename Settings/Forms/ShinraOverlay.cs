@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShinraCo.Properties;
+using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -41,8 +42,8 @@ namespace ShinraCo.Settings.Forms
         {
             if (m.Msg == WM_EXITSIZEMOVE)
             {
-                Shinra.Settings.OverlayLocation = Location;
-                Shinra.Settings.Save();
+                ShinraEx.Settings.OverlayLocation = Location;
+                ShinraEx.Settings.Save();
             }
             base.WndProc(ref m);
         }
@@ -66,14 +67,14 @@ namespace ShinraCo.Settings.Forms
         {
             ShinraLogo.Image = _shinraLogo;
             SetWindowPos(Handle, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
-            Location = Shinra.Settings.OverlayLocation;
+            Location = ShinraEx.Settings.OverlayLocation;
         }
 
         public void UpdateText()
         {
-            RotationModeLabel.Text = $@"[Rotation] {Convert.ToString(Shinra.Settings.RotationMode)}";
-            CooldownModeLabel.Text = $@"[Cooldown] {Convert.ToString(Shinra.Settings.CooldownMode)}";
-            TankModeLabel.Text = $@"[Tank] {Convert.ToString(Shinra.Settings.TankMode)}";
+            RotationModeLabel.Text = $@"[Rotation] {Convert.ToString(ShinraEx.Settings.RotationMode)}";
+            CooldownModeLabel.Text = $@"[Cooldown] {Convert.ToString(ShinraEx.Settings.CooldownMode)}";
+            TankModeLabel.Text = $@"[Tank] {Convert.ToString(ShinraEx.Settings.TankMode)}";
         }
     }
 }

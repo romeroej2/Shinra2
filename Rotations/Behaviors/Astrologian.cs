@@ -9,7 +9,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            if (Shinra.Settings.RotationMode == Modes.Smart)
+            if (ShinraEx.Settings.RotationMode == Modes.Smart)
             {
                 if (await StellarDetonation()) return true;
                 if (await EarthlyStar()) return true;
@@ -20,7 +20,7 @@ namespace ShinraCo.Rotations
                 if (await MaleficII()) return true;
                 return await Malefic();
             }
-            if (Shinra.Settings.RotationMode == Modes.Single)
+            if (ShinraEx.Settings.RotationMode == Modes.Single)
             {
                 if (await CombustII()) return true;
                 if (await Combust()) return true;
@@ -28,7 +28,7 @@ namespace ShinraCo.Rotations
                 if (await MaleficII()) return true;
                 return await Malefic();
             }
-            if (Shinra.Settings.RotationMode == Modes.Multi)
+            if (ShinraEx.Settings.RotationMode == Modes.Multi)
             {
                 if (await StellarDetonation()) return true;
                 if (await EarthlyStar()) return true;
@@ -45,11 +45,11 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
-            if (await Shinra.SummonChocobo()) return true;
-            if (await Shinra.ChocoboStance()) return true;
+            if (await ShinraEx.SummonChocobo()) return true;
+            if (await ShinraEx.ChocoboStance()) return true;
             if (await CelestialOpposition()) return true;
             if (await LucidDreaming()) return true;
-            if (Shinra.Settings.AstrologianDraw)
+            if (ShinraEx.Settings.AstrologianDraw)
             {
                 if (await LordOfCrowns()) return true;
                 if (await SleeveDraw()) return true;
@@ -97,10 +97,10 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
-            if (await Shinra.SummonChocobo()) return true;
+            if (await ShinraEx.SummonChocobo()) return true;
             if (await NocturnalSect()) return true;
             if (await DiurnalSect()) return true;
-            if (Shinra.Settings.AstrologianDraw && Shinra.Settings.AstrologianCardPreCombat)
+            if (ShinraEx.Settings.AstrologianDraw && ShinraEx.Settings.AstrologianCardPreCombat)
             {
                 if (await Draw()) return true;
                 if (await Spread()) return true;

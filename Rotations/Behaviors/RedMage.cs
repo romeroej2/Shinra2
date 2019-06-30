@@ -9,9 +9,9 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            if (Shinra.Settings.RotationMode == Modes.Smart)
+            if (ShinraEx.Settings.RotationMode == Modes.Smart)
             {
-                if (Shinra.Settings.RedMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                if (ShinraEx.Settings.RedMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
                 if (await Drain()) return true;
                 if (await EnchantedMoulinet()) return true;
                 if (await Scatter()) return true;
@@ -29,9 +29,9 @@ namespace ShinraCo.Rotations
                 if (await Jolt()) return true;
                 return await Riposte();
             }
-            if (Shinra.Settings.RotationMode == Modes.Single)
+            if (ShinraEx.Settings.RotationMode == Modes.Single)
             {
-                if (Shinra.Settings.RedMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                if (ShinraEx.Settings.RedMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
                 if (await Drain()) return true;
                 if (await Verholy()) return true;
                 if (await Verflare()) return true;
@@ -47,7 +47,7 @@ namespace ShinraCo.Rotations
                 if (await Jolt()) return true;
                 return await Riposte();
             }
-            if (Shinra.Settings.RotationMode == Modes.Multi)
+            if (ShinraEx.Settings.RotationMode == Modes.Multi)
             {
                 if (await Drain()) return true;
                 if (await EnchantedMoulinet()) return true;
@@ -63,9 +63,9 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
-            if (await Shinra.SummonChocobo()) return true;
-            if (await Shinra.ChocoboStance()) return true;
-            if (Shinra.Settings.RedMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            if (await ShinraEx.SummonChocobo()) return true;
+            if (await ShinraEx.ChocoboStance()) return true;
+            if (ShinraEx.Settings.RedMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await Embolden()) return true;
             if (await CorpsACorps()) return true;
             if (await Displacement()) return true;
@@ -94,7 +94,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
-            return await Shinra.SummonChocobo();
+            return await ShinraEx.SummonChocobo();
         }
 
         #endregion

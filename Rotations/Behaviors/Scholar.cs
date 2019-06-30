@@ -23,8 +23,8 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
-            if (await Shinra.SummonChocobo()) return true;
-            if (await Shinra.ChocoboStance()) return true;
+            if (await ShinraEx.SummonChocobo()) return true;
+            if (await ShinraEx.ChocoboStance()) return true;
             if (await SummonII()) return true;
             if (await Summon()) return true;
             if (await Aetherflow()) return true;
@@ -65,7 +65,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
-            if (await Shinra.SummonChocobo()) return true;
+            if (await ShinraEx.SummonChocobo()) return true;
             if (await Aetherflow()) return true;
             if (await SummonII()) return true;
             return await Summon();

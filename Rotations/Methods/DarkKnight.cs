@@ -41,7 +41,7 @@ namespace ShinraCo.Rotations
         {
             if (ActionManager.LastSpell.Name == MySpells.HardSlash.Name)
             {
-                if (Shinra.Settings.TankMode == TankModes.DPS && ActionManager.HasSpell(MySpells.Souleater.Name) ||
+                if (ShinraEx.Settings.TankMode == TankModes.DPS && ActionManager.HasSpell(MySpells.Souleater.Name) ||
                     Core.Player.CurrentManaPercent < 40)
                 {
                     return await MySpells.SyphonStrike.Cast();
@@ -61,7 +61,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Bloodspiller()
         {
-            if (Shinra.Settings.DarkKnightBloodspiller && BloodValue >= 50 && Core.Player.HasAura(MySpells.DarkArts.Name))
+            if (ShinraEx.Settings.DarkKnightBloodspiller && BloodValue >= 50 && Core.Player.HasAura(MySpells.DarkArts.Name))
             {
                 return await MySpells.Bloodspiller.Cast();
             }
@@ -85,9 +85,9 @@ namespace ShinraCo.Rotations
         {
             if (Core.Player.CurrentManaPercent > 30)
             {
-                var count = Shinra.Settings.CustomAoE ? Shinra.Settings.CustomAoECount : 3;
+                var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
 
-                if (Shinra.Settings.DarkKnightAbyssalArts && Core.Player.CurrentHealthPercent < 70 && Core.Player.CurrentManaPercent > 60 &&
+                if (ShinraEx.Settings.DarkKnightAbyssalArts && Core.Player.CurrentHealthPercent < 70 && Core.Player.CurrentManaPercent > 60 &&
                     ActionManager.CanCast(MySpells.AbyssalDrain.Name, Core.Player.CurrentTarget) && Helpers.EnemiesNearTarget(5) >= count)
                 {
                     if (await MySpells.DarkArts.Cast(null, false))
@@ -102,11 +102,11 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Quietus()
         {
-            if (Shinra.Settings.DarkKnightQuietus && Core.Player.CurrentManaPercent < 70 && BloodValue >= 50)
+            if (ShinraEx.Settings.DarkKnightQuietus && Core.Player.CurrentManaPercent < 70 && BloodValue >= 50)
             {
-                var count = Shinra.Settings.CustomAoE ? Shinra.Settings.CustomAoECount : 3;
+                var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
 
-                if (Shinra.Settings.DarkKnightQuietusArts && Core.Player.CurrentManaPercent > 40 &&
+                if (ShinraEx.Settings.DarkKnightQuietusArts && Core.Player.CurrentManaPercent > 40 &&
                     ActionManager.CanCast(MySpells.Quietus.Name, Core.Player) && Helpers.EnemiesNearPlayer(5) >= count)
                 {
                     if (await MySpells.DarkArts.Cast(null, false))
@@ -125,7 +125,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SaltedEarth()
         {
-            if (Shinra.Settings.DarkKnightSaltedEarth && !MovementManager.IsMoving)
+            if (ShinraEx.Settings.DarkKnightSaltedEarth && !MovementManager.IsMoving)
             {
                 return await MySpells.SaltedEarth.Cast();
             }
@@ -134,7 +134,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Plunge()
         {
-            if (Shinra.Settings.DarkKnightPlunge && Core.Player.TargetDistance(10))
+            if (ShinraEx.Settings.DarkKnightPlunge && Core.Player.TargetDistance(10))
             {
                 return await MySpells.Plunge.Cast(null, false);
             }
@@ -143,9 +143,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> CarveAndSpit()
         {
-            if (Shinra.Settings.DarkKnightCarveAndSpit)
+            if (ShinraEx.Settings.DarkKnightCarveAndSpit)
             {
-                if (Shinra.Settings.DarkKnightCarveArts && ActionManager.CanCast(MySpells.CarveAndSpit.Name, Core.Player.CurrentTarget))
+                if (ShinraEx.Settings.DarkKnightCarveArts && ActionManager.CanCast(MySpells.CarveAndSpit.Name, Core.Player.CurrentTarget))
                 {
                     if (await MySpells.DarkArts.Cast())
                     {
@@ -154,7 +154,7 @@ namespace ShinraCo.Rotations
                 }
 
                 if (Core.Player.HasAura(MySpells.DarkArts.Name) || Core.Player.CurrentManaPercent < 30 ||
-                    !Shinra.Settings.DarkKnightCarveArts && Core.Player.CurrentManaPercent < 70)
+                    !ShinraEx.Settings.DarkKnightCarveArts && Core.Player.CurrentManaPercent < 70)
                 {
                     return await MySpells.CarveAndSpit.Cast(null, !Core.Player.HasAura(MySpells.DarkArts.Name));
                 }
@@ -168,7 +168,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BloodWeapon()
         {
-            if (Shinra.Settings.DarkKnightBloodWeapon)
+            if (ShinraEx.Settings.DarkKnightBloodWeapon)
             {
                 return await MySpells.BloodWeapon.Cast();
             }
@@ -177,7 +177,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BloodPrice()
         {
-            if (Shinra.Settings.DarkKnightBloodPrice && Core.Player.CurrentManaPercent < Shinra.Settings.DarkKnightBloodPricePct)
+            if (ShinraEx.Settings.DarkKnightBloodPrice && Core.Player.CurrentManaPercent < ShinraEx.Settings.DarkKnightBloodPricePct)
             {
                 return await MySpells.BloodPrice.Cast();
             }
@@ -189,7 +189,7 @@ namespace ShinraCo.Rotations
             if (!Core.Player.HasAura(MySpells.DarkArts.Name))
             {
                 // Bloodspiller
-                if (Shinra.Settings.DarkKnightBloodspillerArts && Resource.BlackBlood >= 50 && ActionManager.HasSpell(MySpells.Bloodspiller.Name))
+                if (ShinraEx.Settings.DarkKnightBloodspillerArts && Resource.BlackBlood >= 50 && ActionManager.HasSpell(MySpells.Bloodspiller.Name))
                 {
                     return await MySpells.DarkArts.Cast();
                 }
@@ -197,12 +197,12 @@ namespace ShinraCo.Rotations
                 if (Core.Player.CurrentManaPercent < 70) return false;
 
                 // Souleater
-                if (Shinra.Settings.DarkKnightSouleaterArts && ActionManager.LastSpell.Name == MySpells.SyphonStrike.Name)
+                if (ShinraEx.Settings.DarkKnightSouleaterArts && ActionManager.LastSpell.Name == MySpells.SyphonStrike.Name)
                 {
                     return await MySpells.DarkArts.Cast();
                 }
                 // Syphon Strike
-                if (Shinra.Settings.TankMode == TankModes.DPS && ActionManager.LastSpell.Name == MySpells.HardSlash.Name &&
+                if (ShinraEx.Settings.TankMode == TankModes.DPS && ActionManager.LastSpell.Name == MySpells.HardSlash.Name &&
                     Core.Player.CurrentManaPercent > 90)
                 {
                     return await MySpells.DarkArts.Cast();
@@ -213,7 +213,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> ShadowWall()
         {
-            if (Shinra.Settings.DarkKnightShadowWall && Core.Player.CurrentHealthPercent < Shinra.Settings.DarkKnightShadowWallPct)
+            if (ShinraEx.Settings.DarkKnightShadowWall && Core.Player.CurrentHealthPercent < ShinraEx.Settings.DarkKnightShadowWallPct)
             {
                 return await MySpells.ShadowWall.Cast();
             }
@@ -222,7 +222,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> LivingDead()
         {
-            if (Shinra.Settings.DarkKnightLivingDead && Core.Player.CurrentHealthPercent < Shinra.Settings.DarkKnightLivingDeadPct)
+            if (ShinraEx.Settings.DarkKnightLivingDead && Core.Player.CurrentHealthPercent < ShinraEx.Settings.DarkKnightLivingDeadPct)
             {
                 return await MySpells.LivingDead.Cast(null, false);
             }
@@ -231,7 +231,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Delirium()
         {
-            if (!Shinra.Settings.DarkKnightDelirium) return false;
+            if (!ShinraEx.Settings.DarkKnightDelirium) return false;
 
             if (Core.Player.HasAura(MySpells.BloodWeapon.Name) || Core.Player.HasAura(MySpells.BloodPrice.Name))
             {
@@ -242,7 +242,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BlackestNight()
         {
-            if (Shinra.Settings.DarkKnightBlackestNight && Core.Player.CurrentHealthPercent < Shinra.Settings.DarkKnightBlackestNightPct)
+            if (ShinraEx.Settings.DarkKnightBlackestNight && Core.Player.CurrentHealthPercent < ShinraEx.Settings.DarkKnightBlackestNightPct)
             {
                 return await MySpells.BlackestNight.Cast();
             }
@@ -255,7 +255,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Grit()
         {
-            if (Shinra.Settings.DarkKnightGrit && !Core.Player.HasAura(MySpells.Grit.Name))
+            if (ShinraEx.Settings.DarkKnightGrit && !Core.Player.HasAura(MySpells.Grit.Name))
             {
                 return await MySpells.Grit.Cast();
             }
@@ -264,7 +264,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Darkside()
         {
-            if (Shinra.Settings.DarkKnightDarkside && !Core.Player.HasAura(MySpells.Darkside.Name))
+            if (ShinraEx.Settings.DarkKnightDarkside && !Core.Player.HasAura(MySpells.Darkside.Name))
             {
                 return await MySpells.Darkside.Cast(null, false);
             }
@@ -277,7 +277,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Rampart()
         {
-            if (Shinra.Settings.DarkKnightRampart && Core.Player.CurrentHealthPercent < Shinra.Settings.DarkKnightRampartPct)
+            if (ShinraEx.Settings.DarkKnightRampart && Core.Player.CurrentHealthPercent < ShinraEx.Settings.DarkKnightRampartPct)
             {
                 return await MySpells.Role.Rampart.Cast();
             }
@@ -286,7 +286,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Convalescence()
         {
-            if (Shinra.Settings.DarkKnightConvalescence && Core.Player.CurrentHealthPercent < Shinra.Settings.DarkKnightConvalescencePct)
+            if (ShinraEx.Settings.DarkKnightConvalescence && Core.Player.CurrentHealthPercent < ShinraEx.Settings.DarkKnightConvalescencePct)
             {
                 return await MySpells.Role.Convalescence.Cast();
             }
@@ -295,7 +295,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Anticipation()
         {
-            if (Shinra.Settings.DarkKnightAnticipation && Core.Player.CurrentHealthPercent < Shinra.Settings.DarkKnightAnticipationPct)
+            if (ShinraEx.Settings.DarkKnightAnticipation && Core.Player.CurrentHealthPercent < ShinraEx.Settings.DarkKnightAnticipationPct)
             {
                 return await MySpells.Role.Anticipation.Cast();
             }
@@ -304,7 +304,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Reprisal()
         {
-            if (Shinra.Settings.DarkKnightReprisal)
+            if (ShinraEx.Settings.DarkKnightReprisal)
             {
                 return await MySpells.Role.Reprisal.Cast();
             }
@@ -313,7 +313,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Awareness()
         {
-            if (Shinra.Settings.DarkKnightAwareness && Core.Player.CurrentHealthPercent < Shinra.Settings.DarkKnightAwarenessPct)
+            if (ShinraEx.Settings.DarkKnightAwareness && Core.Player.CurrentHealthPercent < ShinraEx.Settings.DarkKnightAwarenessPct)
             {
                 return await MySpells.Role.Awareness.Cast();
             }

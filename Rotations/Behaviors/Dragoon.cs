@@ -9,9 +9,9 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            if (Shinra.Settings.RotationMode == Modes.Smart)
+            if (ShinraEx.Settings.RotationMode == Modes.Smart)
             {
-                if (Shinra.Settings.DragoonOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                if (ShinraEx.Settings.DragoonOpener) { if (await Helpers.ExecuteOpener()) return true; }
                 if (await SonicThrust()) return true;
                 if (await DoomSpike()) return true;
                 if (await WheelingThrust()) return true;
@@ -24,9 +24,9 @@ namespace ShinraCo.Rotations
                 if (await ImpulseDrive()) return true;
                 return await TrueThrust();
             }
-            if (Shinra.Settings.RotationMode == Modes.Single)
+            if (ShinraEx.Settings.RotationMode == Modes.Single)
             {
-                if (Shinra.Settings.DragoonOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                if (ShinraEx.Settings.DragoonOpener) { if (await Helpers.ExecuteOpener()) return true; }
                 if (await WheelingThrust()) return true;
                 if (await FangAndClaw()) return true;
                 if (await ChaosThrust()) return true;
@@ -37,7 +37,7 @@ namespace ShinraCo.Rotations
                 if (await ImpulseDrive()) return true;
                 return await TrueThrust();
             }
-            if (Shinra.Settings.RotationMode == Modes.Multi)
+            if (ShinraEx.Settings.RotationMode == Modes.Multi)
             {
                 if (await SonicThrust()) return true;
                 if (await DoomSpike()) return true;
@@ -52,9 +52,9 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
-            if (await Shinra.SummonChocobo()) return true;
-            if (await Shinra.ChocoboStance()) return true;
-            if (Shinra.Settings.DragoonOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            if (await ShinraEx.SummonChocobo()) return true;
+            if (await ShinraEx.ChocoboStance()) return true;
+            if (ShinraEx.Settings.DragoonOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await BloodOfTheDragon()) return true;
             if (await DragonSight()) return true;
             if (await BloodForBlood()) return true;
@@ -88,7 +88,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
-            return await Shinra.SummonChocobo();
+            return await ShinraEx.SummonChocobo();
         }
 
         #endregion

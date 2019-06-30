@@ -52,11 +52,11 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> PitchPerfect()
         {
-            if (!Shinra.Settings.BardPitchPerfect) return false;
+            if (!ShinraEx.Settings.BardPitchPerfect) return false;
 
             var critBonus = DotManager.Check(Target, true);
 
-            if (NumRepertoire >= Shinra.Settings.BardRepertoireCount || MinuetActive && SongTimer < 2000 ||
+            if (NumRepertoire >= ShinraEx.Settings.BardRepertoireCount || MinuetActive && SongTimer < 2000 ||
                 critBonus >= 20 && NumRepertoire >= 2)
             {
                 return await MySpells.PitchPerfect.Cast();
@@ -66,7 +66,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> RefulgentArrow()
         {
-            if (Core.Player.HasAura(122) && (!Shinra.Settings.BardBarrage || MySpells.Barrage.Cooldown() > 7000 ||
+            if (Core.Player.HasAura(122) && (!ShinraEx.Settings.BardBarrage || MySpells.Barrage.Cooldown() > 7000 ||
                                              !Core.Player.HasAura(MySpells.StraightShot.Name, true, 6000)))
             {
                 return await MySpells.RefulgentArrow.Cast();
@@ -100,7 +100,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> VenomousBite()
         {
-            if (!Shinra.Settings.BardUseDots || Target.HasAura(VenomDebuff, true, 4000) || !await MySpells.VenomousBite.Cast())
+            if (!ShinraEx.Settings.BardUseDots || Target.HasAura(VenomDebuff, true, 4000) || !await MySpells.VenomousBite.Cast())
                 return false;
 
             DotManager.Add(Target);
@@ -109,7 +109,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Windbite()
         {
-            if (!Shinra.Settings.BardUseDots || Target.HasAura(WindDebuff, true, 4000) || !await MySpells.Windbite.Cast())
+            if (!ShinraEx.Settings.BardUseDots || Target.HasAura(WindDebuff, true, 4000) || !await MySpells.Windbite.Cast())
                 return false;
 
             DotManager.Add(Target);
@@ -130,7 +130,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> DotSnapshot()
         {
-            if (!Shinra.Settings.BardDotSnapshot ||
+            if (!ShinraEx.Settings.BardDotSnapshot ||
                 !Core.Player.CurrentTarget.HasAura(VenomDebuff, true) ||
                 !Core.Player.CurrentTarget.HasAura(WindDebuff, true) ||
                 DotManager.Recent(Target))
@@ -171,7 +171,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> QuickNock()
         {
-            if (Shinra.Settings.BardUseDotsAoe && (!Core.Player.CurrentTarget.HasAura(VenomDebuff, true, 4000) ||
+            if (ShinraEx.Settings.BardUseDotsAoe && (!Core.Player.CurrentTarget.HasAura(VenomDebuff, true, 4000) ||
                                                    !Core.Player.CurrentTarget.HasAura(WindDebuff, true, 4000)))
             {
                 return false;
@@ -179,9 +179,9 @@ namespace ShinraCo.Rotations
 
             if (Core.Player.CurrentTPPercent > 40)
             {
-                var count = Shinra.Settings.CustomAoE ? Shinra.Settings.CustomAoECount : 3;
+                var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
 
-                if (Shinra.Settings.RotationMode == Modes.Multi || Shinra.Settings.RotationMode == Modes.Smart &&
+                if (ShinraEx.Settings.RotationMode == Modes.Multi || ShinraEx.Settings.RotationMode == Modes.Smart &&
                     Helpers.EnemiesNearTarget(5) >= count)
                 {
                     return await MySpells.QuickNock.Cast();
@@ -192,7 +192,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> RainOfDeath()
         {
-            if (Shinra.Settings.RotationMode == Modes.Multi || Shinra.Settings.RotationMode == Modes.Smart &&
+            if (ShinraEx.Settings.RotationMode == Modes.Multi || ShinraEx.Settings.RotationMode == Modes.Smart &&
                 Helpers.EnemiesNearTarget(5) > 1)
             {
                 return await MySpells.RainOfDeath.Cast();
@@ -206,7 +206,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> MagesBallad()
         {
-            if (Shinra.Settings.BardSongs &&
+            if (ShinraEx.Settings.BardSongs &&
                 !RecentSong &&
                 (NoSong ||
                  PaeonActive && DataManager.GetSpellData(3559).Cooldown.TotalSeconds < 30 ||
@@ -219,7 +219,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> ArmysPaeon()
         {
-            if (Shinra.Settings.BardSongs && !RecentSong && NoSong)
+            if (ShinraEx.Settings.BardSongs && !RecentSong && NoSong)
             {
                 return await MySpells.ArmysPaeon.Cast();
             }
@@ -228,7 +228,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> WanderersMinuet()
         {
-            if (Shinra.Settings.BardSongs && !RecentSong &&
+            if (ShinraEx.Settings.BardSongs && !RecentSong &&
                 (NoSong || PaeonActive && DataManager.GetSpellData(114).Cooldown.TotalSeconds < 30))
             {
                 return await MySpells.WanderersMinuet.Cast();
@@ -238,7 +238,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> EmpyrealArrow()
         {
-            if (Shinra.Settings.BardEmpyrealArrow)
+            if (ShinraEx.Settings.BardEmpyrealArrow)
             {
                 return await MySpells.EmpyrealArrow.Cast();
             }
@@ -247,7 +247,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Sidewinder()
         {
-            if (Shinra.Settings.BardSidewinder && Core.Player.CurrentTarget.HasAura(VenomDebuff, true) &&
+            if (ShinraEx.Settings.BardSidewinder && Core.Player.CurrentTarget.HasAura(VenomDebuff, true) &&
                 Core.Player.CurrentTarget.HasAura(WindDebuff, true))
             {
                 return await MySpells.Sidewinder.Cast();
@@ -261,7 +261,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> RagingStrikes()
         {
-            if (Shinra.Settings.BardRagingStrikes)
+            if (ShinraEx.Settings.BardRagingStrikes)
             {
                 if (MinuetActive || !ActionManager.HasSpell(MySpells.WanderersMinuet.ID))
                 {
@@ -273,8 +273,8 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> FoeRequiem()
         {
-            if (Shinra.Settings.BardFoeRequiem && !Core.Player.HasAura(MySpells.FoeRequiem.Name) &&
-                Core.Player.CurrentManaPercent >= Shinra.Settings.BardFoeRequiemPct)
+            if (ShinraEx.Settings.BardFoeRequiem && !Core.Player.HasAura(MySpells.FoeRequiem.Name) &&
+                Core.Player.CurrentManaPercent >= ShinraEx.Settings.BardFoeRequiemPct)
             {
                 return await MySpells.FoeRequiem.Cast();
             }
@@ -283,7 +283,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Barrage()
         {
-            if (Shinra.Settings.BardBarrage && Core.Player.HasAura(MySpells.RagingStrikes.Name))
+            if (ShinraEx.Settings.BardBarrage && Core.Player.HasAura(MySpells.RagingStrikes.Name))
             {
                 if (MySpells.EmpyrealArrow.Cooldown() < 500 ||
                     Core.Player.HasAura(122) && ActionManager.HasSpell(MySpells.RefulgentArrow.Name) ||
@@ -300,7 +300,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BattleVoice()
         {
-            if (Shinra.Settings.BardBattleVoice)
+            if (ShinraEx.Settings.BardBattleVoice)
             {
                 return await MySpells.BattleVoice.Cast();
             }
@@ -313,7 +313,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SecondWind()
         {
-            if (Shinra.Settings.BardSecondWind && Core.Player.CurrentHealthPercent < Shinra.Settings.BardSecondWindPct)
+            if (ShinraEx.Settings.BardSecondWind && Core.Player.CurrentHealthPercent < ShinraEx.Settings.BardSecondWindPct)
             {
                 return await MySpells.Role.SecondWind.Cast();
             }
@@ -322,7 +322,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Peloton()
         {
-            if (Shinra.Settings.BardPeloton && !Core.Player.HasAura(MySpells.Role.Peloton.Name) && !Core.Player.HasTarget &&
+            if (ShinraEx.Settings.BardPeloton && !Core.Player.HasAura(MySpells.Role.Peloton.Name) && !Core.Player.HasTarget &&
                 (MovementManager.IsMoving || BotManager.Current.EnglishName == "DeepDive"))
             {
                 return await MySpells.Role.Peloton.Cast(null, false);
@@ -332,7 +332,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Invigorate()
         {
-            if (Shinra.Settings.BardInvigorate && Core.Player.CurrentTPPercent < Shinra.Settings.BardInvigoratePct)
+            if (ShinraEx.Settings.BardInvigorate && Core.Player.CurrentTPPercent < ShinraEx.Settings.BardInvigoratePct)
             {
                 return await MySpells.Role.Invigorate.Cast();
             }
@@ -341,10 +341,10 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Tactician()
         {
-            if (Shinra.Settings.BardTactician)
+            if (ShinraEx.Settings.BardTactician)
             {
-                var target = Core.Player.CurrentTPPercent < Shinra.Settings.BardTacticianPct ? Core.Player
-                    : Helpers.GoadManager.FirstOrDefault(gm => gm.CurrentTPPercent < Shinra.Settings.BardTacticianPct);
+                var target = Core.Player.CurrentTPPercent < ShinraEx.Settings.BardTacticianPct ? Core.Player
+                    : Helpers.GoadManager.FirstOrDefault(gm => gm.CurrentTPPercent < ShinraEx.Settings.BardTacticianPct);
 
                 if (target != null)
                 {
@@ -356,9 +356,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Refresh()
         {
-            if (Shinra.Settings.BardRefresh)
+            if (ShinraEx.Settings.BardRefresh)
             {
-                var target = Helpers.HealManager.FirstOrDefault(hm => hm.CurrentManaPercent < Shinra.Settings.BardRefreshPct &&
+                var target = Helpers.HealManager.FirstOrDefault(hm => hm.CurrentManaPercent < ShinraEx.Settings.BardRefreshPct &&
                                                                       hm.IsHealer());
 
                 if (target != null)
@@ -371,9 +371,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Palisade()
         {
-            if (Shinra.Settings.BardPalisade)
+            if (ShinraEx.Settings.BardPalisade)
             {
-                var target = Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < Shinra.Settings.BardPalisadePct &&
+                var target = Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.BardPalisadePct &&
                                                                       hm.IsTank());
 
                 if (target != null)
@@ -446,7 +446,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BarragePVP()
         {
-            if (Shinra.LastSpell.Name != MySpells.PVP.StraightShot.Name &&
+            if (ShinraEx.LastSpell.Name != MySpells.PVP.StraightShot.Name &&
                 ActionManager.GetPvPComboCurrentActionId(MySpells.PVP.StraightShot.Combo) == MySpells.PVP.StraightShot.ID)
             {
                 return await MySpells.PVP.Barrage.Cast();

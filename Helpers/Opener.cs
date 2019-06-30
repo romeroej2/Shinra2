@@ -43,7 +43,7 @@ namespace ShinraCo
         {
             if (OpenerFinished || Me.ClassLevel < 70) return false;
 
-            if (Shinra.Settings.CooldownMode == CooldownModes.Disabled)
+            if (ShinraEx.Settings.CooldownMode == CooldownModes.Disabled)
             {
                 AbortOpener("Please enable cooldown mode to use an opener.");
                 return false;
@@ -55,84 +55,84 @@ namespace ShinraCo
             {
                 case ClassJobType.Bard:
                     current = BardOpener.List;
-                    usePotion = Shinra.Settings.BardPotion;
+                    usePotion = ShinraEx.Settings.BardPotion;
                     potionStep = 0;
                     potionType = PotionIds.Dex;
                     break;
 
                 case ClassJobType.BlackMage:
                     current = BlackMageOpener.List;
-                    usePotion = Shinra.Settings.BlackMagePotion;
+                    usePotion = ShinraEx.Settings.BlackMagePotion;
                     potionStep = 7;
                     potionType = PotionIds.Int;
                     break;
 
                 case ClassJobType.DarkKnight:
                     current = DarkKnightOpener.List;
-                    usePotion = Shinra.Settings.DarkKnightPotion;
+                    usePotion = ShinraEx.Settings.DarkKnightPotion;
                     potionStep = 3;
                     potionType = PotionIds.Str;
                     break;
 
                 case ClassJobType.Dragoon:
                     current = DragoonOpener.List;
-                    usePotion = Shinra.Settings.DragoonPotion;
+                    usePotion = ShinraEx.Settings.DragoonPotion;
                     potionStep = 7;
                     potionType = PotionIds.Str;
                     break;
 
                 case ClassJobType.Machinist:
                     current = MachinistOpener.List;
-                    usePotion = Shinra.Settings.MachinistPotion;
+                    usePotion = ShinraEx.Settings.MachinistPotion;
                     potionStep = 0;
                     potionType = PotionIds.Dex;
                     break;
 
                 case ClassJobType.Monk:
                     current = MonkOpener.List;
-                    usePotion = Shinra.Settings.MonkPotion;
+                    usePotion = ShinraEx.Settings.MonkPotion;
                     potionStep = 4;
                     potionType = PotionIds.Str;
                     break;
 
                 case ClassJobType.Ninja:
                     current = NinjaOpener.List;
-                    usePotion = Shinra.Settings.NinjaPotion;
+                    usePotion = ShinraEx.Settings.NinjaPotion;
                     potionStep = 7;
                     potionType = PotionIds.Dex;
                     break;
 
                 case ClassJobType.Paladin:
                     current = PaladinOpener.List;
-                    usePotion = Shinra.Settings.PaladinPotion;
+                    usePotion = ShinraEx.Settings.PaladinPotion;
                     potionStep = 8;
                     potionType = PotionIds.Str;
                     break;
 
                 case ClassJobType.RedMage:
                     current = RedMageOpener.List;
-                    usePotion = Shinra.Settings.RedMagePotion;
+                    usePotion = ShinraEx.Settings.RedMagePotion;
                     potionStep = 3;
                     potionType = PotionIds.Int;
                     break;
 
                 case ClassJobType.Samurai:
                     current = SamuraiOpener.List;
-                    usePotion = Shinra.Settings.SamuraiPotion;
+                    usePotion = ShinraEx.Settings.SamuraiPotion;
                     potionStep = 4;
                     potionType = PotionIds.Str;
                     break;
 
                 case ClassJobType.Summoner:
                     current = SummonerOpener.List;
-                    usePotion = Shinra.Settings.SummonerPotion;
+                    usePotion = ShinraEx.Settings.SummonerPotion;
                     potionStep = 2;
                     potionType = PotionIds.Int;
                     break;
 
                 case ClassJobType.Warrior:
                     current = WarriorOpener.List;
-                    usePotion = Shinra.Settings.WarriorPotion;
+                    usePotion = ShinraEx.Settings.WarriorPotion;
                     potionStep = 5;
                     potionType = PotionIds.Str;
                     break;
@@ -148,7 +148,7 @@ namespace ShinraCo
 
             if (OpenerStep >= current.Count)
             {
-                AbortOpener("Shinra >>> Opener Finished");
+                AbortOpener("ShinraEx >>> Opener Finished");
                 return false;
             }
 
@@ -198,7 +198,7 @@ namespace ShinraCo
                         OpenerStep++;
                         return true;
                     }
-                    if (spell.Name == DarkKnight.BlackestNight.Name && Shinra.Settings.DarkKnightOffTank)
+                    if (spell.Name == DarkKnight.BlackestNight.Name && ShinraEx.Settings.DarkKnightOffTank)
                     {
                         await UpdateHealManager();
 
@@ -237,7 +237,7 @@ namespace ShinraCo
                 case ClassJobType.Machinist:
                     if (PetManager.ActivePetType != PetType.Rook_Autoturret)
                     {
-                        var castLocation = Shinra.Settings.MachinistTurretLocation == CastLocations.Self ? Me : Target;
+                        var castLocation = ShinraEx.Settings.MachinistTurretLocation == CastLocations.Self ? Me : Target;
 
                         if (await Machinist.RookAutoturret.Cast(castLocation, false))
                         {
@@ -296,7 +296,7 @@ namespace ShinraCo
                             return true;
                         }
                     }
-                    if (Shinra.LastSpell.Name != Monk.PerfectBalance.Name && Monk.PerfectBalance.Cooldown() > 0 &&
+                    if (ShinraEx.LastSpell.Name != Monk.PerfectBalance.Name && Monk.PerfectBalance.Cooldown() > 0 &&
                         ActionManager.CanCast(Monk.Bootshine.Name, Target) && !ActionManager.CanCast(spell.Name, Target) &&
                         !ActionManager.CanCast(spell.Name, Me))
                     {
@@ -371,7 +371,7 @@ namespace ShinraCo
                     {
                         if (await Coroutine.Wait(1000, () => PetManager.DoAction("Sic", Me)))
                         {
-                            Logging.Write(Colors.GreenYellow, @"[Shinra] Casting >>> Sic");
+                            Logging.Write(Colors.GreenYellow, @"[ShinraEx] Casting >>> Sic");
                             return await Coroutine.Wait(3000, () => PetManager.PetMode == PetMode.Sic);
                         }
                     }
@@ -392,7 +392,7 @@ namespace ShinraCo
                     }
                     if (spell.Name == Summoner.SummonIII.Name)
                     {
-                        if (!Shinra.Settings.SummonerOpenerGaruda || PetManager.ActivePetType == PetType.Ifrit_Egi ||
+                        if (!ShinraEx.Settings.SummonerOpenerGaruda || PetManager.ActivePetType == PetType.Ifrit_Egi ||
                             !Me.HasAura(Summoner.Role.Swiftcast.Name))
                         {
                             Debug($"Skipping opener step {OpenerStep} due to Swiftcast/not using Garuda >>> {spell.Name}");
@@ -427,7 +427,7 @@ namespace ShinraCo
                 case ClassJobType.Warrior:
                     if (OpenerStep == 0 && !Me.HasAura(Warrior.Deliverance.Name))
                     {
-                        if (Shinra.LastSpell.Name != Warrior.Deliverance.Name && Warrior.Deliverance.Cooldown() > 3000)
+                        if (ShinraEx.LastSpell.Name != Warrior.Deliverance.Name && Warrior.Deliverance.Cooldown() > 3000)
                         {
                             AbortOpener("Aborting opener due to Deliverance cooldown.");
                             return false;
@@ -467,7 +467,7 @@ namespace ShinraCo
 
                 if (OpenerStep == 1)
                 {
-                    DisplayToast("Shinra >>> Opener Started", 2500);
+                    DisplayToast("ShinraEx >>> Opener Started", 2500);
                 }
 
                 #region Job-Specific

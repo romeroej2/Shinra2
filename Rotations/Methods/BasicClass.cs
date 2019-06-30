@@ -30,7 +30,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Summon()
         {
-            if (Shinra.Settings.SummonerPet == SummonerPets.None || Shinra.Settings.SummonerPet == SummonerPets.Titan &&
+            if (ShinraEx.Settings.SummonerPet == SummonerPets.None || ShinraEx.Settings.SummonerPet == SummonerPets.Titan &&
                 ActionManager.HasSpell(MySpells.Arcanist.SummonII.Name))
             {
                 return false;
@@ -38,7 +38,7 @@ namespace ShinraCo.Rotations
 
             if (PetManager.ActivePetType != PetType.Emerald_Carbuncle)
             {
-                if (Shinra.Settings.SummonerSwiftcast && ActionManager.CanCast(MySpells.Arcanist.Summon.Name, Core.Player))
+                if (ShinraEx.Settings.SummonerSwiftcast && ActionManager.CanCast(MySpells.Arcanist.Summon.Name, Core.Player))
                 {
                     if (await MySpells.Arcanist.Role.Swiftcast.Cast(null, false))
                     {
@@ -52,13 +52,13 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Physick()
         {
-            if (Shinra.Settings.SummonerPhysick)
+            if (ShinraEx.Settings.SummonerPhysick)
             {
-                if (Core.Player.CurrentHealthPercent < Shinra.Settings.SummonerPhysickPct)
+                if (Core.Player.CurrentHealthPercent < ShinraEx.Settings.SummonerPhysickPct)
                 {
                     return await MySpells.Arcanist.Physick.Cast();
                 }
-                if (PetExists && Core.Player.Pet.CurrentHealthPercent < Shinra.Settings.SummonerPhysickPct)
+                if (PetExists && Core.Player.Pet.CurrentHealthPercent < ShinraEx.Settings.SummonerPhysickPct)
                 {
                     return await MySpells.Arcanist.Physick.Cast(Core.Player.Pet);
                 }
@@ -87,9 +87,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SummonII()
         {
-            if (Shinra.Settings.SummonerPet == SummonerPets.Titan && PetManager.ActivePetType != PetType.Topaz_Carbuncle)
+            if (ShinraEx.Settings.SummonerPet == SummonerPets.Titan && PetManager.ActivePetType != PetType.Topaz_Carbuncle)
             {
-                if (Shinra.Settings.SummonerSwiftcast && ActionManager.CanCast(MySpells.Arcanist.SummonII.Name, Core.Player))
+                if (ShinraEx.Settings.SummonerSwiftcast && ActionManager.CanCast(MySpells.Arcanist.SummonII.Name, Core.Player))
                 {
                     if (await MySpells.Arcanist.Role.Swiftcast.Cast(null, false))
                     {
@@ -130,7 +130,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> RagingStrikes()
         {
-            if (Shinra.Settings.BardRagingStrikes)
+            if (ShinraEx.Settings.BardRagingStrikes)
             {
                 return await MySpells.Archer.RagingStrikes.Cast();
             }
@@ -222,7 +222,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> FightOrFlight()
         {
-            if (Shinra.Settings.PaladinFightOrFlight)
+            if (ShinraEx.Settings.PaladinFightOrFlight)
             {
                 if (Core.Player.TargetDistance(5, false))
                 {
@@ -243,7 +243,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Flash()
         {
-            if (Shinra.Settings.RotationMode != Modes.Single && Shinra.Settings.PaladinFlash && Core.Player.CurrentManaPercent > 40)
+            if (ShinraEx.Settings.RotationMode != Modes.Single && ShinraEx.Settings.PaladinFlash && Core.Player.CurrentManaPercent > 40)
             {
                 return await MySpells.Gladiator.Flash.Cast();
             }
@@ -344,7 +344,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Overpower()
         {
-            if (Shinra.Settings.RotationMode != Modes.Single && Core.Player.CurrentTPPercent > 30)
+            if (ShinraEx.Settings.RotationMode != Modes.Single && Core.Player.CurrentTPPercent > 30)
             {
                 return await MySpells.Marauder.Overpower.Cast();
             }
@@ -479,7 +479,7 @@ namespace ShinraCo.Rotations
         #region Thaumaturge
 
         private bool AstralFire => ActionResourceManager.BlackMage.AstralStacks > 0 &&
-                                   Shinra.LastSpell.Name != MySpells.Thaumaturge.Transpose.Name;
+                                   ShinraEx.LastSpell.Name != MySpells.Thaumaturge.Transpose.Name;
 
         private async Task<bool> Blizzard()
         {
@@ -537,7 +537,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Drain()
         {
-            if (Core.Player.CurrentHealthPercent < 50 || Core.Player.CurrentHealthPercent < Shinra.Settings.BlackMageDrainPct)
+            if (Core.Player.CurrentHealthPercent < 50 || Core.Player.CurrentHealthPercent < ShinraEx.Settings.BlackMageDrainPct)
             {
                 return await MySpells.Thaumaturge.Role.Drain.Cast();
             }

@@ -9,7 +9,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            if (Shinra.Settings.RotationMode == Modes.Smart)
+            if (ShinraEx.Settings.RotationMode == Modes.Smart)
             {
                 if (await AeroIII()) return true;
                 if (await Holy()) return true;
@@ -20,7 +20,7 @@ namespace ShinraCo.Rotations
                 if (await StoneII()) return true;
                 return await Stone();
             }
-            if (Shinra.Settings.RotationMode == Modes.Single)
+            if (ShinraEx.Settings.RotationMode == Modes.Single)
             {
                 if (await AeroIII()) return true;
                 if (await AeroII()) return true;
@@ -30,7 +30,7 @@ namespace ShinraCo.Rotations
                 if (await StoneII()) return true;
                 return await Stone();
             }
-            if (Shinra.Settings.RotationMode == Modes.Multi)
+            if (ShinraEx.Settings.RotationMode == Modes.Multi)
             {
                 if (await AeroIII()) return true;
                 return await Holy();
@@ -44,8 +44,8 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
-            if (await Shinra.SummonChocobo()) return true;
-            if (await Shinra.ChocoboStance()) return true;
+            if (await ShinraEx.SummonChocobo()) return true;
+            if (await ShinraEx.ChocoboStance()) return true;
             if (await LucidDreaming()) return true;
             return await ClericStance();
         }
@@ -81,7 +81,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
-            return await Shinra.SummonChocobo();
+            return await ShinraEx.SummonChocobo();
         }
 
         #endregion

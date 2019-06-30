@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 using System.Diagnostics;
+using ShinraCo.Properties;
 
 namespace ShinraCo.Settings.Forms
 {
@@ -43,60 +44,60 @@ namespace ShinraCo.Settings.Forms
         {
             ShinraBanner.Image = _shinraBanner;
             ShinraDonate.Image = _shinraDonate;
-            Shinra.UnregisterHotkeys();
-            Location = Shinra.Settings.WindowLocation;
+            ShinraEx.UnregisterHotkeys();
+            Location = ShinraEx.Settings.WindowLocation;
             var kc = new KeysConverter();
 
             #region Main Settings
 
             #region Rotation
 
-            RotationOverlay.Checked = Shinra.Settings.RotationOverlay;
-            RotationMessages.Checked = Shinra.Settings.RotationMessages;
+            RotationOverlay.Checked = ShinraEx.Settings.RotationOverlay;
+            RotationMessages.Checked = ShinraEx.Settings.RotationMessages;
 
-            RotationMode.Text = Convert.ToString(Shinra.Settings.RotationMode);
-            CooldownMode.Text = Convert.ToString(Shinra.Settings.CooldownMode);
-            TankMode.Text = Convert.ToString(Shinra.Settings.TankMode);
+            RotationMode.Text = Convert.ToString(ShinraEx.Settings.RotationMode);
+            CooldownMode.Text = Convert.ToString(ShinraEx.Settings.CooldownMode);
+            TankMode.Text = Convert.ToString(ShinraEx.Settings.TankMode);
 
-            RotationHotkey.Text = kc.ConvertToString(Shinra.Settings.RotationHotkey);
-            CooldownHotkey.Text = kc.ConvertToString(Shinra.Settings.CooldownHotkey);
-            TankHotkey.Text = kc.ConvertToString(Shinra.Settings.TankHotkey);
+            RotationHotkey.Text = kc.ConvertToString(ShinraEx.Settings.RotationHotkey);
+            CooldownHotkey.Text = kc.ConvertToString(ShinraEx.Settings.CooldownHotkey);
+            TankHotkey.Text = kc.ConvertToString(ShinraEx.Settings.TankHotkey);
 
             #endregion
 
             #region Chocobo
 
-            ChocoboSummon.Checked = Shinra.Settings.SummonChocobo;
-            ChocoboStanceDance.Checked = Shinra.Settings.ChocoboStanceDance;
-            ChocoboStanceDancePct.Value = Shinra.Settings.ChocoboStanceDancePct;
-            ChocoboStance.Text = Convert.ToString(Shinra.Settings.ChocoboStance);
+            ChocoboSummon.Checked = ShinraEx.Settings.SummonChocobo;
+            ChocoboStanceDance.Checked = ShinraEx.Settings.ChocoboStanceDance;
+            ChocoboStanceDancePct.Value = ShinraEx.Settings.ChocoboStanceDancePct;
+            ChocoboStance.Text = Convert.ToString(ShinraEx.Settings.ChocoboStance);
 
             #endregion
 
             #region Rest
 
-            RestHealth.Checked = Shinra.Settings.RestHealth;
-            RestEnergy.Checked = Shinra.Settings.RestEnergy;
+            RestHealth.Checked = ShinraEx.Settings.RestHealth;
+            RestEnergy.Checked = ShinraEx.Settings.RestEnergy;
 
-            RestHealthPct.Value = Shinra.Settings.RestHealthPct;
-            RestEnergyPct.Value = Shinra.Settings.RestEnergyPct;
+            RestHealthPct.Value = ShinraEx.Settings.RestHealthPct;
+            RestEnergyPct.Value = ShinraEx.Settings.RestEnergyPct;
 
             #endregion
 
             #region Spell
 
-            RandomCastLocations.Checked = Shinra.Settings.RandomCastLocations;
-            CustomAoE.Checked = Shinra.Settings.CustomAoE;
-            QueueSpells.Checked = Shinra.Settings.QueueSpells;
+            RandomCastLocations.Checked = ShinraEx.Settings.RandomCastLocations;
+            CustomAoE.Checked = ShinraEx.Settings.CustomAoE;
+            QueueSpells.Checked = ShinraEx.Settings.QueueSpells;
 
-            CustomAoECount.Value = Shinra.Settings.CustomAoECount;
+            CustomAoECount.Value = ShinraEx.Settings.CustomAoECount;
 
             #endregion
 
             #region Misc
 
-            IgnoreSmart.Checked = Shinra.Settings.IgnoreSmart;
-            DisableDebug.Checked = Shinra.Settings.DisableDebug;
+            IgnoreSmart.Checked = ShinraEx.Settings.IgnoreSmart;
+            DisableDebug.Checked = ShinraEx.Settings.DisableDebug;
 
             #endregion
 
@@ -108,89 +109,89 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            AstrologianClericStance.Checked = Shinra.Settings.AstrologianClericStance;
-            AstrologianProtect.Checked = Shinra.Settings.AstrologianProtect;
-            AstrologianEsuna.Checked = Shinra.Settings.AstrologianEsuna;
-            AstrologianLucidDreaming.Checked = Shinra.Settings.AstrologianLucidDreaming;
-            AstrologianLucidDreamingPct.Value = Shinra.Settings.AstrologianLucidDreamingPct;
-            AstrologianSwiftcast.Checked = Shinra.Settings.AstrologianSwiftcast;
-            AstrologianEyeForAnEye.Checked = Shinra.Settings.AstrologianEyeForAnEye;
-            AstrologianEyeForAnEyePct.Value = Shinra.Settings.AstrologianEyeForAnEyePct;
-            AstrologianLargesse.Checked = Shinra.Settings.AstrologianLargesse;
-            AstrologianLargesseCount.Value = Shinra.Settings.AstrologianLargesseCount;
-            AstrologianLargessePct.Value = Shinra.Settings.AstrologianLargessePct;
+            AstrologianClericStance.Checked = ShinraEx.Settings.AstrologianClericStance;
+            AstrologianProtect.Checked = ShinraEx.Settings.AstrologianProtect;
+            AstrologianEsuna.Checked = ShinraEx.Settings.AstrologianEsuna;
+            AstrologianLucidDreaming.Checked = ShinraEx.Settings.AstrologianLucidDreaming;
+            AstrologianLucidDreamingPct.Value = ShinraEx.Settings.AstrologianLucidDreamingPct;
+            AstrologianSwiftcast.Checked = ShinraEx.Settings.AstrologianSwiftcast;
+            AstrologianEyeForAnEye.Checked = ShinraEx.Settings.AstrologianEyeForAnEye;
+            AstrologianEyeForAnEyePct.Value = ShinraEx.Settings.AstrologianEyeForAnEyePct;
+            AstrologianLargesse.Checked = ShinraEx.Settings.AstrologianLargesse;
+            AstrologianLargesseCount.Value = ShinraEx.Settings.AstrologianLargesseCount;
+            AstrologianLargessePct.Value = ShinraEx.Settings.AstrologianLargessePct;
 
             #endregion
 
             #region Damage
 
-            AstrologianStopDamage.Checked = Shinra.Settings.AstrologianStopDamage;
-            AstrologianStopDots.Checked = Shinra.Settings.AstrologianStopDots;
+            AstrologianStopDamage.Checked = ShinraEx.Settings.AstrologianStopDamage;
+            AstrologianStopDots.Checked = ShinraEx.Settings.AstrologianStopDots;
 
-            AstrologianStopDamagePct.Value = Shinra.Settings.AstrologianStopDamagePct;
-            AstrologianStopDotsPct.Value = Shinra.Settings.AstrologianStopDotsPct;
+            AstrologianStopDamagePct.Value = ShinraEx.Settings.AstrologianStopDamagePct;
+            AstrologianStopDotsPct.Value = ShinraEx.Settings.AstrologianStopDotsPct;
 
             #endregion
 
             #region AoE
 
-            AstrologianEarthlyStar.Checked = Shinra.Settings.AstrologianEarthlyStar;
-            AstrologianStellarDetonation.Checked = Shinra.Settings.AstrologianStellarDetonation;
+            AstrologianEarthlyStar.Checked = ShinraEx.Settings.AstrologianEarthlyStar;
+            AstrologianStellarDetonation.Checked = ShinraEx.Settings.AstrologianStellarDetonation;
 
             #endregion
 
             #region Buff
 
-            AstrologianLightspeed.Checked = Shinra.Settings.AstrologianLightspeed;
-            AstrologianLightspeedCount.Value = Shinra.Settings.AstrologianLightspeedCount;
-            AstrologianLightspeedPct.Value = Shinra.Settings.AstrologianLightspeedPct;
-            AstrologianSynastry.Checked = Shinra.Settings.AstrologianSynastry;
-            AstrologianSynastryCount.Value = Shinra.Settings.AstrologianSynastryCount;
-            AstrologianSynastryPct.Value = Shinra.Settings.AstrologianSynastryPct;
-            AstrologianTimeDilation.Checked = Shinra.Settings.AstrologianTimeDilation;
-            AstrologianCelestialOpposition.Checked = Shinra.Settings.AstrologianCelestialOpposition;
+            AstrologianLightspeed.Checked = ShinraEx.Settings.AstrologianLightspeed;
+            AstrologianLightspeedCount.Value = ShinraEx.Settings.AstrologianLightspeedCount;
+            AstrologianLightspeedPct.Value = ShinraEx.Settings.AstrologianLightspeedPct;
+            AstrologianSynastry.Checked = ShinraEx.Settings.AstrologianSynastry;
+            AstrologianSynastryCount.Value = ShinraEx.Settings.AstrologianSynastryCount;
+            AstrologianSynastryPct.Value = ShinraEx.Settings.AstrologianSynastryPct;
+            AstrologianTimeDilation.Checked = ShinraEx.Settings.AstrologianTimeDilation;
+            AstrologianCelestialOpposition.Checked = ShinraEx.Settings.AstrologianCelestialOpposition;
 
             #endregion
 
             #region Heal
 
-            AstrologianPartyHeal.Checked = Shinra.Settings.AstrologianPartyHeal;
-            AstrologianInterruptDamage.Checked = Shinra.Settings.AstrologianInterruptDamage;
-            AstrologianInterruptOverheal.Checked = Shinra.Settings.AstrologianInterruptOverheal;
-            AstrologianBenefic.Checked = Shinra.Settings.AstrologianBenefic;
-            AstrologianBeneficII.Checked = Shinra.Settings.AstrologianBeneficII;
-            AstrologianEssDignity.Checked = Shinra.Settings.AstrologianEssDignity;
-            AstrologianAspBenefic.Checked = Shinra.Settings.AstrologianAspBenefic;
-            AstrologianHelios.Checked = Shinra.Settings.AstrologianHelios;
-            AstrologianAspHelios.Checked = Shinra.Settings.AstrologianAspHelios;
-            AstrologianAscend.Checked = Shinra.Settings.AstrologianAscend;
+            AstrologianPartyHeal.Checked = ShinraEx.Settings.AstrologianPartyHeal;
+            AstrologianInterruptDamage.Checked = ShinraEx.Settings.AstrologianInterruptDamage;
+            AstrologianInterruptOverheal.Checked = ShinraEx.Settings.AstrologianInterruptOverheal;
+            AstrologianBenefic.Checked = ShinraEx.Settings.AstrologianBenefic;
+            AstrologianBeneficII.Checked = ShinraEx.Settings.AstrologianBeneficII;
+            AstrologianEssDignity.Checked = ShinraEx.Settings.AstrologianEssDignity;
+            AstrologianAspBenefic.Checked = ShinraEx.Settings.AstrologianAspBenefic;
+            AstrologianHelios.Checked = ShinraEx.Settings.AstrologianHelios;
+            AstrologianAspHelios.Checked = ShinraEx.Settings.AstrologianAspHelios;
+            AstrologianAscend.Checked = ShinraEx.Settings.AstrologianAscend;
 
-            AstrologianBeneficPct.Value = Shinra.Settings.AstrologianBeneficPct;
-            AstrologianBeneficIIPct.Value = Shinra.Settings.AstrologianBeneficIIPct;
-            AstrologianEssDignityPct.Value = Shinra.Settings.AstrologianEssDignityPct;
-            AstrologianAspBeneficPct.Value = Shinra.Settings.AstrologianAspBeneficPct;
-            AstrologianHeliosPct.Value = Shinra.Settings.AstrologianHeliosPct;
-            AstrologianAspHeliosPct.Value = Shinra.Settings.AstrologianAspHeliosPct;
+            AstrologianBeneficPct.Value = ShinraEx.Settings.AstrologianBeneficPct;
+            AstrologianBeneficIIPct.Value = ShinraEx.Settings.AstrologianBeneficIIPct;
+            AstrologianEssDignityPct.Value = ShinraEx.Settings.AstrologianEssDignityPct;
+            AstrologianAspBeneficPct.Value = ShinraEx.Settings.AstrologianAspBeneficPct;
+            AstrologianHeliosPct.Value = ShinraEx.Settings.AstrologianHeliosPct;
+            AstrologianAspHeliosPct.Value = ShinraEx.Settings.AstrologianAspHeliosPct;
 
             #endregion
 
             #region Card
 
-            AstrologianDraw.Checked = Shinra.Settings.AstrologianDraw;
-            AstrologianSleeveDraw.Checked = Shinra.Settings.AstrologianSleeveDraw;
-            AstrologianCardPreCombat.Checked = Shinra.Settings.AstrologianCardPreCombat;
+            AstrologianDraw.Checked = ShinraEx.Settings.AstrologianDraw;
+            AstrologianSleeveDraw.Checked = ShinraEx.Settings.AstrologianSleeveDraw;
+            AstrologianCardPreCombat.Checked = ShinraEx.Settings.AstrologianCardPreCombat;
 
             #endregion
 
             #region Sect
 
-            AstrologianSect.Text = Convert.ToString(Shinra.Settings.AstrologianSect);
+            AstrologianSect.Text = Convert.ToString(ShinraEx.Settings.AstrologianSect);
 
             #endregion
 
             #region Misc
 
-            AstrologianCardOnly.Checked = Shinra.Settings.AstrologianCardOnly;
+            AstrologianCardOnly.Checked = ShinraEx.Settings.AstrologianCardOnly;
 
             #endregion
 
@@ -200,58 +201,58 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            BardSecondWind.Checked = Shinra.Settings.BardSecondWind;
-            BardPeloton.Checked = Shinra.Settings.BardPeloton;
-            BardInvigorate.Checked = Shinra.Settings.BardInvigorate;
-            BardTactician.Checked = Shinra.Settings.BardTactician;
-            BardRefresh.Checked = Shinra.Settings.BardRefresh;
-            BardPalisade.Checked = Shinra.Settings.BardPalisade;
+            BardSecondWind.Checked = ShinraEx.Settings.BardSecondWind;
+            BardPeloton.Checked = ShinraEx.Settings.BardPeloton;
+            BardInvigorate.Checked = ShinraEx.Settings.BardInvigorate;
+            BardTactician.Checked = ShinraEx.Settings.BardTactician;
+            BardRefresh.Checked = ShinraEx.Settings.BardRefresh;
+            BardPalisade.Checked = ShinraEx.Settings.BardPalisade;
 
-            BardSecondWindPct.Value = Shinra.Settings.BardSecondWindPct;
-            BardInvigoratePct.Value = Shinra.Settings.BardInvigoratePct;
-            BardTacticianPct.Value = Shinra.Settings.BardTacticianPct;
-            BardRefreshPct.Value = Shinra.Settings.BardRefreshPct;
-            BardPalisadePct.Value = Shinra.Settings.BardPalisadePct;
+            BardSecondWindPct.Value = ShinraEx.Settings.BardSecondWindPct;
+            BardInvigoratePct.Value = ShinraEx.Settings.BardInvigoratePct;
+            BardTacticianPct.Value = ShinraEx.Settings.BardTacticianPct;
+            BardRefreshPct.Value = ShinraEx.Settings.BardRefreshPct;
+            BardPalisadePct.Value = ShinraEx.Settings.BardPalisadePct;
 
             #endregion
 
             #region Damage
 
-            BardPitchPerfect.Checked = Shinra.Settings.BardPitchPerfect;
-            BardRepertoireCount.Value = Shinra.Settings.BardRepertoireCount;
+            BardPitchPerfect.Checked = ShinraEx.Settings.BardPitchPerfect;
+            BardRepertoireCount.Value = ShinraEx.Settings.BardRepertoireCount;
 
             #endregion
 
             #region DoT
 
-            BardUseDots.Checked = Shinra.Settings.BardUseDots;
-            BardUseDotsAoe.Checked = Shinra.Settings.BardUseDotsAoe;
-            BardDotSnapshot.Checked = Shinra.Settings.BardDotSnapshot;
+            BardUseDots.Checked = ShinraEx.Settings.BardUseDots;
+            BardUseDotsAoe.Checked = ShinraEx.Settings.BardUseDotsAoe;
+            BardDotSnapshot.Checked = ShinraEx.Settings.BardDotSnapshot;
 
             #endregion
 
             #region Cooldown
 
-            BardSongs.Checked = Shinra.Settings.BardSongs;
-            BardEmpyrealArrow.Checked = Shinra.Settings.BardEmpyrealArrow;
-            BardSidewinder.Checked = Shinra.Settings.BardSidewinder;
+            BardSongs.Checked = ShinraEx.Settings.BardSongs;
+            BardEmpyrealArrow.Checked = ShinraEx.Settings.BardEmpyrealArrow;
+            BardSidewinder.Checked = ShinraEx.Settings.BardSidewinder;
 
             #endregion
 
             #region Buff
 
-            BardRagingStrikes.Checked = Shinra.Settings.BardRagingStrikes;
-            BardFoeRequiem.Checked = Shinra.Settings.BardFoeRequiem;
-            BardFoeRequiemPct.Value = Shinra.Settings.BardFoeRequiemPct;
-            BardBarrage.Checked = Shinra.Settings.BardBarrage;
-            BardBattleVoice.Checked = Shinra.Settings.BardBattleVoice;
+            BardRagingStrikes.Checked = ShinraEx.Settings.BardRagingStrikes;
+            BardFoeRequiem.Checked = ShinraEx.Settings.BardFoeRequiem;
+            BardFoeRequiemPct.Value = ShinraEx.Settings.BardFoeRequiemPct;
+            BardBarrage.Checked = ShinraEx.Settings.BardBarrage;
+            BardBattleVoice.Checked = ShinraEx.Settings.BardBattleVoice;
 
             #endregion
 
             #region Misc
 
-            BardOpener.Checked = Shinra.Settings.BardOpener;
-            BardPotion.Checked = Shinra.Settings.BardPotion;
+            BardOpener.Checked = ShinraEx.Settings.BardOpener;
+            BardPotion.Checked = ShinraEx.Settings.BardPotion;
 
             #endregion
 
@@ -261,41 +262,41 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            BlackMageDrain.Checked = Shinra.Settings.BlackMageDrain;
-            BlackMageLucidDreaming.Checked = Shinra.Settings.BlackMageLucidDreaming;
-            BlackMageSwiftcast.Checked = Shinra.Settings.BlackMageSwiftcast;
+            BlackMageDrain.Checked = ShinraEx.Settings.BlackMageDrain;
+            BlackMageLucidDreaming.Checked = ShinraEx.Settings.BlackMageLucidDreaming;
+            BlackMageSwiftcast.Checked = ShinraEx.Settings.BlackMageSwiftcast;
 
-            BlackMageDrainPct.Value = Shinra.Settings.BlackMageDrainPct;
-            BlackMageLucidDreamingPct.Value = Shinra.Settings.BlackMageLucidDreamingPct;
+            BlackMageDrainPct.Value = ShinraEx.Settings.BlackMageDrainPct;
+            BlackMageLucidDreamingPct.Value = ShinraEx.Settings.BlackMageLucidDreamingPct;
 
             #endregion
 
             #region Damage
 
-            BlackMageScathe.Checked = Shinra.Settings.BlackMageScathe;
+            BlackMageScathe.Checked = ShinraEx.Settings.BlackMageScathe;
 
             #endregion
 
             #region AoE
 
-            BlackMageThunder.Checked = Shinra.Settings.BlackMageThunder;
+            BlackMageThunder.Checked = ShinraEx.Settings.BlackMageThunder;
 
             #endregion
 
             #region Buff
 
-            BlackMageConvert.Checked = Shinra.Settings.BlackMageConvert;
-            BlackMageLeyLines.Checked = Shinra.Settings.BlackMageLeyLines;
-            BlackMageSharpcast.Checked = Shinra.Settings.BlackMageSharpcast;
-            BlackMageEnochian.Checked = Shinra.Settings.BlackMageEnochian;
-            BlackMageTriplecast.Checked = Shinra.Settings.BlackMageTriplecast;
+            BlackMageConvert.Checked = ShinraEx.Settings.BlackMageConvert;
+            BlackMageLeyLines.Checked = ShinraEx.Settings.BlackMageLeyLines;
+            BlackMageSharpcast.Checked = ShinraEx.Settings.BlackMageSharpcast;
+            BlackMageEnochian.Checked = ShinraEx.Settings.BlackMageEnochian;
+            BlackMageTriplecast.Checked = ShinraEx.Settings.BlackMageTriplecast;
 
             #endregion
 
             #region Misc
 
-            BlackMageOpener.Checked = Shinra.Settings.BlackMageOpener;
-            BlackMagePotion.Checked = Shinra.Settings.BlackMagePotion;
+            BlackMageOpener.Checked = ShinraEx.Settings.BlackMageOpener;
+            BlackMagePotion.Checked = ShinraEx.Settings.BlackMagePotion;
 
             #endregion
 
@@ -305,77 +306,77 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            DarkKnightRampart.Checked = Shinra.Settings.DarkKnightRampart;
-            DarkKnightConvalescence.Checked = Shinra.Settings.DarkKnightConvalescence;
-            DarkKnightAnticipation.Checked = Shinra.Settings.DarkKnightAnticipation;
-            DarkKnightReprisal.Checked = Shinra.Settings.DarkKnightReprisal;
-            DarkKnightAwareness.Checked = Shinra.Settings.DarkKnightAwareness;
+            DarkKnightRampart.Checked = ShinraEx.Settings.DarkKnightRampart;
+            DarkKnightConvalescence.Checked = ShinraEx.Settings.DarkKnightConvalescence;
+            DarkKnightAnticipation.Checked = ShinraEx.Settings.DarkKnightAnticipation;
+            DarkKnightReprisal.Checked = ShinraEx.Settings.DarkKnightReprisal;
+            DarkKnightAwareness.Checked = ShinraEx.Settings.DarkKnightAwareness;
 
-            DarkKnightRampartPct.Value = Shinra.Settings.DarkKnightRampartPct;
-            DarkKnightConvalescencePct.Value = Shinra.Settings.DarkKnightConvalescencePct;
-            DarkKnightAnticipationPct.Value = Shinra.Settings.DarkKnightAnticipationPct;
-            DarkKnightAwarenessPct.Value = Shinra.Settings.DarkKnightAwarenessPct;
+            DarkKnightRampartPct.Value = ShinraEx.Settings.DarkKnightRampartPct;
+            DarkKnightConvalescencePct.Value = ShinraEx.Settings.DarkKnightConvalescencePct;
+            DarkKnightAnticipationPct.Value = ShinraEx.Settings.DarkKnightAnticipationPct;
+            DarkKnightAwarenessPct.Value = ShinraEx.Settings.DarkKnightAwarenessPct;
 
             #endregion
 
             #region Damage
 
-            DarkKnightBloodspiller.Checked = Shinra.Settings.DarkKnightBloodspiller;
+            DarkKnightBloodspiller.Checked = ShinraEx.Settings.DarkKnightBloodspiller;
 
             #endregion
 
             #region AoE
 
-            DarkKnightQuietus.Checked = Shinra.Settings.DarkKnightQuietus;
+            DarkKnightQuietus.Checked = ShinraEx.Settings.DarkKnightQuietus;
 
             #endregion
 
             #region Cooldown
 
-            DarkKnightSaltedEarth.Checked = Shinra.Settings.DarkKnightSaltedEarth;
-            DarkKnightPlunge.Checked = Shinra.Settings.DarkKnightPlunge;
-            DarkKnightCarveAndSpit.Checked = Shinra.Settings.DarkKnightCarveAndSpit;
+            DarkKnightSaltedEarth.Checked = ShinraEx.Settings.DarkKnightSaltedEarth;
+            DarkKnightPlunge.Checked = ShinraEx.Settings.DarkKnightPlunge;
+            DarkKnightCarveAndSpit.Checked = ShinraEx.Settings.DarkKnightCarveAndSpit;
 
             #endregion
 
             #region Buff
 
-            DarkKnightBloodWeapon.Checked = Shinra.Settings.DarkKnightBloodWeapon;
-            DarkKnightBloodPrice.Checked = Shinra.Settings.DarkKnightBloodPrice;
-            DarkKnightShadowWall.Checked = Shinra.Settings.DarkKnightShadowWall;
-            DarkKnightLivingDead.Checked = Shinra.Settings.DarkKnightLivingDead;
-            DarkKnightDelirium.Checked = Shinra.Settings.DarkKnightDelirium;
-            DarkKnightBlackestNight.Checked = Shinra.Settings.DarkKnightBlackestNight;
+            DarkKnightBloodWeapon.Checked = ShinraEx.Settings.DarkKnightBloodWeapon;
+            DarkKnightBloodPrice.Checked = ShinraEx.Settings.DarkKnightBloodPrice;
+            DarkKnightShadowWall.Checked = ShinraEx.Settings.DarkKnightShadowWall;
+            DarkKnightLivingDead.Checked = ShinraEx.Settings.DarkKnightLivingDead;
+            DarkKnightDelirium.Checked = ShinraEx.Settings.DarkKnightDelirium;
+            DarkKnightBlackestNight.Checked = ShinraEx.Settings.DarkKnightBlackestNight;
 
-            DarkKnightBloodPricePct.Value = Shinra.Settings.DarkKnightBloodPricePct;
-            DarkKnightShadowWallPct.Value = Shinra.Settings.DarkKnightShadowWallPct;
-            DarkKnightLivingDeadPct.Value = Shinra.Settings.DarkKnightLivingDeadPct;
-            DarkKnightBlackestNightPct.Value = Shinra.Settings.DarkKnightBlackestNightPct;
+            DarkKnightBloodPricePct.Value = ShinraEx.Settings.DarkKnightBloodPricePct;
+            DarkKnightShadowWallPct.Value = ShinraEx.Settings.DarkKnightShadowWallPct;
+            DarkKnightLivingDeadPct.Value = ShinraEx.Settings.DarkKnightLivingDeadPct;
+            DarkKnightBlackestNightPct.Value = ShinraEx.Settings.DarkKnightBlackestNightPct;
 
             #endregion
 
             #region Dark Arts
 
-            DarkKnightSouleaterArts.Checked = Shinra.Settings.DarkKnightSouleaterArts;
-            DarkKnightAbyssalArts.Checked = Shinra.Settings.DarkKnightAbyssalArts;
-            DarkKnightCarveArts.Checked = Shinra.Settings.DarkKnightCarveArts;
-            DarkKnightQuietusArts.Checked = Shinra.Settings.DarkKnightQuietusArts;
-            DarkKnightBloodspillerArts.Checked = Shinra.Settings.DarkKnightBloodspillerArts;
+            DarkKnightSouleaterArts.Checked = ShinraEx.Settings.DarkKnightSouleaterArts;
+            DarkKnightAbyssalArts.Checked = ShinraEx.Settings.DarkKnightAbyssalArts;
+            DarkKnightCarveArts.Checked = ShinraEx.Settings.DarkKnightCarveArts;
+            DarkKnightQuietusArts.Checked = ShinraEx.Settings.DarkKnightQuietusArts;
+            DarkKnightBloodspillerArts.Checked = ShinraEx.Settings.DarkKnightBloodspillerArts;
 
             #endregion
 
             #region Aura
 
-            DarkKnightGrit.Checked = Shinra.Settings.DarkKnightGrit;
-            DarkKnightDarkside.Checked = Shinra.Settings.DarkKnightDarkside;
+            DarkKnightGrit.Checked = ShinraEx.Settings.DarkKnightGrit;
+            DarkKnightDarkside.Checked = ShinraEx.Settings.DarkKnightDarkside;
 
             #endregion
 
             #region Misc
 
-            DarkKnightOpener.Checked = Shinra.Settings.DarkKnightOpener;
-            DarkKnightPotion.Checked = Shinra.Settings.DarkKnightPotion;
-            DarkKnightOffTank.Checked = Shinra.Settings.DarkKnightOffTank;
+            DarkKnightOpener.Checked = ShinraEx.Settings.DarkKnightOpener;
+            DarkKnightPotion.Checked = ShinraEx.Settings.DarkKnightPotion;
+            DarkKnightOffTank.Checked = ShinraEx.Settings.DarkKnightOffTank;
 
             #endregion
 
@@ -385,43 +386,43 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            DragoonSecondWind.Checked = Shinra.Settings.DragoonSecondWind;
-            DragoonInvigorate.Checked = Shinra.Settings.DragoonInvigorate;
-            DragoonBloodbath.Checked = Shinra.Settings.DragoonBloodbath;
-            DragoonGoad.Checked = Shinra.Settings.DragoonGoad;
-            DragoonTrueNorth.Checked = Shinra.Settings.DragoonTrueNorth;
+            DragoonSecondWind.Checked = ShinraEx.Settings.DragoonSecondWind;
+            DragoonInvigorate.Checked = ShinraEx.Settings.DragoonInvigorate;
+            DragoonBloodbath.Checked = ShinraEx.Settings.DragoonBloodbath;
+            DragoonGoad.Checked = ShinraEx.Settings.DragoonGoad;
+            DragoonTrueNorth.Checked = ShinraEx.Settings.DragoonTrueNorth;
 
-            DragoonSecondWindPct.Value = Shinra.Settings.DragoonSecondWindPct;
-            DragoonInvigoratePct.Value = Shinra.Settings.DragoonInvigoratePct;
-            DragoonBloodbathPct.Value = Shinra.Settings.DragoonBloodbathPct;
-            DragoonGoadPct.Value = Shinra.Settings.DragoonGoadPct;
+            DragoonSecondWindPct.Value = ShinraEx.Settings.DragoonSecondWindPct;
+            DragoonInvigoratePct.Value = ShinraEx.Settings.DragoonInvigoratePct;
+            DragoonBloodbathPct.Value = ShinraEx.Settings.DragoonBloodbathPct;
+            DragoonGoadPct.Value = ShinraEx.Settings.DragoonGoadPct;
 
             #endregion
 
             #region Cooldown
 
-            DragoonJump.Checked = Shinra.Settings.DragoonJump;
-            DragoonSpineshatter.Checked = Shinra.Settings.DragoonSpineshatter;
-            DragoonDragonfire.Checked = Shinra.Settings.DragoonDragonfire;
-            DragoonGeirskogul.Checked = Shinra.Settings.DragoonGeirskogul;
-            DragoonMirage.Checked = Shinra.Settings.DragoonMirage;
+            DragoonJump.Checked = ShinraEx.Settings.DragoonJump;
+            DragoonSpineshatter.Checked = ShinraEx.Settings.DragoonSpineshatter;
+            DragoonDragonfire.Checked = ShinraEx.Settings.DragoonDragonfire;
+            DragoonGeirskogul.Checked = ShinraEx.Settings.DragoonGeirskogul;
+            DragoonMirage.Checked = ShinraEx.Settings.DragoonMirage;
 
             #endregion
 
             #region Buff
 
-            DragoonLifeSurge.Checked = Shinra.Settings.DragoonLifeSurge;
-            DragoonBloodForBlood.Checked = Shinra.Settings.DragoonBloodForBlood;
-            DragoonBattleLitany.Checked = Shinra.Settings.DragoonBattleLitany;
-            DragoonBloodOfTheDragon.Checked = Shinra.Settings.DragoonBloodOfTheDragon;
-            DragoonDragonSight.Checked = Shinra.Settings.DragoonDragonSight;
+            DragoonLifeSurge.Checked = ShinraEx.Settings.DragoonLifeSurge;
+            DragoonBloodForBlood.Checked = ShinraEx.Settings.DragoonBloodForBlood;
+            DragoonBattleLitany.Checked = ShinraEx.Settings.DragoonBattleLitany;
+            DragoonBloodOfTheDragon.Checked = ShinraEx.Settings.DragoonBloodOfTheDragon;
+            DragoonDragonSight.Checked = ShinraEx.Settings.DragoonDragonSight;
 
             #endregion
 
             #region Misc
 
-            DragoonOpener.Checked = Shinra.Settings.DragoonOpener;
-            DragoonPotion.Checked = Shinra.Settings.DragoonPotion;
+            DragoonOpener.Checked = ShinraEx.Settings.DragoonOpener;
+            DragoonPotion.Checked = ShinraEx.Settings.DragoonPotion;
 
             #endregion
 
@@ -431,59 +432,59 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            MachinistSecondWind.Checked = Shinra.Settings.MachinistSecondWind;
-            MachinistPeloton.Checked = Shinra.Settings.MachinistPeloton;
-            MachinistInvigorate.Checked = Shinra.Settings.MachinistInvigorate;
-            MachinistTactician.Checked = Shinra.Settings.MachinistTactician;
-            MachinistRefresh.Checked = Shinra.Settings.MachinistRefresh;
-            MachinistPalisade.Checked = Shinra.Settings.MachinistPalisade;
+            MachinistSecondWind.Checked = ShinraEx.Settings.MachinistSecondWind;
+            MachinistPeloton.Checked = ShinraEx.Settings.MachinistPeloton;
+            MachinistInvigorate.Checked = ShinraEx.Settings.MachinistInvigorate;
+            MachinistTactician.Checked = ShinraEx.Settings.MachinistTactician;
+            MachinistRefresh.Checked = ShinraEx.Settings.MachinistRefresh;
+            MachinistPalisade.Checked = ShinraEx.Settings.MachinistPalisade;
 
-            MachinistSecondWindPct.Value = Shinra.Settings.MachinistSecondWindPct;
-            MachinistInvigoratePct.Value = Shinra.Settings.MachinistInvigoratePct;
-            MachinistTacticianPct.Value = Shinra.Settings.MachinistTacticianPct;
-            MachinistRefreshPct.Value = Shinra.Settings.MachinistRefreshPct;
-            MachinistPalisadePct.Value = Shinra.Settings.MachinistPalisadePct;
+            MachinistSecondWindPct.Value = ShinraEx.Settings.MachinistSecondWindPct;
+            MachinistInvigoratePct.Value = ShinraEx.Settings.MachinistInvigoratePct;
+            MachinistTacticianPct.Value = ShinraEx.Settings.MachinistTacticianPct;
+            MachinistRefreshPct.Value = ShinraEx.Settings.MachinistRefreshPct;
+            MachinistPalisadePct.Value = ShinraEx.Settings.MachinistPalisadePct;
 
             #endregion
 
             #region Cooldown
 
-            MachinistWildfire.Checked = Shinra.Settings.MachinistWildfire;
-            MachinistRicochet.Checked = Shinra.Settings.MachinistRicochet;
-            MachinistCooldown.Checked = Shinra.Settings.MachinistCooldown;
-            MachinistFlamethrower.Checked = Shinra.Settings.MachinistFlamethrower;
+            MachinistWildfire.Checked = ShinraEx.Settings.MachinistWildfire;
+            MachinistRicochet.Checked = ShinraEx.Settings.MachinistRicochet;
+            MachinistCooldown.Checked = ShinraEx.Settings.MachinistCooldown;
+            MachinistFlamethrower.Checked = ShinraEx.Settings.MachinistFlamethrower;
 
-            MachinistWildfireHP.Value = Shinra.Settings.MachinistWildfireHP;
+            MachinistWildfireHP.Value = ShinraEx.Settings.MachinistWildfireHP;
 
             #endregion
 
             #region Buff
 
-            MachinistReload.Checked = Shinra.Settings.MachinistReload;
-            MachinistReassemble.Checked = Shinra.Settings.MachinistReassemble;
-            MachinistRapidFire.Checked = Shinra.Settings.MachinistRapidFire;
-            MachinistGaussBarrel.Checked = Shinra.Settings.MachinistGaussBarrel;
-            MachinistHypercharge.Checked = Shinra.Settings.MachinistHypercharge;
-            MachinistBarrelStabilizer.Checked = Shinra.Settings.MachinistBarrelStabilizer;
-            MachinistRookOverdrive.Checked = Shinra.Settings.MachinistRookOverdrive;
-            MachinistBishopOverdrive.Checked = Shinra.Settings.MachinistBishopOverdrive;
+            MachinistReload.Checked = ShinraEx.Settings.MachinistReload;
+            MachinistReassemble.Checked = ShinraEx.Settings.MachinistReassemble;
+            MachinistRapidFire.Checked = ShinraEx.Settings.MachinistRapidFire;
+            MachinistGaussBarrel.Checked = ShinraEx.Settings.MachinistGaussBarrel;
+            MachinistHypercharge.Checked = ShinraEx.Settings.MachinistHypercharge;
+            MachinistBarrelStabilizer.Checked = ShinraEx.Settings.MachinistBarrelStabilizer;
+            MachinistRookOverdrive.Checked = ShinraEx.Settings.MachinistRookOverdrive;
+            MachinistBishopOverdrive.Checked = ShinraEx.Settings.MachinistBishopOverdrive;
 
             #endregion
 
             #region Turret
 
-            MachinistTurret.Text = Convert.ToString(Shinra.Settings.MachinistTurret);
-            MachinistTurretHotkey.Text = kc.ConvertToString(Shinra.Settings.MachinistTurretHotkey);
-            MachinistTurretLocation.Text = Convert.ToString(Shinra.Settings.MachinistTurretLocation);
+            MachinistTurret.Text = Convert.ToString(ShinraEx.Settings.MachinistTurret);
+            MachinistTurretHotkey.Text = kc.ConvertToString(ShinraEx.Settings.MachinistTurretHotkey);
+            MachinistTurretLocation.Text = Convert.ToString(ShinraEx.Settings.MachinistTurretLocation);
 
             #endregion
 
             #region Misc
 
-            MachinistOpener.Checked = Shinra.Settings.MachinistOpener;
-            MachinistPotion.Checked = Shinra.Settings.MachinistPotion;
-            MachinistSyncWildfire.Checked = Shinra.Settings.MachinistSyncWildfire;
-            MachinistSyncOverheat.Checked = Shinra.Settings.MachinistSyncOverheat;
+            MachinistOpener.Checked = ShinraEx.Settings.MachinistOpener;
+            MachinistPotion.Checked = ShinraEx.Settings.MachinistPotion;
+            MachinistSyncWildfire.Checked = ShinraEx.Settings.MachinistSyncWildfire;
+            MachinistSyncOverheat.Checked = ShinraEx.Settings.MachinistSyncOverheat;
 
             #endregion
 
@@ -493,58 +494,58 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            MonkSecondWind.Checked = Shinra.Settings.MonkSecondWind;
-            MonkInvigorate.Checked = Shinra.Settings.MonkInvigorate;
-            MonkBloodbath.Checked = Shinra.Settings.MonkBloodbath;
-            MonkGoad.Checked = Shinra.Settings.MonkGoad;
-            MonkTrueNorth.Checked = Shinra.Settings.MonkTrueNorth;
+            MonkSecondWind.Checked = ShinraEx.Settings.MonkSecondWind;
+            MonkInvigorate.Checked = ShinraEx.Settings.MonkInvigorate;
+            MonkBloodbath.Checked = ShinraEx.Settings.MonkBloodbath;
+            MonkGoad.Checked = ShinraEx.Settings.MonkGoad;
+            MonkTrueNorth.Checked = ShinraEx.Settings.MonkTrueNorth;
 
-            MonkSecondWindPct.Value = Shinra.Settings.MonkSecondWindPct;
-            MonkInvigoratePct.Value = Shinra.Settings.MonkInvigoratePct;
-            MonkBloodbathPct.Value = Shinra.Settings.MonkBloodbathPct;
-            MonkGoadPct.Value = Shinra.Settings.MonkGoadPct;
+            MonkSecondWindPct.Value = ShinraEx.Settings.MonkSecondWindPct;
+            MonkInvigoratePct.Value = ShinraEx.Settings.MonkInvigoratePct;
+            MonkBloodbathPct.Value = ShinraEx.Settings.MonkBloodbathPct;
+            MonkGoadPct.Value = ShinraEx.Settings.MonkGoadPct;
 
             #endregion
 
             #region DoT
 
-            MonkDemolish.Checked = Shinra.Settings.MonkDemolish;
-            MonkDemolishHP.Value = Shinra.Settings.MonkDemolishHP;
+            MonkDemolish.Checked = ShinraEx.Settings.MonkDemolish;
+            MonkDemolishHP.Value = ShinraEx.Settings.MonkDemolishHP;
 
             #endregion
 
             #region Cooldown
 
-            MonkShoulderTackle.Checked = Shinra.Settings.MonkShoulderTackle;
-            MonkSteelPeak.Checked = Shinra.Settings.MonkSteelPeak;
-            MonkHowlingFist.Checked = Shinra.Settings.MonkHowlingFist;
-            MonkForbiddenChakra.Checked = Shinra.Settings.MonkForbiddenChakra;
-            MonkElixirField.Checked = Shinra.Settings.MonkElixirField;
-            MonkFireTackle.Checked = Shinra.Settings.MonkFireTackle;
+            MonkShoulderTackle.Checked = ShinraEx.Settings.MonkShoulderTackle;
+            MonkSteelPeak.Checked = ShinraEx.Settings.MonkSteelPeak;
+            MonkHowlingFist.Checked = ShinraEx.Settings.MonkHowlingFist;
+            MonkForbiddenChakra.Checked = ShinraEx.Settings.MonkForbiddenChakra;
+            MonkElixirField.Checked = ShinraEx.Settings.MonkElixirField;
+            MonkFireTackle.Checked = ShinraEx.Settings.MonkFireTackle;
 
             #endregion
 
             #region Buff
 
-            MonkInternalRelease.Checked = Shinra.Settings.MonkInternalRelease;
-            MonkPerfectBalance.Checked = Shinra.Settings.MonkPerfectBalance;
-            MonkFormShift.Checked = Shinra.Settings.MonkFormShift;
-            MonkMeditation.Checked = Shinra.Settings.MonkMeditation;
-            MonkRiddleOfFire.Checked = Shinra.Settings.MonkRiddleOfFire;
-            MonkBrotherhood.Checked = Shinra.Settings.MonkBrotherhood;
+            MonkInternalRelease.Checked = ShinraEx.Settings.MonkInternalRelease;
+            MonkPerfectBalance.Checked = ShinraEx.Settings.MonkPerfectBalance;
+            MonkFormShift.Checked = ShinraEx.Settings.MonkFormShift;
+            MonkMeditation.Checked = ShinraEx.Settings.MonkMeditation;
+            MonkRiddleOfFire.Checked = ShinraEx.Settings.MonkRiddleOfFire;
+            MonkBrotherhood.Checked = ShinraEx.Settings.MonkBrotherhood;
 
             #endregion
 
             #region Fists
 
-            MonkFist.Text = Convert.ToString(Shinra.Settings.MonkFist);
+            MonkFist.Text = Convert.ToString(ShinraEx.Settings.MonkFist);
 
             #endregion
 
             #region Misc
 
-            MonkOpener.Checked = Shinra.Settings.MonkOpener;
-            MonkPotion.Checked = Shinra.Settings.MonkPotion;
+            MonkOpener.Checked = ShinraEx.Settings.MonkOpener;
+            MonkPotion.Checked = ShinraEx.Settings.MonkPotion;
 
             #endregion
 
@@ -554,65 +555,65 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            NinjaSecondWind.Checked = Shinra.Settings.NinjaSecondWind;
-            NinjaInvigorate.Checked = Shinra.Settings.NinjaInvigorate;
-            NinjaBloodbath.Checked = Shinra.Settings.NinjaBloodbath;
-            NinjaGoad.Checked = Shinra.Settings.NinjaGoad;
-            NinjaTrueNorth.Checked = Shinra.Settings.NinjaTrueNorth;
+            NinjaSecondWind.Checked = ShinraEx.Settings.NinjaSecondWind;
+            NinjaInvigorate.Checked = ShinraEx.Settings.NinjaInvigorate;
+            NinjaBloodbath.Checked = ShinraEx.Settings.NinjaBloodbath;
+            NinjaGoad.Checked = ShinraEx.Settings.NinjaGoad;
+            NinjaTrueNorth.Checked = ShinraEx.Settings.NinjaTrueNorth;
 
-            NinjaSecondWindPct.Value = Shinra.Settings.NinjaSecondWindPct;
-            NinjaInvigoratePct.Value = Shinra.Settings.NinjaInvigoratePct;
-            NinjaBloodbathPct.Value = Shinra.Settings.NinjaBloodbathPct;
-            NinjaGoadPct.Value = Shinra.Settings.NinjaGoadPct;
+            NinjaSecondWindPct.Value = ShinraEx.Settings.NinjaSecondWindPct;
+            NinjaInvigoratePct.Value = ShinraEx.Settings.NinjaInvigoratePct;
+            NinjaBloodbathPct.Value = ShinraEx.Settings.NinjaBloodbathPct;
+            NinjaGoadPct.Value = ShinraEx.Settings.NinjaGoadPct;
 
             #endregion
 
             #region DoT
 
-            NinjaShadowFang.Checked = Shinra.Settings.NinjaShadowFang;
-            NinjaShadowFangHP.Value = Shinra.Settings.NinjaShadowFangHP;
+            NinjaShadowFang.Checked = ShinraEx.Settings.NinjaShadowFang;
+            NinjaShadowFangHP.Value = ShinraEx.Settings.NinjaShadowFangHP;
 
             #endregion
 
             #region Cooldown
 
-            NinjaAssassinate.Checked = Shinra.Settings.NinjaAssassinate;
-            NinjaMug.Checked = Shinra.Settings.NinjaMug;
-            NinjaTrickAttack.Checked = Shinra.Settings.NinjaTrickAttack;
-            NinjaJugulate.Checked = Shinra.Settings.NinjaJugulate;
-            NinjaShukuchi.Checked = Shinra.Settings.NinjaShukuchi;
-            NinjaDreamWithin.Checked = Shinra.Settings.NinjaDreamWithin;
-            NinjaHellfrogMedium.Checked = Shinra.Settings.NinjaHellfrogMedium;
-            NinjaBhavacakra.Checked = Shinra.Settings.NinjaBhavacakra;
+            NinjaAssassinate.Checked = ShinraEx.Settings.NinjaAssassinate;
+            NinjaMug.Checked = ShinraEx.Settings.NinjaMug;
+            NinjaTrickAttack.Checked = ShinraEx.Settings.NinjaTrickAttack;
+            NinjaJugulate.Checked = ShinraEx.Settings.NinjaJugulate;
+            NinjaShukuchi.Checked = ShinraEx.Settings.NinjaShukuchi;
+            NinjaDreamWithin.Checked = ShinraEx.Settings.NinjaDreamWithin;
+            NinjaHellfrogMedium.Checked = ShinraEx.Settings.NinjaHellfrogMedium;
+            NinjaBhavacakra.Checked = ShinraEx.Settings.NinjaBhavacakra;
 
             #endregion
 
             #region Buff
 
-            NinjaShadeShift.Checked = Shinra.Settings.NinjaShadeShift;
-            NinjaKassatsu.Checked = Shinra.Settings.NinjaKassatsu;
-            NinjaDuality.Checked = Shinra.Settings.NinjaDuality;
-            NinjaTenChiJin.Checked = Shinra.Settings.NinjaTenChiJin;
+            NinjaShadeShift.Checked = ShinraEx.Settings.NinjaShadeShift;
+            NinjaKassatsu.Checked = ShinraEx.Settings.NinjaKassatsu;
+            NinjaDuality.Checked = ShinraEx.Settings.NinjaDuality;
+            NinjaTenChiJin.Checked = ShinraEx.Settings.NinjaTenChiJin;
 
-            NinjaShadeShiftPct.Value = Shinra.Settings.NinjaShadeShiftPct;
+            NinjaShadeShiftPct.Value = ShinraEx.Settings.NinjaShadeShiftPct;
 
             #endregion
 
             #region Ninjutsu
 
-            NinjaFuma.Checked = Shinra.Settings.NinjaFuma;
-            NinjaKaton.Checked = Shinra.Settings.NinjaKaton;
-            NinjaRaiton.Checked = Shinra.Settings.NinjaRaiton;
-            NinjaHuton.Checked = Shinra.Settings.NinjaHuton;
-            NinjaDoton.Checked = Shinra.Settings.NinjaDoton;
-            NinjaSuiton.Checked = Shinra.Settings.NinjaSuiton;
+            NinjaFuma.Checked = ShinraEx.Settings.NinjaFuma;
+            NinjaKaton.Checked = ShinraEx.Settings.NinjaKaton;
+            NinjaRaiton.Checked = ShinraEx.Settings.NinjaRaiton;
+            NinjaHuton.Checked = ShinraEx.Settings.NinjaHuton;
+            NinjaDoton.Checked = ShinraEx.Settings.NinjaDoton;
+            NinjaSuiton.Checked = ShinraEx.Settings.NinjaSuiton;
 
             #endregion
 
             #region Misc
 
-            NinjaOpener.Checked = Shinra.Settings.NinjaOpener;
-            NinjaPotion.Checked = Shinra.Settings.NinjaPotion;
+            NinjaOpener.Checked = ShinraEx.Settings.NinjaOpener;
+            NinjaPotion.Checked = ShinraEx.Settings.NinjaPotion;
 
             #endregion
 
@@ -622,72 +623,72 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            PaladinRampart.Checked = Shinra.Settings.PaladinRampart;
-            PaladinConvalescence.Checked = Shinra.Settings.PaladinConvalescence;
-            PaladinAnticipation.Checked = Shinra.Settings.PaladinAnticipation;
-            PaladinReprisal.Checked = Shinra.Settings.PaladinReprisal;
-            PaladinAwareness.Checked = Shinra.Settings.PaladinAwareness;
+            PaladinRampart.Checked = ShinraEx.Settings.PaladinRampart;
+            PaladinConvalescence.Checked = ShinraEx.Settings.PaladinConvalescence;
+            PaladinAnticipation.Checked = ShinraEx.Settings.PaladinAnticipation;
+            PaladinReprisal.Checked = ShinraEx.Settings.PaladinReprisal;
+            PaladinAwareness.Checked = ShinraEx.Settings.PaladinAwareness;
 
-            PaladinRampartPct.Value = Shinra.Settings.PaladinRampartPct;
-            PaladinConvalescencePct.Value = Shinra.Settings.PaladinConvalescencePct;
-            PaladinAnticipationPct.Value = Shinra.Settings.PaladinAnticipationPct;
-            PaladinAwarenessPct.Value = Shinra.Settings.PaladinAwarenessPct;
+            PaladinRampartPct.Value = ShinraEx.Settings.PaladinRampartPct;
+            PaladinConvalescencePct.Value = ShinraEx.Settings.PaladinConvalescencePct;
+            PaladinAnticipationPct.Value = ShinraEx.Settings.PaladinAnticipationPct;
+            PaladinAwarenessPct.Value = ShinraEx.Settings.PaladinAwarenessPct;
 
             #endregion
 
             #region Damage
 
-            PaladinGoringBlade.Checked = Shinra.Settings.PaladinGoringBlade;
+            PaladinGoringBlade.Checked = ShinraEx.Settings.PaladinGoringBlade;
 
             #endregion
 
             #region AoE
 
-            PaladinFlash.Checked = Shinra.Settings.PaladinFlash;
-            PaladinTotalEclipse.Checked = Shinra.Settings.PaladinTotalEclipse;
+            PaladinFlash.Checked = ShinraEx.Settings.PaladinFlash;
+            PaladinTotalEclipse.Checked = ShinraEx.Settings.PaladinTotalEclipse;
 
             #endregion
 
             #region Cooldown
 
-            PaladinShieldSwipe.Checked = Shinra.Settings.PaladinShieldSwipe;
-            PaladinSpiritsWithin.Checked = Shinra.Settings.PaladinSpiritsWithin;
-            PaladinCircleOfScorn.Checked = Shinra.Settings.PaladinCircleOfScorn;
-            PaladinRequiescat.Checked = Shinra.Settings.PaladinRequiescat;
+            PaladinShieldSwipe.Checked = ShinraEx.Settings.PaladinShieldSwipe;
+            PaladinSpiritsWithin.Checked = ShinraEx.Settings.PaladinSpiritsWithin;
+            PaladinCircleOfScorn.Checked = ShinraEx.Settings.PaladinCircleOfScorn;
+            PaladinRequiescat.Checked = ShinraEx.Settings.PaladinRequiescat;
 
             #endregion
 
             #region Buff
 
-            PaladinFightOrFlight.Checked = Shinra.Settings.PaladinFightOrFlight;
-            PaladinBulwark.Checked = Shinra.Settings.PaladinBulwark;
-            PaladinSentinel.Checked = Shinra.Settings.PaladinSentinel;
-            PaladinHallowedGround.Checked = Shinra.Settings.PaladinHallowedGround;
-            PaladinSheltron.Checked = Shinra.Settings.PaladinSheltron;
+            PaladinFightOrFlight.Checked = ShinraEx.Settings.PaladinFightOrFlight;
+            PaladinBulwark.Checked = ShinraEx.Settings.PaladinBulwark;
+            PaladinSentinel.Checked = ShinraEx.Settings.PaladinSentinel;
+            PaladinHallowedGround.Checked = ShinraEx.Settings.PaladinHallowedGround;
+            PaladinSheltron.Checked = ShinraEx.Settings.PaladinSheltron;
 
-            PaladinBulwarkPct.Value = Shinra.Settings.PaladinBulwarkPct;
-            PaladinSentinelPct.Value = Shinra.Settings.PaladinSentinelPct;
-            PaladinHallowedGroundPct.Value = Shinra.Settings.PaladinHallowedGroundPct;
+            PaladinBulwarkPct.Value = ShinraEx.Settings.PaladinBulwarkPct;
+            PaladinSentinelPct.Value = ShinraEx.Settings.PaladinSentinelPct;
+            PaladinHallowedGroundPct.Value = ShinraEx.Settings.PaladinHallowedGroundPct;
 
             #endregion
 
             #region Heal
 
-            PaladinClemency.Checked = Shinra.Settings.PaladinClemency;
-            PaladinClemencyPct.Value = Shinra.Settings.PaladinClemencyPct;
+            PaladinClemency.Checked = ShinraEx.Settings.PaladinClemency;
+            PaladinClemencyPct.Value = ShinraEx.Settings.PaladinClemencyPct;
 
             #endregion
 
             #region Oath
 
-            PaladinOath.Text = Convert.ToString(Shinra.Settings.PaladinOath);
+            PaladinOath.Text = Convert.ToString(ShinraEx.Settings.PaladinOath);
 
             #endregion
 
             #region Misc
 
-            PaladinOpener.Checked = Shinra.Settings.PaladinOpener;
-            PaladinPotion.Checked = Shinra.Settings.PaladinPotion;
+            PaladinOpener.Checked = ShinraEx.Settings.PaladinOpener;
+            PaladinPotion.Checked = ShinraEx.Settings.PaladinPotion;
 
             #endregion
 
@@ -697,42 +698,42 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            RedMageDrain.Checked = Shinra.Settings.RedMageDrain;
-            RedMageLucidDreaming.Checked = Shinra.Settings.RedMageLucidDreaming;
-            RedMageSwiftcast.Checked = Shinra.Settings.RedMageSwiftcast;
+            RedMageDrain.Checked = ShinraEx.Settings.RedMageDrain;
+            RedMageLucidDreaming.Checked = ShinraEx.Settings.RedMageLucidDreaming;
+            RedMageSwiftcast.Checked = ShinraEx.Settings.RedMageSwiftcast;
 
-            RedMageDrainPct.Value = Shinra.Settings.RedMageDrainPct;
-            RedMageLucidDreamingPct.Value = Shinra.Settings.RedMageLucidDreamingPct;
+            RedMageDrainPct.Value = ShinraEx.Settings.RedMageDrainPct;
+            RedMageLucidDreamingPct.Value = ShinraEx.Settings.RedMageLucidDreamingPct;
 
             #endregion
 
             #region Cooldown
 
-            RedMageCorpsACorps.Checked = Shinra.Settings.RedMageCorpsACorps;
-            RedMageDisplacement.Checked = Shinra.Settings.RedMageDisplacement;
+            RedMageCorpsACorps.Checked = ShinraEx.Settings.RedMageCorpsACorps;
+            RedMageDisplacement.Checked = ShinraEx.Settings.RedMageDisplacement;
 
             #endregion
 
             #region Buff
 
-            RedMageEmbolden.Checked = Shinra.Settings.RedMageEmbolden;
-            RedMageManafication.Checked = Shinra.Settings.RedMageManafication;
+            RedMageEmbolden.Checked = ShinraEx.Settings.RedMageEmbolden;
+            RedMageManafication.Checked = ShinraEx.Settings.RedMageManafication;
 
             #endregion
 
             #region Heal
 
-            RedMageVercure.Checked = Shinra.Settings.RedMageVercure;
-            RedMageVerraise.Checked = Shinra.Settings.RedMageVerraise;
+            RedMageVercure.Checked = ShinraEx.Settings.RedMageVercure;
+            RedMageVerraise.Checked = ShinraEx.Settings.RedMageVerraise;
 
-            RedMageVercurePct.Value = Shinra.Settings.RedMageVercurePct;
+            RedMageVercurePct.Value = ShinraEx.Settings.RedMageVercurePct;
 
             #endregion
 
             #region Misc
 
-            RedMageOpener.Checked = Shinra.Settings.RedMageOpener;
-            RedMagePotion.Checked = Shinra.Settings.RedMagePotion;
+            RedMageOpener.Checked = ShinraEx.Settings.RedMageOpener;
+            RedMagePotion.Checked = ShinraEx.Settings.RedMagePotion;
 
             #endregion
 
@@ -742,58 +743,58 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            SamuraiSecondWind.Checked = Shinra.Settings.SamuraiSecondWind;
-            SamuraiInvigorate.Checked = Shinra.Settings.SamuraiInvigorate;
-            SamuraiBloodbath.Checked = Shinra.Settings.SamuraiBloodbath;
-            SamuraiGoad.Checked = Shinra.Settings.SamuraiGoad;
-            SamuraiTrueNorth.Checked = Shinra.Settings.SamuraiTrueNorth;
+            SamuraiSecondWind.Checked = ShinraEx.Settings.SamuraiSecondWind;
+            SamuraiInvigorate.Checked = ShinraEx.Settings.SamuraiInvigorate;
+            SamuraiBloodbath.Checked = ShinraEx.Settings.SamuraiBloodbath;
+            SamuraiGoad.Checked = ShinraEx.Settings.SamuraiGoad;
+            SamuraiTrueNorth.Checked = ShinraEx.Settings.SamuraiTrueNorth;
 
-            SamuraiSecondWindPct.Value = Shinra.Settings.SamuraiSecondWindPct;
-            SamuraiInvigoratePct.Value = Shinra.Settings.SamuraiInvigoratePct;
-            SamuraiBloodbathPct.Value = Shinra.Settings.SamuraiBloodbathPct;
-            SamuraiGoadPct.Value = Shinra.Settings.SamuraiGoadPct;
+            SamuraiSecondWindPct.Value = ShinraEx.Settings.SamuraiSecondWindPct;
+            SamuraiInvigoratePct.Value = ShinraEx.Settings.SamuraiInvigoratePct;
+            SamuraiBloodbathPct.Value = ShinraEx.Settings.SamuraiBloodbathPct;
+            SamuraiGoadPct.Value = ShinraEx.Settings.SamuraiGoadPct;
 
             #endregion
 
             #region Damage
 
-            SamuraiMidare.Checked = Shinra.Settings.SamuraiMidare;
-            SamuraiMidareHP.Value = Shinra.Settings.SamuraiMidareHP;
+            SamuraiMidare.Checked = ShinraEx.Settings.SamuraiMidare;
+            SamuraiMidareHP.Value = ShinraEx.Settings.SamuraiMidareHP;
 
             #endregion
 
             #region DoT
 
-            SamuraiHiganbana.Checked = Shinra.Settings.SamuraiHiganbana;
-            SamuraiHiganbanaHP.Value = Shinra.Settings.SamuraiHiganbanaHP;
+            SamuraiHiganbana.Checked = ShinraEx.Settings.SamuraiHiganbana;
+            SamuraiHiganbanaHP.Value = ShinraEx.Settings.SamuraiHiganbanaHP;
 
             #endregion
 
             #region Cooldown
 
-            SamuraiGyoten.Checked = Shinra.Settings.SamuraiGyoten;
-            SamuraiGuren.Checked = Shinra.Settings.SamuraiGuren;
+            SamuraiGyoten.Checked = ShinraEx.Settings.SamuraiGyoten;
+            SamuraiGuren.Checked = ShinraEx.Settings.SamuraiGuren;
 
             #endregion
 
             #region Buff
 
-            SamuraiMeikyo.Checked = Shinra.Settings.SamuraiMeikyo;
-            SamuraiHagakure.Checked = Shinra.Settings.SamuraiHagakure;
+            SamuraiMeikyo.Checked = ShinraEx.Settings.SamuraiMeikyo;
+            SamuraiHagakure.Checked = ShinraEx.Settings.SamuraiHagakure;
 
             #endregion
 
             #region Heal
 
-            SamuraiMerciful.Checked = Shinra.Settings.SamuraiMerciful;
-            SamuraiMercifulPct.Value = Shinra.Settings.SamuraiMercifulPct;
+            SamuraiMerciful.Checked = ShinraEx.Settings.SamuraiMerciful;
+            SamuraiMercifulPct.Value = ShinraEx.Settings.SamuraiMercifulPct;
 
             #endregion
 
             #region Misc
 
-            SamuraiOpener.Checked = Shinra.Settings.SamuraiOpener;
-            SamuraiPotion.Checked = Shinra.Settings.SamuraiPotion;
+            SamuraiOpener.Checked = ShinraEx.Settings.SamuraiOpener;
+            SamuraiPotion.Checked = ShinraEx.Settings.SamuraiPotion;
 
             #endregion
 
@@ -803,79 +804,79 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            ScholarClericStance.Checked = Shinra.Settings.ScholarClericStance;
-            ScholarProtect.Checked = Shinra.Settings.ScholarProtect;
-            ScholarEsuna.Checked = Shinra.Settings.ScholarEsuna;
-            ScholarLucidDreaming.Checked = Shinra.Settings.ScholarLucidDreaming;
-            ScholarLucidDreamingPct.Value = Shinra.Settings.ScholarLucidDreamingPct;
-            ScholarSwiftcast.Checked = Shinra.Settings.ScholarSwiftcast;
-            ScholarEyeForAnEye.Checked = Shinra.Settings.ScholarEyeForAnEye;
-            ScholarEyeForAnEyePct.Value = Shinra.Settings.ScholarEyeForAnEyePct;
-            ScholarLargesse.Checked = Shinra.Settings.ScholarLargesse;
-            ScholarLargesseCount.Value = Shinra.Settings.ScholarLargesseCount;
-            ScholarLargessePct.Value = Shinra.Settings.ScholarLargessePct;
+            ScholarClericStance.Checked = ShinraEx.Settings.ScholarClericStance;
+            ScholarProtect.Checked = ShinraEx.Settings.ScholarProtect;
+            ScholarEsuna.Checked = ShinraEx.Settings.ScholarEsuna;
+            ScholarLucidDreaming.Checked = ShinraEx.Settings.ScholarLucidDreaming;
+            ScholarLucidDreamingPct.Value = ShinraEx.Settings.ScholarLucidDreamingPct;
+            ScholarSwiftcast.Checked = ShinraEx.Settings.ScholarSwiftcast;
+            ScholarEyeForAnEye.Checked = ShinraEx.Settings.ScholarEyeForAnEye;
+            ScholarEyeForAnEyePct.Value = ShinraEx.Settings.ScholarEyeForAnEyePct;
+            ScholarLargesse.Checked = ShinraEx.Settings.ScholarLargesse;
+            ScholarLargesseCount.Value = ShinraEx.Settings.ScholarLargesseCount;
+            ScholarLargessePct.Value = ShinraEx.Settings.ScholarLargessePct;
 
             #endregion
 
             #region Damage
 
-            ScholarStopDamage.Checked = Shinra.Settings.ScholarStopDamage;
-            ScholarStopDots.Checked = Shinra.Settings.ScholarStopDots;
+            ScholarStopDamage.Checked = ShinraEx.Settings.ScholarStopDamage;
+            ScholarStopDots.Checked = ShinraEx.Settings.ScholarStopDots;
 
-            ScholarStopDamagePct.Value = Shinra.Settings.ScholarStopDamagePct;
-            ScholarStopDotsPct.Value = Shinra.Settings.ScholarStopDotsPct;
+            ScholarStopDamagePct.Value = ShinraEx.Settings.ScholarStopDamagePct;
+            ScholarStopDotsPct.Value = ShinraEx.Settings.ScholarStopDotsPct;
 
             #endregion
 
             #region AoE
 
-            ScholarBane.Checked = Shinra.Settings.ScholarBane;
+            ScholarBane.Checked = ShinraEx.Settings.ScholarBane;
 
             #endregion
 
             #region Cooldown
 
-            ScholarEnergyDrain.Checked = Shinra.Settings.ScholarEnergyDrain;
-            ScholarEnergyDrainPct.Value = Shinra.Settings.ScholarEnergyDrainPct;
-            ScholarShadowFlare.Checked = Shinra.Settings.ScholarShadowFlare;
-            ScholarChainStrategem.Checked = Shinra.Settings.ScholarChainStrategem;
+            ScholarEnergyDrain.Checked = ShinraEx.Settings.ScholarEnergyDrain;
+            ScholarEnergyDrainPct.Value = ShinraEx.Settings.ScholarEnergyDrainPct;
+            ScholarShadowFlare.Checked = ShinraEx.Settings.ScholarShadowFlare;
+            ScholarChainStrategem.Checked = ShinraEx.Settings.ScholarChainStrategem;
 
             #endregion
 
             #region Buff
 
-            ScholarRouse.Checked = Shinra.Settings.ScholarRouse;
-            ScholarEmergencyTactics.Checked = Shinra.Settings.ScholarEmergencyTactics;
+            ScholarRouse.Checked = ShinraEx.Settings.ScholarRouse;
+            ScholarEmergencyTactics.Checked = ShinraEx.Settings.ScholarEmergencyTactics;
 
             #endregion
 
             #region Heal
 
-            ScholarPartyHeal.Checked = Shinra.Settings.ScholarPartyHeal;
-            ScholarInterruptDamage.Checked = Shinra.Settings.ScholarInterruptDamage;
-            ScholarInterruptOverheal.Checked = Shinra.Settings.ScholarInterruptOverheal;
-            ScholarPhysick.Checked = Shinra.Settings.ScholarPhysick;
-            ScholarAdloquium.Checked = Shinra.Settings.ScholarAdloquium;
-            ScholarAetherpact.Checked = Shinra.Settings.ScholarAetherpact;
-            ScholarLustrate.Checked = Shinra.Settings.ScholarLustrate;
-            ScholarExcogitation.Checked = Shinra.Settings.ScholarExcogitation;
-            ScholarSuccor.Checked = Shinra.Settings.ScholarSuccor;
-            ScholarIndomitability.Checked = Shinra.Settings.ScholarIndomitability;
-            ScholarResurrection.Checked = Shinra.Settings.ScholarResurrection;
+            ScholarPartyHeal.Checked = ShinraEx.Settings.ScholarPartyHeal;
+            ScholarInterruptDamage.Checked = ShinraEx.Settings.ScholarInterruptDamage;
+            ScholarInterruptOverheal.Checked = ShinraEx.Settings.ScholarInterruptOverheal;
+            ScholarPhysick.Checked = ShinraEx.Settings.ScholarPhysick;
+            ScholarAdloquium.Checked = ShinraEx.Settings.ScholarAdloquium;
+            ScholarAetherpact.Checked = ShinraEx.Settings.ScholarAetherpact;
+            ScholarLustrate.Checked = ShinraEx.Settings.ScholarLustrate;
+            ScholarExcogitation.Checked = ShinraEx.Settings.ScholarExcogitation;
+            ScholarSuccor.Checked = ShinraEx.Settings.ScholarSuccor;
+            ScholarIndomitability.Checked = ShinraEx.Settings.ScholarIndomitability;
+            ScholarResurrection.Checked = ShinraEx.Settings.ScholarResurrection;
 
-            ScholarPhysickPct.Value = Shinra.Settings.ScholarPhysickPct;
-            ScholarAdloquiumPct.Value = Shinra.Settings.ScholarAdloquiumPct;
-            ScholarAetherpactPct.Value = Shinra.Settings.ScholarAetherpactPct;
-            ScholarLustratePct.Value = Shinra.Settings.ScholarLustratePct;
-            ScholarExcogitationPct.Value = Shinra.Settings.ScholarExcogitationPct;
-            ScholarSuccorPct.Value = Shinra.Settings.ScholarSuccorPct;
-            ScholarIndomitabilityPct.Value = Shinra.Settings.ScholarIndomitabilityPct;
+            ScholarPhysickPct.Value = ShinraEx.Settings.ScholarPhysickPct;
+            ScholarAdloquiumPct.Value = ShinraEx.Settings.ScholarAdloquiumPct;
+            ScholarAetherpactPct.Value = ShinraEx.Settings.ScholarAetherpactPct;
+            ScholarLustratePct.Value = ShinraEx.Settings.ScholarLustratePct;
+            ScholarExcogitationPct.Value = ShinraEx.Settings.ScholarExcogitationPct;
+            ScholarSuccorPct.Value = ShinraEx.Settings.ScholarSuccorPct;
+            ScholarIndomitabilityPct.Value = ShinraEx.Settings.ScholarIndomitabilityPct;
 
             #endregion
 
             #region Pet
 
-            ScholarPet.Text = Convert.ToString(Shinra.Settings.ScholarPet);
+            ScholarPet.Text = Convert.ToString(ShinraEx.Settings.ScholarPet);
 
             #endregion
 
@@ -885,62 +886,62 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            SummonerAddle.Checked = Shinra.Settings.SummonerAddle;
-            SummonerDrain.Checked = Shinra.Settings.SummonerDrain;
-            SummonerLucidDreaming.Checked = Shinra.Settings.SummonerLucidDreaming;
-            SummonerSwiftcast.Checked = Shinra.Settings.SummonerSwiftcast;
+            SummonerAddle.Checked = ShinraEx.Settings.SummonerAddle;
+            SummonerDrain.Checked = ShinraEx.Settings.SummonerDrain;
+            SummonerLucidDreaming.Checked = ShinraEx.Settings.SummonerLucidDreaming;
+            SummonerSwiftcast.Checked = ShinraEx.Settings.SummonerSwiftcast;
 
-            SummonerDrainPct.Value = Shinra.Settings.SummonerDrainPct;
-            SummonerLucidDreamingPct.Value = Shinra.Settings.SummonerLucidDreamingPct;
+            SummonerDrainPct.Value = ShinraEx.Settings.SummonerDrainPct;
+            SummonerLucidDreamingPct.Value = ShinraEx.Settings.SummonerLucidDreamingPct;
 
             #endregion
 
             #region AoE
 
-            SummonerBane.Checked = Shinra.Settings.SummonerBane;
+            SummonerBane.Checked = ShinraEx.Settings.SummonerBane;
 
             #endregion
 
             #region Cooldown
 
-            SummonerShadowFlare.Checked = Shinra.Settings.SummonerShadowFlare;
-            SummonerEnkindle.Checked = Shinra.Settings.SummonerEnkindle;
-            SummonerTriDisaster.Checked = Shinra.Settings.SummonerTriDisaster;
-            SummonerEnkindleBahamut.Checked = Shinra.Settings.SummonerEnkindleBahamut;
+            SummonerShadowFlare.Checked = ShinraEx.Settings.SummonerShadowFlare;
+            SummonerEnkindle.Checked = ShinraEx.Settings.SummonerEnkindle;
+            SummonerTriDisaster.Checked = ShinraEx.Settings.SummonerTriDisaster;
+            SummonerEnkindleBahamut.Checked = ShinraEx.Settings.SummonerEnkindleBahamut;
 
             #endregion
 
             #region Buff
 
-            SummonerRouse.Checked = Shinra.Settings.SummonerRouse;
-            SummonerDreadwyrmTrance.Checked = Shinra.Settings.SummonerDreadwyrmTrance;
-            SummonerAetherpact.Checked = Shinra.Settings.SummonerAetherpact;
-            SummonerSummonBahamut.Checked = Shinra.Settings.SummonerSummonBahamut;
+            SummonerRouse.Checked = ShinraEx.Settings.SummonerRouse;
+            SummonerDreadwyrmTrance.Checked = ShinraEx.Settings.SummonerDreadwyrmTrance;
+            SummonerAetherpact.Checked = ShinraEx.Settings.SummonerAetherpact;
+            SummonerSummonBahamut.Checked = ShinraEx.Settings.SummonerSummonBahamut;
 
             #endregion
 
             #region Heal
 
-            SummonerPhysick.Checked = Shinra.Settings.SummonerPhysick;
-            SummonerSustain.Checked = Shinra.Settings.SummonerSustain;
-            SummonerResurrection.Checked = Shinra.Settings.SummonerResurrection;
+            SummonerPhysick.Checked = ShinraEx.Settings.SummonerPhysick;
+            SummonerSustain.Checked = ShinraEx.Settings.SummonerSustain;
+            SummonerResurrection.Checked = ShinraEx.Settings.SummonerResurrection;
 
-            SummonerPhysickPct.Value = Shinra.Settings.SummonerPhysickPct;
-            SummonerSustainPct.Value = Shinra.Settings.SummonerSustainPct;
+            SummonerPhysickPct.Value = ShinraEx.Settings.SummonerPhysickPct;
+            SummonerSustainPct.Value = ShinraEx.Settings.SummonerSustainPct;
 
             #endregion
 
             #region Pet
 
-            SummonerPet.Text = Convert.ToString(Shinra.Settings.SummonerPet);
+            SummonerPet.Text = Convert.ToString(ShinraEx.Settings.SummonerPet);
 
             #endregion
 
             #region Misc
 
-            SummonerOpener.Checked = Shinra.Settings.SummonerOpener;
-            SummonerPotion.Checked = Shinra.Settings.SummonerPotion;
-            SummonerOpenerGaruda.Checked = Shinra.Settings.SummonerOpenerGaruda;
+            SummonerOpener.Checked = ShinraEx.Settings.SummonerOpener;
+            SummonerPotion.Checked = ShinraEx.Settings.SummonerPotion;
+            SummonerOpenerGaruda.Checked = ShinraEx.Settings.SummonerOpenerGaruda;
 
             #endregion
 
@@ -950,77 +951,77 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            WarriorRampart.Checked = Shinra.Settings.WarriorRampart;
-            WarriorConvalescence.Checked = Shinra.Settings.WarriorConvalescence;
-            WarriorAnticipation.Checked = Shinra.Settings.WarriorAnticipation;
-            WarriorReprisal.Checked = Shinra.Settings.WarriorReprisal;
-            WarriorAwareness.Checked = Shinra.Settings.WarriorAwareness;
+            WarriorRampart.Checked = ShinraEx.Settings.WarriorRampart;
+            WarriorConvalescence.Checked = ShinraEx.Settings.WarriorConvalescence;
+            WarriorAnticipation.Checked = ShinraEx.Settings.WarriorAnticipation;
+            WarriorReprisal.Checked = ShinraEx.Settings.WarriorReprisal;
+            WarriorAwareness.Checked = ShinraEx.Settings.WarriorAwareness;
 
-            WarriorRampartPct.Value = Shinra.Settings.WarriorRampartPct;
-            WarriorConvalescencePct.Value = Shinra.Settings.WarriorConvalescencePct;
-            WarriorAnticipationPct.Value = Shinra.Settings.WarriorAnticipationPct;
-            WarriorAwarenessPct.Value = Shinra.Settings.WarriorAwarenessPct;
+            WarriorRampartPct.Value = ShinraEx.Settings.WarriorRampartPct;
+            WarriorConvalescencePct.Value = ShinraEx.Settings.WarriorConvalescencePct;
+            WarriorAnticipationPct.Value = ShinraEx.Settings.WarriorAnticipationPct;
+            WarriorAwarenessPct.Value = ShinraEx.Settings.WarriorAwarenessPct;
 
             #endregion
 
             #region Damage
 
-            WarriorMaim.Checked = Shinra.Settings.WarriorMaim;
-            WarriorStormsEye.Checked = Shinra.Settings.WarriorStormsEye;
-            WarriorInnerBeast.Checked = Shinra.Settings.WarriorInnerBeast;
-            WarriorFellCleave.Checked = Shinra.Settings.WarriorFellCleave;
+            WarriorMaim.Checked = ShinraEx.Settings.WarriorMaim;
+            WarriorStormsEye.Checked = ShinraEx.Settings.WarriorStormsEye;
+            WarriorInnerBeast.Checked = ShinraEx.Settings.WarriorInnerBeast;
+            WarriorFellCleave.Checked = ShinraEx.Settings.WarriorFellCleave;
 
             #endregion
 
             #region AoE
 
-            WarriorOverpower.Checked = Shinra.Settings.WarriorOverpower;
-            WarriorSteelCyclone.Checked = Shinra.Settings.WarriorSteelCyclone;
-            WarriorDecimate.Checked = Shinra.Settings.WarriorDecimate;
+            WarriorOverpower.Checked = ShinraEx.Settings.WarriorOverpower;
+            WarriorSteelCyclone.Checked = ShinraEx.Settings.WarriorSteelCyclone;
+            WarriorDecimate.Checked = ShinraEx.Settings.WarriorDecimate;
 
             #endregion
 
             #region Cooldown
 
-            WarriorOnslaught.Checked = Shinra.Settings.WarriorOnslaught;
-            WarriorUpheaval.Checked = Shinra.Settings.WarriorUpheaval;
+            WarriorOnslaught.Checked = ShinraEx.Settings.WarriorOnslaught;
+            WarriorUpheaval.Checked = ShinraEx.Settings.WarriorUpheaval;
 
             #endregion
 
             #region Buff
 
-            WarriorBerserk.Checked = Shinra.Settings.WarriorBerserk;
-            WarriorThrillOfBattle.Checked = Shinra.Settings.WarriorThrillOfBattle;
-            WarriorUnchained.Checked = Shinra.Settings.WarriorUnchained;
-            WarriorVengeance.Checked = Shinra.Settings.WarriorVengeance;
-            WarriorInfuriate.Checked = Shinra.Settings.WarriorInfuriate;
-            WarriorEquilibriumTP.Checked = Shinra.Settings.WarriorEquilibriumTP;
-            WarriorShakeItOff.Checked = Shinra.Settings.WarriorShakeItOff;
-            WarriorInnerRelease.Checked = Shinra.Settings.WarriorInnerRelease;
+            WarriorBerserk.Checked = ShinraEx.Settings.WarriorBerserk;
+            WarriorThrillOfBattle.Checked = ShinraEx.Settings.WarriorThrillOfBattle;
+            WarriorUnchained.Checked = ShinraEx.Settings.WarriorUnchained;
+            WarriorVengeance.Checked = ShinraEx.Settings.WarriorVengeance;
+            WarriorInfuriate.Checked = ShinraEx.Settings.WarriorInfuriate;
+            WarriorEquilibriumTP.Checked = ShinraEx.Settings.WarriorEquilibriumTP;
+            WarriorShakeItOff.Checked = ShinraEx.Settings.WarriorShakeItOff;
+            WarriorInnerRelease.Checked = ShinraEx.Settings.WarriorInnerRelease;
 
-            WarriorThrillOfBattlePct.Value = Shinra.Settings.WarriorThrillOfBattlePct;
-            WarriorVengeancePct.Value = Shinra.Settings.WarriorVengeancePct;
-            WarriorEquilibriumTPPct.Value = Shinra.Settings.WarriorEquilibriumTPPct;
+            WarriorThrillOfBattlePct.Value = ShinraEx.Settings.WarriorThrillOfBattlePct;
+            WarriorVengeancePct.Value = ShinraEx.Settings.WarriorVengeancePct;
+            WarriorEquilibriumTPPct.Value = ShinraEx.Settings.WarriorEquilibriumTPPct;
 
             #endregion
 
             #region Heal
 
-            WarriorEquilibrium.Checked = Shinra.Settings.WarriorEquilibrium;
-            WarriorEquilibriumPct.Value = Shinra.Settings.WarriorEquilibriumPct;
+            WarriorEquilibrium.Checked = ShinraEx.Settings.WarriorEquilibrium;
+            WarriorEquilibriumPct.Value = ShinraEx.Settings.WarriorEquilibriumPct;
 
             #endregion
 
             #region Stance
 
-            WarriorStance.Text = Convert.ToString(Shinra.Settings.WarriorStance);
+            WarriorStance.Text = Convert.ToString(ShinraEx.Settings.WarriorStance);
 
             #endregion
 
             #region Misc
 
-            WarriorOpener.Checked = Shinra.Settings.WarriorOpener;
-            WarriorPotion.Checked = Shinra.Settings.WarriorPotion;
+            WarriorOpener.Checked = ShinraEx.Settings.WarriorOpener;
+            WarriorPotion.Checked = ShinraEx.Settings.WarriorPotion;
 
             #endregion
 
@@ -1030,64 +1031,64 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            WhiteMageClericStance.Checked = Shinra.Settings.WhiteMageClericStance;
-            WhiteMageProtect.Checked = Shinra.Settings.WhiteMageProtect;
-            WhiteMageEsuna.Checked = Shinra.Settings.WhiteMageEsuna;
-            WhiteMageLucidDreaming.Checked = Shinra.Settings.WhiteMageLucidDreaming;
-            WhiteMageLucidDreamingPct.Value = Shinra.Settings.WhiteMageLucidDreamingPct;
-            WhiteMageSwiftcast.Checked = Shinra.Settings.WhiteMageSwiftcast;
-            WhiteMageEyeForAnEye.Checked = Shinra.Settings.WhiteMageEyeForAnEye;
-            WhiteMageEyeForAnEyePct.Value = Shinra.Settings.WhiteMageEyeForAnEyePct;
-            WhiteMageLargesse.Checked = Shinra.Settings.WhiteMageLargesse;
-            WhiteMageLargesseCount.Value = Shinra.Settings.WhiteMageLargesseCount;
-            WhiteMageLargessePct.Value = Shinra.Settings.WhiteMageLargessePct;
+            WhiteMageClericStance.Checked = ShinraEx.Settings.WhiteMageClericStance;
+            WhiteMageProtect.Checked = ShinraEx.Settings.WhiteMageProtect;
+            WhiteMageEsuna.Checked = ShinraEx.Settings.WhiteMageEsuna;
+            WhiteMageLucidDreaming.Checked = ShinraEx.Settings.WhiteMageLucidDreaming;
+            WhiteMageLucidDreamingPct.Value = ShinraEx.Settings.WhiteMageLucidDreamingPct;
+            WhiteMageSwiftcast.Checked = ShinraEx.Settings.WhiteMageSwiftcast;
+            WhiteMageEyeForAnEye.Checked = ShinraEx.Settings.WhiteMageEyeForAnEye;
+            WhiteMageEyeForAnEyePct.Value = ShinraEx.Settings.WhiteMageEyeForAnEyePct;
+            WhiteMageLargesse.Checked = ShinraEx.Settings.WhiteMageLargesse;
+            WhiteMageLargesseCount.Value = ShinraEx.Settings.WhiteMageLargesseCount;
+            WhiteMageLargessePct.Value = ShinraEx.Settings.WhiteMageLargessePct;
 
             #endregion
 
             #region Damage
 
-            WhiteMageStopDamage.Checked = Shinra.Settings.WhiteMageStopDamage;
-            WhiteMageStopDots.Checked = Shinra.Settings.WhiteMageStopDots;
+            WhiteMageStopDamage.Checked = ShinraEx.Settings.WhiteMageStopDamage;
+            WhiteMageStopDots.Checked = ShinraEx.Settings.WhiteMageStopDots;
 
-            WhiteMageStopDamagePct.Value = Shinra.Settings.WhiteMageStopDamagePct;
-            WhiteMageStopDotsPct.Value = Shinra.Settings.WhiteMageStopDotsPct;
+            WhiteMageStopDamagePct.Value = ShinraEx.Settings.WhiteMageStopDamagePct;
+            WhiteMageStopDotsPct.Value = ShinraEx.Settings.WhiteMageStopDotsPct;
 
             #endregion
 
             #region Buff
 
-            WhiteMagePresenceOfMind.Checked = Shinra.Settings.WhiteMagePresenceOfMind;
-            WhiteMagePresenceOfMindCount.Value = Shinra.Settings.WhiteMagePresenceOfMindCount;
-            WhiteMagePresenceOfMindPct.Value = Shinra.Settings.WhiteMagePresenceOfMindPct;
-            WhiteMageThinAir.Checked = Shinra.Settings.WhiteMageThinAir;
+            WhiteMagePresenceOfMind.Checked = ShinraEx.Settings.WhiteMagePresenceOfMind;
+            WhiteMagePresenceOfMindCount.Value = ShinraEx.Settings.WhiteMagePresenceOfMindCount;
+            WhiteMagePresenceOfMindPct.Value = ShinraEx.Settings.WhiteMagePresenceOfMindPct;
+            WhiteMageThinAir.Checked = ShinraEx.Settings.WhiteMageThinAir;
 
             #endregion
 
             #region Heal
 
-            WhiteMagePartyHeal.Checked = Shinra.Settings.WhiteMagePartyHeal;
-            WhiteMageInterruptDamage.Checked = Shinra.Settings.WhiteMageInterruptDamage;
-            WhiteMageInterruptOverheal.Checked = Shinra.Settings.WhiteMageInterruptOverheal;
-            WhiteMageCure.Checked = Shinra.Settings.WhiteMageCure;
-            WhiteMageCureII.Checked = Shinra.Settings.WhiteMageCureII;
-            WhiteMageTetragrammaton.Checked = Shinra.Settings.WhiteMageTetragrammaton;
-            WhiteMageBenediction.Checked = Shinra.Settings.WhiteMageBenediction;
-            WhiteMageRegen.Checked = Shinra.Settings.WhiteMageRegen;
-            WhiteMageMedica.Checked = Shinra.Settings.WhiteMageMedica;
-            WhiteMageMedicaII.Checked = Shinra.Settings.WhiteMageMedicaII;
-            WhiteMageAssize.Checked = Shinra.Settings.WhiteMageAssize;
-            WhiteMagePlenary.Checked = Shinra.Settings.WhiteMagePlenary;
-            WhiteMageRaise.Checked = Shinra.Settings.WhiteMageRaise;
+            WhiteMagePartyHeal.Checked = ShinraEx.Settings.WhiteMagePartyHeal;
+            WhiteMageInterruptDamage.Checked = ShinraEx.Settings.WhiteMageInterruptDamage;
+            WhiteMageInterruptOverheal.Checked = ShinraEx.Settings.WhiteMageInterruptOverheal;
+            WhiteMageCure.Checked = ShinraEx.Settings.WhiteMageCure;
+            WhiteMageCureII.Checked = ShinraEx.Settings.WhiteMageCureII;
+            WhiteMageTetragrammaton.Checked = ShinraEx.Settings.WhiteMageTetragrammaton;
+            WhiteMageBenediction.Checked = ShinraEx.Settings.WhiteMageBenediction;
+            WhiteMageRegen.Checked = ShinraEx.Settings.WhiteMageRegen;
+            WhiteMageMedica.Checked = ShinraEx.Settings.WhiteMageMedica;
+            WhiteMageMedicaII.Checked = ShinraEx.Settings.WhiteMageMedicaII;
+            WhiteMageAssize.Checked = ShinraEx.Settings.WhiteMageAssize;
+            WhiteMagePlenary.Checked = ShinraEx.Settings.WhiteMagePlenary;
+            WhiteMageRaise.Checked = ShinraEx.Settings.WhiteMageRaise;
 
-            WhiteMageCurePct.Value = Shinra.Settings.WhiteMageCurePct;
-            WhiteMageCureIIPct.Value = Shinra.Settings.WhiteMageCureIIPct;
-            WhiteMageTetragrammatonPct.Value = Shinra.Settings.WhiteMageTetragrammatonPct;
-            WhiteMageBenedictionPct.Value = Shinra.Settings.WhiteMageBenedictionPct;
-            WhiteMageRegenPct.Value = Shinra.Settings.WhiteMageRegenPct;
-            WhiteMageMedicaPct.Value = Shinra.Settings.WhiteMageMedicaPct;
-            WhiteMageMedicaIIPct.Value = Shinra.Settings.WhiteMageMedicaIIPct;
-            WhiteMageAssizePct.Value = Shinra.Settings.WhiteMageAssizePct;
-            WhiteMagePlenaryPct.Value = Shinra.Settings.WhiteMagePlenaryPct;
+            WhiteMageCurePct.Value = ShinraEx.Settings.WhiteMageCurePct;
+            WhiteMageCureIIPct.Value = ShinraEx.Settings.WhiteMageCureIIPct;
+            WhiteMageTetragrammatonPct.Value = ShinraEx.Settings.WhiteMageTetragrammatonPct;
+            WhiteMageBenedictionPct.Value = ShinraEx.Settings.WhiteMageBenedictionPct;
+            WhiteMageRegenPct.Value = ShinraEx.Settings.WhiteMageRegenPct;
+            WhiteMageMedicaPct.Value = ShinraEx.Settings.WhiteMageMedicaPct;
+            WhiteMageMedicaIIPct.Value = ShinraEx.Settings.WhiteMageMedicaIIPct;
+            WhiteMageAssizePct.Value = ShinraEx.Settings.WhiteMageAssizePct;
+            WhiteMagePlenaryPct.Value = ShinraEx.Settings.WhiteMagePlenaryPct;
 
             #endregion
 
@@ -1103,10 +1104,10 @@ namespace ShinraCo.Settings.Forms
 
         private void ShinraForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Shinra.RegisterHotkeys();
-            Shinra.RegisterClassHotkeys();
-            Shinra.Settings.WindowLocation = Location;
-            Shinra.Settings.Save();
+            ShinraEx.RegisterHotkeys();
+            ShinraEx.RegisterClassHotkeys();
+            ShinraEx.Settings.WindowLocation = Location;
+            ShinraEx.Settings.Save();
         }
 
         private void ShinraClose_Click(object sender, EventArgs e)
@@ -1120,50 +1121,50 @@ namespace ShinraCo.Settings.Forms
 
         private void RotationOverlay_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RotationOverlay = RotationOverlay.Checked;
-            Shinra.Overlay.Visible = RotationOverlay.Checked;
+            ShinraEx.Settings.RotationOverlay = RotationOverlay.Checked;
+            ShinraEx.Overlay.Visible = RotationOverlay.Checked;
         }
 
         private void RotationMessages_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RotationMessages = RotationMessages.Checked;
+            ShinraEx.Settings.RotationMessages = RotationMessages.Checked;
         }
 
         private void RotationMode_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (RotationMode.Text == @"Smart") Shinra.Settings.RotationMode = Modes.Smart;
-            if (RotationMode.Text == @"Single") Shinra.Settings.RotationMode = Modes.Single;
-            if (RotationMode.Text == @"Multi") Shinra.Settings.RotationMode = Modes.Multi;
-            Shinra.Overlay.UpdateText();
+            if (RotationMode.Text == @"Smart") ShinraEx.Settings.RotationMode = Modes.Smart;
+            if (RotationMode.Text == @"Single") ShinraEx.Settings.RotationMode = Modes.Single;
+            if (RotationMode.Text == @"Multi") ShinraEx.Settings.RotationMode = Modes.Multi;
+            ShinraEx.Overlay.UpdateText();
         }
 
         private void RotationHotkey_KeyDown(object sender, KeyEventArgs e)
         {
-            Shinra.Settings.RotationHotkey = RotationHotkey.Hotkey;
+            ShinraEx.Settings.RotationHotkey = RotationHotkey.Hotkey;
         }
 
         private void CooldownMode_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (CooldownMode.Text == @"Enabled") Shinra.Settings.CooldownMode = CooldownModes.Enabled;
-            if (CooldownMode.Text == @"Disabled") Shinra.Settings.CooldownMode = CooldownModes.Disabled;
-            Shinra.Overlay.UpdateText();
+            if (CooldownMode.Text == @"Enabled") ShinraEx.Settings.CooldownMode = CooldownModes.Enabled;
+            if (CooldownMode.Text == @"Disabled") ShinraEx.Settings.CooldownMode = CooldownModes.Disabled;
+            ShinraEx.Overlay.UpdateText();
         }
 
         private void CooldownHotkey_KeyDown(object sender, KeyEventArgs e)
         {
-            Shinra.Settings.CooldownHotkey = CooldownHotkey.Hotkey;
+            ShinraEx.Settings.CooldownHotkey = CooldownHotkey.Hotkey;
         }
 
         private void TankMode_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (TankMode.Text == @"DPS") Shinra.Settings.TankMode = TankModes.DPS;
-            if (TankMode.Text == @"Enmity") Shinra.Settings.TankMode = TankModes.Enmity;
-            Shinra.Overlay.UpdateText();
+            if (TankMode.Text == @"DPS") ShinraEx.Settings.TankMode = TankModes.DPS;
+            if (TankMode.Text == @"Enmity") ShinraEx.Settings.TankMode = TankModes.Enmity;
+            ShinraEx.Overlay.UpdateText();
         }
 
         private void TankHotkey_KeyDown(object sender, KeyEventArgs e)
         {
-            Shinra.Settings.TankHotkey = TankHotkey.Hotkey;
+            ShinraEx.Settings.TankHotkey = TankHotkey.Hotkey;
         }
 
         #endregion
@@ -1172,25 +1173,25 @@ namespace ShinraCo.Settings.Forms
 
         private void ChocoboSummon_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonChocobo = ChocoboSummon.Checked;
+            ShinraEx.Settings.SummonChocobo = ChocoboSummon.Checked;
         }
 
         private void ChocoboStanceDance_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ChocoboStanceDance = ChocoboStanceDance.Checked;
+            ShinraEx.Settings.ChocoboStanceDance = ChocoboStanceDance.Checked;
         }
 
         private void ChocoboStanceDancePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ChocoboStanceDancePct = Convert.ToInt32(ChocoboStanceDancePct.Value);
+            ShinraEx.Settings.ChocoboStanceDancePct = Convert.ToInt32(ChocoboStanceDancePct.Value);
         }
 
         private void ChocoboStance_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (ChocoboStance.Text == @"Free") Shinra.Settings.ChocoboStance = Stances.Free;
-            if (ChocoboStance.Text == @"Attacker") Shinra.Settings.ChocoboStance = Stances.Attacker;
-            if (ChocoboStance.Text == @"Healer") Shinra.Settings.ChocoboStance = Stances.Healer;
-            if (ChocoboStance.Text == @"Defender") Shinra.Settings.ChocoboStance = Stances.Defender;
+            if (ChocoboStance.Text == @"Free") ShinraEx.Settings.ChocoboStance = Stances.Free;
+            if (ChocoboStance.Text == @"Attacker") ShinraEx.Settings.ChocoboStance = Stances.Attacker;
+            if (ChocoboStance.Text == @"Healer") ShinraEx.Settings.ChocoboStance = Stances.Healer;
+            if (ChocoboStance.Text == @"Defender") ShinraEx.Settings.ChocoboStance = Stances.Defender;
         }
 
         #endregion
@@ -1199,22 +1200,22 @@ namespace ShinraCo.Settings.Forms
 
         private void RestHealth_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RestHealth = RestHealth.Checked;
+            ShinraEx.Settings.RestHealth = RestHealth.Checked;
         }
 
         private void RestEnergy_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RestEnergy = RestEnergy.Checked;
+            ShinraEx.Settings.RestEnergy = RestEnergy.Checked;
         }
 
         private void RestHealthPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RestHealthPct = Convert.ToInt32(RestHealthPct.Value);
+            ShinraEx.Settings.RestHealthPct = Convert.ToInt32(RestHealthPct.Value);
         }
 
         private void RestEnergyPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RestEnergyPct = Convert.ToInt32(RestEnergyPct.Value);
+            ShinraEx.Settings.RestEnergyPct = Convert.ToInt32(RestEnergyPct.Value);
         }
 
         #endregion
@@ -1223,22 +1224,22 @@ namespace ShinraCo.Settings.Forms
 
         private void RandomCastLocations_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RandomCastLocations = RandomCastLocations.Checked;
+            ShinraEx.Settings.RandomCastLocations = RandomCastLocations.Checked;
         }
 
         private void CustomAoE_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.CustomAoE = CustomAoE.Checked;
+            ShinraEx.Settings.CustomAoE = CustomAoE.Checked;
         }
 
         private void CustomAoECount_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.CustomAoECount = Convert.ToInt32(CustomAoECount.Value);
+            ShinraEx.Settings.CustomAoECount = Convert.ToInt32(CustomAoECount.Value);
         }
 
         private void QueueSpells_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.QueueSpells = QueueSpells.Checked;
+            ShinraEx.Settings.QueueSpells = QueueSpells.Checked;
         }
 
         #endregion
@@ -1247,12 +1248,12 @@ namespace ShinraCo.Settings.Forms
 
         private void IgnoreSmart_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.IgnoreSmart = IgnoreSmart.Checked;
+            ShinraEx.Settings.IgnoreSmart = IgnoreSmart.Checked;
         }
 
         private void DisableDebug_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DisableDebug = DisableDebug.Checked;
+            ShinraEx.Settings.DisableDebug = DisableDebug.Checked;
         }
 
         #endregion
@@ -1267,57 +1268,57 @@ namespace ShinraCo.Settings.Forms
 
         private void AstrologianClericStance_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianClericStance = AstrologianClericStance.Checked;
+            ShinraEx.Settings.AstrologianClericStance = AstrologianClericStance.Checked;
         }
 
         private void AstrologianProtect_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianProtect = AstrologianProtect.Checked;
+            ShinraEx.Settings.AstrologianProtect = AstrologianProtect.Checked;
         }
 
         private void AstrologianEsuna_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianEsuna = AstrologianEsuna.Checked;
+            ShinraEx.Settings.AstrologianEsuna = AstrologianEsuna.Checked;
         }
 
         private void AstrologianLucidDreaming_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianLucidDreaming = AstrologianLucidDreaming.Checked;
+            ShinraEx.Settings.AstrologianLucidDreaming = AstrologianLucidDreaming.Checked;
         }
 
         private void AstrologianLucidDreamingPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianLucidDreamingPct = Convert.ToInt32(AstrologianLucidDreamingPct.Value);
+            ShinraEx.Settings.AstrologianLucidDreamingPct = Convert.ToInt32(AstrologianLucidDreamingPct.Value);
         }
 
         private void AstrologianSwiftcast_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianSwiftcast = AstrologianSwiftcast.Checked;
+            ShinraEx.Settings.AstrologianSwiftcast = AstrologianSwiftcast.Checked;
         }
 
         private void AstrologianEyeForAnEye_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianEyeForAnEye = AstrologianEyeForAnEye.Checked;
+            ShinraEx.Settings.AstrologianEyeForAnEye = AstrologianEyeForAnEye.Checked;
         }
 
         private void AstrologianEyeForAnEyePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianEyeForAnEyePct = Convert.ToInt32(AstrologianEyeForAnEyePct.Value);
+            ShinraEx.Settings.AstrologianEyeForAnEyePct = Convert.ToInt32(AstrologianEyeForAnEyePct.Value);
         }
 
         private void AstrologianLargesse_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianLargesse = AstrologianLargesse.Checked;
+            ShinraEx.Settings.AstrologianLargesse = AstrologianLargesse.Checked;
         }
 
         private void AstrologianLargesseCount_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianLargesseCount = Convert.ToInt32(AstrologianLargesseCount.Value);
+            ShinraEx.Settings.AstrologianLargesseCount = Convert.ToInt32(AstrologianLargesseCount.Value);
         }
 
         private void AstrologianLargessePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianLargessePct = Convert.ToInt32(AstrologianLargessePct.Value);
+            ShinraEx.Settings.AstrologianLargessePct = Convert.ToInt32(AstrologianLargessePct.Value);
         }
 
         #endregion
@@ -1326,22 +1327,22 @@ namespace ShinraCo.Settings.Forms
 
         private void AstrologianStopDamage_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianStopDamage = AstrologianStopDamage.Checked;
+            ShinraEx.Settings.AstrologianStopDamage = AstrologianStopDamage.Checked;
         }
 
         private void AstrologianStopDots_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianStopDots = AstrologianStopDots.Checked;
+            ShinraEx.Settings.AstrologianStopDots = AstrologianStopDots.Checked;
         }
 
         private void AstrologianStopDamagePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianStopDamagePct = Convert.ToInt32(AstrologianStopDamagePct.Value);
+            ShinraEx.Settings.AstrologianStopDamagePct = Convert.ToInt32(AstrologianStopDamagePct.Value);
         }
 
         private void AstrologianStopDotsPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianStopDotsPct = Convert.ToInt32(AstrologianStopDotsPct.Value);
+            ShinraEx.Settings.AstrologianStopDotsPct = Convert.ToInt32(AstrologianStopDotsPct.Value);
         }
 
         #endregion
@@ -1350,12 +1351,12 @@ namespace ShinraCo.Settings.Forms
 
         private void AstrologianEarthlyStar_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianEarthlyStar = AstrologianEarthlyStar.Checked;
+            ShinraEx.Settings.AstrologianEarthlyStar = AstrologianEarthlyStar.Checked;
         }
 
         private void AstrologianStellarDetonation_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianStellarDetonation = AstrologianStellarDetonation.Checked;
+            ShinraEx.Settings.AstrologianStellarDetonation = AstrologianStellarDetonation.Checked;
         }
 
         #endregion
@@ -1364,42 +1365,42 @@ namespace ShinraCo.Settings.Forms
 
         private void AstrologianLightspeed_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianLightspeed = AstrologianLightspeed.Checked;
+            ShinraEx.Settings.AstrologianLightspeed = AstrologianLightspeed.Checked;
         }
 
         private void AstrologianLightspeedCount_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianLightspeedCount = Convert.ToInt32(AstrologianLightspeedCount.Value);
+            ShinraEx.Settings.AstrologianLightspeedCount = Convert.ToInt32(AstrologianLightspeedCount.Value);
         }
 
         private void AstrologianLightspeedPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianLightspeedPct = Convert.ToInt32(AstrologianLightspeedPct.Value);
+            ShinraEx.Settings.AstrologianLightspeedPct = Convert.ToInt32(AstrologianLightspeedPct.Value);
         }
 
         private void AstrologianSynastry_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianSynastry = AstrologianSynastry.Checked;
+            ShinraEx.Settings.AstrologianSynastry = AstrologianSynastry.Checked;
         }
 
         private void AstrologianSynastryCount_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianSynastryCount = Convert.ToInt32(AstrologianSynastryCount.Value);
+            ShinraEx.Settings.AstrologianSynastryCount = Convert.ToInt32(AstrologianSynastryCount.Value);
         }
 
         private void AstrologianSynastryPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianSynastryPct = Convert.ToInt32(AstrologianSynastryPct.Value);
+            ShinraEx.Settings.AstrologianSynastryPct = Convert.ToInt32(AstrologianSynastryPct.Value);
         }
 
         private void AstrologianTimeDilation_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianTimeDilation = AstrologianTimeDilation.Checked;
+            ShinraEx.Settings.AstrologianTimeDilation = AstrologianTimeDilation.Checked;
         }
 
         private void AstrologianCelestialOpposition_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianCelestialOpposition = AstrologianCelestialOpposition.Checked;
+            ShinraEx.Settings.AstrologianCelestialOpposition = AstrologianCelestialOpposition.Checked;
         }
 
         #endregion
@@ -1408,82 +1409,82 @@ namespace ShinraCo.Settings.Forms
 
         private void AstrologianPartyHeal_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianPartyHeal = AstrologianPartyHeal.Checked;
+            ShinraEx.Settings.AstrologianPartyHeal = AstrologianPartyHeal.Checked;
         }
 
         private void AstrologianInterruptDamage_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianInterruptDamage = AstrologianInterruptDamage.Checked;
+            ShinraEx.Settings.AstrologianInterruptDamage = AstrologianInterruptDamage.Checked;
         }
 
         private void AstrologianInterruptOverheal_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianInterruptOverheal = AstrologianInterruptOverheal.Checked;
+            ShinraEx.Settings.AstrologianInterruptOverheal = AstrologianInterruptOverheal.Checked;
         }
 
         private void AstrologianBenefic_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianBenefic = AstrologianBenefic.Checked;
+            ShinraEx.Settings.AstrologianBenefic = AstrologianBenefic.Checked;
         }
 
         private void AstrologianBeneficII_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianBeneficII = AstrologianBeneficII.Checked;
+            ShinraEx.Settings.AstrologianBeneficII = AstrologianBeneficII.Checked;
         }
 
         private void AstrologianEssDignity_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianEssDignity = AstrologianEssDignity.Checked;
+            ShinraEx.Settings.AstrologianEssDignity = AstrologianEssDignity.Checked;
         }
 
         private void AstrologianAspBenefic_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianAspBenefic = AstrologianAspBenefic.Checked;
+            ShinraEx.Settings.AstrologianAspBenefic = AstrologianAspBenefic.Checked;
         }
 
         private void AstrologianHelios_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianHelios = AstrologianHelios.Checked;
+            ShinraEx.Settings.AstrologianHelios = AstrologianHelios.Checked;
         }
 
         private void AstrologianAspHelios_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianAspHelios = AstrologianAspHelios.Checked;
+            ShinraEx.Settings.AstrologianAspHelios = AstrologianAspHelios.Checked;
         }
 
         private void AstrologianAscend_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianAscend = AstrologianAscend.Checked;
+            ShinraEx.Settings.AstrologianAscend = AstrologianAscend.Checked;
         }
 
         private void AstrologianBeneficPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianBeneficPct = Convert.ToInt32(AstrologianBeneficPct.Value);
+            ShinraEx.Settings.AstrologianBeneficPct = Convert.ToInt32(AstrologianBeneficPct.Value);
         }
 
         private void AstrologianBeneficIIPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianBeneficIIPct = Convert.ToInt32(AstrologianBeneficIIPct.Value);
+            ShinraEx.Settings.AstrologianBeneficIIPct = Convert.ToInt32(AstrologianBeneficIIPct.Value);
         }
 
         private void AstrologianEssDignityPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianEssDignityPct = Convert.ToInt32(AstrologianEssDignityPct.Value);
+            ShinraEx.Settings.AstrologianEssDignityPct = Convert.ToInt32(AstrologianEssDignityPct.Value);
         }
 
         private void AstrologianAspBeneficPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianAspBeneficPct = Convert.ToInt32(AstrologianAspBeneficPct.Value);
+            ShinraEx.Settings.AstrologianAspBeneficPct = Convert.ToInt32(AstrologianAspBeneficPct.Value);
         }
 
         private void AstrologianHeliosPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianHeliosPct = Convert.ToInt32(AstrologianHeliosPct.Value);
+            ShinraEx.Settings.AstrologianHeliosPct = Convert.ToInt32(AstrologianHeliosPct.Value);
         }
 
         private void AstrologianAspHeliosPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianAspHeliosPct = Convert.ToInt32(AstrologianAspHeliosPct.Value);
+            ShinraEx.Settings.AstrologianAspHeliosPct = Convert.ToInt32(AstrologianAspHeliosPct.Value);
         }
 
         #endregion
@@ -1492,17 +1493,17 @@ namespace ShinraCo.Settings.Forms
 
         private void AstrologianDraw_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianDraw = AstrologianDraw.Checked;
+            ShinraEx.Settings.AstrologianDraw = AstrologianDraw.Checked;
         }
 
         private void AstrologianSleeveDraw_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianSleeveDraw = AstrologianSleeveDraw.Checked;
+            ShinraEx.Settings.AstrologianSleeveDraw = AstrologianSleeveDraw.Checked;
         }
 
         private void AstrologianCardPreCombat_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianCardPreCombat = AstrologianCardPreCombat.Checked;
+            ShinraEx.Settings.AstrologianCardPreCombat = AstrologianCardPreCombat.Checked;
         }
 
         #endregion
@@ -1511,9 +1512,9 @@ namespace ShinraCo.Settings.Forms
 
         private void AstrologianSect_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (AstrologianSect.Text == @"None") Shinra.Settings.AstrologianSect = AstrologianSects.None;
-            if (AstrologianSect.Text == @"Diurnal") Shinra.Settings.AstrologianSect = AstrologianSects.Diurnal;
-            if (AstrologianSect.Text == @"Nocturnal") Shinra.Settings.AstrologianSect = AstrologianSects.Nocturnal;
+            if (AstrologianSect.Text == @"None") ShinraEx.Settings.AstrologianSect = AstrologianSects.None;
+            if (AstrologianSect.Text == @"Diurnal") ShinraEx.Settings.AstrologianSect = AstrologianSects.Diurnal;
+            if (AstrologianSect.Text == @"Nocturnal") ShinraEx.Settings.AstrologianSect = AstrologianSects.Nocturnal;
         }
 
         #endregion
@@ -1522,7 +1523,7 @@ namespace ShinraCo.Settings.Forms
 
         private void AstrologianCardOnly_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.AstrologianCardOnly = AstrologianCardOnly.Checked;
+            ShinraEx.Settings.AstrologianCardOnly = AstrologianCardOnly.Checked;
         }
 
         #endregion
@@ -1535,57 +1536,57 @@ namespace ShinraCo.Settings.Forms
 
         private void BardSecondWind_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardSecondWind = BardSecondWind.Checked;
+            ShinraEx.Settings.BardSecondWind = BardSecondWind.Checked;
         }
 
         private void BardPeloton_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardPeloton = BardPeloton.Checked;
+            ShinraEx.Settings.BardPeloton = BardPeloton.Checked;
         }
 
         private void BardInvigorate_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardInvigorate = BardInvigorate.Checked;
+            ShinraEx.Settings.BardInvigorate = BardInvigorate.Checked;
         }
 
         private void BardTactician_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardTactician = BardTactician.Checked;
+            ShinraEx.Settings.BardTactician = BardTactician.Checked;
         }
 
         private void BardRefresh_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardRefresh = BardRefresh.Checked;
+            ShinraEx.Settings.BardRefresh = BardRefresh.Checked;
         }
 
         private void BardPalisade_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardPalisade = BardPalisade.Checked;
+            ShinraEx.Settings.BardPalisade = BardPalisade.Checked;
         }
 
         private void BardSecondWindPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardSecondWindPct = Convert.ToInt32(BardSecondWindPct.Value);
+            ShinraEx.Settings.BardSecondWindPct = Convert.ToInt32(BardSecondWindPct.Value);
         }
 
         private void BardInvigoratePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardInvigoratePct = Convert.ToInt32(BardInvigoratePct.Value);
+            ShinraEx.Settings.BardInvigoratePct = Convert.ToInt32(BardInvigoratePct.Value);
         }
 
         private void BardTacticianPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardTacticianPct = Convert.ToInt32(BardTacticianPct.Value);
+            ShinraEx.Settings.BardTacticianPct = Convert.ToInt32(BardTacticianPct.Value);
         }
 
         private void BardRefreshPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardRefreshPct = Convert.ToInt32(BardRefreshPct.Value);
+            ShinraEx.Settings.BardRefreshPct = Convert.ToInt32(BardRefreshPct.Value);
         }
 
         private void BardPalisadePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardPalisadePct = Convert.ToInt32(BardPalisadePct.Value);
+            ShinraEx.Settings.BardPalisadePct = Convert.ToInt32(BardPalisadePct.Value);
         }
 
         #endregion
@@ -1594,12 +1595,12 @@ namespace ShinraCo.Settings.Forms
 
         private void BardPitchPerfect_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardPitchPerfect = BardPitchPerfect.Checked;
+            ShinraEx.Settings.BardPitchPerfect = BardPitchPerfect.Checked;
         }
 
         private void BardRepertoireCount_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardRepertoireCount = Convert.ToInt32(BardRepertoireCount.Value);
+            ShinraEx.Settings.BardRepertoireCount = Convert.ToInt32(BardRepertoireCount.Value);
         }
 
         #endregion
@@ -1608,17 +1609,17 @@ namespace ShinraCo.Settings.Forms
 
         private void BardUseDots_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardUseDots = BardUseDots.Checked;
+            ShinraEx.Settings.BardUseDots = BardUseDots.Checked;
         }
 
         private void BardUseDotsAoe_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardUseDotsAoe = BardUseDotsAoe.Checked;
+            ShinraEx.Settings.BardUseDotsAoe = BardUseDotsAoe.Checked;
         }
 
         private void BardDotSnapshot_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardDotSnapshot = BardDotSnapshot.Checked;
+            ShinraEx.Settings.BardDotSnapshot = BardDotSnapshot.Checked;
         }
 
         #endregion
@@ -1627,17 +1628,17 @@ namespace ShinraCo.Settings.Forms
 
         private void BardSongs_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardSongs = BardSongs.Checked;
+            ShinraEx.Settings.BardSongs = BardSongs.Checked;
         }
 
         private void BardEmpyrealArrow_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardEmpyrealArrow = BardEmpyrealArrow.Checked;
+            ShinraEx.Settings.BardEmpyrealArrow = BardEmpyrealArrow.Checked;
         }
 
         private void BardSidewinder_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardSidewinder = BardSidewinder.Checked;
+            ShinraEx.Settings.BardSidewinder = BardSidewinder.Checked;
         }
 
         #endregion
@@ -1646,27 +1647,27 @@ namespace ShinraCo.Settings.Forms
 
         private void BardRagingStrikes_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardRagingStrikes = BardRagingStrikes.Checked;
+            ShinraEx.Settings.BardRagingStrikes = BardRagingStrikes.Checked;
         }
 
         private void BardFoeRequiem_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardFoeRequiem = BardFoeRequiem.Checked;
+            ShinraEx.Settings.BardFoeRequiem = BardFoeRequiem.Checked;
         }
 
         private void BardFoeRequiemPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardFoeRequiemPct = Convert.ToInt32(BardFoeRequiemPct.Value);
+            ShinraEx.Settings.BardFoeRequiemPct = Convert.ToInt32(BardFoeRequiemPct.Value);
         }
 
         private void BardBarrage_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardBarrage = BardBarrage.Checked;
+            ShinraEx.Settings.BardBarrage = BardBarrage.Checked;
         }
 
         private void BardBattleVoice_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardBattleVoice = BardBattleVoice.Checked;
+            ShinraEx.Settings.BardBattleVoice = BardBattleVoice.Checked;
         }
 
         #endregion
@@ -1675,12 +1676,12 @@ namespace ShinraCo.Settings.Forms
 
         private void BardOpener_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardOpener = BardOpener.Checked;
+            ShinraEx.Settings.BardOpener = BardOpener.Checked;
         }
 
         private void BardPotion_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BardPotion = BardPotion.Checked;
+            ShinraEx.Settings.BardPotion = BardPotion.Checked;
         }
 
         #endregion
@@ -1693,27 +1694,27 @@ namespace ShinraCo.Settings.Forms
 
         private void BlackMageDrain_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BlackMageDrain = BlackMageDrain.Checked;
+            ShinraEx.Settings.BlackMageDrain = BlackMageDrain.Checked;
         }
 
         private void BlackMageLucidDreaming_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BlackMageLucidDreaming = BlackMageLucidDreaming.Checked;
+            ShinraEx.Settings.BlackMageLucidDreaming = BlackMageLucidDreaming.Checked;
         }
 
         private void BlackMageSwiftcast_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BlackMageSwiftcast = BlackMageSwiftcast.Checked;
+            ShinraEx.Settings.BlackMageSwiftcast = BlackMageSwiftcast.Checked;
         }
 
         private void BlackMageDrainPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BlackMageDrainPct = Convert.ToInt32(BlackMageDrainPct.Value);
+            ShinraEx.Settings.BlackMageDrainPct = Convert.ToInt32(BlackMageDrainPct.Value);
         }
 
         private void BlackMageLucidDreamingPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BlackMageLucidDreamingPct = Convert.ToInt32(BlackMageLucidDreamingPct.Value);
+            ShinraEx.Settings.BlackMageLucidDreamingPct = Convert.ToInt32(BlackMageLucidDreamingPct.Value);
         }
 
         #endregion
@@ -1722,7 +1723,7 @@ namespace ShinraCo.Settings.Forms
 
         private void BlackMageScathe_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BlackMageScathe = BlackMageScathe.Checked;
+            ShinraEx.Settings.BlackMageScathe = BlackMageScathe.Checked;
         }
 
         #endregion
@@ -1731,7 +1732,7 @@ namespace ShinraCo.Settings.Forms
 
         private void BlackMageThunder_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BlackMageThunder = BlackMageThunder.Checked;
+            ShinraEx.Settings.BlackMageThunder = BlackMageThunder.Checked;
         }
 
         #endregion
@@ -1740,27 +1741,27 @@ namespace ShinraCo.Settings.Forms
 
         private void BlackMageConvert_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BlackMageConvert = BlackMageConvert.Checked;
+            ShinraEx.Settings.BlackMageConvert = BlackMageConvert.Checked;
         }
 
         private void BlackMageLeyLines_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BlackMageLeyLines = BlackMageLeyLines.Checked;
+            ShinraEx.Settings.BlackMageLeyLines = BlackMageLeyLines.Checked;
         }
 
         private void BlackMageSharpcast_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BlackMageSharpcast = BlackMageSharpcast.Checked;
+            ShinraEx.Settings.BlackMageSharpcast = BlackMageSharpcast.Checked;
         }
 
         private void BlackMageEnochian_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BlackMageEnochian = BlackMageEnochian.Checked;
+            ShinraEx.Settings.BlackMageEnochian = BlackMageEnochian.Checked;
         }
 
         private void BlackMageTriplecast_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BlackMageTriplecast = BlackMageTriplecast.Checked;
+            ShinraEx.Settings.BlackMageTriplecast = BlackMageTriplecast.Checked;
         }
 
         #endregion
@@ -1769,12 +1770,12 @@ namespace ShinraCo.Settings.Forms
 
         private void BlackMageOpener_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BlackMageOpener = BlackMageOpener.Checked;
+            ShinraEx.Settings.BlackMageOpener = BlackMageOpener.Checked;
         }
 
         private void BlackMagePotion_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.BlackMagePotion = BlackMagePotion.Checked;
+            ShinraEx.Settings.BlackMagePotion = BlackMagePotion.Checked;
         }
 
         #endregion
@@ -1787,47 +1788,47 @@ namespace ShinraCo.Settings.Forms
 
         private void DarkKnightRampart_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightRampart = DarkKnightRampart.Checked;
+            ShinraEx.Settings.DarkKnightRampart = DarkKnightRampart.Checked;
         }
 
         private void DarkKnightConvalescence_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightConvalescence = DarkKnightConvalescence.Checked;
+            ShinraEx.Settings.DarkKnightConvalescence = DarkKnightConvalescence.Checked;
         }
 
         private void DarkKnightAnticipation_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightAnticipation = DarkKnightAnticipation.Checked;
+            ShinraEx.Settings.DarkKnightAnticipation = DarkKnightAnticipation.Checked;
         }
 
         private void DarkKnightReprisal_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightReprisal = DarkKnightReprisal.Checked;
+            ShinraEx.Settings.DarkKnightReprisal = DarkKnightReprisal.Checked;
         }
 
         private void DarkKnightAwareness_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightAwareness = DarkKnightAwareness.Checked;
+            ShinraEx.Settings.DarkKnightAwareness = DarkKnightAwareness.Checked;
         }
 
         private void DarkKnightRampartPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightRampartPct = Convert.ToInt32(DarkKnightRampartPct.Value);
+            ShinraEx.Settings.DarkKnightRampartPct = Convert.ToInt32(DarkKnightRampartPct.Value);
         }
 
         private void DarkKnightConvalescencePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightConvalescencePct = Convert.ToInt32(DarkKnightConvalescencePct.Value);
+            ShinraEx.Settings.DarkKnightConvalescencePct = Convert.ToInt32(DarkKnightConvalescencePct.Value);
         }
 
         private void DarkKnightAnticipationPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightAnticipationPct = Convert.ToInt32(DarkKnightAnticipationPct.Value);
+            ShinraEx.Settings.DarkKnightAnticipationPct = Convert.ToInt32(DarkKnightAnticipationPct.Value);
         }
 
         private void DarkKnightAwarenessPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightAwarenessPct = Convert.ToInt32(DarkKnightAwarenessPct.Value);
+            ShinraEx.Settings.DarkKnightAwarenessPct = Convert.ToInt32(DarkKnightAwarenessPct.Value);
         }
 
         #endregion
@@ -1836,7 +1837,7 @@ namespace ShinraCo.Settings.Forms
 
         private void DarkKnightBloodspiller_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightBloodspiller = DarkKnightBloodspiller.Checked;
+            ShinraEx.Settings.DarkKnightBloodspiller = DarkKnightBloodspiller.Checked;
         }
 
         #endregion
@@ -1845,7 +1846,7 @@ namespace ShinraCo.Settings.Forms
 
         private void DarkKnightQuietus_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightQuietus = DarkKnightQuietus.Checked;
+            ShinraEx.Settings.DarkKnightQuietus = DarkKnightQuietus.Checked;
         }
 
         #endregion
@@ -1854,17 +1855,17 @@ namespace ShinraCo.Settings.Forms
 
         private void DarkKnightSaltedEarth_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightSaltedEarth = DarkKnightSaltedEarth.Checked;
+            ShinraEx.Settings.DarkKnightSaltedEarth = DarkKnightSaltedEarth.Checked;
         }
 
         private void DarkKnightPlunge_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightPlunge = DarkKnightPlunge.Checked;
+            ShinraEx.Settings.DarkKnightPlunge = DarkKnightPlunge.Checked;
         }
 
         private void DarkKnightCarveAndSpit_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightCarveAndSpit = DarkKnightCarveAndSpit.Checked;
+            ShinraEx.Settings.DarkKnightCarveAndSpit = DarkKnightCarveAndSpit.Checked;
         }
 
         #endregion
@@ -1873,52 +1874,52 @@ namespace ShinraCo.Settings.Forms
 
         private void DarkKnightBloodWeapon_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightBloodWeapon = DarkKnightBloodWeapon.Checked;
+            ShinraEx.Settings.DarkKnightBloodWeapon = DarkKnightBloodWeapon.Checked;
         }
 
         private void DarkKnightBloodPrice_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightBloodPrice = DarkKnightBloodPrice.Checked;
+            ShinraEx.Settings.DarkKnightBloodPrice = DarkKnightBloodPrice.Checked;
         }
 
         private void DarkKnightShadowWall_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightShadowWall = DarkKnightShadowWall.Checked;
+            ShinraEx.Settings.DarkKnightShadowWall = DarkKnightShadowWall.Checked;
         }
 
         private void DarkKnightLivingDead_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightLivingDead = DarkKnightLivingDead.Checked;
+            ShinraEx.Settings.DarkKnightLivingDead = DarkKnightLivingDead.Checked;
         }
 
         private void DarkKnightDelirium_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightDelirium = DarkKnightDelirium.Checked;
+            ShinraEx.Settings.DarkKnightDelirium = DarkKnightDelirium.Checked;
         }
 
         private void DarkKnightBlackestNight_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightBlackestNight = DarkKnightBlackestNight.Checked;
+            ShinraEx.Settings.DarkKnightBlackestNight = DarkKnightBlackestNight.Checked;
         }
 
         private void DarkKnightBloodPricePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightBloodPricePct = Convert.ToInt32(DarkKnightBloodPricePct.Value);
+            ShinraEx.Settings.DarkKnightBloodPricePct = Convert.ToInt32(DarkKnightBloodPricePct.Value);
         }
 
         private void DarkKnightShadowWallPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightShadowWallPct = Convert.ToInt32(DarkKnightShadowWallPct.Value);
+            ShinraEx.Settings.DarkKnightShadowWallPct = Convert.ToInt32(DarkKnightShadowWallPct.Value);
         }
 
         private void DarkKnightLivingDeadPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightLivingDeadPct = Convert.ToInt32(DarkKnightLivingDeadPct.Value);
+            ShinraEx.Settings.DarkKnightLivingDeadPct = Convert.ToInt32(DarkKnightLivingDeadPct.Value);
         }
 
         private void DarkKnightBlackestNightPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightBlackestNightPct = Convert.ToInt32(DarkKnightBlackestNightPct.Value);
+            ShinraEx.Settings.DarkKnightBlackestNightPct = Convert.ToInt32(DarkKnightBlackestNightPct.Value);
         }
 
         #endregion
@@ -1927,27 +1928,27 @@ namespace ShinraCo.Settings.Forms
 
         private void DarkKnightSouleaterArts_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightSouleaterArts = DarkKnightSouleaterArts.Checked;
+            ShinraEx.Settings.DarkKnightSouleaterArts = DarkKnightSouleaterArts.Checked;
         }
 
         private void DarkKnightAbyssalArts_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightAbyssalArts = DarkKnightAbyssalArts.Checked;
+            ShinraEx.Settings.DarkKnightAbyssalArts = DarkKnightAbyssalArts.Checked;
         }
 
         private void DarkKnightCarveArts_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightCarveArts = DarkKnightCarveArts.Checked;
+            ShinraEx.Settings.DarkKnightCarveArts = DarkKnightCarveArts.Checked;
         }
 
         private void DarkKnightQuietusArts_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightQuietusArts = DarkKnightQuietusArts.Checked;
+            ShinraEx.Settings.DarkKnightQuietusArts = DarkKnightQuietusArts.Checked;
         }
 
         private void DarkKnightBloodspillerArts_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightBloodspillerArts = DarkKnightBloodspillerArts.Checked;
+            ShinraEx.Settings.DarkKnightBloodspillerArts = DarkKnightBloodspillerArts.Checked;
         }
 
         #endregion
@@ -1956,12 +1957,12 @@ namespace ShinraCo.Settings.Forms
 
         private void DarkKnightGrit_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightGrit = DarkKnightGrit.Checked;
+            ShinraEx.Settings.DarkKnightGrit = DarkKnightGrit.Checked;
         }
 
         private void DarkKnightDarkside_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightDarkside = DarkKnightDarkside.Checked;
+            ShinraEx.Settings.DarkKnightDarkside = DarkKnightDarkside.Checked;
         }
 
         #endregion
@@ -1970,17 +1971,17 @@ namespace ShinraCo.Settings.Forms
 
         private void DarkKnightOpener_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightOpener = DarkKnightOpener.Checked;
+            ShinraEx.Settings.DarkKnightOpener = DarkKnightOpener.Checked;
         }
 
         private void DarkKnightPotion_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightPotion = DarkKnightPotion.Checked;
+            ShinraEx.Settings.DarkKnightPotion = DarkKnightPotion.Checked;
         }
 
         private void DarkKnightOffTank_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DarkKnightOffTank = DarkKnightOffTank.Checked;
+            ShinraEx.Settings.DarkKnightOffTank = DarkKnightOffTank.Checked;
         }
 
         #endregion
@@ -1993,47 +1994,47 @@ namespace ShinraCo.Settings.Forms
 
         private void DragoonSecondWind_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonSecondWind = DragoonSecondWind.Checked;
+            ShinraEx.Settings.DragoonSecondWind = DragoonSecondWind.Checked;
         }
 
         private void DragoonInvigorate_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonInvigorate = DragoonInvigorate.Checked;
+            ShinraEx.Settings.DragoonInvigorate = DragoonInvigorate.Checked;
         }
 
         private void DragoonBloodbath_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonBloodbath = DragoonBloodbath.Checked;
+            ShinraEx.Settings.DragoonBloodbath = DragoonBloodbath.Checked;
         }
 
         private void DragoonGoad_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonGoad = DragoonGoad.Checked;
+            ShinraEx.Settings.DragoonGoad = DragoonGoad.Checked;
         }
 
         private void DragoonTrueNorth_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonTrueNorth = DragoonTrueNorth.Checked;
+            ShinraEx.Settings.DragoonTrueNorth = DragoonTrueNorth.Checked;
         }
 
         private void DragoonSecondWindPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonSecondWindPct = Convert.ToInt32(DragoonSecondWindPct.Value);
+            ShinraEx.Settings.DragoonSecondWindPct = Convert.ToInt32(DragoonSecondWindPct.Value);
         }
 
         private void DragoonInvigoratePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonInvigoratePct = Convert.ToInt32(DragoonInvigoratePct.Value);
+            ShinraEx.Settings.DragoonInvigoratePct = Convert.ToInt32(DragoonInvigoratePct.Value);
         }
 
         private void DragoonBloodbathPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonBloodbathPct = Convert.ToInt32(DragoonBloodbathPct.Value);
+            ShinraEx.Settings.DragoonBloodbathPct = Convert.ToInt32(DragoonBloodbathPct.Value);
         }
 
         private void DragoonGoadPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonGoadPct = Convert.ToInt32(DragoonGoadPct.Value);
+            ShinraEx.Settings.DragoonGoadPct = Convert.ToInt32(DragoonGoadPct.Value);
         }
 
         #endregion
@@ -2042,27 +2043,27 @@ namespace ShinraCo.Settings.Forms
 
         private void DragoonJump_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonJump = DragoonJump.Checked;
+            ShinraEx.Settings.DragoonJump = DragoonJump.Checked;
         }
 
         private void DragoonSpineshatter_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonSpineshatter = DragoonSpineshatter.Checked;
+            ShinraEx.Settings.DragoonSpineshatter = DragoonSpineshatter.Checked;
         }
 
         private void DragoonDragonfire_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonDragonfire = DragoonDragonfire.Checked;
+            ShinraEx.Settings.DragoonDragonfire = DragoonDragonfire.Checked;
         }
 
         private void DragoonGeirskogul_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonGeirskogul = DragoonGeirskogul.Checked;
+            ShinraEx.Settings.DragoonGeirskogul = DragoonGeirskogul.Checked;
         }
 
         private void DragoonMirage_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonMirage = DragoonMirage.Checked;
+            ShinraEx.Settings.DragoonMirage = DragoonMirage.Checked;
         }
 
         #endregion
@@ -2071,27 +2072,27 @@ namespace ShinraCo.Settings.Forms
 
         private void DragoonLifeSurge_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonLifeSurge = DragoonLifeSurge.Checked;
+            ShinraEx.Settings.DragoonLifeSurge = DragoonLifeSurge.Checked;
         }
 
         private void DragoonBloodForBlood_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonBloodForBlood = DragoonBloodForBlood.Checked;
+            ShinraEx.Settings.DragoonBloodForBlood = DragoonBloodForBlood.Checked;
         }
 
         private void DragoonBattleLitany_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonBattleLitany = DragoonBattleLitany.Checked;
+            ShinraEx.Settings.DragoonBattleLitany = DragoonBattleLitany.Checked;
         }
 
         private void DragoonBloodOfTheDragon_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonBloodOfTheDragon = DragoonBloodOfTheDragon.Checked;
+            ShinraEx.Settings.DragoonBloodOfTheDragon = DragoonBloodOfTheDragon.Checked;
         }
 
         private void DragoonDragonSight_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonDragonSight = DragoonDragonSight.Checked;
+            ShinraEx.Settings.DragoonDragonSight = DragoonDragonSight.Checked;
         }
 
         #endregion
@@ -2100,12 +2101,12 @@ namespace ShinraCo.Settings.Forms
 
         private void DragoonOpener_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonOpener = DragoonOpener.Checked;
+            ShinraEx.Settings.DragoonOpener = DragoonOpener.Checked;
         }
 
         private void DragoonPotion_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.DragoonPotion = DragoonPotion.Checked;
+            ShinraEx.Settings.DragoonPotion = DragoonPotion.Checked;
         }
 
         #endregion
@@ -2118,57 +2119,57 @@ namespace ShinraCo.Settings.Forms
 
         private void MachinistSecondWind_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistSecondWind = MachinistSecondWind.Checked;
+            ShinraEx.Settings.MachinistSecondWind = MachinistSecondWind.Checked;
         }
 
         private void MachinistPeloton_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistPeloton = MachinistPeloton.Checked;
+            ShinraEx.Settings.MachinistPeloton = MachinistPeloton.Checked;
         }
 
         private void MachinistInvigorate_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistInvigorate = MachinistInvigorate.Checked;
+            ShinraEx.Settings.MachinistInvigorate = MachinistInvigorate.Checked;
         }
 
         private void MachinistTactician_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistTactician = MachinistTactician.Checked;
+            ShinraEx.Settings.MachinistTactician = MachinistTactician.Checked;
         }
 
         private void MachinistRefresh_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistRefresh = MachinistRefresh.Checked;
+            ShinraEx.Settings.MachinistRefresh = MachinistRefresh.Checked;
         }
 
         private void MachinistPalisade_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistPalisade = MachinistPalisade.Checked;
+            ShinraEx.Settings.MachinistPalisade = MachinistPalisade.Checked;
         }
 
         private void MachinistSecondWindPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistSecondWindPct = Convert.ToInt32(MachinistSecondWindPct.Value);
+            ShinraEx.Settings.MachinistSecondWindPct = Convert.ToInt32(MachinistSecondWindPct.Value);
         }
 
         private void MachinistInvigoratePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistInvigoratePct = Convert.ToInt32(MachinistInvigoratePct.Value);
+            ShinraEx.Settings.MachinistInvigoratePct = Convert.ToInt32(MachinistInvigoratePct.Value);
         }
 
         private void MachinistTacticianPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistTacticianPct = Convert.ToInt32(MachinistTacticianPct.Value);
+            ShinraEx.Settings.MachinistTacticianPct = Convert.ToInt32(MachinistTacticianPct.Value);
         }
 
         private void MachinistRefreshPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistRefreshPct = Convert.ToInt32(MachinistRefreshPct.Value);
+            ShinraEx.Settings.MachinistRefreshPct = Convert.ToInt32(MachinistRefreshPct.Value);
         }
 
         private void MachinistPalisadePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistPalisadePct = Convert.ToInt32(MachinistPalisadePct.Value);
+            ShinraEx.Settings.MachinistPalisadePct = Convert.ToInt32(MachinistPalisadePct.Value);
         }
 
         #endregion
@@ -2177,27 +2178,27 @@ namespace ShinraCo.Settings.Forms
 
         private void MachinistWildfire_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistWildfire = MachinistWildfire.Checked;
+            ShinraEx.Settings.MachinistWildfire = MachinistWildfire.Checked;
         }
 
         private void MachinistRicochet_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistRicochet = MachinistRicochet.Checked;
+            ShinraEx.Settings.MachinistRicochet = MachinistRicochet.Checked;
         }
 
         private void MachinistCooldown_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistCooldown = MachinistCooldown.Checked;
+            ShinraEx.Settings.MachinistCooldown = MachinistCooldown.Checked;
         }
 
         private void MachinistFlamethrower_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistFlamethrower = MachinistFlamethrower.Checked;
+            ShinraEx.Settings.MachinistFlamethrower = MachinistFlamethrower.Checked;
         }
 
         private void MachinistWildfireHP_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistWildfireHP = Convert.ToInt32(MachinistWildfireHP.Value);
+            ShinraEx.Settings.MachinistWildfireHP = Convert.ToInt32(MachinistWildfireHP.Value);
         }
 
         #endregion
@@ -2206,42 +2207,42 @@ namespace ShinraCo.Settings.Forms
 
         private void MachinistReload_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistReload = MachinistReload.Checked;
+            ShinraEx.Settings.MachinistReload = MachinistReload.Checked;
         }
 
         private void MachinistReassemble_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistReassemble = MachinistReassemble.Checked;
+            ShinraEx.Settings.MachinistReassemble = MachinistReassemble.Checked;
         }
 
         private void MachinistRapidFire_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistRapidFire = MachinistRapidFire.Checked;
+            ShinraEx.Settings.MachinistRapidFire = MachinistRapidFire.Checked;
         }
 
         private void MachinistGaussBarrel_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistGaussBarrel = MachinistGaussBarrel.Checked;
+            ShinraEx.Settings.MachinistGaussBarrel = MachinistGaussBarrel.Checked;
         }
 
         private void MachinistHypercharge_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistHypercharge = MachinistHypercharge.Checked;
+            ShinraEx.Settings.MachinistHypercharge = MachinistHypercharge.Checked;
         }
 
         private void MachinistBarrelStabilizer_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistBarrelStabilizer = MachinistBarrelStabilizer.Checked;
+            ShinraEx.Settings.MachinistBarrelStabilizer = MachinistBarrelStabilizer.Checked;
         }
 
         private void MachinistRookOverdrive_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistRookOverdrive = MachinistRookOverdrive.Checked;
+            ShinraEx.Settings.MachinistRookOverdrive = MachinistRookOverdrive.Checked;
         }
 
         private void MachinistBishopOverdrive_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistBishopOverdrive = MachinistBishopOverdrive.Checked;
+            ShinraEx.Settings.MachinistBishopOverdrive = MachinistBishopOverdrive.Checked;
         }
 
         #endregion
@@ -2250,20 +2251,20 @@ namespace ShinraCo.Settings.Forms
 
         private void MachinistTurret_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (MachinistTurret.Text == @"None") Shinra.Settings.MachinistTurret = MachinistTurrets.None;
-            if (MachinistTurret.Text == @"Rook") Shinra.Settings.MachinistTurret = MachinistTurrets.Rook;
-            if (MachinistTurret.Text == @"Bishop") Shinra.Settings.MachinistTurret = MachinistTurrets.Bishop;
+            if (MachinistTurret.Text == @"None") ShinraEx.Settings.MachinistTurret = MachinistTurrets.None;
+            if (MachinistTurret.Text == @"Rook") ShinraEx.Settings.MachinistTurret = MachinistTurrets.Rook;
+            if (MachinistTurret.Text == @"Bishop") ShinraEx.Settings.MachinistTurret = MachinistTurrets.Bishop;
         }
 
         private void MachinistTurretHotkey_KeyDown(object sender, KeyEventArgs e)
         {
-            Shinra.Settings.MachinistTurretHotkey = MachinistTurretHotkey.Hotkey;
+            ShinraEx.Settings.MachinistTurretHotkey = MachinistTurretHotkey.Hotkey;
         }
 
         private void MachinistTurretLocation_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (MachinistTurretLocation.Text == @"Self") Shinra.Settings.MachinistTurretLocation = CastLocations.Self;
-            if (MachinistTurretLocation.Text == @"Target") Shinra.Settings.MachinistTurretLocation = CastLocations.Target;
+            if (MachinistTurretLocation.Text == @"Self") ShinraEx.Settings.MachinistTurretLocation = CastLocations.Self;
+            if (MachinistTurretLocation.Text == @"Target") ShinraEx.Settings.MachinistTurretLocation = CastLocations.Target;
         }
 
         #endregion
@@ -2272,22 +2273,22 @@ namespace ShinraCo.Settings.Forms
 
         private void MachinistOpener_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistOpener = MachinistOpener.Checked;
+            ShinraEx.Settings.MachinistOpener = MachinistOpener.Checked;
         }
 
         private void MachinistPotion_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistPotion = MachinistPotion.Checked;
+            ShinraEx.Settings.MachinistPotion = MachinistPotion.Checked;
         }
 
         private void MachinistSyncWildfire_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistSyncWildfire = MachinistSyncWildfire.Checked;
+            ShinraEx.Settings.MachinistSyncWildfire = MachinistSyncWildfire.Checked;
         }
 
         private void MachinistSyncOverheat_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MachinistSyncOverheat = MachinistSyncOverheat.Checked;
+            ShinraEx.Settings.MachinistSyncOverheat = MachinistSyncOverheat.Checked;
         }
 
         #endregion
@@ -2300,47 +2301,47 @@ namespace ShinraCo.Settings.Forms
 
         private void MonkSecondWind_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkSecondWind = MonkSecondWind.Checked;
+            ShinraEx.Settings.MonkSecondWind = MonkSecondWind.Checked;
         }
 
         private void MonkInvigorate_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkInvigorate = MonkInvigorate.Checked;
+            ShinraEx.Settings.MonkInvigorate = MonkInvigorate.Checked;
         }
 
         private void MonkBloodbath_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkBloodbath = MonkBloodbath.Checked;
+            ShinraEx.Settings.MonkBloodbath = MonkBloodbath.Checked;
         }
 
         private void MonkGoad_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkGoad = MonkGoad.Checked;
+            ShinraEx.Settings.MonkGoad = MonkGoad.Checked;
         }
 
         private void MonkTrueNorth_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkTrueNorth = MonkTrueNorth.Checked;
+            ShinraEx.Settings.MonkTrueNorth = MonkTrueNorth.Checked;
         }
 
         private void MonkSecondWindPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkSecondWindPct = Convert.ToInt32(MonkSecondWindPct.Value);
+            ShinraEx.Settings.MonkSecondWindPct = Convert.ToInt32(MonkSecondWindPct.Value);
         }
 
         private void MonkInvigoratePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkInvigoratePct = Convert.ToInt32(MonkInvigoratePct.Value);
+            ShinraEx.Settings.MonkInvigoratePct = Convert.ToInt32(MonkInvigoratePct.Value);
         }
 
         private void MonkBloodbathPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkBloodbathPct = Convert.ToInt32(MonkBloodbathPct.Value);
+            ShinraEx.Settings.MonkBloodbathPct = Convert.ToInt32(MonkBloodbathPct.Value);
         }
 
         private void MonkGoadPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkGoadPct = Convert.ToInt32(MonkGoadPct.Value);
+            ShinraEx.Settings.MonkGoadPct = Convert.ToInt32(MonkGoadPct.Value);
         }
 
         #endregion
@@ -2349,12 +2350,12 @@ namespace ShinraCo.Settings.Forms
 
         private void MonkDemolish_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkDemolish = MonkDemolish.Checked;
+            ShinraEx.Settings.MonkDemolish = MonkDemolish.Checked;
         }
 
         private void MonkDemolishHP_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkDemolishHP = Convert.ToInt32(MonkDemolishHP.Value);
+            ShinraEx.Settings.MonkDemolishHP = Convert.ToInt32(MonkDemolishHP.Value);
         }
 
         #endregion
@@ -2363,32 +2364,32 @@ namespace ShinraCo.Settings.Forms
 
         private void MonkShoulderTackle_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkShoulderTackle = MonkShoulderTackle.Checked;
+            ShinraEx.Settings.MonkShoulderTackle = MonkShoulderTackle.Checked;
         }
 
         private void MonkSteelPeak_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkSteelPeak = MonkSteelPeak.Checked;
+            ShinraEx.Settings.MonkSteelPeak = MonkSteelPeak.Checked;
         }
 
         private void MonkHowlingFist_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkHowlingFist = MonkHowlingFist.Checked;
+            ShinraEx.Settings.MonkHowlingFist = MonkHowlingFist.Checked;
         }
 
         private void MonkForbiddenChakra_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkForbiddenChakra = MonkForbiddenChakra.Checked;
+            ShinraEx.Settings.MonkForbiddenChakra = MonkForbiddenChakra.Checked;
         }
 
         private void MonkElixirField_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkElixirField = MonkElixirField.Checked;
+            ShinraEx.Settings.MonkElixirField = MonkElixirField.Checked;
         }
 
         private void MonkFireTackle_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkFireTackle = MonkFireTackle.Checked;
+            ShinraEx.Settings.MonkFireTackle = MonkFireTackle.Checked;
         }
 
         #endregion
@@ -2397,32 +2398,32 @@ namespace ShinraCo.Settings.Forms
 
         private void MonkInternalRelease_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkInternalRelease = MonkInternalRelease.Checked;
+            ShinraEx.Settings.MonkInternalRelease = MonkInternalRelease.Checked;
         }
 
         private void MonkPerfectBalance_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkPerfectBalance = MonkPerfectBalance.Checked;
+            ShinraEx.Settings.MonkPerfectBalance = MonkPerfectBalance.Checked;
         }
 
         private void MonkFormShift_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkFormShift = MonkFormShift.Checked;
+            ShinraEx.Settings.MonkFormShift = MonkFormShift.Checked;
         }
 
         private void MonkMeditation_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkMeditation = MonkMeditation.Checked;
+            ShinraEx.Settings.MonkMeditation = MonkMeditation.Checked;
         }
 
         private void MonkRiddleOfFire_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkRiddleOfFire = MonkRiddleOfFire.Checked;
+            ShinraEx.Settings.MonkRiddleOfFire = MonkRiddleOfFire.Checked;
         }
 
         private void MonkBrotherhood_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkBrotherhood = MonkBrotherhood.Checked;
+            ShinraEx.Settings.MonkBrotherhood = MonkBrotherhood.Checked;
         }
 
         #endregion
@@ -2431,10 +2432,10 @@ namespace ShinraCo.Settings.Forms
 
         private void MonkFist_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (MonkFist.Text == @"None") Shinra.Settings.MonkFist = MonkFists.None;
-            if (MonkFist.Text == @"Earth") Shinra.Settings.MonkFist = MonkFists.Earth;
-            if (MonkFist.Text == @"Wind") Shinra.Settings.MonkFist = MonkFists.Wind;
-            if (MonkFist.Text == @"Fire") Shinra.Settings.MonkFist = MonkFists.Fire;
+            if (MonkFist.Text == @"None") ShinraEx.Settings.MonkFist = MonkFists.None;
+            if (MonkFist.Text == @"Earth") ShinraEx.Settings.MonkFist = MonkFists.Earth;
+            if (MonkFist.Text == @"Wind") ShinraEx.Settings.MonkFist = MonkFists.Wind;
+            if (MonkFist.Text == @"Fire") ShinraEx.Settings.MonkFist = MonkFists.Fire;
         }
 
         #endregion
@@ -2443,12 +2444,12 @@ namespace ShinraCo.Settings.Forms
 
         private void MonkOpener_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkOpener = MonkOpener.Checked;
+            ShinraEx.Settings.MonkOpener = MonkOpener.Checked;
         }
 
         private void MonkPotion_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.MonkPotion = MonkPotion.Checked;
+            ShinraEx.Settings.MonkPotion = MonkPotion.Checked;
         }
 
         #endregion
@@ -2461,47 +2462,47 @@ namespace ShinraCo.Settings.Forms
 
         private void NinjaSecondWind_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaSecondWind = NinjaSecondWind.Checked;
+            ShinraEx.Settings.NinjaSecondWind = NinjaSecondWind.Checked;
         }
 
         private void NinjaInvigorate_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaInvigorate = NinjaInvigorate.Checked;
+            ShinraEx.Settings.NinjaInvigorate = NinjaInvigorate.Checked;
         }
 
         private void NinjaBloodbath_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaBloodbath = NinjaBloodbath.Checked;
+            ShinraEx.Settings.NinjaBloodbath = NinjaBloodbath.Checked;
         }
 
         private void NinjaGoad_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaGoad = NinjaGoad.Checked;
+            ShinraEx.Settings.NinjaGoad = NinjaGoad.Checked;
         }
 
         private void NinjaTrueNorth_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaTrueNorth = NinjaTrueNorth.Checked;
+            ShinraEx.Settings.NinjaTrueNorth = NinjaTrueNorth.Checked;
         }
 
         private void NinjaSecondWindPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaSecondWindPct = Convert.ToInt32(NinjaSecondWindPct.Value);
+            ShinraEx.Settings.NinjaSecondWindPct = Convert.ToInt32(NinjaSecondWindPct.Value);
         }
 
         private void NinjaInvigoratePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaInvigoratePct = Convert.ToInt32(NinjaInvigoratePct.Value);
+            ShinraEx.Settings.NinjaInvigoratePct = Convert.ToInt32(NinjaInvigoratePct.Value);
         }
 
         private void NinjaBloodbathPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaBloodbathPct = Convert.ToInt32(NinjaBloodbathPct.Value);
+            ShinraEx.Settings.NinjaBloodbathPct = Convert.ToInt32(NinjaBloodbathPct.Value);
         }
 
         private void NinjaGoadPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaGoadPct = Convert.ToInt32(NinjaGoadPct.Value);
+            ShinraEx.Settings.NinjaGoadPct = Convert.ToInt32(NinjaGoadPct.Value);
         }
 
         #endregion
@@ -2510,12 +2511,12 @@ namespace ShinraCo.Settings.Forms
 
         private void NinjaShadowFang_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaShadowFang = NinjaShadowFang.Checked;
+            ShinraEx.Settings.NinjaShadowFang = NinjaShadowFang.Checked;
         }
 
         private void NinjaShadowFangHP_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaShadowFangHP = Convert.ToInt32(NinjaShadowFangHP.Value);
+            ShinraEx.Settings.NinjaShadowFangHP = Convert.ToInt32(NinjaShadowFangHP.Value);
         }
 
         #endregion
@@ -2524,42 +2525,42 @@ namespace ShinraCo.Settings.Forms
 
         private void NinjaAssassinate_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaAssassinate = NinjaAssassinate.Checked;
+            ShinraEx.Settings.NinjaAssassinate = NinjaAssassinate.Checked;
         }
 
         private void NinjaMug_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaMug = NinjaMug.Checked;
+            ShinraEx.Settings.NinjaMug = NinjaMug.Checked;
         }
 
         private void NinjaTrickAttack_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaTrickAttack = NinjaTrickAttack.Checked;
+            ShinraEx.Settings.NinjaTrickAttack = NinjaTrickAttack.Checked;
         }
 
         private void NinjaJugulate_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaJugulate = NinjaJugulate.Checked;
+            ShinraEx.Settings.NinjaJugulate = NinjaJugulate.Checked;
         }
 
         private void NinjaShukuchi_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaShukuchi = NinjaShukuchi.Checked;
+            ShinraEx.Settings.NinjaShukuchi = NinjaShukuchi.Checked;
         }
 
         private void NinjaDreamWithin_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaDreamWithin = NinjaDreamWithin.Checked;
+            ShinraEx.Settings.NinjaDreamWithin = NinjaDreamWithin.Checked;
         }
 
         private void NinjaHellfrogMedium_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaHellfrogMedium = NinjaHellfrogMedium.Checked;
+            ShinraEx.Settings.NinjaHellfrogMedium = NinjaHellfrogMedium.Checked;
         }
 
         private void NinjaBhavacakra_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaBhavacakra = NinjaBhavacakra.Checked;
+            ShinraEx.Settings.NinjaBhavacakra = NinjaBhavacakra.Checked;
         }
 
         #endregion
@@ -2568,27 +2569,27 @@ namespace ShinraCo.Settings.Forms
 
         private void NinjaShadeShift_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaShadeShift = NinjaShadeShift.Checked;
+            ShinraEx.Settings.NinjaShadeShift = NinjaShadeShift.Checked;
         }
 
         private void NinjaKassatsu_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaKassatsu = NinjaKassatsu.Checked;
+            ShinraEx.Settings.NinjaKassatsu = NinjaKassatsu.Checked;
         }
 
         private void NinjaDuality_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaDuality = NinjaDuality.Checked;
+            ShinraEx.Settings.NinjaDuality = NinjaDuality.Checked;
         }
 
         private void NinjaTenChiJin_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaTenChiJin = NinjaTenChiJin.Checked;
+            ShinraEx.Settings.NinjaTenChiJin = NinjaTenChiJin.Checked;
         }
 
         private void NinjaShadeShiftPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaShadeShiftPct = Convert.ToInt32(NinjaShadeShiftPct.Value);
+            ShinraEx.Settings.NinjaShadeShiftPct = Convert.ToInt32(NinjaShadeShiftPct.Value);
         }
 
         #endregion
@@ -2597,32 +2598,32 @@ namespace ShinraCo.Settings.Forms
 
         private void NinjaFuma_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaFuma = NinjaFuma.Checked;
+            ShinraEx.Settings.NinjaFuma = NinjaFuma.Checked;
         }
 
         private void NinjaKaton_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaKaton = NinjaKaton.Checked;
+            ShinraEx.Settings.NinjaKaton = NinjaKaton.Checked;
         }
 
         private void NinjaRaiton_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaRaiton = NinjaRaiton.Checked;
+            ShinraEx.Settings.NinjaRaiton = NinjaRaiton.Checked;
         }
 
         private void NinjaHuton_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaHuton = NinjaHuton.Checked;
+            ShinraEx.Settings.NinjaHuton = NinjaHuton.Checked;
         }
 
         private void NinjaDoton_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaDoton = NinjaDoton.Checked;
+            ShinraEx.Settings.NinjaDoton = NinjaDoton.Checked;
         }
 
         private void NinjaSuiton_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaSuiton = NinjaSuiton.Checked;
+            ShinraEx.Settings.NinjaSuiton = NinjaSuiton.Checked;
         }
 
         #endregion
@@ -2631,12 +2632,12 @@ namespace ShinraCo.Settings.Forms
 
         private void NinjaOpener_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaOpener = NinjaOpener.Checked;
+            ShinraEx.Settings.NinjaOpener = NinjaOpener.Checked;
         }
 
         private void NinjaPotion_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.NinjaPotion = NinjaPotion.Checked;
+            ShinraEx.Settings.NinjaPotion = NinjaPotion.Checked;
         }
 
         #endregion
@@ -2649,47 +2650,47 @@ namespace ShinraCo.Settings.Forms
 
         private void PaladinRampart_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinRampart = PaladinRampart.Checked;
+            ShinraEx.Settings.PaladinRampart = PaladinRampart.Checked;
         }
 
         private void PaladinConvalescence_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinConvalescence = PaladinConvalescence.Checked;
+            ShinraEx.Settings.PaladinConvalescence = PaladinConvalescence.Checked;
         }
 
         private void PaladinAnticipation_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinAnticipation = PaladinAnticipation.Checked;
+            ShinraEx.Settings.PaladinAnticipation = PaladinAnticipation.Checked;
         }
 
         private void PaladinReprisal_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinReprisal = PaladinReprisal.Checked;
+            ShinraEx.Settings.PaladinReprisal = PaladinReprisal.Checked;
         }
 
         private void PaladinAwareness_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinAwareness = PaladinAwareness.Checked;
+            ShinraEx.Settings.PaladinAwareness = PaladinAwareness.Checked;
         }
 
         private void PaladinRampartPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinRampartPct = Convert.ToInt32(PaladinRampartPct.Value);
+            ShinraEx.Settings.PaladinRampartPct = Convert.ToInt32(PaladinRampartPct.Value);
         }
 
         private void PaladinConvalescencePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinConvalescencePct = Convert.ToInt32(PaladinConvalescencePct.Value);
+            ShinraEx.Settings.PaladinConvalescencePct = Convert.ToInt32(PaladinConvalescencePct.Value);
         }
 
         private void PaladinAnticipationPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinAnticipationPct = Convert.ToInt32(PaladinAnticipationPct.Value);
+            ShinraEx.Settings.PaladinAnticipationPct = Convert.ToInt32(PaladinAnticipationPct.Value);
         }
 
         private void PaladinAwarenessPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinAwarenessPct = Convert.ToInt32(PaladinAwarenessPct.Value);
+            ShinraEx.Settings.PaladinAwarenessPct = Convert.ToInt32(PaladinAwarenessPct.Value);
         }
 
         #endregion
@@ -2698,7 +2699,7 @@ namespace ShinraCo.Settings.Forms
 
         private void PaladinGoringBlade_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinGoringBlade = PaladinGoringBlade.Checked;
+            ShinraEx.Settings.PaladinGoringBlade = PaladinGoringBlade.Checked;
         }
 
         #endregion
@@ -2707,12 +2708,12 @@ namespace ShinraCo.Settings.Forms
 
         private void PaladinFlash_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinFlash = PaladinFlash.Checked;
+            ShinraEx.Settings.PaladinFlash = PaladinFlash.Checked;
         }
 
         private void PaladinTotalEclipse_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinTotalEclipse = PaladinTotalEclipse.Checked;
+            ShinraEx.Settings.PaladinTotalEclipse = PaladinTotalEclipse.Checked;
         }
 
         #endregion
@@ -2721,22 +2722,22 @@ namespace ShinraCo.Settings.Forms
 
         private void PaladinShieldSwipe_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinShieldSwipe = PaladinShieldSwipe.Checked;
+            ShinraEx.Settings.PaladinShieldSwipe = PaladinShieldSwipe.Checked;
         }
 
         private void PaladinSpiritsWithin_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinSpiritsWithin = PaladinSpiritsWithin.Checked;
+            ShinraEx.Settings.PaladinSpiritsWithin = PaladinSpiritsWithin.Checked;
         }
 
         private void PaladinCircleOfScorn_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinCircleOfScorn = PaladinCircleOfScorn.Checked;
+            ShinraEx.Settings.PaladinCircleOfScorn = PaladinCircleOfScorn.Checked;
         }
 
         private void PaladinRequiescat_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinRequiescat = PaladinRequiescat.Checked;
+            ShinraEx.Settings.PaladinRequiescat = PaladinRequiescat.Checked;
         }
 
         #endregion
@@ -2745,42 +2746,42 @@ namespace ShinraCo.Settings.Forms
 
         private void PaladinFightOrFlight_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinFightOrFlight = PaladinFightOrFlight.Checked;
+            ShinraEx.Settings.PaladinFightOrFlight = PaladinFightOrFlight.Checked;
         }
 
         private void PaladinBulwark_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinBulwark = PaladinBulwark.Checked;
+            ShinraEx.Settings.PaladinBulwark = PaladinBulwark.Checked;
         }
 
         private void PaladinSentinel_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinSentinel = PaladinSentinel.Checked;
+            ShinraEx.Settings.PaladinSentinel = PaladinSentinel.Checked;
         }
 
         private void PaladinHallowedGround_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinHallowedGround = PaladinHallowedGround.Checked;
+            ShinraEx.Settings.PaladinHallowedGround = PaladinHallowedGround.Checked;
         }
 
         private void PaladinSheltron_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinSheltron = PaladinSheltron.Checked;
+            ShinraEx.Settings.PaladinSheltron = PaladinSheltron.Checked;
         }
 
         private void PaladinBulwarkPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinBulwarkPct = Convert.ToInt32(PaladinBulwarkPct.Value);
+            ShinraEx.Settings.PaladinBulwarkPct = Convert.ToInt32(PaladinBulwarkPct.Value);
         }
 
         private void PaladinSentinelPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinSentinelPct = Convert.ToInt32(PaladinSentinelPct.Value);
+            ShinraEx.Settings.PaladinSentinelPct = Convert.ToInt32(PaladinSentinelPct.Value);
         }
 
         private void PaladinHallowedGroundPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinHallowedGroundPct = Convert.ToInt32(PaladinHallowedGroundPct.Value);
+            ShinraEx.Settings.PaladinHallowedGroundPct = Convert.ToInt32(PaladinHallowedGroundPct.Value);
         }
 
         #endregion
@@ -2789,12 +2790,12 @@ namespace ShinraCo.Settings.Forms
 
         private void PaladinClemency_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinClemency = PaladinClemency.Checked;
+            ShinraEx.Settings.PaladinClemency = PaladinClemency.Checked;
         }
 
         private void PaladinClemencyPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinClemencyPct = Convert.ToInt32(PaladinClemencyPct.Value);
+            ShinraEx.Settings.PaladinClemencyPct = Convert.ToInt32(PaladinClemencyPct.Value);
         }
 
         #endregion
@@ -2803,9 +2804,9 @@ namespace ShinraCo.Settings.Forms
 
         private void PaladinOath_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (PaladinOath.Text == @"None") Shinra.Settings.PaladinOath = PaladinOaths.None;
-            if (PaladinOath.Text == @"Shield") Shinra.Settings.PaladinOath = PaladinOaths.Shield;
-            if (PaladinOath.Text == @"Sword") Shinra.Settings.PaladinOath = PaladinOaths.Sword;
+            if (PaladinOath.Text == @"None") ShinraEx.Settings.PaladinOath = PaladinOaths.None;
+            if (PaladinOath.Text == @"Shield") ShinraEx.Settings.PaladinOath = PaladinOaths.Shield;
+            if (PaladinOath.Text == @"Sword") ShinraEx.Settings.PaladinOath = PaladinOaths.Sword;
         }
 
         #endregion
@@ -2814,12 +2815,12 @@ namespace ShinraCo.Settings.Forms
 
         private void PaladinOpener_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinOpener = PaladinOpener.Checked;
+            ShinraEx.Settings.PaladinOpener = PaladinOpener.Checked;
         }
 
         private void PaladinPotion_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.PaladinPotion = PaladinPotion.Checked;
+            ShinraEx.Settings.PaladinPotion = PaladinPotion.Checked;
         }
 
         #endregion
@@ -2832,27 +2833,27 @@ namespace ShinraCo.Settings.Forms
 
         private void RedMageDrain_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RedMageDrain = RedMageDrain.Checked;
+            ShinraEx.Settings.RedMageDrain = RedMageDrain.Checked;
         }
 
         private void RedMageLucidDreaming_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RedMageLucidDreaming = RedMageLucidDreaming.Checked;
+            ShinraEx.Settings.RedMageLucidDreaming = RedMageLucidDreaming.Checked;
         }
 
         private void RedMageSwiftcast_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RedMageSwiftcast = RedMageSwiftcast.Checked;
+            ShinraEx.Settings.RedMageSwiftcast = RedMageSwiftcast.Checked;
         }
 
         private void RedMageDrainPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RedMageDrainPct = Convert.ToInt32(RedMageDrainPct.Value);
+            ShinraEx.Settings.RedMageDrainPct = Convert.ToInt32(RedMageDrainPct.Value);
         }
 
         private void RedMageLucidDreamingPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RedMageLucidDreamingPct = Convert.ToInt32(RedMageLucidDreamingPct.Value);
+            ShinraEx.Settings.RedMageLucidDreamingPct = Convert.ToInt32(RedMageLucidDreamingPct.Value);
         }
 
         #endregion
@@ -2861,12 +2862,12 @@ namespace ShinraCo.Settings.Forms
 
         private void RedMageCorpsACorps_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RedMageCorpsACorps = RedMageCorpsACorps.Checked;
+            ShinraEx.Settings.RedMageCorpsACorps = RedMageCorpsACorps.Checked;
         }
 
         private void RedMageDisplacement_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RedMageDisplacement = RedMageDisplacement.Checked;
+            ShinraEx.Settings.RedMageDisplacement = RedMageDisplacement.Checked;
         }
 
         #endregion
@@ -2875,12 +2876,12 @@ namespace ShinraCo.Settings.Forms
 
         private void RedMageEmbolden_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RedMageEmbolden = RedMageEmbolden.Checked;
+            ShinraEx.Settings.RedMageEmbolden = RedMageEmbolden.Checked;
         }
 
         private void RedMageManafication_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RedMageManafication = RedMageManafication.Checked;
+            ShinraEx.Settings.RedMageManafication = RedMageManafication.Checked;
         }
 
         #endregion
@@ -2889,17 +2890,17 @@ namespace ShinraCo.Settings.Forms
 
         private void RedMageVercure_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RedMageVercure = RedMageVercure.Checked;
+            ShinraEx.Settings.RedMageVercure = RedMageVercure.Checked;
         }
 
         private void RedMageVerraise_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RedMageVerraise = RedMageVerraise.Checked;
+            ShinraEx.Settings.RedMageVerraise = RedMageVerraise.Checked;
         }
 
         private void RedMageVercurePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RedMageVercurePct = Convert.ToInt32(RedMageVercurePct.Value);
+            ShinraEx.Settings.RedMageVercurePct = Convert.ToInt32(RedMageVercurePct.Value);
         }
 
         #endregion
@@ -2908,12 +2909,12 @@ namespace ShinraCo.Settings.Forms
 
         private void RedMageOpener_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RedMageOpener = RedMageOpener.Checked;
+            ShinraEx.Settings.RedMageOpener = RedMageOpener.Checked;
         }
 
         private void RedMagePotion_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.RedMagePotion = RedMagePotion.Checked;
+            ShinraEx.Settings.RedMagePotion = RedMagePotion.Checked;
         }
 
         #endregion
@@ -2926,47 +2927,47 @@ namespace ShinraCo.Settings.Forms
 
         private void SamuraiSecondWind_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiSecondWind = SamuraiSecondWind.Checked;
+            ShinraEx.Settings.SamuraiSecondWind = SamuraiSecondWind.Checked;
         }
 
         private void SamuraiInvigorate_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiInvigorate = SamuraiInvigorate.Checked;
+            ShinraEx.Settings.SamuraiInvigorate = SamuraiInvigorate.Checked;
         }
 
         private void SamuraiBloodbath_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiBloodbath = SamuraiBloodbath.Checked;
+            ShinraEx.Settings.SamuraiBloodbath = SamuraiBloodbath.Checked;
         }
 
         private void SamuraiGoad_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiGoad = SamuraiGoad.Checked;
+            ShinraEx.Settings.SamuraiGoad = SamuraiGoad.Checked;
         }
 
         private void SamuraiTrueNorth_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiTrueNorth = SamuraiTrueNorth.Checked;
+            ShinraEx.Settings.SamuraiTrueNorth = SamuraiTrueNorth.Checked;
         }
 
         private void SamuraiSecondWindPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiSecondWindPct = Convert.ToInt32(SamuraiSecondWindPct.Value);
+            ShinraEx.Settings.SamuraiSecondWindPct = Convert.ToInt32(SamuraiSecondWindPct.Value);
         }
 
         private void SamuraiInvigoratePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiInvigoratePct = Convert.ToInt32(SamuraiInvigoratePct.Value);
+            ShinraEx.Settings.SamuraiInvigoratePct = Convert.ToInt32(SamuraiInvigoratePct.Value);
         }
 
         private void SamuraiBloodbathPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiBloodbathPct = Convert.ToInt32(SamuraiBloodbathPct.Value);
+            ShinraEx.Settings.SamuraiBloodbathPct = Convert.ToInt32(SamuraiBloodbathPct.Value);
         }
 
         private void SamuraiGoadPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiGoadPct = Convert.ToInt32(SamuraiGoadPct.Value);
+            ShinraEx.Settings.SamuraiGoadPct = Convert.ToInt32(SamuraiGoadPct.Value);
         }
 
         #endregion
@@ -2975,12 +2976,12 @@ namespace ShinraCo.Settings.Forms
 
         private void SamuraiMidare_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiMidare = SamuraiMidare.Checked;
+            ShinraEx.Settings.SamuraiMidare = SamuraiMidare.Checked;
         }
 
         private void SamuraiMidareHP_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiMidareHP = Convert.ToInt32(SamuraiMidareHP.Value);
+            ShinraEx.Settings.SamuraiMidareHP = Convert.ToInt32(SamuraiMidareHP.Value);
         }
 
         #endregion
@@ -2989,12 +2990,12 @@ namespace ShinraCo.Settings.Forms
 
         private void SamuraiHiganbana_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiHiganbana = SamuraiHiganbana.Checked;
+            ShinraEx.Settings.SamuraiHiganbana = SamuraiHiganbana.Checked;
         }
 
         private void SamuraiHiganbanaHP_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiHiganbanaHP = Convert.ToInt32(SamuraiHiganbanaHP.Value);
+            ShinraEx.Settings.SamuraiHiganbanaHP = Convert.ToInt32(SamuraiHiganbanaHP.Value);
         }
 
         #endregion
@@ -3003,12 +3004,12 @@ namespace ShinraCo.Settings.Forms
 
         private void SamuraiGyoten_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiGyoten = SamuraiGyoten.Checked;
+            ShinraEx.Settings.SamuraiGyoten = SamuraiGyoten.Checked;
         }
 
         private void SamuraiGuren_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiGuren = SamuraiGuren.Checked;
+            ShinraEx.Settings.SamuraiGuren = SamuraiGuren.Checked;
         }
 
         #endregion
@@ -3017,12 +3018,12 @@ namespace ShinraCo.Settings.Forms
 
         private void SamuraiMeikyo_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiMeikyo = SamuraiMeikyo.Checked;
+            ShinraEx.Settings.SamuraiMeikyo = SamuraiMeikyo.Checked;
         }
 
         private void SamuraiHagakure_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiHagakure = SamuraiHagakure.Checked;
+            ShinraEx.Settings.SamuraiHagakure = SamuraiHagakure.Checked;
         }
 
         #endregion
@@ -3031,12 +3032,12 @@ namespace ShinraCo.Settings.Forms
 
         private void SamuraiMerciful_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiMerciful = SamuraiMerciful.Checked;
+            ShinraEx.Settings.SamuraiMerciful = SamuraiMerciful.Checked;
         }
 
         private void SamuraiMercifulPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiMercifulPct = Convert.ToInt32(SamuraiMercifulPct.Value);
+            ShinraEx.Settings.SamuraiMercifulPct = Convert.ToInt32(SamuraiMercifulPct.Value);
         }
 
         #endregion
@@ -3045,12 +3046,12 @@ namespace ShinraCo.Settings.Forms
 
         private void SamuraiOpener_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiOpener = SamuraiOpener.Checked;
+            ShinraEx.Settings.SamuraiOpener = SamuraiOpener.Checked;
         }
 
         private void SamuraiPotion_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SamuraiPotion = SamuraiPotion.Checked;
+            ShinraEx.Settings.SamuraiPotion = SamuraiPotion.Checked;
         }
 
         #endregion
@@ -3063,57 +3064,57 @@ namespace ShinraCo.Settings.Forms
 
         private void ScholarClericStance_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarClericStance = ScholarClericStance.Checked;
+            ShinraEx.Settings.ScholarClericStance = ScholarClericStance.Checked;
         }
 
         private void ScholarProtect_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarProtect = ScholarProtect.Checked;
+            ShinraEx.Settings.ScholarProtect = ScholarProtect.Checked;
         }
 
         private void ScholarEsuna_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarEsuna = ScholarEsuna.Checked;
+            ShinraEx.Settings.ScholarEsuna = ScholarEsuna.Checked;
         }
 
         private void ScholarLucidDreaming_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarLucidDreaming = ScholarLucidDreaming.Checked;
+            ShinraEx.Settings.ScholarLucidDreaming = ScholarLucidDreaming.Checked;
         }
 
         private void ScholarLucidDreamingPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarLucidDreamingPct = Convert.ToInt32(ScholarLucidDreamingPct.Value);
+            ShinraEx.Settings.ScholarLucidDreamingPct = Convert.ToInt32(ScholarLucidDreamingPct.Value);
         }
 
         private void ScholarSwiftcast_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarSwiftcast = ScholarSwiftcast.Checked;
+            ShinraEx.Settings.ScholarSwiftcast = ScholarSwiftcast.Checked;
         }
 
         private void ScholarEyeForAnEye_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarEyeForAnEye = ScholarEyeForAnEye.Checked;
+            ShinraEx.Settings.ScholarEyeForAnEye = ScholarEyeForAnEye.Checked;
         }
 
         private void ScholarEyeForAnEyePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarEyeForAnEyePct = Convert.ToInt32(ScholarEyeForAnEyePct.Value);
+            ShinraEx.Settings.ScholarEyeForAnEyePct = Convert.ToInt32(ScholarEyeForAnEyePct.Value);
         }
 
         private void ScholarLargesse_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarLargesse = ScholarLargesse.Checked;
+            ShinraEx.Settings.ScholarLargesse = ScholarLargesse.Checked;
         }
 
         private void ScholarLargesseCount_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarLargesseCount = Convert.ToInt32(ScholarLargesseCount.Value);
+            ShinraEx.Settings.ScholarLargesseCount = Convert.ToInt32(ScholarLargesseCount.Value);
         }
 
         private void ScholarLargessePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarLargessePct = Convert.ToInt32(ScholarLargessePct.Value);
+            ShinraEx.Settings.ScholarLargessePct = Convert.ToInt32(ScholarLargessePct.Value);
         }
 
         #endregion
@@ -3122,22 +3123,22 @@ namespace ShinraCo.Settings.Forms
 
         private void ScholarStopDamage_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarStopDamage = ScholarStopDamage.Checked;
+            ShinraEx.Settings.ScholarStopDamage = ScholarStopDamage.Checked;
         }
 
         private void ScholarStopDots_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarStopDots = ScholarStopDots.Checked;
+            ShinraEx.Settings.ScholarStopDots = ScholarStopDots.Checked;
         }
 
         private void ScholarStopDamagePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarStopDamagePct = Convert.ToInt32(ScholarStopDamagePct.Value);
+            ShinraEx.Settings.ScholarStopDamagePct = Convert.ToInt32(ScholarStopDamagePct.Value);
         }
 
         private void ScholarStopDotsPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarStopDotsPct = Convert.ToInt32(ScholarStopDotsPct.Value);
+            ShinraEx.Settings.ScholarStopDotsPct = Convert.ToInt32(ScholarStopDotsPct.Value);
         }
 
         #endregion
@@ -3146,7 +3147,7 @@ namespace ShinraCo.Settings.Forms
 
         private void ScholarBane_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarBane = ScholarBane.Checked;
+            ShinraEx.Settings.ScholarBane = ScholarBane.Checked;
         }
 
         #endregion
@@ -3155,22 +3156,22 @@ namespace ShinraCo.Settings.Forms
 
         private void ScholarEnergyDrain_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarEnergyDrain = ScholarEnergyDrain.Checked;
+            ShinraEx.Settings.ScholarEnergyDrain = ScholarEnergyDrain.Checked;
         }
 
         private void ScholarEnergyDrainPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarEnergyDrainPct = Convert.ToInt32(ScholarEnergyDrainPct.Value);
+            ShinraEx.Settings.ScholarEnergyDrainPct = Convert.ToInt32(ScholarEnergyDrainPct.Value);
         }
 
         private void ScholarShadowFlare_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarShadowFlare = ScholarShadowFlare.Checked;
+            ShinraEx.Settings.ScholarShadowFlare = ScholarShadowFlare.Checked;
         }
 
         private void ScholarChainStrategem_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarChainStrategem = ScholarChainStrategem.Checked;
+            ShinraEx.Settings.ScholarChainStrategem = ScholarChainStrategem.Checked;
         }
 
         #endregion
@@ -3179,12 +3180,12 @@ namespace ShinraCo.Settings.Forms
 
         private void ScholarRouse_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarRouse = ScholarRouse.Checked;
+            ShinraEx.Settings.ScholarRouse = ScholarRouse.Checked;
         }
 
         private void ScholarEmergencyTactics_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarEmergencyTactics = ScholarEmergencyTactics.Checked;
+            ShinraEx.Settings.ScholarEmergencyTactics = ScholarEmergencyTactics.Checked;
         }
 
         #endregion
@@ -3193,92 +3194,92 @@ namespace ShinraCo.Settings.Forms
 
         private void ScholarPartyHeal_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarPartyHeal = ScholarPartyHeal.Checked;
+            ShinraEx.Settings.ScholarPartyHeal = ScholarPartyHeal.Checked;
         }
 
         private void ScholarInterruptDamage_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarInterruptDamage = ScholarInterruptDamage.Checked;
+            ShinraEx.Settings.ScholarInterruptDamage = ScholarInterruptDamage.Checked;
         }
 
         private void ScholarInterruptOverheal_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarInterruptOverheal = ScholarInterruptOverheal.Checked;
+            ShinraEx.Settings.ScholarInterruptOverheal = ScholarInterruptOverheal.Checked;
         }
 
         private void ScholarPhysick_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarPhysick = ScholarPhysick.Checked;
+            ShinraEx.Settings.ScholarPhysick = ScholarPhysick.Checked;
         }
 
         private void ScholarAdloquium_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarAdloquium = ScholarAdloquium.Checked;
+            ShinraEx.Settings.ScholarAdloquium = ScholarAdloquium.Checked;
         }
 
         private void ScholarAetherpact_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarAetherpact = ScholarAetherpact.Checked;
+            ShinraEx.Settings.ScholarAetherpact = ScholarAetherpact.Checked;
         }
 
         private void ScholarLustrate_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarLustrate = ScholarLustrate.Checked;
+            ShinraEx.Settings.ScholarLustrate = ScholarLustrate.Checked;
         }
 
         private void ScholarExcogitation_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarExcogitation = ScholarExcogitation.Checked;
+            ShinraEx.Settings.ScholarExcogitation = ScholarExcogitation.Checked;
         }
 
         private void ScholarSuccor_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarSuccor = ScholarSuccor.Checked;
+            ShinraEx.Settings.ScholarSuccor = ScholarSuccor.Checked;
         }
 
         private void ScholarIndomitability_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarIndomitability = ScholarIndomitability.Checked;
+            ShinraEx.Settings.ScholarIndomitability = ScholarIndomitability.Checked;
         }
 
         private void ScholarResurrection_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarResurrection = ScholarResurrection.Checked;
+            ShinraEx.Settings.ScholarResurrection = ScholarResurrection.Checked;
         }
 
         private void ScholarPhysickPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarPhysickPct = Convert.ToInt32(ScholarPhysickPct.Value);
+            ShinraEx.Settings.ScholarPhysickPct = Convert.ToInt32(ScholarPhysickPct.Value);
         }
 
         private void ScholarAdloquiumPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarAdloquiumPct = Convert.ToInt32(ScholarAdloquiumPct.Value);
+            ShinraEx.Settings.ScholarAdloquiumPct = Convert.ToInt32(ScholarAdloquiumPct.Value);
         }
 
         private void ScholarAetherpactPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarAetherpactPct = Convert.ToInt32(ScholarAetherpactPct.Value);
+            ShinraEx.Settings.ScholarAetherpactPct = Convert.ToInt32(ScholarAetherpactPct.Value);
         }
 
         private void ScholarLustratePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarLustratePct = Convert.ToInt32(ScholarLustratePct.Value);
+            ShinraEx.Settings.ScholarLustratePct = Convert.ToInt32(ScholarLustratePct.Value);
         }
 
         private void ScholarExcogitationPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarExcogitationPct = Convert.ToInt32(ScholarExcogitationPct.Value);
+            ShinraEx.Settings.ScholarExcogitationPct = Convert.ToInt32(ScholarExcogitationPct.Value);
         }
 
         private void ScholarSuccorPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarSuccorPct = Convert.ToInt32(ScholarSuccorPct.Value);
+            ShinraEx.Settings.ScholarSuccorPct = Convert.ToInt32(ScholarSuccorPct.Value);
         }
 
         private void ScholarIndomitabilityPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.ScholarIndomitabilityPct = Convert.ToInt32(ScholarIndomitabilityPct.Value);
+            ShinraEx.Settings.ScholarIndomitabilityPct = Convert.ToInt32(ScholarIndomitabilityPct.Value);
         }
 
         #endregion
@@ -3287,9 +3288,9 @@ namespace ShinraCo.Settings.Forms
 
         private void ScholarPet_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (ScholarPet.Text == @"None") Shinra.Settings.ScholarPet = ScholarPets.None;
-            if (ScholarPet.Text == @"Eos") Shinra.Settings.ScholarPet = ScholarPets.Eos;
-            if (ScholarPet.Text == @"Selene") Shinra.Settings.ScholarPet = ScholarPets.Selene;
+            if (ScholarPet.Text == @"None") ShinraEx.Settings.ScholarPet = ScholarPets.None;
+            if (ScholarPet.Text == @"Eos") ShinraEx.Settings.ScholarPet = ScholarPets.Eos;
+            if (ScholarPet.Text == @"Selene") ShinraEx.Settings.ScholarPet = ScholarPets.Selene;
         }
 
         #endregion
@@ -3302,32 +3303,32 @@ namespace ShinraCo.Settings.Forms
 
         private void SummonerAddle_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerAddle = SummonerAddle.Checked;
+            ShinraEx.Settings.SummonerAddle = SummonerAddle.Checked;
         }
 
         private void SummonerDrain_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerDrain = SummonerDrain.Checked;
+            ShinraEx.Settings.SummonerDrain = SummonerDrain.Checked;
         }
 
         private void SummonerLucidDreaming_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerLucidDreaming = SummonerLucidDreaming.Checked;
+            ShinraEx.Settings.SummonerLucidDreaming = SummonerLucidDreaming.Checked;
         }
 
         private void SummonerSwiftcast_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerSwiftcast = SummonerSwiftcast.Checked;
+            ShinraEx.Settings.SummonerSwiftcast = SummonerSwiftcast.Checked;
         }
 
         private void SummonerDrainPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerDrainPct = Convert.ToInt32(SummonerDrainPct.Value);
+            ShinraEx.Settings.SummonerDrainPct = Convert.ToInt32(SummonerDrainPct.Value);
         }
 
         private void SummonerLucidDreamingPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerLucidDreamingPct = Convert.ToInt32(SummonerLucidDreamingPct.Value);
+            ShinraEx.Settings.SummonerLucidDreamingPct = Convert.ToInt32(SummonerLucidDreamingPct.Value);
         }
 
         #endregion
@@ -3336,7 +3337,7 @@ namespace ShinraCo.Settings.Forms
 
         private void SummonerBane_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerBane = SummonerBane.Checked;
+            ShinraEx.Settings.SummonerBane = SummonerBane.Checked;
         }
 
         #endregion
@@ -3345,22 +3346,22 @@ namespace ShinraCo.Settings.Forms
 
         private void SummonerShadowFlare_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerShadowFlare = SummonerShadowFlare.Checked;
+            ShinraEx.Settings.SummonerShadowFlare = SummonerShadowFlare.Checked;
         }
 
         private void SummonerEnkindle_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerEnkindle = SummonerEnkindle.Checked;
+            ShinraEx.Settings.SummonerEnkindle = SummonerEnkindle.Checked;
         }
 
         private void SummonerTriDisaster_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerTriDisaster = SummonerTriDisaster.Checked;
+            ShinraEx.Settings.SummonerTriDisaster = SummonerTriDisaster.Checked;
         }
 
         private void SummonerEnkindleBahamut_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerEnkindleBahamut = SummonerEnkindleBahamut.Checked;
+            ShinraEx.Settings.SummonerEnkindleBahamut = SummonerEnkindleBahamut.Checked;
         }
 
         #endregion
@@ -3369,22 +3370,22 @@ namespace ShinraCo.Settings.Forms
 
         private void SummonerRouse_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerRouse = SummonerRouse.Checked;
+            ShinraEx.Settings.SummonerRouse = SummonerRouse.Checked;
         }
 
         private void SummonerDreadwyrmTrance_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerDreadwyrmTrance = SummonerDreadwyrmTrance.Checked;
+            ShinraEx.Settings.SummonerDreadwyrmTrance = SummonerDreadwyrmTrance.Checked;
         }
 
         private void SummonerAetherpact_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerAetherpact = SummonerAetherpact.Checked;
+            ShinraEx.Settings.SummonerAetherpact = SummonerAetherpact.Checked;
         }
 
         private void SummonerSummonBahamut_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerSummonBahamut = SummonerSummonBahamut.Checked;
+            ShinraEx.Settings.SummonerSummonBahamut = SummonerSummonBahamut.Checked;
         }
 
         #endregion
@@ -3393,27 +3394,27 @@ namespace ShinraCo.Settings.Forms
 
         private void SummonerPhysick_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerPhysick = SummonerPhysick.Checked;
+            ShinraEx.Settings.SummonerPhysick = SummonerPhysick.Checked;
         }
 
         private void SummonerSustain_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerSustain = SummonerSustain.Checked;
+            ShinraEx.Settings.SummonerSustain = SummonerSustain.Checked;
         }
 
         private void SummonerResurrection_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerResurrection = SummonerResurrection.Checked;
+            ShinraEx.Settings.SummonerResurrection = SummonerResurrection.Checked;
         }
 
         private void SummonerPhysickPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerPhysickPct = Convert.ToInt32(SummonerPhysickPct.Value);
+            ShinraEx.Settings.SummonerPhysickPct = Convert.ToInt32(SummonerPhysickPct.Value);
         }
 
         private void SummonerSustainPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerSustainPct = Convert.ToInt32(SummonerSustainPct.Value);
+            ShinraEx.Settings.SummonerSustainPct = Convert.ToInt32(SummonerSustainPct.Value);
         }
 
         #endregion
@@ -3422,10 +3423,10 @@ namespace ShinraCo.Settings.Forms
 
         private void SummonerPet_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (SummonerPet.Text == @"None") Shinra.Settings.SummonerPet = SummonerPets.None;
-            if (SummonerPet.Text == @"Garuda") Shinra.Settings.SummonerPet = SummonerPets.Garuda;
-            if (SummonerPet.Text == @"Titan") Shinra.Settings.SummonerPet = SummonerPets.Titan;
-            if (SummonerPet.Text == @"Ifrit") Shinra.Settings.SummonerPet = SummonerPets.Ifrit;
+            if (SummonerPet.Text == @"None") ShinraEx.Settings.SummonerPet = SummonerPets.None;
+            if (SummonerPet.Text == @"Garuda") ShinraEx.Settings.SummonerPet = SummonerPets.Garuda;
+            if (SummonerPet.Text == @"Titan") ShinraEx.Settings.SummonerPet = SummonerPets.Titan;
+            if (SummonerPet.Text == @"Ifrit") ShinraEx.Settings.SummonerPet = SummonerPets.Ifrit;
         }
 
         #endregion
@@ -3434,17 +3435,17 @@ namespace ShinraCo.Settings.Forms
 
         private void SummonerOpener_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerOpener = SummonerOpener.Checked;
+            ShinraEx.Settings.SummonerOpener = SummonerOpener.Checked;
         }
 
         private void SummonerPotion_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerPotion = SummonerPotion.Checked;
+            ShinraEx.Settings.SummonerPotion = SummonerPotion.Checked;
         }
 
         private void SummonerOpenerGaruda_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.SummonerOpenerGaruda = SummonerOpenerGaruda.Checked;
+            ShinraEx.Settings.SummonerOpenerGaruda = SummonerOpenerGaruda.Checked;
         }
 
         #endregion
@@ -3457,47 +3458,47 @@ namespace ShinraCo.Settings.Forms
 
         private void WarriorRampart_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorRampart = WarriorRampart.Checked;
+            ShinraEx.Settings.WarriorRampart = WarriorRampart.Checked;
         }
 
         private void WarriorConvalescence_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorConvalescence = WarriorConvalescence.Checked;
+            ShinraEx.Settings.WarriorConvalescence = WarriorConvalescence.Checked;
         }
 
         private void WarriorAnticipation_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorAnticipation = WarriorAnticipation.Checked;
+            ShinraEx.Settings.WarriorAnticipation = WarriorAnticipation.Checked;
         }
 
         private void WarriorReprisal_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorReprisal = WarriorReprisal.Checked;
+            ShinraEx.Settings.WarriorReprisal = WarriorReprisal.Checked;
         }
 
         private void WarriorAwareness_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorAwareness = WarriorAwareness.Checked;
+            ShinraEx.Settings.WarriorAwareness = WarriorAwareness.Checked;
         }
 
         private void WarriorRampartPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorRampartPct = Convert.ToInt32(WarriorRampartPct.Value);
+            ShinraEx.Settings.WarriorRampartPct = Convert.ToInt32(WarriorRampartPct.Value);
         }
 
         private void WarriorConvalescencePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorConvalescencePct = Convert.ToInt32(WarriorConvalescencePct.Value);
+            ShinraEx.Settings.WarriorConvalescencePct = Convert.ToInt32(WarriorConvalescencePct.Value);
         }
 
         private void WarriorAnticipationPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorAnticipationPct = Convert.ToInt32(WarriorAnticipationPct.Value);
+            ShinraEx.Settings.WarriorAnticipationPct = Convert.ToInt32(WarriorAnticipationPct.Value);
         }
 
         private void WarriorAwarenessPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorAwarenessPct = Convert.ToInt32(WarriorAwarenessPct.Value);
+            ShinraEx.Settings.WarriorAwarenessPct = Convert.ToInt32(WarriorAwarenessPct.Value);
         }
 
         #endregion
@@ -3506,22 +3507,22 @@ namespace ShinraCo.Settings.Forms
 
         private void WarriorMaim_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorMaim = WarriorMaim.Checked;
+            ShinraEx.Settings.WarriorMaim = WarriorMaim.Checked;
         }
 
         private void WarriorStormsEye_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorStormsEye = WarriorStormsEye.Checked;
+            ShinraEx.Settings.WarriorStormsEye = WarriorStormsEye.Checked;
         }
 
         private void WarriorInnerBeast_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorInnerBeast = WarriorInnerBeast.Checked;
+            ShinraEx.Settings.WarriorInnerBeast = WarriorInnerBeast.Checked;
         }
 
         private void WarriorFellCleave_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorFellCleave = WarriorFellCleave.Checked;
+            ShinraEx.Settings.WarriorFellCleave = WarriorFellCleave.Checked;
         }
 
         #endregion
@@ -3530,17 +3531,17 @@ namespace ShinraCo.Settings.Forms
 
         private void WarriorOverpower_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorOverpower = WarriorOverpower.Checked;
+            ShinraEx.Settings.WarriorOverpower = WarriorOverpower.Checked;
         }
 
         private void WarriorSteelCyclone_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorSteelCyclone = WarriorSteelCyclone.Checked;
+            ShinraEx.Settings.WarriorSteelCyclone = WarriorSteelCyclone.Checked;
         }
 
         private void WarriorDecimate_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorDecimate = WarriorDecimate.Checked;
+            ShinraEx.Settings.WarriorDecimate = WarriorDecimate.Checked;
         }
 
         #endregion
@@ -3549,12 +3550,12 @@ namespace ShinraCo.Settings.Forms
 
         private void WarriorOnslaught_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorOnslaught = WarriorOnslaught.Checked;
+            ShinraEx.Settings.WarriorOnslaught = WarriorOnslaught.Checked;
         }
 
         private void WarriorUpheaval_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorUpheaval = WarriorUpheaval.Checked;
+            ShinraEx.Settings.WarriorUpheaval = WarriorUpheaval.Checked;
         }
 
         #endregion
@@ -3563,57 +3564,57 @@ namespace ShinraCo.Settings.Forms
 
         private void WarriorBerserk_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorBerserk = WarriorBerserk.Checked;
+            ShinraEx.Settings.WarriorBerserk = WarriorBerserk.Checked;
         }
 
         private void WarriorThrillOfBattle_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorThrillOfBattle = WarriorThrillOfBattle.Checked;
+            ShinraEx.Settings.WarriorThrillOfBattle = WarriorThrillOfBattle.Checked;
         }
 
         private void WarriorUnchained_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorUnchained = WarriorUnchained.Checked;
+            ShinraEx.Settings.WarriorUnchained = WarriorUnchained.Checked;
         }
 
         private void WarriorVengeance_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorVengeance = WarriorVengeance.Checked;
+            ShinraEx.Settings.WarriorVengeance = WarriorVengeance.Checked;
         }
 
         private void WarriorInfuriate_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorInfuriate = WarriorInfuriate.Checked;
+            ShinraEx.Settings.WarriorInfuriate = WarriorInfuriate.Checked;
         }
 
         private void WarriorEquilibriumTP_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorEquilibriumTP = WarriorEquilibriumTP.Checked;
+            ShinraEx.Settings.WarriorEquilibriumTP = WarriorEquilibriumTP.Checked;
         }
 
         private void WarriorShakeItOff_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorShakeItOff = WarriorShakeItOff.Checked;
+            ShinraEx.Settings.WarriorShakeItOff = WarriorShakeItOff.Checked;
         }
 
         private void WarriorInnerRelease_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorInnerRelease = WarriorInnerRelease.Checked;
+            ShinraEx.Settings.WarriorInnerRelease = WarriorInnerRelease.Checked;
         }
 
         private void WarriorThrillOfBattlePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorThrillOfBattlePct = Convert.ToInt32(WarriorThrillOfBattlePct.Value);
+            ShinraEx.Settings.WarriorThrillOfBattlePct = Convert.ToInt32(WarriorThrillOfBattlePct.Value);
         }
 
         private void WarriorVengeancePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorVengeancePct = Convert.ToInt32(WarriorVengeancePct.Value);
+            ShinraEx.Settings.WarriorVengeancePct = Convert.ToInt32(WarriorVengeancePct.Value);
         }
 
         private void WarriorEquilibriumTPPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorEquilibriumTPPct = Convert.ToInt32(WarriorEquilibriumTPPct.Value);
+            ShinraEx.Settings.WarriorEquilibriumTPPct = Convert.ToInt32(WarriorEquilibriumTPPct.Value);
         }
 
         #endregion
@@ -3622,12 +3623,12 @@ namespace ShinraCo.Settings.Forms
 
         private void WarriorEquilibrium_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorEquilibrium = WarriorEquilibrium.Checked;
+            ShinraEx.Settings.WarriorEquilibrium = WarriorEquilibrium.Checked;
         }
 
         private void WarriorEquilibriumPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorEquilibriumPct = Convert.ToInt32(WarriorEquilibriumPct.Value);
+            ShinraEx.Settings.WarriorEquilibriumPct = Convert.ToInt32(WarriorEquilibriumPct.Value);
         }
 
         #endregion
@@ -3636,9 +3637,9 @@ namespace ShinraCo.Settings.Forms
 
         private void WarriorStance_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (WarriorStance.Text == @"None") Shinra.Settings.WarriorStance = WarriorStances.None;
-            if (WarriorStance.Text == @"Defiance") Shinra.Settings.WarriorStance = WarriorStances.Defiance;
-            if (WarriorStance.Text == @"Deliverance") Shinra.Settings.WarriorStance = WarriorStances.Deliverance;
+            if (WarriorStance.Text == @"None") ShinraEx.Settings.WarriorStance = WarriorStances.None;
+            if (WarriorStance.Text == @"Defiance") ShinraEx.Settings.WarriorStance = WarriorStances.Defiance;
+            if (WarriorStance.Text == @"Deliverance") ShinraEx.Settings.WarriorStance = WarriorStances.Deliverance;
         }
 
         #endregion
@@ -3647,12 +3648,12 @@ namespace ShinraCo.Settings.Forms
 
         private void WarriorOpener_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorOpener = WarriorOpener.Checked;
+            ShinraEx.Settings.WarriorOpener = WarriorOpener.Checked;
         }
 
         private void WarriorPotion_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WarriorPotion = WarriorPotion.Checked;
+            ShinraEx.Settings.WarriorPotion = WarriorPotion.Checked;
         }
 
         #endregion
@@ -3665,57 +3666,57 @@ namespace ShinraCo.Settings.Forms
 
         private void WhiteMageClericStance_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageClericStance = WhiteMageClericStance.Checked;
+            ShinraEx.Settings.WhiteMageClericStance = WhiteMageClericStance.Checked;
         }
 
         private void WhiteMageProtect_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageProtect = WhiteMageProtect.Checked;
+            ShinraEx.Settings.WhiteMageProtect = WhiteMageProtect.Checked;
         }
 
         private void WhiteMageEsuna_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageEsuna = WhiteMageEsuna.Checked;
+            ShinraEx.Settings.WhiteMageEsuna = WhiteMageEsuna.Checked;
         }
 
         private void WhiteMageLucidDreaming_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageLucidDreaming = WhiteMageLucidDreaming.Checked;
+            ShinraEx.Settings.WhiteMageLucidDreaming = WhiteMageLucidDreaming.Checked;
         }
 
         private void WhiteMageLucidDreamingPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageLucidDreamingPct = Convert.ToInt32(WhiteMageLucidDreamingPct.Value);
+            ShinraEx.Settings.WhiteMageLucidDreamingPct = Convert.ToInt32(WhiteMageLucidDreamingPct.Value);
         }
 
         private void WhiteMageSwiftcast_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageSwiftcast = WhiteMageSwiftcast.Checked;
+            ShinraEx.Settings.WhiteMageSwiftcast = WhiteMageSwiftcast.Checked;
         }
 
         private void WhiteMageEyeForAnEye_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageEyeForAnEye = WhiteMageEyeForAnEye.Checked;
+            ShinraEx.Settings.WhiteMageEyeForAnEye = WhiteMageEyeForAnEye.Checked;
         }
 
         private void WhiteMageEyeForAnEyePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageEyeForAnEyePct = Convert.ToInt32(WhiteMageEyeForAnEyePct.Value);
+            ShinraEx.Settings.WhiteMageEyeForAnEyePct = Convert.ToInt32(WhiteMageEyeForAnEyePct.Value);
         }
 
         private void WhiteMageLargesse_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageLargesse = WhiteMageLargesse.Checked;
+            ShinraEx.Settings.WhiteMageLargesse = WhiteMageLargesse.Checked;
         }
 
         private void WhiteMageLargesseCount_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageLargesseCount = Convert.ToInt32(WhiteMageLargesseCount.Value);
+            ShinraEx.Settings.WhiteMageLargesseCount = Convert.ToInt32(WhiteMageLargesseCount.Value);
         }
 
         private void WhiteMageLargessePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageLargessePct = Convert.ToInt32(WhiteMageLargessePct.Value);
+            ShinraEx.Settings.WhiteMageLargessePct = Convert.ToInt32(WhiteMageLargessePct.Value);
         }
 
         #endregion
@@ -3724,22 +3725,22 @@ namespace ShinraCo.Settings.Forms
 
         private void WhiteMageStopDamage_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageStopDamage = WhiteMageStopDamage.Checked;
+            ShinraEx.Settings.WhiteMageStopDamage = WhiteMageStopDamage.Checked;
         }
 
         private void WhiteMageStopDots_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageStopDots = WhiteMageStopDots.Checked;
+            ShinraEx.Settings.WhiteMageStopDots = WhiteMageStopDots.Checked;
         }
 
         private void WhiteMageStopDamagePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageStopDamagePct = Convert.ToInt32(WhiteMageStopDamagePct.Value);
+            ShinraEx.Settings.WhiteMageStopDamagePct = Convert.ToInt32(WhiteMageStopDamagePct.Value);
         }
 
         private void WhiteMageStopDotsPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageStopDotsPct = Convert.ToInt32(WhiteMageStopDotsPct.Value);
+            ShinraEx.Settings.WhiteMageStopDotsPct = Convert.ToInt32(WhiteMageStopDotsPct.Value);
         }
 
         #endregion
@@ -3748,22 +3749,22 @@ namespace ShinraCo.Settings.Forms
 
         private void WhiteMagePresenceOfMind_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMagePresenceOfMind = WhiteMagePresenceOfMind.Checked;
+            ShinraEx.Settings.WhiteMagePresenceOfMind = WhiteMagePresenceOfMind.Checked;
         }
 
         private void WhiteMagePresenceOfMindCount_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMagePresenceOfMindCount = Convert.ToInt32(WhiteMagePresenceOfMindCount.Value);
+            ShinraEx.Settings.WhiteMagePresenceOfMindCount = Convert.ToInt32(WhiteMagePresenceOfMindCount.Value);
         }
 
         private void WhiteMagePresenceOfMindPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMagePresenceOfMindPct = Convert.ToInt32(WhiteMagePresenceOfMindPct.Value);
+            ShinraEx.Settings.WhiteMagePresenceOfMindPct = Convert.ToInt32(WhiteMagePresenceOfMindPct.Value);
         }
 
         private void WhiteMageThinAir_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageThinAir = WhiteMageThinAir.Checked;
+            ShinraEx.Settings.WhiteMageThinAir = WhiteMageThinAir.Checked;
         }
 
         #endregion
@@ -3772,112 +3773,112 @@ namespace ShinraCo.Settings.Forms
 
         private void WhiteMagePartyHeal_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMagePartyHeal = WhiteMagePartyHeal.Checked;
+            ShinraEx.Settings.WhiteMagePartyHeal = WhiteMagePartyHeal.Checked;
         }
 
         private void WhiteMageInterruptDamage_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageInterruptDamage = WhiteMageInterruptDamage.Checked;
+            ShinraEx.Settings.WhiteMageInterruptDamage = WhiteMageInterruptDamage.Checked;
         }
 
         private void WhiteMageInterruptOverheal_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageInterruptOverheal = WhiteMageInterruptOverheal.Checked;
+            ShinraEx.Settings.WhiteMageInterruptOverheal = WhiteMageInterruptOverheal.Checked;
         }
 
         private void WhiteMageCure_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageCure = WhiteMageCure.Checked;
+            ShinraEx.Settings.WhiteMageCure = WhiteMageCure.Checked;
         }
 
         private void WhiteMageCureII_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageCureII = WhiteMageCureII.Checked;
+            ShinraEx.Settings.WhiteMageCureII = WhiteMageCureII.Checked;
         }
 
         private void WhiteMageTetragrammaton_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageTetragrammaton = WhiteMageTetragrammaton.Checked;
+            ShinraEx.Settings.WhiteMageTetragrammaton = WhiteMageTetragrammaton.Checked;
         }
 
         private void WhiteMageBenediction_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageBenediction = WhiteMageBenediction.Checked;
+            ShinraEx.Settings.WhiteMageBenediction = WhiteMageBenediction.Checked;
         }
 
         private void WhiteMageRegen_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageRegen = WhiteMageRegen.Checked;
+            ShinraEx.Settings.WhiteMageRegen = WhiteMageRegen.Checked;
         }
 
         private void WhiteMageMedica_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageMedica = WhiteMageMedica.Checked;
+            ShinraEx.Settings.WhiteMageMedica = WhiteMageMedica.Checked;
         }
 
         private void WhiteMageMedicaII_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageMedicaII = WhiteMageMedicaII.Checked;
+            ShinraEx.Settings.WhiteMageMedicaII = WhiteMageMedicaII.Checked;
         }
 
         private void WhiteMageAssize_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageAssize = WhiteMageAssize.Checked;
+            ShinraEx.Settings.WhiteMageAssize = WhiteMageAssize.Checked;
         }
 
         private void WhiteMagePlenary_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMagePlenary = WhiteMagePlenary.Checked;
+            ShinraEx.Settings.WhiteMagePlenary = WhiteMagePlenary.Checked;
         }
 
         private void WhiteMageRaise_CheckedChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageRaise = WhiteMageRaise.Checked;
+            ShinraEx.Settings.WhiteMageRaise = WhiteMageRaise.Checked;
         }
 
         private void WhiteMageCurePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageCurePct = Convert.ToInt32(WhiteMageCurePct.Value);
+            ShinraEx.Settings.WhiteMageCurePct = Convert.ToInt32(WhiteMageCurePct.Value);
         }
 
         private void WhiteMageCureIIPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageCureIIPct = Convert.ToInt32(WhiteMageCureIIPct.Value);
+            ShinraEx.Settings.WhiteMageCureIIPct = Convert.ToInt32(WhiteMageCureIIPct.Value);
         }
 
         private void WhiteMageTetragrammatonPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageTetragrammatonPct = Convert.ToInt32(WhiteMageTetragrammatonPct.Value);
+            ShinraEx.Settings.WhiteMageTetragrammatonPct = Convert.ToInt32(WhiteMageTetragrammatonPct.Value);
         }
 
         private void WhiteMageBenedictionPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageBenedictionPct = Convert.ToInt32(WhiteMageBenedictionPct.Value);
+            ShinraEx.Settings.WhiteMageBenedictionPct = Convert.ToInt32(WhiteMageBenedictionPct.Value);
         }
 
         private void WhiteMageRegenPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageRegenPct = Convert.ToInt32(WhiteMageRegenPct.Value);
+            ShinraEx.Settings.WhiteMageRegenPct = Convert.ToInt32(WhiteMageRegenPct.Value);
         }
 
         private void WhiteMageMedicaPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageMedicaPct = Convert.ToInt32(WhiteMageMedicaPct.Value);
+            ShinraEx.Settings.WhiteMageMedicaPct = Convert.ToInt32(WhiteMageMedicaPct.Value);
         }
 
         private void WhiteMageMedicaIIPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageMedicaIIPct = Convert.ToInt32(WhiteMageMedicaIIPct.Value);
+            ShinraEx.Settings.WhiteMageMedicaIIPct = Convert.ToInt32(WhiteMageMedicaIIPct.Value);
         }
 
         private void WhiteMageAssizePct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMageAssizePct = Convert.ToInt32(WhiteMageAssizePct.Value);
+            ShinraEx.Settings.WhiteMageAssizePct = Convert.ToInt32(WhiteMageAssizePct.Value);
         }
 
         private void WhiteMagePlenaryPct_ValueChanged(object sender, EventArgs e)
         {
-            Shinra.Settings.WhiteMagePlenaryPct = Convert.ToInt32(WhiteMagePlenaryPct.Value);
+            ShinraEx.Settings.WhiteMagePlenaryPct = Convert.ToInt32(WhiteMagePlenaryPct.Value);
         }
 
 

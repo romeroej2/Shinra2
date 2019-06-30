@@ -14,6 +14,7 @@ using ff14bot.Managers;
 using ff14bot.Navigation;
 using ff14bot.Objects;
 using ff14bot.Pathing;
+using ShinraCo;
 using ShinraCo.Settings;
 
 namespace ShinraCo.Spells
@@ -110,7 +111,7 @@ namespace ShinraCo.Spells
 
             #region Cooldown
 
-            if (Shinra.Settings.CooldownMode == CooldownModes.Disabled)
+            if (ShinraEx.Settings.CooldownMode == CooldownModes.Disabled)
             {
                 if ((SpellType == SpellType.Buff || SpellType == SpellType.Cooldown) && Cooldown(true) > 2500)
                 {
@@ -122,7 +123,7 @@ namespace ShinraCo.Spells
 
             #region AoE
 
-            if (SpellType == SpellType.AoE && Shinra.Settings.RotationMode != Modes.Multi)
+            if (SpellType == SpellType.AoE && ShinraEx.Settings.RotationMode != Modes.Multi)
             {
                 if (RoutineManager.IsAnyDisallowed(CapabilityFlags.Aoe))
                 {
@@ -133,9 +134,9 @@ namespace ShinraCo.Spells
                     Helpers.Enemies.Count(eu => eu.Distance2D(target) - eu.CombatReach - target.CombatReach <=
                                                   DataManager.GetSpellData(ID).Radius);
 
-                if (Shinra.Settings.CustomAoE)
+                if (ShinraEx.Settings.CustomAoE)
                 {
-                    if (enemyCount < Shinra.Settings.CustomAoECount)
+                    if (enemyCount < ShinraEx.Settings.CustomAoECount)
                     {
                         return false;
                     }
@@ -234,7 +235,7 @@ namespace ShinraCo.Spells
 
                 #endregion
 
-                Shinra.LastSpell = this;
+                ShinraEx.LastSpell = this;
 
                 #region AddRecent
 
@@ -244,7 +245,7 @@ namespace ShinraCo.Spells
 
                 #endregion
 
-                Logging.Write(Colors.GreenYellow, $@"[Shinra] Casting >>> {Name}");
+                Logging.Write(Colors.GreenYellow, $@"[ShinraEx] Casting >>> {Name}");
                 return true;
             }
 
@@ -281,7 +282,7 @@ namespace ShinraCo.Spells
 
                 #endregion
 
-                Shinra.LastSpell = this;
+                ShinraEx.LastSpell = this;
 
                 #region AddRecent
 
@@ -295,11 +296,11 @@ namespace ShinraCo.Spells
 
                 #endregion
 
-                Logging.Write(Colors.GreenYellow, $@"[Shinra] Casting >>> {Name}");
+                Logging.Write(Colors.GreenYellow, $@"[ShinraEx] Casting >>> {Name}");
                 return true;
             }
 
-            if (Shinra.Settings.AstrologianCardOnly && Core.Player.CurrentJob == ClassJobType.Astrologian)
+            if (ShinraEx.Settings.AstrologianCardOnly && Core.Player.CurrentJob == ClassJobType.Astrologian)
             {
                 return false;
             }
@@ -352,7 +353,7 @@ namespace ShinraCo.Spells
 
                 #region CanCast
 
-                if (Shinra.Settings.QueueSpells && !ActionManager.CanCastOrQueue(DataManager.GetSpellData(ID), target) ||
+                if (ShinraEx.Settings.QueueSpells && !ActionManager.CanCastOrQueue(DataManager.GetSpellData(ID), target) ||
                     !ActionManager.CanCast(ID, target))
                 {
                     return false;
@@ -375,7 +376,7 @@ namespace ShinraCo.Spells
 
                 #endregion
 
-                Shinra.LastSpell = this;
+                ShinraEx.LastSpell = this;
 
                 #region AddRecent
 
@@ -388,7 +389,7 @@ namespace ShinraCo.Spells
 
                 #endregion
 
-                Logging.Write(Colors.GreenYellow, $@"[Shinra] Casting >>> {Name}");
+                Logging.Write(Colors.GreenYellow, $@"[ShinraEx] Casting >>> {Name}");
                 return true;
             }
 
@@ -428,17 +429,17 @@ namespace ShinraCo.Spells
                 {
                     case SpellRangeCheck.ErrorNotInLineOfSight:
                         await CommonTasks.MoveAndStop(new MoveToParameters(target.Location), 0f);
-                        //Logging.Write(Colors.OrangeRed, $@"[Shinra] DEBUG - LineOfSight >>> {Name}");
+                        //Logging.Write(Colors.OrangeRed, $@"[ShinraEx] DEBUG - LineOfSight >>> {Name}");
                         return false;
                     case SpellRangeCheck.ErrorNotInRange:
                         await CommonTasks.MoveAndStop(new MoveToParameters(target.Location), 0f);
-                        //Logging.Write(Colors.OrangeRed, $@"[Shinra] DEBUG - Range >>> {Name}");
+                        //Logging.Write(Colors.OrangeRed, $@"[ShinraEx] DEBUG - Range >>> {Name}");
                         return false;
                     case SpellRangeCheck.ErrorNotInFront:
                         if (!target.InLineOfSight())
                         {
                             await CommonTasks.MoveAndStop(new MoveToParameters(target.Location), 0f);
-                            //Logging.Write(Colors.OrangeRed, $@"[Shinra] DEBUG - Facing >>> {Name}");
+                            //Logging.Write(Colors.OrangeRed, $@"[ShinraEx] DEBUG - Facing >>> {Name}");
                             return false;
                         }
                         target.Face();
@@ -458,7 +459,7 @@ namespace ShinraCo.Spells
 
                 if (Core.Player.HasTarget && !MovementManager.IsMoving && Core.Player.IsMounted)
                 {
-                    Logging.Write(Colors.Yellow, @"[Shinra] Dismounting...");
+                    Logging.Write(Colors.Yellow, @"[ShinraEx] Dismounting...");
                     ActionManager.Dismount();
                     await Coroutine.Sleep(1000);
                 }
@@ -485,19 +486,19 @@ namespace ShinraCo.Spells
                     switch (Core.Player.CurrentJob)
                     {
                         case ClassJobType.Astrologian:
-                            stopCasting = Shinra.Settings.AstrologianInterruptDamage;
+                            stopCasting = ShinraEx.Settings.AstrologianInterruptDamage;
                             break;
                         case ClassJobType.Scholar:
-                            stopCasting = Shinra.Settings.ScholarInterruptDamage;
+                            stopCasting = ShinraEx.Settings.ScholarInterruptDamage;
                             break;
                         case ClassJobType.WhiteMage:
-                            stopCasting = Shinra.Settings.WhiteMageInterruptDamage;
+                            stopCasting = ShinraEx.Settings.WhiteMageInterruptDamage;
                             break;
                     }
                     if (stopCasting)
                     {
                         Helpers.Debug($@"Trying to cast {Name}");
-                        Logging.Write(Colors.Yellow, $@"[Shinra] Interrupting >>> {Core.Player.SpellCastInfo.Name}");
+                        Logging.Write(Colors.Yellow, $@"[ShinraEx] Interrupting >>> {Core.Player.SpellCastInfo.Name}");
                         ActionManager.StopCasting();
                         await Coroutine.Wait(500, () => !Core.Player.IsCasting);
                     }
@@ -518,7 +519,7 @@ namespace ShinraCo.Spells
                     }
                     break;
                 default:
-                    if (Shinra.Settings.QueueSpells && GCDType == GCDType.On)
+                    if (ShinraEx.Settings.QueueSpells && GCDType == GCDType.On)
                     {
                         if (!ActionManager.CanCastOrQueue(DataManager.GetSpellData(ID), target))
                         {
@@ -673,7 +674,7 @@ namespace ShinraCo.Spells
             switch (CastType)
             {
                 case CastType.TargetLocation:
-                    if (Shinra.Settings.RandomCastLocations)
+                    if (ShinraEx.Settings.RandomCastLocations)
                     {
                         var randX = target.CombatReach * _rand.NextDouble() * GetMultiplier();
                         var randZ = target.CombatReach * _rand.NextDouble() * GetMultiplier();
@@ -694,7 +695,7 @@ namespace ShinraCo.Spells
                     }
                     break;
                 case CastType.SelfLocation:
-                    if (Shinra.Settings.RandomCastLocations)
+                    if (ShinraEx.Settings.RandomCastLocations)
                     {
                         var randX = (1f * _rand.NextDouble() + 1f) * GetMultiplier();
                         var randZ = (1f * _rand.NextDouble() + 1f) * GetMultiplier();
@@ -750,8 +751,8 @@ namespace ShinraCo.Spells
 
             #endregion
 
-            Shinra.LastSpell = this;
-            Logging.Write(Colors.GreenYellow, $@"[Shinra] Casting >>> {Name}{(SpellType == SpellType.PVP ? " Combo" : "")}");
+            ShinraEx.LastSpell = this;
+            Logging.Write(Colors.GreenYellow, $@"[ShinraEx] Casting >>> {Name}{(SpellType == SpellType.PVP ? " Combo" : "")}");
 
             #region AddRecent
 

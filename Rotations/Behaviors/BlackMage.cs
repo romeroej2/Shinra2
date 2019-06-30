@@ -9,7 +9,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            if (Shinra.Settings.RotationMode == Modes.Multi || Shinra.Settings.RotationMode == Modes.Smart &&
+            if (ShinraEx.Settings.RotationMode == Modes.Multi || ShinraEx.Settings.RotationMode == Modes.Smart &&
                 Helpers.EnemiesNearTarget(5) > 2)
             {
                 return await Multi();
@@ -19,7 +19,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Single()
         {
-            if (Shinra.Settings.BlackMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            if (ShinraEx.Settings.BlackMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await Transpose()) return true;
             if (await Triplecast()) return true;
             if (await Swiftcast()) return true;
@@ -60,9 +60,9 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
-            if (await Shinra.SummonChocobo()) return true;
-            if (await Shinra.ChocoboStance()) return true;
-            if (Shinra.Settings.BlackMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            if (await ShinraEx.SummonChocobo()) return true;
+            if (await ShinraEx.ChocoboStance()) return true;
+            if (ShinraEx.Settings.BlackMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await Convert()) return true;
             if (await Enochian()) return true;
             if (await LeyLines()) return true;
@@ -84,7 +84,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
-            return await Shinra.SummonChocobo();
+            return await ShinraEx.SummonChocobo();
         }
 
         #endregion

@@ -9,9 +9,9 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            if (Shinra.Settings.RotationMode == Modes.Smart)
+            if (ShinraEx.Settings.RotationMode == Modes.Smart)
             {
-                if (Shinra.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
                 if (await TotalEclipse()) return true;
                 if (await Flash()) return true;
                 if (await HolySpirit()) return true;
@@ -22,9 +22,9 @@ namespace ShinraCo.Rotations
                 if (await SavageBlade()) return true;
                 return await FastBlade();
             }
-            if (Shinra.Settings.RotationMode == Modes.Single)
+            if (ShinraEx.Settings.RotationMode == Modes.Single)
             {
-                if (Shinra.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
                 if (await HolySpirit()) return true;
                 if (await GoringBlade()) return true;
                 if (await RoyalAuthority()) return true;
@@ -33,7 +33,7 @@ namespace ShinraCo.Rotations
                 if (await SavageBlade()) return true;
                 return await FastBlade();
             }
-            if (Shinra.Settings.RotationMode == Modes.Multi)
+            if (ShinraEx.Settings.RotationMode == Modes.Multi)
             {
                 if (await TotalEclipse()) return true;
                 return await Flash();
@@ -47,8 +47,8 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
-            if (await Shinra.SummonChocobo()) return true;
-            if (await Shinra.ChocoboStance()) return true;
+            if (await ShinraEx.SummonChocobo()) return true;
+            if (await ShinraEx.ChocoboStance()) return true;
             if (await PassageOfArms()) return true;
             if (await SwordOath()) return true;
             if (await ShieldOath()) return true;
@@ -60,7 +60,7 @@ namespace ShinraCo.Rotations
             if (await Anticipation()) return true;
             if (await Awareness()) return true;
             if (await Reprisal()) return true;
-            if (Shinra.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await Sheltron()) return true;
             if (await Requiescat()) return true;
             if (await FightOrFlight()) return true;
@@ -84,7 +84,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
-            if (await Shinra.SummonChocobo()) return true;
+            if (await ShinraEx.SummonChocobo()) return true;
             if (await SwordOath()) return true;
             return await ShieldOath();
         }
@@ -95,7 +95,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
-            if (Shinra.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await ShieldLob()) return true;
             return await Combat();
         }

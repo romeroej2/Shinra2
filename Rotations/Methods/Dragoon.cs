@@ -95,9 +95,9 @@ namespace ShinraCo.Rotations
         {
             if (Core.Player.CurrentTPPercent > 30 && Core.Player.HasAura(MySpells.HeavyThrust.Name))
             {
-                var count = Shinra.Settings.CustomAoE ? Shinra.Settings.CustomAoECount : 3;
+                var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
 
-                if (Shinra.Settings.RotationMode == Modes.Multi || Helpers.EnemiesNearTarget(5) >= count)
+                if (ShinraEx.Settings.RotationMode == Modes.Multi || Helpers.EnemiesNearTarget(5) >= count)
                 {
                     return await MySpells.DoomSpike.Cast();
                 }
@@ -110,9 +110,9 @@ namespace ShinraCo.Rotations
             if (ActionManager.LastSpell.Name == MySpells.DoomSpike.Name && Core.Player.CurrentTPPercent > 30 &&
                 Core.Player.HasAura(MySpells.HeavyThrust.Name))
             {
-                var count = Shinra.Settings.CustomAoE ? Shinra.Settings.CustomAoECount : 3;
+                var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
 
-                if (Shinra.Settings.RotationMode == Modes.Multi || Helpers.EnemiesNearTarget(5) >= count)
+                if (ShinraEx.Settings.RotationMode == Modes.Multi || Helpers.EnemiesNearTarget(5) >= count)
                 {
                     return await MySpells.SonicThrust.Cast();
                 }
@@ -126,7 +126,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Jump()
         {
-            if (Shinra.Settings.DragoonJump && !MovementManager.IsMoving && !RecentJump && UseJump &&
+            if (ShinraEx.Settings.DragoonJump && !MovementManager.IsMoving && !RecentJump && UseJump &&
                 Core.Player.HasAura(MySpells.HeavyThrust.Name))
             {
                 return await MySpells.Jump.Cast();
@@ -136,7 +136,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SpineshatterDive()
         {
-            if (Shinra.Settings.DragoonSpineshatter && !MovementManager.IsMoving && !RecentJump && UseJump &&
+            if (ShinraEx.Settings.DragoonSpineshatter && !MovementManager.IsMoving && !RecentJump && UseJump &&
                 Core.Player.HasAura(MySpells.HeavyThrust.Name))
             {
                 return await MySpells.SpineshatterDive.Cast();
@@ -146,7 +146,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> DragonfireDive()
         {
-            if (Shinra.Settings.DragoonDragonfire && !MovementManager.IsMoving && !RecentJump &&
+            if (ShinraEx.Settings.DragoonDragonfire && !MovementManager.IsMoving && !RecentJump &&
                 Core.Player.HasAura(MySpells.HeavyThrust.Name))
             {
                 return await MySpells.DragonfireDive.Cast();
@@ -156,7 +156,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Geirskogul()
         {
-            if (Shinra.Settings.DragoonGeirskogul && Core.Player.HasAura(MySpells.HeavyThrust.Name))
+            if (ShinraEx.Settings.DragoonGeirskogul && Core.Player.HasAura(MySpells.HeavyThrust.Name))
             {
                 if (Resource.DragonGaze == 3 || !RecentJump && !Core.Player.HasAura(1243) && JumpCooldown > 25 && SpineCooldown > 25 ||
                     Core.Player.ClassLevel < 70)
@@ -169,7 +169,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Nastrond()
         {
-            if (Shinra.Settings.DragoonGeirskogul && Core.Player.HasAura(MySpells.HeavyThrust.Name))
+            if (ShinraEx.Settings.DragoonGeirskogul && Core.Player.HasAura(MySpells.HeavyThrust.Name))
             {
                 return await MySpells.Nastrond.Cast();
             }
@@ -178,7 +178,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> MirageDive()
         {
-            if (Shinra.Settings.DragoonMirage && !MovementManager.IsMoving && !RecentJump && Core.Player.HasAura(MySpells.HeavyThrust.Name))
+            if (ShinraEx.Settings.DragoonMirage && !MovementManager.IsMoving && !RecentJump && Core.Player.HasAura(MySpells.HeavyThrust.Name))
             {
                 return await MySpells.MirageDive.Cast();
             }
@@ -191,7 +191,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> LifeSurge()
         {
-            if (Shinra.Settings.DragoonLifeSurge && ActionManager.LastSpell.Name == MySpells.VorpalThrust.Name)
+            if (ShinraEx.Settings.DragoonLifeSurge && ActionManager.LastSpell.Name == MySpells.VorpalThrust.Name)
             {
                 return await MySpells.LifeSurge.Cast();
             }
@@ -200,7 +200,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BloodForBlood()
         {
-            if (Shinra.Settings.DragoonBloodForBlood)
+            if (ShinraEx.Settings.DragoonBloodForBlood)
             {
                 return await MySpells.BloodForBlood.Cast();
             }
@@ -209,7 +209,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BattleLitany()
         {
-            if (Shinra.Settings.DragoonBattleLitany)
+            if (ShinraEx.Settings.DragoonBattleLitany)
             {
                 return await MySpells.BattleLitany.Cast();
             }
@@ -218,7 +218,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BloodOfTheDragon()
         {
-            if (Shinra.Settings.DragoonBloodOfTheDragon && !BloodActive &&
+            if (ShinraEx.Settings.DragoonBloodOfTheDragon && !BloodActive &&
                 (ActionManager.LastSpell.Name == MySpells.VorpalThrust.Name || ActionManager.LastSpell.Name == MySpells.Disembowel.Name))
             {
                 return await MySpells.BloodOfTheDragon.Cast();
@@ -228,7 +228,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> DragonSight()
         {
-            if (!Shinra.Settings.DragoonDragonSight) return false;
+            if (!ShinraEx.Settings.DragoonDragonSight) return false;
 
             var target = !PartyManager.IsInParty && ChocoboManager.Summoned ? ChocoboManager.Object
                 : Managers.DragonSight.FirstOrDefault();
@@ -244,7 +244,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SecondWind()
         {
-            if (Shinra.Settings.DragoonSecondWind && Core.Player.CurrentHealthPercent < Shinra.Settings.DragoonSecondWindPct)
+            if (ShinraEx.Settings.DragoonSecondWind && Core.Player.CurrentHealthPercent < ShinraEx.Settings.DragoonSecondWindPct)
             {
                 return await MySpells.Role.SecondWind.Cast();
             }
@@ -253,7 +253,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Invigorate()
         {
-            if (Shinra.Settings.DragoonInvigorate && Core.Player.CurrentTPPercent < Shinra.Settings.DragoonInvigoratePct)
+            if (ShinraEx.Settings.DragoonInvigorate && Core.Player.CurrentTPPercent < ShinraEx.Settings.DragoonInvigoratePct)
             {
                 return await MySpells.Role.Invigorate.Cast();
             }
@@ -262,7 +262,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Bloodbath()
         {
-            if (Shinra.Settings.DragoonBloodbath && Core.Player.CurrentHealthPercent < Shinra.Settings.DragoonBloodbathPct)
+            if (ShinraEx.Settings.DragoonBloodbath && Core.Player.CurrentHealthPercent < ShinraEx.Settings.DragoonBloodbathPct)
             {
                 return await MySpells.Role.Bloodbath.Cast();
             }
@@ -271,9 +271,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Goad()
         {
-            if (Shinra.Settings.DragoonGoad)
+            if (ShinraEx.Settings.DragoonGoad)
             {
-                var target = Helpers.GoadManager.FirstOrDefault(gm => gm.CurrentTPPercent < Shinra.Settings.DragoonGoadPct);
+                var target = Helpers.GoadManager.FirstOrDefault(gm => gm.CurrentTPPercent < ShinraEx.Settings.DragoonGoadPct);
 
                 if (target != null)
                 {
@@ -285,7 +285,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> TrueNorth()
         {
-            if (Shinra.Settings.DragoonTrueNorth)
+            if (ShinraEx.Settings.DragoonTrueNorth)
             {
                 return await MySpells.Role.TrueNorth.Cast();
             }

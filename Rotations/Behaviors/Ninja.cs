@@ -9,9 +9,9 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            if (Shinra.Settings.RotationMode == Modes.Smart)
+            if (ShinraEx.Settings.RotationMode == Modes.Smart)
             {
-                if (Shinra.Settings.NinjaOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                if (ShinraEx.Settings.NinjaOpener) { if (await Helpers.ExecuteOpener()) return true; }
                 if (await TenChiJinBuff()) return true;
                 if (await Huton()) return true;
                 if (await Doton()) return true;
@@ -27,9 +27,9 @@ namespace ShinraCo.Rotations
                 if (await GustSlash()) return true;
                 return await SpinningEdge();
             }
-            if (Shinra.Settings.RotationMode == Modes.Single)
+            if (ShinraEx.Settings.RotationMode == Modes.Single)
             {
-                if (Shinra.Settings.NinjaOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                if (ShinraEx.Settings.NinjaOpener) { if (await Helpers.ExecuteOpener()) return true; }
                 if (await TenChiJinBuff()) return true;
                 if (await Huton()) return true;
                 if (await Suiton()) return true;
@@ -42,7 +42,7 @@ namespace ShinraCo.Rotations
                 if (await GustSlash()) return true;
                 return await SpinningEdge();
             }
-            if (Shinra.Settings.RotationMode == Modes.Multi)
+            if (ShinraEx.Settings.RotationMode == Modes.Multi)
             {
                 if (await TenChiJinBuff()) return true;
                 if (await Huton()) return true;
@@ -67,9 +67,9 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
-            if (await Shinra.SummonChocobo()) return true;
-            if (await Shinra.ChocoboStance()) return true;
-            if (Shinra.Settings.NinjaOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            if (await ShinraEx.SummonChocobo()) return true;
+            if (await ShinraEx.ChocoboStance()) return true;
+            if (ShinraEx.Settings.NinjaOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await ShadeShift()) return true;
             if (await Shukuchi()) return true;
             if (await Assassinate()) return true;
@@ -103,7 +103,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
-            if (await Shinra.SummonChocobo()) return true;
+            if (await ShinraEx.SummonChocobo()) return true;
             if (await Huton()) return true;
             return false;
         }

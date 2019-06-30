@@ -40,8 +40,8 @@ namespace ShinraCo.Rotations
         {
             if (ActionManager.LastSpell.Name != MySpells.HeavySwing.Name) return false;
 
-            if (Shinra.Settings.TankMode == TankModes.DPS && ActionManager.HasSpell(MySpells.StormsPath.Name) ||
-                Shinra.Settings.WarriorMaim && !Core.Player.CurrentTarget.HasAura(819, false, 6000) ||
+            if (ShinraEx.Settings.TankMode == TankModes.DPS && ActionManager.HasSpell(MySpells.StormsPath.Name) ||
+                ShinraEx.Settings.WarriorMaim && !Core.Player.CurrentTarget.HasAura(819, false, 6000) ||
                 ActionManager.HasSpell(MySpells.StormsEye.Name) && UseStormsEye)
             {
                 return await MySpells.Maim.Cast();
@@ -68,7 +68,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> InnerBeast()
         {
-            if (Shinra.Settings.WarriorInnerBeast && DefianceStance && Resource.BeastGauge >= 50 && !Core.Player.HasAura(MySpells.InnerBeast.Name))
+            if (ShinraEx.Settings.WarriorInnerBeast && DefianceStance && Resource.BeastGauge >= 50 && !Core.Player.HasAura(MySpells.InnerBeast.Name))
             {
                 return await MySpells.InnerBeast.Cast();
             }
@@ -77,7 +77,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> FellCleave()
         {
-            if (!Shinra.Settings.WarriorFellCleave || !DeliveranceStance) return false;
+            if (!ShinraEx.Settings.WarriorFellCleave || !DeliveranceStance) return false;
 
             if (Core.Player.HasAura(1177) || Resource.BeastGauge == 100 && !HeavySwingNext || MySpells.Infuriate.Cooldown() < 6000 ||
                 ActionManager.LastSpell.Name == MySpells.Maim.Name && Resource.BeastGauge > 80 && !UseStormsEye)
@@ -93,7 +93,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Overpower()
         {
-            if (Shinra.Settings.WarriorOverpower && Core.Player.CurrentTPPercent > 30)
+            if (ShinraEx.Settings.WarriorOverpower && Core.Player.CurrentTPPercent > 30)
             {
                 return await MySpells.Overpower.Cast();
             }
@@ -102,7 +102,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SteelCyclone()
         {
-            if (Shinra.Settings.WarriorSteelCyclone && DefianceStance && Resource.BeastGauge >= 50)
+            if (ShinraEx.Settings.WarriorSteelCyclone && DefianceStance && Resource.BeastGauge >= 50)
             {
                 return await MySpells.SteelCyclone.Cast();
             }
@@ -111,7 +111,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Decimate()
         {
-            if (Shinra.Settings.WarriorDecimate && DeliveranceStance && Resource.BeastGauge >= 50)
+            if (ShinraEx.Settings.WarriorDecimate && DeliveranceStance && Resource.BeastGauge >= 50)
             {
                 return await MySpells.Decimate.Cast();
             }
@@ -124,7 +124,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Onslaught()
         {
-            if (Shinra.Settings.WarriorOnslaught && Core.Player.TargetDistance(10))
+            if (ShinraEx.Settings.WarriorOnslaught && Core.Player.TargetDistance(10))
             {
                 return await MySpells.Onslaught.Cast(null, false);
             }
@@ -133,13 +133,13 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Upheaval()
         {
-            if (Shinra.Settings.WarriorUpheaval && Core.Player.CurrentHealthPercent > 70 &&
+            if (ShinraEx.Settings.WarriorUpheaval && Core.Player.CurrentHealthPercent > 70 &&
                 (Core.Player.HasAura(MySpells.InnerRelease.Name) || MySpells.InnerRelease.Cooldown() > 8000) || Core.Player.ClassLevel < 70)
             {
-                var count = Shinra.Settings.CustomAoE ? Shinra.Settings.CustomAoECount : 3;
+                var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
 
-                if (Shinra.Settings.RotationMode == Modes.Single ||
-                    Shinra.Settings.RotationMode == Modes.Smart && Helpers.EnemiesNearTarget(5) < count)
+                if (ShinraEx.Settings.RotationMode == Modes.Single ||
+                    ShinraEx.Settings.RotationMode == Modes.Smart && Helpers.EnemiesNearTarget(5) < count)
                 {
                     return await MySpells.Upheaval.Cast();
                 }
@@ -153,7 +153,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Berserk()
         {
-            if (Shinra.Settings.WarriorBerserk && Core.Player.ClassLevel < 70)
+            if (ShinraEx.Settings.WarriorBerserk && Core.Player.ClassLevel < 70)
             {
                 return await MySpells.Berserk.Cast();
             }
@@ -162,7 +162,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> ThrillOfBattle()
         {
-            if (Shinra.Settings.WarriorThrillOfBattle && Core.Player.CurrentHealthPercent < Shinra.Settings.WarriorThrillOfBattlePct)
+            if (ShinraEx.Settings.WarriorThrillOfBattle && Core.Player.CurrentHealthPercent < ShinraEx.Settings.WarriorThrillOfBattlePct)
             {
                 return await MySpells.ThrillOfBattle.Cast();
             }
@@ -171,7 +171,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Unchained()
         {
-            if (Shinra.Settings.WarriorUnchained && DefianceStance)
+            if (ShinraEx.Settings.WarriorUnchained && DefianceStance)
             {
                 return await MySpells.Unchained.Cast();
             }
@@ -180,7 +180,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Vengeance()
         {
-            if (Shinra.Settings.WarriorVengeance && Core.Player.CurrentHealthPercent < Shinra.Settings.WarriorVengeancePct)
+            if (ShinraEx.Settings.WarriorVengeance && Core.Player.CurrentHealthPercent < ShinraEx.Settings.WarriorVengeancePct)
             {
                 return await MySpells.Vengeance.Cast();
             }
@@ -189,7 +189,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Infuriate()
         {
-            if (Shinra.Settings.WarriorInfuriate && BeastDeficit >= 50)
+            if (ShinraEx.Settings.WarriorInfuriate && BeastDeficit >= 50)
             {
                 return await MySpells.Infuriate.Cast();
             }
@@ -198,8 +198,8 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> EquilibriumTP()
         {
-            if (Shinra.Settings.WarriorEquilibriumTP && DeliveranceStance &&
-                Core.Player.CurrentTPPercent < Shinra.Settings.WarriorEquilibriumTPPct)
+            if (ShinraEx.Settings.WarriorEquilibriumTP && DeliveranceStance &&
+                Core.Player.CurrentTPPercent < ShinraEx.Settings.WarriorEquilibriumTPPct)
             {
                 return await MySpells.Equilibrium.Cast();
             }
@@ -208,7 +208,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> ShakeItOff()
         {
-            if (Shinra.Settings.WarriorShakeItOff)
+            if (ShinraEx.Settings.WarriorShakeItOff)
             {
                 return await MySpells.ShakeItOff.Cast(null, false);
             }
@@ -217,7 +217,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> InnerRelease()
         {
-            if (!Shinra.Settings.WarriorInnerRelease || !DeliveranceStance) return false;
+            if (!ShinraEx.Settings.WarriorInnerRelease || !DeliveranceStance) return false;
 
             var gcd = DataManager.GetSpellData(31).Cooldown.TotalMilliseconds;
 
@@ -232,8 +232,8 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Equilibrium()
         {
-            if (Shinra.Settings.WarriorEquilibrium && DefianceStance &&
-                Core.Player.CurrentHealthPercent < Shinra.Settings.WarriorEquilibriumPct)
+            if (ShinraEx.Settings.WarriorEquilibrium && DefianceStance &&
+                Core.Player.CurrentHealthPercent < ShinraEx.Settings.WarriorEquilibriumPct)
             {
                 return await MySpells.Equilibrium.Cast();
             }
@@ -246,7 +246,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Defiance()
         {
-            if (Shinra.Settings.WarriorStance == WarriorStances.Defiance || Shinra.Settings.WarriorStance == WarriorStances.Deliverance &&
+            if (ShinraEx.Settings.WarriorStance == WarriorStances.Defiance || ShinraEx.Settings.WarriorStance == WarriorStances.Deliverance &&
                 !ActionManager.HasSpell(MySpells.Deliverance.Name))
             {
                 if (!DefianceStance)
@@ -259,7 +259,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Deliverance()
         {
-            if (Shinra.Settings.WarriorStance == WarriorStances.Deliverance)
+            if (ShinraEx.Settings.WarriorStance == WarriorStances.Deliverance)
             {
                 if (!DeliveranceStance)
                 {
@@ -275,7 +275,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Rampart()
         {
-            if (Shinra.Settings.WarriorRampart && Core.Player.CurrentHealthPercent < Shinra.Settings.WarriorRampartPct)
+            if (ShinraEx.Settings.WarriorRampart && Core.Player.CurrentHealthPercent < ShinraEx.Settings.WarriorRampartPct)
             {
                 return await MySpells.Role.Rampart.Cast();
             }
@@ -284,7 +284,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Convalescence()
         {
-            if (Shinra.Settings.WarriorConvalescence && Core.Player.CurrentHealthPercent < Shinra.Settings.WarriorConvalescencePct)
+            if (ShinraEx.Settings.WarriorConvalescence && Core.Player.CurrentHealthPercent < ShinraEx.Settings.WarriorConvalescencePct)
             {
                 return await MySpells.Role.Convalescence.Cast();
             }
@@ -293,7 +293,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Anticipation()
         {
-            if (Shinra.Settings.WarriorAnticipation && Core.Player.CurrentHealthPercent < Shinra.Settings.WarriorAnticipationPct)
+            if (ShinraEx.Settings.WarriorAnticipation && Core.Player.CurrentHealthPercent < ShinraEx.Settings.WarriorAnticipationPct)
             {
                 return await MySpells.Role.Anticipation.Cast();
             }
@@ -302,7 +302,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Reprisal()
         {
-            if (Shinra.Settings.WarriorReprisal)
+            if (ShinraEx.Settings.WarriorReprisal)
             {
                 return await MySpells.Role.Reprisal.Cast();
             }
@@ -311,7 +311,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Awareness()
         {
-            if (Shinra.Settings.WarriorAwareness && Core.Player.CurrentHealthPercent < Shinra.Settings.WarriorAwarenessPct)
+            if (ShinraEx.Settings.WarriorAwareness && Core.Player.CurrentHealthPercent < ShinraEx.Settings.WarriorAwarenessPct)
             {
                 return await MySpells.Role.Awareness.Cast();
             }
@@ -329,7 +329,7 @@ namespace ShinraCo.Rotations
                                               ActionManager.LastSpellId == 47;
 
         private int StormEyeTime => (int)MySpells.InnerRelease.Cooldown() + 17000;
-        private bool UseStormsEye => Shinra.Settings.WarriorStormsEye &&
+        private bool UseStormsEye => ShinraEx.Settings.WarriorStormsEye &&
                                      (!Core.Player.HasAura(90, true, 9000) || Core.Player.ClassLevel == 70 &&
                                       MySpells.InnerRelease.Cooldown() < 10000 && !Core.Player.HasAura(90, true, StormEyeTime));
 

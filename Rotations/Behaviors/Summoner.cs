@@ -8,7 +8,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            if (Shinra.Settings.SummonerOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            if (ShinraEx.Settings.SummonerOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await Drain()) return true;
             if (await MiasmaIII()) return true;
             if (await Miasma()) return true;
@@ -27,9 +27,9 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
-            if (await Shinra.SummonChocobo()) return true;
-            if (await Shinra.ChocoboStance()) return true;
-            if (Shinra.Settings.SummonerOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            if (await ShinraEx.SummonChocobo()) return true;
+            if (await ShinraEx.ChocoboStance()) return true;
+            if (ShinraEx.Settings.SummonerOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await Sic()) return true;
             if (await SummonIII()) return true;
             if (await SummonII()) return true;
@@ -70,7 +70,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
-            if (await Shinra.SummonChocobo()) return true;
+            if (await ShinraEx.SummonChocobo()) return true;
             if (await AetherflowPreCombat()) return true;
             if (await SummonIII()) return true;
             if (await SummonII()) return true;
@@ -84,7 +84,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
-            if (Shinra.Settings.SummonerOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            if (ShinraEx.Settings.SummonerOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await TriDisaster()) return true;
             return await Combat();
         }

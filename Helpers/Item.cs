@@ -48,7 +48,7 @@ namespace ShinraCo
 
             item.UseItem();
             await Coroutine.Wait(1000, () => !item.CanUse());
-            Logging.Write(Colors.Yellow, $@"[Shinra] Using >>> {item.Name}");
+            Logging.Write(Colors.Yellow, $@"[ShinraEx] Using >>> {item.Name}");
             return true;
         }
     }

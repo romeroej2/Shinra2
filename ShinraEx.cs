@@ -17,11 +17,11 @@ using TreeSharp;
 
 namespace ShinraCo
 {
-    public class Shinra : CombatRoutine
+    public class ShinraEx : CombatRoutine
     {
         #region Overrides
 
-        public sealed override string Name => "Shinra";
+        public sealed override string Name => "ShinraEx";
         public sealed override float PullRange => 25;
         public sealed override bool WantButton => true;
         public sealed override CapabilityFlags SupportedCapabilities => CapabilityFlags.All;
@@ -30,7 +30,7 @@ namespace ShinraCo
 
         public sealed override void Initialize()
         {
-            Logging.Write(Colors.GreenYellow, $@"[Shinra] Loaded Version: {Helpers.GetLocalVersion()}");
+            Logging.Write(Colors.GreenYellow, $@"[ShinraEx] Loaded Version: {Helpers.GetLocalVersion()}");
             Overlay.Visible = Settings.RotationOverlay;
             Overlay.UpdateText();
             RegisterHotkeys();
@@ -46,7 +46,7 @@ namespace ShinraCo
 
         public sealed override void ShutDown()
         {
-            Logging.Write(Colors.GreenYellow, @"[Shinra] Shutting down...");
+            Logging.Write(Colors.GreenYellow, @"[ShinraEx] Shutting down...");
             UnregisterHotkeys();
         }
 
@@ -74,19 +74,19 @@ namespace ShinraCo
 
         public static void RegisterHotkeys()
         {
-            HotkeyManager.Register("Shinra Rotation", Helpers.GetHotkey(Settings.RotationHotkey),
+            HotkeyManager.Register("ShinraEx Rotation", Helpers.GetHotkey(Settings.RotationHotkey),
                                    Helpers.GetModkey(Settings.RotationHotkey), hk =>
                                    {
                                        Settings.RotationMode = Settings.RotationMode.Cycle("Rotation", Settings.IgnoreSmart);
                                        Overlay.UpdateText();
                                    });
-            HotkeyManager.Register("Shinra Cooldown", Helpers.GetHotkey(Settings.CooldownHotkey),
+            HotkeyManager.Register("ShinraEx Cooldown", Helpers.GetHotkey(Settings.CooldownHotkey),
                                    Helpers.GetModkey(Settings.CooldownHotkey), hk =>
                                    {
                                        Settings.CooldownMode = Settings.CooldownMode.Cycle("Cooldown");
                                        Overlay.UpdateText();
                                    });
-            HotkeyManager.Register("Shinra Tank", Helpers.GetHotkey(Settings.TankHotkey),
+            HotkeyManager.Register("ShinraEx Tank", Helpers.GetHotkey(Settings.TankHotkey),
                                    Helpers.GetModkey(Settings.TankHotkey), hk =>
                                    {
                                        Settings.TankMode = Settings.TankMode.Cycle("Tank");
@@ -96,11 +96,11 @@ namespace ShinraCo
 
         public static void RegisterClassHotkeys()
         {
-            HotkeyManager.Unregister("Shinra Job");
+            HotkeyManager.Unregister("ShinraEx Job");
             switch (Core.Player.CurrentJob)
             {
                 case ClassJobType.Machinist:
-                    HotkeyManager.Register("Shinra Job", Helpers.GetHotkey(Settings.MachinistTurretHotkey),
+                    HotkeyManager.Register("ShinraEx Job", Helpers.GetHotkey(Settings.MachinistTurretHotkey),
                                            Helpers.GetModkey(Settings.MachinistTurretHotkey),
                                            hk => Settings.MachinistTurret = Settings.MachinistTurret.Cycle("Turret", true));
                     break;
@@ -109,10 +109,10 @@ namespace ShinraCo
 
         public static void UnregisterHotkeys()
         {
-            HotkeyManager.Unregister("Shinra Rotation");
-            HotkeyManager.Unregister("Shinra Cooldown");
-            HotkeyManager.Unregister("Shinra Tank");
-            HotkeyManager.Unregister("Shinra Job");
+            HotkeyManager.Unregister("ShinraEx Rotation");
+            HotkeyManager.Unregister("ShinraEx Cooldown");
+            HotkeyManager.Unregister("ShinraEx Tank");
+            HotkeyManager.Unregister("ShinraEx Job");
         }
 
         #endregion
@@ -133,7 +133,7 @@ namespace ShinraCo
                 }
                 _currentClass = Core.Player.CurrentJob;
                 _myRotation = GetRotation(_currentClass);
-                Logging.Write(Colors.Yellow, $@"[Shinra] Loading {_currentClass}...");
+                Logging.Write(Colors.Yellow, $@"[ShinraEx] Loading {_currentClass}...");
                 RegisterClassHotkeys();
                 return _currentClass;
             }
@@ -186,7 +186,7 @@ namespace ShinraCo
                 case ClassJobType.WhiteMage:
                     return new WhiteMage();
                 default:
-                    //Logging.Write(Colors.OrangeRed, $@"[Shinra] {classJob} is not supported.");
+                    //Logging.Write(Colors.OrangeRed, $@"[ShinraEx] {classJob} is not supported.");
                     return new Default();
             }
         }
@@ -240,7 +240,7 @@ namespace ShinraCo
             {
                 Navigator.PlayerMover.MoveStop();
             }
-            Logging.Write(Colors.Yellow, @"[Shinra] Resting...");
+            Logging.Write(Colors.Yellow, @"[ShinraEx] Resting...");
             return true;
         }
 
@@ -259,7 +259,7 @@ namespace ShinraCo
             }
             ChocoboManager.Summon();
             await Coroutine.Wait(2000, () => ChocoboManager.Summoned);
-            Logging.Write(Colors.Yellow, @"[Shinra] Summoning Chocobo...");
+            Logging.Write(Colors.Yellow, @"[ShinraEx] Summoning Chocobo...");
 
             if (!ChocoboManager.Summoned)
             {
@@ -291,7 +291,7 @@ namespace ShinraCo
                 {
                     ChocoboManager.HealerStance();
                     await Coroutine.Wait(1000, () => ChocoboManager.Stance == CompanionStance.Healer);
-                    Logging.Write(Colors.Yellow, @"[Shinra] Chocobo Stance >>> Healer");
+                    Logging.Write(Colors.Yellow, @"[ShinraEx] Chocobo Stance >>> Healer");
                     return true;
                 }
             }
@@ -305,7 +305,7 @@ namespace ShinraCo
                     }
                     ChocoboManager.FreeStance();
                     await Coroutine.Wait(1000, () => ChocoboManager.Stance == CompanionStance.Free);
-                    Logging.Write(Colors.Yellow, @"[Shinra] Chocobo Stance >>> Free");
+                    Logging.Write(Colors.Yellow, @"[ShinraEx] Chocobo Stance >>> Free");
                     return true;
                 case Stances.Attacker:
                     if (ChocoboManager.Stance == CompanionStance.Attacker)
@@ -314,7 +314,7 @@ namespace ShinraCo
                     }
                     ChocoboManager.AttackerStance();
                     await Coroutine.Wait(1000, () => ChocoboManager.Stance == CompanionStance.Attacker);
-                    Logging.Write(Colors.Yellow, @"[Shinra] Chocobo Stance >>> Attacker");
+                    Logging.Write(Colors.Yellow, @"[ShinraEx] Chocobo Stance >>> Attacker");
                     return true;
                 case Stances.Healer:
                     if (ChocoboManager.Stance == CompanionStance.Healer)
@@ -323,7 +323,7 @@ namespace ShinraCo
                     }
                     ChocoboManager.HealerStance();
                     await Coroutine.Wait(1000, () => ChocoboManager.Stance == CompanionStance.Healer);
-                    Logging.Write(Colors.Yellow, @"[Shinra] Chocobo Stance >>> Healer");
+                    Logging.Write(Colors.Yellow, @"[ShinraEx] Chocobo Stance >>> Healer");
                     return true;
                 case Stances.Defender:
                     if (ChocoboManager.Stance == CompanionStance.Defender)
@@ -332,7 +332,7 @@ namespace ShinraCo
                     }
                     ChocoboManager.DefenderStance();
                     await Coroutine.Wait(1000, () => ChocoboManager.Stance == CompanionStance.Defender);
-                    Logging.Write(Colors.Yellow, @"[Shinra] Chocobo Stance >>> Defender");
+                    Logging.Write(Colors.Yellow, @"[ShinraEx] Chocobo Stance >>> Defender");
                     return true;
             }
             return false;

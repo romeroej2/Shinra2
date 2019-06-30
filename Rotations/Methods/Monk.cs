@@ -62,8 +62,8 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Demolish()
         {
-            if (Shinra.Settings.MonkDemolish && (Core.Player.CurrentTarget.IsBoss() ||
-                                                 Core.Player.CurrentTarget.CurrentHealth > Shinra.Settings.MonkDemolishHP))
+            if (ShinraEx.Settings.MonkDemolish && (Core.Player.CurrentTarget.IsBoss() ||
+                                                 Core.Player.CurrentTarget.CurrentHealth > ShinraEx.Settings.MonkDemolishHP))
             {
                 if ((CoeurlForm || BalanceActive) && !Core.Player.CurrentTarget.HasAura(MySpells.Demolish.Name, true, 6000))
                 {
@@ -92,7 +92,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> ShoulderTackle()
         {
-            if (Shinra.Settings.MonkShoulderTackle && Core.Player.TargetDistance(10))
+            if (ShinraEx.Settings.MonkShoulderTackle && Core.Player.TargetDistance(10))
             {
                 return await MySpells.ShoulderTackle.Cast(null, false);
             }
@@ -101,7 +101,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SteelPeak()
         {
-            if (Shinra.Settings.MonkSteelPeak)
+            if (ShinraEx.Settings.MonkSteelPeak)
             {
                 return await MySpells.SteelPeak.Cast();
             }
@@ -110,7 +110,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> HowlingFist()
         {
-            if (Shinra.Settings.MonkHowlingFist)
+            if (ShinraEx.Settings.MonkHowlingFist)
             {
                 return await MySpells.HowlingFist.Cast();
             }
@@ -119,7 +119,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> ForbiddenChakra()
         {
-            if (Shinra.Settings.MonkForbiddenChakra && Resource.FithChakra == 5)
+            if (ShinraEx.Settings.MonkForbiddenChakra && Resource.FithChakra == 5)
             {
                 return await MySpells.ForbiddenChakra.Cast(null, false);
             }
@@ -128,7 +128,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> ElixirField()
         {
-            if (Shinra.Settings.MonkElixirField && Core.Player.TargetDistance(5, false))
+            if (ShinraEx.Settings.MonkElixirField && Core.Player.TargetDistance(5, false))
             {
                 return await MySpells.ElixirField.Cast();
             }
@@ -137,7 +137,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> FireTackle()
         {
-            if (Shinra.Settings.MonkFireTackle && Core.Player.TargetDistance(10))
+            if (ShinraEx.Settings.MonkFireTackle && Core.Player.TargetDistance(10))
             {
                 return await MySpells.FireTackle.Cast(null, false);
             }
@@ -150,7 +150,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> InternalRelease()
         {
-            if (Shinra.Settings.MonkInternalRelease)
+            if (ShinraEx.Settings.MonkInternalRelease)
             {
                 return await MySpells.InternalRelease.Cast();
             }
@@ -159,7 +159,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> PerfectBalance()
         {
-            if (Shinra.Settings.MonkPerfectBalance)
+            if (ShinraEx.Settings.MonkPerfectBalance)
             {
                 return await MySpells.PerfectBalance.Cast();
             }
@@ -168,21 +168,21 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> FormShift()
         {
-            if (!Shinra.Settings.MonkFormShift || !Core.Player.HasTarget || CoeurlForm) return false;
+            if (!ShinraEx.Settings.MonkFormShift || !Core.Player.HasTarget || CoeurlForm) return false;
 
             return await MySpells.FormShift.Cast();
         }
 
         private async Task<bool> Meditation()
         {
-            if (!Shinra.Settings.MonkMeditation || Resource.FithChakra == 5) return false;
+            if (!ShinraEx.Settings.MonkMeditation || Resource.FithChakra == 5) return false;
 
             return await MySpells.Meditation.Cast();
         }
 
         private async Task<bool> RiddleOfFire()
         {
-            if (Shinra.Settings.MonkRiddleOfFire)
+            if (ShinraEx.Settings.MonkRiddleOfFire)
             {
                 return await MySpells.RiddleOfFire.Cast();
             }
@@ -191,7 +191,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Brotherhood()
         {
-            if (Shinra.Settings.MonkBrotherhood)
+            if (ShinraEx.Settings.MonkBrotherhood)
             {
                 return await MySpells.Brotherhood.Cast();
             }
@@ -204,9 +204,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> FistsOfEarth()
         {
-            if (Shinra.Settings.MonkFist == MonkFists.Earth ||
-                Shinra.Settings.MonkFist == MonkFists.Wind && !ActionManager.HasSpell(MySpells.FistsOfWind.Name) ||
-                Shinra.Settings.MonkFist == MonkFists.Fire && !ActionManager.HasSpell(MySpells.FistsOfFire.Name))
+            if (ShinraEx.Settings.MonkFist == MonkFists.Earth ||
+                ShinraEx.Settings.MonkFist == MonkFists.Wind && !ActionManager.HasSpell(MySpells.FistsOfWind.Name) ||
+                ShinraEx.Settings.MonkFist == MonkFists.Fire && !ActionManager.HasSpell(MySpells.FistsOfFire.Name))
             {
                 if (!Core.Player.HasAura(MySpells.FistsOfEarth.Name))
                 {
@@ -218,7 +218,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> FistsOfWind()
         {
-            if (Shinra.Settings.MonkFist == MonkFists.Wind && !Core.Player.HasAura(MySpells.FistsOfWind.Name) &&
+            if (ShinraEx.Settings.MonkFist == MonkFists.Wind && !Core.Player.HasAura(MySpells.FistsOfWind.Name) &&
                 !Core.Player.HasAura(MySpells.RiddleOfEarth.Name))
             {
                 return await MySpells.FistsOfWind.Cast(null, false);
@@ -228,7 +228,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> FistsOfFire()
         {
-            if (Shinra.Settings.MonkFist == MonkFists.Fire && !Core.Player.HasAura(MySpells.FistsOfFire.Name) &&
+            if (ShinraEx.Settings.MonkFist == MonkFists.Fire && !Core.Player.HasAura(MySpells.FistsOfFire.Name) &&
                 !Core.Player.HasAura(MySpells.RiddleOfEarth.Name))
             {
                 return await MySpells.FistsOfFire.Cast(null, false);
@@ -242,7 +242,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SecondWind()
         {
-            if (Shinra.Settings.MonkSecondWind && Core.Player.CurrentHealthPercent < Shinra.Settings.MonkSecondWindPct)
+            if (ShinraEx.Settings.MonkSecondWind && Core.Player.CurrentHealthPercent < ShinraEx.Settings.MonkSecondWindPct)
             {
                 return await MySpells.Role.SecondWind.Cast();
             }
@@ -251,7 +251,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Invigorate()
         {
-            if (Shinra.Settings.MonkInvigorate && Core.Player.CurrentTPPercent < Shinra.Settings.MonkInvigoratePct)
+            if (ShinraEx.Settings.MonkInvigorate && Core.Player.CurrentTPPercent < ShinraEx.Settings.MonkInvigoratePct)
             {
                 return await MySpells.Role.Invigorate.Cast();
             }
@@ -260,7 +260,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Bloodbath()
         {
-            if (Shinra.Settings.MonkBloodbath && Core.Player.CurrentHealthPercent < Shinra.Settings.MonkBloodbathPct)
+            if (ShinraEx.Settings.MonkBloodbath && Core.Player.CurrentHealthPercent < ShinraEx.Settings.MonkBloodbathPct)
             {
                 return await MySpells.Role.Bloodbath.Cast();
             }
@@ -269,9 +269,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Goad()
         {
-            if (Shinra.Settings.MonkGoad)
+            if (ShinraEx.Settings.MonkGoad)
             {
-                var target = Helpers.GoadManager.FirstOrDefault(gm => gm.CurrentTPPercent < Shinra.Settings.MonkGoadPct);
+                var target = Helpers.GoadManager.FirstOrDefault(gm => gm.CurrentTPPercent < ShinraEx.Settings.MonkGoadPct);
 
                 if (target != null)
                 {
@@ -283,7 +283,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> TrueNorth()
         {
-            if (Shinra.Settings.MonkTrueNorth && Core.Player.TargetDistance(5, false))
+            if (ShinraEx.Settings.MonkTrueNorth && Core.Player.TargetDistance(5, false))
             {
                 return await MySpells.Role.TrueNorth.Cast();
             }

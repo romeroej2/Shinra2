@@ -138,7 +138,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> HissatsuSeigan()
         {
-            if (Shinra.LastSpell.Name != MySpells.HissatsuKaiten.Name && Resource.Kenki >= 35 && !PoolKenki)
+            if (ShinraEx.LastSpell.Name != MySpells.HissatsuKaiten.Name && Resource.Kenki >= 35 && !PoolKenki)
             {
                 return await MySpells.HissatsuSeigan.Cast();
             }
@@ -219,9 +219,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> HissatsuKyuten()
         {
-            if (Shinra.Settings.RotationMode != Modes.Single)
+            if (ShinraEx.Settings.RotationMode != Modes.Single)
             {
-                if (Shinra.LastSpell.Name != MySpells.HissatsuKaiten.Name && Resource.Kenki >= 45 && !PoolKenki)
+                if (ShinraEx.LastSpell.Name != MySpells.HissatsuKaiten.Name && Resource.Kenki >= 45 && !PoolKenki)
                 {
                     return await MySpells.HissatsuKyuten.Cast();
                 }
@@ -240,7 +240,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> HissatsuGyoten()
         {
-            if (Shinra.Settings.SamuraiGyoten && Core.Player.TargetDistance(10))
+            if (ShinraEx.Settings.SamuraiGyoten && Core.Player.TargetDistance(10))
             {
                 return await MySpells.HissatsuGyoten.Cast(null, false);
             }
@@ -249,7 +249,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> HissatsuGuren()
         {
-            if (Shinra.Settings.SamuraiGuren && Resource.Kenki >= 70)
+            if (ShinraEx.Settings.SamuraiGuren && Resource.Kenki >= 70)
             {
                 return await MySpells.HissatsuGuren.Cast();
             }
@@ -262,7 +262,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> MeikyoShisui()
         {
-            if (Shinra.Settings.SamuraiMeikyo && Core.Player.TargetDistance(5, false))
+            if (ShinraEx.Settings.SamuraiMeikyo && Core.Player.TargetDistance(5, false))
             {
                 if (ActionManager.LastSpell.Name == MySpells.Gekko.Name || ActionManager.LastSpell.Name == MySpells.Kasha.Name ||
                     ActionManager.LastSpell.Name == MySpells.Yukikaze.Name)
@@ -280,7 +280,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> HissatsuKaiten()
         {
-            if (Shinra.LastSpell.Name == MySpells.Hagakure.Name || UseHagakure || !UseHiganbana && !UseTenka && !UseMidare)
+            if (ShinraEx.LastSpell.Name == MySpells.Hagakure.Name || UseHagakure || !UseHiganbana && !UseTenka && !UseMidare)
                 return false;
 
             if (await MySpells.HissatsuKaiten.Cast())
@@ -308,7 +308,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> MercifulEyes()
         {
-            if (Shinra.Settings.SamuraiMerciful && Core.Player.CurrentHealthPercent < Shinra.Settings.SamuraiMercifulPct)
+            if (ShinraEx.Settings.SamuraiMerciful && Core.Player.CurrentHealthPercent < ShinraEx.Settings.SamuraiMercifulPct)
             {
                 return await MySpells.MercifulEyes.Cast();
             }
@@ -321,7 +321,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SecondWind()
         {
-            if (Shinra.Settings.SamuraiSecondWind && Core.Player.CurrentHealthPercent < Shinra.Settings.SamuraiSecondWindPct)
+            if (ShinraEx.Settings.SamuraiSecondWind && Core.Player.CurrentHealthPercent < ShinraEx.Settings.SamuraiSecondWindPct)
             {
                 return await MySpells.Role.SecondWind.Cast();
             }
@@ -330,7 +330,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Invigorate()
         {
-            if (Shinra.Settings.SamuraiInvigorate && Core.Player.CurrentTPPercent < Shinra.Settings.SamuraiInvigoratePct)
+            if (ShinraEx.Settings.SamuraiInvigorate && Core.Player.CurrentTPPercent < ShinraEx.Settings.SamuraiInvigoratePct)
             {
                 return await MySpells.Role.Invigorate.Cast();
             }
@@ -339,7 +339,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Bloodbath()
         {
-            if (Shinra.Settings.SamuraiBloodbath && Core.Player.CurrentHealthPercent < Shinra.Settings.SamuraiBloodbathPct)
+            if (ShinraEx.Settings.SamuraiBloodbath && Core.Player.CurrentHealthPercent < ShinraEx.Settings.SamuraiBloodbathPct)
             {
                 return await MySpells.Role.Bloodbath.Cast();
             }
@@ -348,9 +348,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Goad()
         {
-            if (Shinra.Settings.SamuraiGoad)
+            if (ShinraEx.Settings.SamuraiGoad)
             {
-                var target = Helpers.GoadManager.FirstOrDefault(gm => gm.CurrentTPPercent < Shinra.Settings.SamuraiGoadPct);
+                var target = Helpers.GoadManager.FirstOrDefault(gm => gm.CurrentTPPercent < ShinraEx.Settings.SamuraiGoadPct);
 
                 if (target != null)
                 {
@@ -362,7 +362,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> TrueNorth()
         {
-            if (Shinra.Settings.SamuraiTrueNorth && Core.Player.TargetDistance(5, false))
+            if (ShinraEx.Settings.SamuraiTrueNorth && Core.Player.TargetDistance(5, false))
             {
                 return await MySpells.Role.TrueNorth.Cast();
             }
@@ -456,23 +456,23 @@ namespace ShinraCo.Rotations
         private static bool GetsuActive => Resource.Sen.HasFlag(Resource.Iaijutsu.Getsu);
         private static bool KaActive => Resource.Sen.HasFlag(Resource.Iaijutsu.Ka);
         private static bool SetsuActive => Resource.Sen.HasFlag(Resource.Iaijutsu.Setsu);
-        private static bool PoolKenki => Shinra.Settings.SamuraiGuren && ActionManager.HasSpell(7496) &&
+        private static bool PoolKenki => ShinraEx.Settings.SamuraiGuren && ActionManager.HasSpell(7496) &&
                                          DataManager.GetSpellData(7496).Cooldown.TotalMilliseconds < 6000;
 
-        private static bool UseHiganbana => Shinra.Settings.SamuraiHiganbana && NumSen == 1 &&
+        private static bool UseHiganbana => ShinraEx.Settings.SamuraiHiganbana && NumSen == 1 &&
                                             !Core.Player.CurrentTarget.HasAura(1228, true, 8000) &&
                                             (Core.Player.CurrentTarget.IsBoss() ||
-                                             Core.Player.CurrentTarget.CurrentHealth > Shinra.Settings.SamuraiHiganbanaHP);
+                                             Core.Player.CurrentTarget.CurrentHealth > ShinraEx.Settings.SamuraiHiganbanaHP);
 
-        private static bool UseTenka => NumSen == 2 && (Shinra.Settings.RotationMode == Modes.Multi ||
-                                                        Shinra.Settings.RotationMode == Modes.Smart &&
+        private static bool UseTenka => NumSen == 2 && (ShinraEx.Settings.RotationMode == Modes.Multi ||
+                                                        ShinraEx.Settings.RotationMode == Modes.Smart &&
                                                         Helpers.EnemiesNearTarget(5) >= Helpers.AoECount);
 
-        private static bool UseMidare => Shinra.Settings.SamuraiMidare && NumSen == 3 &&
+        private static bool UseMidare => ShinraEx.Settings.SamuraiMidare && NumSen == 3 &&
                                          (Core.Player.CurrentTarget.IsBoss() ||
-                                          Core.Player.CurrentTarget.CurrentHealth > Shinra.Settings.SamuraiMidareHP);
+                                          Core.Player.CurrentTarget.CurrentHealth > ShinraEx.Settings.SamuraiMidareHP);
 
-        private static bool UseHagakure => Shinra.Settings.SamuraiHagakure && NumSen == 3 &&
+        private static bool UseHagakure => ShinraEx.Settings.SamuraiHagakure && NumSen == 3 &&
                                            DataManager.GetSpellData(7495).Cooldown == TimeSpan.Zero;
 
         private static int NumSen

@@ -84,7 +84,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Scathe()
         {
-            if (Shinra.Settings.BlackMageScathe && MovementManager.IsMoving && Core.Player.CurrentManaPercent > 20)
+            if (ShinraEx.Settings.BlackMageScathe && MovementManager.IsMoving && Core.Player.CurrentManaPercent > 20)
             {
                 if (Resource.StackTimer.TotalMilliseconds > 8000 || Resource.StackTimer.TotalMilliseconds == 0)
                 {
@@ -161,7 +161,7 @@ namespace ShinraCo.Rotations
             {
                 if (ActionManager.CanCast(MySpells.FireII.Name, Core.Player.CurrentTarget))
                 {
-                    if (Shinra.Settings.BlackMageTriplecast && ActionManager.LastSpell.Name == MySpells.FireIII.Name)
+                    if (ShinraEx.Settings.BlackMageTriplecast && ActionManager.LastSpell.Name == MySpells.FireIII.Name)
                     {
                         if (await MySpells.Triplecast.Cast(null, false))
                         {
@@ -192,7 +192,7 @@ namespace ShinraCo.Rotations
         {
             if (AstralFire && (Core.Player.CurrentManaPercent < 25 || Core.Player.ClassLevel > 67 && Resource.UmbralHearts > 0))
             {
-                if (Shinra.Settings.BlackMageConvert && ActionManager.HasSpell(MySpells.Flare.Name) &&
+                if (ShinraEx.Settings.BlackMageConvert && ActionManager.HasSpell(MySpells.Flare.Name) &&
                     !ActionManager.CanCast(MySpells.Flare.Name, Core.Player.CurrentTarget))
                 {
                     if (await MySpells.Convert.Cast(null, false))
@@ -200,7 +200,7 @@ namespace ShinraCo.Rotations
                         await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.Flare.Name, Core.Player.CurrentTarget));
                     }
                 }
-                if (Shinra.Settings.BlackMageSwiftcast && ActionManager.CanCast(MySpells.Flare.Name, Core.Player.CurrentTarget) &&
+                if (ShinraEx.Settings.BlackMageSwiftcast && ActionManager.CanCast(MySpells.Flare.Name, Core.Player.CurrentTarget) &&
                     !RecentTriplecast)
                 {
                     if (await MySpells.Role.Swiftcast.Cast(null, false))
@@ -228,7 +228,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> ThunderII()
         {
-            if (Shinra.Settings.BlackMageThunder && !ActionManager.HasSpell(MySpells.ThunderIV.Name))
+            if (ShinraEx.Settings.BlackMageThunder && !ActionManager.HasSpell(MySpells.ThunderIV.Name))
             {
                 if (UmbralIce && !Core.Player.CurrentTarget.HasAura(MySpells.ThunderII.Name, true, 4000) || Core.Player.HasAura("Thundercloud"))
                 {
@@ -240,7 +240,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> ThunderIV()
         {
-            if (Shinra.Settings.BlackMageThunder)
+            if (ShinraEx.Settings.BlackMageThunder)
             {
                 if (UmbralIce && !Core.Player.CurrentTarget.HasAura(MySpells.ThunderIV.Name, true, 4000) || Core.Player.HasAura("Thundercloud"))
                 {
@@ -266,7 +266,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Convert()
         {
-            if (Shinra.Settings.BlackMageConvert && AstralFire && ActionManager.LastSpell.Name == MySpells.FireIII.Name)
+            if (ShinraEx.Settings.BlackMageConvert && AstralFire && ActionManager.LastSpell.Name == MySpells.FireIII.Name)
             {
                 return await MySpells.Convert.Cast();
             }
@@ -275,7 +275,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> LeyLines()
         {
-            if (Shinra.Settings.BlackMageLeyLines && !MovementManager.IsMoving)
+            if (ShinraEx.Settings.BlackMageLeyLines && !MovementManager.IsMoving)
             {
                 if (Core.Player.CurrentManaPercent > 80 || ActionManager.LastSpell.Name == MySpells.FireII.Name)
                 {
@@ -287,7 +287,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Sharpcast()
         {
-            if (Shinra.Settings.BlackMageSharpcast && AstralFire && Core.Player.CurrentManaPercent > 60 && !Core.Player.HasAura("Firestarter"))
+            if (ShinraEx.Settings.BlackMageSharpcast && AstralFire && Core.Player.CurrentManaPercent > 60 && !Core.Player.HasAura("Firestarter"))
             {
                 return await MySpells.Sharpcast.Cast();
             }
@@ -296,7 +296,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Enochian()
         {
-            if (Shinra.Settings.BlackMageEnochian && Core.Player.ClassLevel >= 60 && !Resource.Enochian &&
+            if (ShinraEx.Settings.BlackMageEnochian && Core.Player.ClassLevel >= 60 && !Resource.Enochian &&
                 Resource.StackTimer.TotalMilliseconds > 6000)
             {
                 return await MySpells.Enochian.Cast(null, false);
@@ -306,7 +306,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Triplecast()
         {
-            if (Shinra.Settings.BlackMageTriplecast && ActionManager.LastSpell.Name == MySpells.FireIII.Name && Core.Player.CurrentManaPercent > 80)
+            if (ShinraEx.Settings.BlackMageTriplecast && ActionManager.LastSpell.Name == MySpells.FireIII.Name && Core.Player.CurrentManaPercent > 80)
             {
                 if (await MySpells.Triplecast.Cast(null, false))
                 {
@@ -322,7 +322,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Drain()
         {
-            if (Shinra.Settings.BlackMageDrain && Core.Player.CurrentHealthPercent < Shinra.Settings.BlackMageDrainPct)
+            if (ShinraEx.Settings.BlackMageDrain && Core.Player.CurrentHealthPercent < ShinraEx.Settings.BlackMageDrainPct)
             {
                 return await MySpells.Role.Drain.Cast();
             }
@@ -331,7 +331,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> LucidDreaming()
         {
-            if (Shinra.Settings.BlackMageLucidDreaming && Core.Player.CurrentManaPercent < Shinra.Settings.BlackMageLucidDreamingPct)
+            if (ShinraEx.Settings.BlackMageLucidDreaming && Core.Player.CurrentManaPercent < ShinraEx.Settings.BlackMageLucidDreamingPct)
             {
                 return await MySpells.Role.LucidDreaming.Cast();
             }
@@ -340,7 +340,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Swiftcast()
         {
-            if (Shinra.Settings.BlackMageSwiftcast && AstralFire && Resource.StackTimer.TotalMilliseconds > 8000 && !RecentTriplecast &&
+            if (ShinraEx.Settings.BlackMageSwiftcast && AstralFire && Resource.StackTimer.TotalMilliseconds > 8000 && !RecentTriplecast &&
                 Core.Player.CurrentManaPercent > 40)
             {
                 if (await MySpells.Role.Swiftcast.Cast(null, false))
@@ -461,8 +461,8 @@ namespace ShinraCo.Rotations
         private static double BlizzardIIICost => DataManager.GetSpellData("Blizzard III").Cost * ManaReduction;
         
         private static bool RecentTranspose { get { return Spell.RecentSpell.Keys.Any(rs => rs.Contains("Transpose")); } }
-        private static bool RecentTriplecast => Core.Player.HasAura(1211) || Shinra.LastSpell.ID == 7421;
-        private static bool AstralFire => Resource.AstralStacks > 0 && Shinra.LastSpell.Name != "Transpose";
+        private static bool RecentTriplecast => Core.Player.HasAura(1211) || ShinraEx.LastSpell.ID == 7421;
+        private static bool AstralFire => Resource.AstralStacks > 0 && ShinraEx.LastSpell.Name != "Transpose";
         private static bool UmbralIce => Resource.UmbralStacks > 0;
 
         #endregion

@@ -84,7 +84,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Bane()
         {
-            if (Shinra.Settings.RotationMode != Modes.Single && Shinra.Settings.ScholarBane &&
+            if (ShinraEx.Settings.RotationMode != Modes.Single && ShinraEx.Settings.ScholarBane &&
                 Core.Player.CurrentTarget.HasAura(BioDebuff, true, 20000) &&
                 Core.Player.CurrentTarget.HasAura(MySpells.Miasma.Name, true, 14000))
             {
@@ -95,7 +95,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> MiasmaII()
         {
-            if (Shinra.Settings.RotationMode != Modes.Single && !StopDamage &&
+            if (ShinraEx.Settings.RotationMode != Modes.Single && !StopDamage &&
                 !Core.Player.CurrentTarget.HasAura(MySpells.MiasmaII.Name, true, 3000))
             {
                 return await MySpells.MiasmaII.Cast();
@@ -109,9 +109,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> EnergyDrain()
         {
-            if (Shinra.Settings.ScholarEnergyDrain)
+            if (ShinraEx.Settings.ScholarEnergyDrain)
             {
-                if (Core.Player.CurrentManaPercent < Shinra.Settings.ScholarEnergyDrainPct && MySpells.Aetherflow.Cooldown() == 0)
+                if (Core.Player.CurrentManaPercent < ShinraEx.Settings.ScholarEnergyDrainPct && MySpells.Aetherflow.Cooldown() == 0)
                 {
                     return await MySpells.EnergyDrain.Cast(null, false);
                 }
@@ -121,7 +121,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> ShadowFlare()
         {
-            if (Shinra.Settings.ScholarShadowFlare && !MovementManager.IsMoving)
+            if (ShinraEx.Settings.ScholarShadowFlare && !MovementManager.IsMoving)
             {
                 return await MySpells.ShadowFlare.Cast(null, false);
             }
@@ -130,7 +130,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> ChainStrategem()
         {
-            if (Shinra.Settings.ScholarChainStrategem)
+            if (ShinraEx.Settings.ScholarChainStrategem)
             {
                 return await MySpells.ChainStrategem.Cast(null, false);
             }
@@ -152,7 +152,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Rouse()
         {
-            if (Shinra.Settings.ScholarRouse && Helpers.HealManager.Any(hm => hm.CurrentHealthPercent < 80))
+            if (ShinraEx.Settings.ScholarRouse && Helpers.HealManager.Any(hm => hm.CurrentHealthPercent < 80))
             {
                 return await MySpells.Rouse.Cast(null, false);
             }
@@ -165,7 +165,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> UpdateHealing()
         {
-            if (Shinra.Settings.ScholarPartyHeal && !await Helpers.UpdateHealManager())
+            if (ShinraEx.Settings.ScholarPartyHeal && !await Helpers.UpdateHealManager())
             {
                 return true;
             }
@@ -174,21 +174,21 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> StopCasting()
         {
-            if (Shinra.Settings.ScholarInterruptOverheal && Core.Player.IsCasting)
+            if (ShinraEx.Settings.ScholarInterruptOverheal && Core.Player.IsCasting)
             {
                 var target = GameObjectManager.GetObjectByObjectId(Core.Player.SpellCastInfo.TargetId);
                 var spellName = Core.Player.SpellCastInfo.Name;
 
                 if (target != null)
                 {
-                    if (spellName == MySpells.Physick.Name && target.CurrentHealthPercent >= Shinra.Settings.ScholarPhysickPct + 10 ||
-                        spellName == MySpells.Adloquium.Name && target.CurrentHealthPercent >= Shinra.Settings.ScholarAdloquiumPct + 10)
+                    if (spellName == MySpells.Physick.Name && target.CurrentHealthPercent >= ShinraEx.Settings.ScholarPhysickPct + 10 ||
+                        spellName == MySpells.Adloquium.Name && target.CurrentHealthPercent >= ShinraEx.Settings.ScholarAdloquiumPct + 10)
                     {
-                        var debugSetting = spellName == MySpells.Physick.Name ? Shinra.Settings.ScholarPhysickPct
-                            : Shinra.Settings.ScholarAdloquiumPct;
+                        var debugSetting = spellName == MySpells.Physick.Name ? ShinraEx.Settings.ScholarPhysickPct
+                            : ShinraEx.Settings.ScholarAdloquiumPct;
                         Helpers.Debug($@"Target HP: {target.CurrentHealthPercent}, Setting: {debugSetting}, Adjusted: {debugSetting + 10}");
 
-                        Logging.Write(Colors.Yellow, $@"[Shinra] Interrupting >>> {spellName}");
+                        Logging.Write(Colors.Yellow, $@"[ShinraEx] Interrupting >>> {spellName}");
                         ActionManager.StopCasting();
                         await Coroutine.Wait(500, () => !Core.Player.IsCasting);
                     }
@@ -199,11 +199,11 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Physick()
         {
-            if (Shinra.Settings.ScholarPhysick)
+            if (ShinraEx.Settings.ScholarPhysick)
             {
-                var target = Shinra.Settings.ScholarPartyHeal
-                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < Shinra.Settings.ScholarPhysickPct)
-                    : Core.Player.CurrentHealthPercent < Shinra.Settings.ScholarPhysickPct ? Core.Player : null;
+                var target = ShinraEx.Settings.ScholarPartyHeal
+                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.ScholarPhysickPct)
+                    : Core.Player.CurrentHealthPercent < ShinraEx.Settings.ScholarPhysickPct ? Core.Player : null;
 
                 if (target != null)
                 {
@@ -215,12 +215,12 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Adloquium()
         {
-            if (Shinra.Settings.ScholarAdloquium)
+            if (ShinraEx.Settings.ScholarAdloquium)
             {
-                var target = Shinra.Settings.ScholarPartyHeal
-                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < Shinra.Settings.ScholarAdloquiumPct &&
+                var target = ShinraEx.Settings.ScholarPartyHeal
+                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.ScholarAdloquiumPct &&
                                                                !hm.HasAura("Galvanize"))
-                    : Core.Player.CurrentHealthPercent < Shinra.Settings.ScholarAdloquiumPct && !Core.Player.HasAura("Galvanize")
+                    : Core.Player.CurrentHealthPercent < ShinraEx.Settings.ScholarAdloquiumPct && !Core.Player.HasAura("Galvanize")
                         ? Core.Player : null;
 
                 if (target != null)
@@ -233,12 +233,12 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Aetherpact()
         {
-            if (Shinra.Settings.ScholarAetherpact && Resource.FaerieGauge > 30)
+            if (ShinraEx.Settings.ScholarAetherpact && Resource.FaerieGauge > 30)
             {
-                var target = Shinra.Settings.ScholarPartyHeal
+                var target = ShinraEx.Settings.ScholarPartyHeal
                     ? Helpers.HealManager.FirstOrDefault(hm => hm.IsTank() && !hm.HasAura("Fey Union") &&
-                                                               hm.CurrentHealthPercent < Shinra.Settings.ScholarAetherpactPct)
-                    : Core.Player.CurrentHealthPercent < Shinra.Settings.ScholarAetherpactPct && !Core.Player.HasAura("Fey Union")
+                                                               hm.CurrentHealthPercent < ShinraEx.Settings.ScholarAetherpactPct)
+                    : Core.Player.CurrentHealthPercent < ShinraEx.Settings.ScholarAetherpactPct && !Core.Player.HasAura("Fey Union")
                         ? Core.Player : null;
 
                 if (target != null)
@@ -251,11 +251,11 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Lustrate()
         {
-            if (Shinra.Settings.ScholarLustrate)
+            if (ShinraEx.Settings.ScholarLustrate)
             {
-                var target = Shinra.Settings.ScholarPartyHeal
-                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < Shinra.Settings.ScholarLustratePct)
-                    : Core.Player.CurrentHealthPercent < Shinra.Settings.ScholarLustratePct ? Core.Player : null;
+                var target = ShinraEx.Settings.ScholarPartyHeal
+                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.ScholarLustratePct)
+                    : Core.Player.CurrentHealthPercent < ShinraEx.Settings.ScholarLustratePct ? Core.Player : null;
 
                 if (target != null)
                 {
@@ -267,11 +267,11 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Excogitation()
         {
-            if (Shinra.Settings.ScholarExcogitation)
+            if (ShinraEx.Settings.ScholarExcogitation)
             {
-                var target = Shinra.Settings.ScholarPartyHeal
+                var target = ShinraEx.Settings.ScholarPartyHeal
                     ? Helpers.HealManager.FirstOrDefault(hm => hm.IsTank() &&
-                                                               hm.CurrentHealthPercent < Shinra.Settings.ScholarExcogitationPct &&
+                                                               hm.CurrentHealthPercent < ShinraEx.Settings.ScholarExcogitationPct &&
                                                                !hm.HasAura(MySpells.Excogitation.Name, true)) : null;
 
                 if (target != null)
@@ -284,15 +284,15 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Succor()
         {
-            if (Shinra.Settings.ScholarSuccor && Shinra.Settings.ScholarPartyHeal && UseAoEHeals)
+            if (ShinraEx.Settings.ScholarSuccor && ShinraEx.Settings.ScholarPartyHeal && UseAoEHeals)
             {
-                var count = Helpers.FriendsNearPlayer(Shinra.Settings.ScholarSuccorPct);
-                var emergencyTactics = Shinra.Settings.ScholarEmergencyTactics &&
+                var count = Helpers.FriendsNearPlayer(ShinraEx.Settings.ScholarSuccorPct);
+                var emergencyTactics = ShinraEx.Settings.ScholarEmergencyTactics &&
                                        ActionManager.CanCast(MySpells.EmergencyTactics.Name, Core.Player);
 
                 if (count > 2 && (emergencyTactics || !Core.Player.HasAura("Galvanize")))
                 {
-                    if (Shinra.Settings.ScholarEmergencyTactics && ActionManager.CanCast(MySpells.Succor.Name, Core.Player))
+                    if (ShinraEx.Settings.ScholarEmergencyTactics && ActionManager.CanCast(MySpells.Succor.Name, Core.Player))
                     {
                         if (await MySpells.EmergencyTactics.Cast(null, false))
                         {
@@ -307,9 +307,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Indomitability()
         {
-            if (Shinra.Settings.ScholarIndomitability && Shinra.Settings.ScholarPartyHeal && UseAoEHeals)
+            if (ShinraEx.Settings.ScholarIndomitability && ShinraEx.Settings.ScholarPartyHeal && UseAoEHeals)
             {
-                var count = Helpers.FriendsNearPlayer(Shinra.Settings.ScholarIndomitabilityPct);
+                var count = Helpers.FriendsNearPlayer(ShinraEx.Settings.ScholarIndomitabilityPct);
 
                 if (count > 2)
                 {
@@ -321,15 +321,15 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Resurrection()
         {
-            if (Shinra.Settings.ScholarResurrection &&
-                (Shinra.Settings.ScholarSwiftcast && ActionManager.CanCast(MySpells.Role.Swiftcast.Name, Core.Player) ||
-                 !Helpers.HealManager.Any(hm => hm.CurrentHealthPercent < Shinra.Settings.ScholarPhysickPct)))
+            if (ShinraEx.Settings.ScholarResurrection &&
+                (ShinraEx.Settings.ScholarSwiftcast && ActionManager.CanCast(MySpells.Role.Swiftcast.Name, Core.Player) ||
+                 !Helpers.HealManager.Any(hm => hm.CurrentHealthPercent < ShinraEx.Settings.ScholarPhysickPct)))
             {
                 var target = Helpers.RessManager.FirstOrDefault(pm => !pm.HasAura("Raise"));
 
                 if (target != null)
                 {
-                    if (Shinra.Settings.ScholarSwiftcast && ActionManager.CanCast(MySpells.Resurrection.Name, target))
+                    if (ShinraEx.Settings.ScholarSwiftcast && ActionManager.CanCast(MySpells.Resurrection.Name, target))
                     {
                         if (await MySpells.Role.Swiftcast.Cast(null, false))
                         {
@@ -348,7 +348,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Summon()
         {
-            if (Shinra.Settings.ScholarPet == ScholarPets.None || Shinra.Settings.ScholarPet == ScholarPets.Selene &&
+            if (ShinraEx.Settings.ScholarPet == ScholarPets.None || ShinraEx.Settings.ScholarPet == ScholarPets.Selene &&
                 ActionManager.HasSpell(MySpells.SummonII.Name))
             {
                 return false;
@@ -356,7 +356,7 @@ namespace ShinraCo.Rotations
 
             if (PetManager.ActivePetType != PetType.Eos)
             {
-                if (Shinra.Settings.ScholarSwiftcast && ActionManager.CanCast(MySpells.Summon.Name, Core.Player))
+                if (ShinraEx.Settings.ScholarSwiftcast && ActionManager.CanCast(MySpells.Summon.Name, Core.Player))
                 {
                     if (await MySpells.Role.Swiftcast.Cast(null, false))
                     {
@@ -370,9 +370,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SummonII()
         {
-            if (Shinra.Settings.ScholarPet == ScholarPets.Selene && PetManager.ActivePetType != PetType.Selene)
+            if (ShinraEx.Settings.ScholarPet == ScholarPets.Selene && PetManager.ActivePetType != PetType.Selene)
             {
-                if (Shinra.Settings.ScholarSwiftcast && ActionManager.CanCast(MySpells.SummonII.Name, Core.Player))
+                if (ShinraEx.Settings.ScholarSwiftcast && ActionManager.CanCast(MySpells.SummonII.Name, Core.Player))
                 {
                     if (await MySpells.Role.Swiftcast.Cast(null, false))
                     {
@@ -390,7 +390,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> ClericStance()
         {
-            if (Shinra.Settings.ScholarClericStance)
+            if (ShinraEx.Settings.ScholarClericStance)
             {
                 return await MySpells.Role.ClericStance.Cast();
             }
@@ -399,9 +399,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Protect()
         {
-            if (Shinra.Settings.ScholarProtect)
+            if (ShinraEx.Settings.ScholarProtect)
             {
-                var target = Shinra.Settings.ScholarPartyHeal
+                var target = ShinraEx.Settings.ScholarPartyHeal
                     ? Helpers.HealManager.FirstOrDefault(hm => !hm.HasAura(MySpells.Role.Protect.Name) && hm.Type == GameObjectType.Pc)
                     : !Core.Player.HasAura(MySpells.Role.Protect.Name) ? Core.Player : null;
 
@@ -415,9 +415,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Esuna()
         {
-            if (Shinra.Settings.ScholarEsuna)
+            if (ShinraEx.Settings.ScholarEsuna)
             {
-                var target = Shinra.Settings.ScholarPartyHeal ? Helpers.HealManager.FirstOrDefault(hm => hm.HasDispellable())
+                var target = ShinraEx.Settings.ScholarPartyHeal ? Helpers.HealManager.FirstOrDefault(hm => hm.HasDispellable())
                     : Core.Player.HasDispellable() ? Core.Player : null;
 
                 if (target != null)
@@ -430,7 +430,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> LucidDreaming()
         {
-            if (Shinra.Settings.ScholarLucidDreaming && Core.Player.CurrentManaPercent < Shinra.Settings.ScholarLucidDreamingPct)
+            if (ShinraEx.Settings.ScholarLucidDreaming && Core.Player.CurrentManaPercent < ShinraEx.Settings.ScholarLucidDreamingPct)
             {
                 return await MySpells.Role.LucidDreaming.Cast(null, false);
             }
@@ -439,10 +439,10 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> EyeForAnEye()
         {
-            if (Shinra.Settings.ScholarPartyHeal && Shinra.Settings.ScholarEyeForAnEye)
+            if (ShinraEx.Settings.ScholarPartyHeal && ShinraEx.Settings.ScholarEyeForAnEye)
             {
                 var target = Helpers.HealManager.FirstOrDefault(hm => hm.IsTank() &&
-                                                                      hm.CurrentHealthPercent < Shinra.Settings.ScholarEyeForAnEyePct &&
+                                                                      hm.CurrentHealthPercent < ShinraEx.Settings.ScholarEyeForAnEyePct &&
                                                                       !hm.HasAura("Eye for an Eye"));
 
                 if (target != null)
@@ -455,10 +455,10 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Largesse()
         {
-            if (Shinra.Settings.ScholarPartyHeal && Shinra.Settings.ScholarLargesse)
+            if (ShinraEx.Settings.ScholarPartyHeal && ShinraEx.Settings.ScholarLargesse)
             {
-                if (Helpers.HealManager.Count(hm => hm.CurrentHealthPercent < Shinra.Settings.ScholarLargessePct) >=
-                    Shinra.Settings.ScholarLargesseCount)
+                if (Helpers.HealManager.Count(hm => hm.CurrentHealthPercent < ShinraEx.Settings.ScholarLargessePct) >=
+                    ShinraEx.Settings.ScholarLargesseCount)
                 {
                     return await MySpells.Role.Largesse.Cast(null, false);
                 }
@@ -470,13 +470,13 @@ namespace ShinraCo.Rotations
 
         #region Custom
 
-        private static bool StopDamage => Shinra.Settings.ScholarStopDamage && Core.Player.CurrentManaPercent <= Shinra.Settings.ScholarStopDamagePct;
-        private static bool StopDots => Shinra.Settings.ScholarStopDots && Core.Player.CurrentManaPercent <= Shinra.Settings.ScholarStopDotsPct;
+        private static bool StopDamage => ShinraEx.Settings.ScholarStopDamage && Core.Player.CurrentManaPercent <= ShinraEx.Settings.ScholarStopDamagePct;
+        private static bool StopDots => ShinraEx.Settings.ScholarStopDots && Core.Player.CurrentManaPercent <= ShinraEx.Settings.ScholarStopDotsPct;
 
         private static string BioDebuff => Core.Player.ClassLevel >= 26 ? "Bio II" : "Bio";
         private static bool PetExists => Core.Player.Pet != null;
 
-        private bool UseAoEHeals => Shinra.LastSpell.Name != MySpells.Succor.Name && Shinra.LastSpell.Name != MySpells.Indomitability.Name;
+        private bool UseAoEHeals => ShinraEx.LastSpell.Name != MySpells.Succor.Name && ShinraEx.LastSpell.Name != MySpells.Indomitability.Name;
 
         #endregion
     }
