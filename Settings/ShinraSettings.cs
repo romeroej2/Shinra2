@@ -198,6 +198,9 @@ namespace ShinraCo.Settings
         [Setting, DefaultValue(false)]
         public bool DisableDebug { get; set; }
 
+
+        [Setting, DefaultValue(false)]
+        public bool CrPaused { get; set; }
         #endregion
 
         #endregion

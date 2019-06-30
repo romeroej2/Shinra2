@@ -32,6 +32,7 @@
             this.ShinraContainer = new System.Windows.Forms.Panel();
             this.ShinraBanner = new System.Windows.Forms.PictureBox();
             this.ShinraClose = new ShinraCo.Settings.Forms.Design.NoSelectButton();
+            this.ShinraPause = new ShinraCo.Settings.Forms.Design.NoSelectButton();
             this.tabSettings = new ShinraCo.Settings.Forms.Design.CustomTab();
             this.pgeMain = new System.Windows.Forms.TabPage();
             this.SpellGroup = new ShinraCo.Settings.Forms.Design.CustomGroup();
@@ -842,6 +843,7 @@
             this.ShinraContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
             this.ShinraContainer.Controls.Add(this.ShinraBanner);
             this.ShinraContainer.Controls.Add(this.ShinraClose);
+            this.ShinraContainer.Controls.Add(this.ShinraPause);
             this.ShinraContainer.Controls.Add(this.tabSettings);
             this.ShinraContainer.Location = new System.Drawing.Point(2, 2);
             this.ShinraContainer.Name = "ShinraContainer";
@@ -873,6 +875,23 @@
             this.ShinraClose.Text = "Close";
             this.ShinraClose.UseVisualStyleBackColor = true;
             this.ShinraClose.Click += new System.EventHandler(this.ShinraClose_Click);
+            // 
+            // ShinraPause
+            // 
+            this.ShinraPause.FlatAppearance.BorderSize = 0;
+            this.ShinraPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShinraPause.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShinraPause.ForeColor = System.Drawing.Color.White;
+            this.ShinraPause.Location = new System.Drawing.Point(890, 405);
+            this.ShinraPause.Name = "ShinraPause";
+            this.ShinraPause.Size = new System.Drawing.Size(100, 35);
+            this.ShinraPause.TabIndex = 0;
+            this.ShinraPause.TabStop = false;
+            this.ShinraPause.Text = "Pause";
+            this.ShinraPause.UseVisualStyleBackColor = true;
+            this.ShinraPause.Click += new System.EventHandler(this.ShinraPause_Click);
+
+
             // 
             // tabSettings
             // 
@@ -10643,6 +10662,8 @@
         private System.Windows.Forms.TabPage pgeRanged;
         private System.Windows.Forms.TabPage pgeTanks;
         private Design.NoSelectButton ShinraClose;
+        private Design.NoSelectButton ShinraPause;
+
         private Design.CustomTab tabCasters;
         private System.Windows.Forms.TabPage pgeBlackMage;
         private System.Windows.Forms.TabPage pgeRedMage;

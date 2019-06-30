@@ -58,6 +58,7 @@ namespace ShinraCo
 
         public static ShinraSettings Settings = ShinraSettings.Instance;
         public static readonly ShinraOverlay Overlay = new ShinraOverlay();
+     
 
         public sealed override void OnButtonPress()
         {
@@ -230,6 +231,16 @@ namespace ShinraCo
 
         public async Task<bool> Rest()
         {
+            if (Settings.CrPaused)
+            {
+                Logging.Write(Colors.Yellow, @"[ShinraEx] Paused...");
+                return true;
+            }
+
+            Logging.Write(Colors.Yellow, Core.Player.CurrentManaPercent + "(Mana) / " + Core.Player.CurrentTPPercent);
+
+             
+
             if (!BotManager.Current.IsAutonomous || WorldManager.InSanctuary || Core.Player.HasAura("Sprint") ||
                 (!Settings.RestHealth || Core.Player.CurrentHealthPercent > Settings.RestHealthPct) &&
                 (!Settings.RestEnergy || Helpers.CurrentEnergyPct > Settings.RestEnergyPct))

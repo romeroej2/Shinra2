@@ -1099,7 +1099,8 @@ namespace ShinraCo.Settings.Forms
 
         private void ShinraDonate_Click(object sender, EventArgs e)
         {
-            Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ECDZMK27NSFWA");
+            
+            
         }
 
         private void ShinraForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -1113,6 +1114,16 @@ namespace ShinraCo.Settings.Forms
         private void ShinraClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void ShinraPause_Click(object sender, EventArgs e)
+        {
+            //ShinraEx.isPaused = !ShinraEx.isPaused;
+
+            if(ShinraEx.Settings.CrPaused == true)
+                ShinraEx.Settings.CrPaused = false;
+            else
+                 ShinraEx.Settings.CrPaused = true;
         }
 
         #region Main Settings

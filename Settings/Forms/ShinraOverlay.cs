@@ -72,9 +72,17 @@ namespace ShinraCo.Settings.Forms
 
         public void UpdateText()
         {
+            String crStatus = ShinraEx.Settings.CrPaused ? "Paused" : "Running";
             RotationModeLabel.Text = $@"[Rotation] {Convert.ToString(ShinraEx.Settings.RotationMode)}";
             CooldownModeLabel.Text = $@"[Cooldown] {Convert.ToString(ShinraEx.Settings.CooldownMode)}";
             TankModeLabel.Text = $@"[Tank] {Convert.ToString(ShinraEx.Settings.TankMode)}";
+            CRStatusLabel.Text = $@"[CRStatus] {crStatus}";
+
+        }
+
+        private void ShinraContainer_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
