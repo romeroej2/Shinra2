@@ -372,7 +372,7 @@ namespace ShinraCo.Rotations
             if (ShinraEx.Settings.BlackMageLucidDreaming && Core.Player.CurrentManaPercent < ShinraEx.Settings.BlackMageLucidDreamingPct)
             {
                 
-                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Trying to Cast LucidDreaming {}", ActionManager.ActionReady(ff14bot.Enums.ActionType.Spell, 7562));
+                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Trying to Cast LucidDreaming {0}", ActionManager.ActionReady(ff14bot.Enums.ActionType.Spell, 7562));
                 if (ActionManager.ActionReady(ff14bot.Enums.ActionType.Spell, 7562))
                 {
                     ActionManager.DoAction(7562, Core.Me);
