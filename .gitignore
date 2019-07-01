@@ -5,3 +5,5 @@
 /.vs
 /obj/Debug
 /bin/Debug
+/bin/x86/Debug
+/obj/x86/Debug
