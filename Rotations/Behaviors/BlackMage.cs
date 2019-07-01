@@ -24,12 +24,16 @@ namespace ShinraCo.Rotations
             if (await Triplecast()) return true;
             if (await Swiftcast()) return true;
             if (await Sharpcast()) return true;
+            if (await UmbralSoul()) return true;
             if (await Thundercloud()) return true;
             //if (await Drain()) return true; //Deprecated
             if (await Foul()) return true;
+            if (await Xenoglossy()) return true;
+           
             if (await ThunderIII()) return true;
             if (await Thunder()) return true;
             if (await BlizzardIV()) return true;
+            if (await Despair()) return true;
             if (await FireIV()) return true;
             if (await FireIII()) return true;
             if (await Fire()) return true;
@@ -65,6 +69,7 @@ namespace ShinraCo.Rotations
             if (ShinraEx.Settings.BlackMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await Convert()) return true;
             if (await Enochian()) return true;
+            if (await UmbralSoul()) return true;
             if (await LeyLines()) return true;
             return await LucidDreaming();
         }
