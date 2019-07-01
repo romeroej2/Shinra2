@@ -31,6 +31,8 @@ namespace ShinraCo
         public sealed override void Initialize()
         {
             Logging.Write(Colors.GreenYellow, $@"[ShinraEx] Loaded Version: {Helpers.GetLocalVersion()}");
+
+            Settings.CrPaused = false;
             Overlay.Visible = Settings.RotationOverlay;
             Overlay.UpdateText();
             RegisterHotkeys();
@@ -232,7 +234,7 @@ namespace ShinraCo
         public async Task<bool> Rest()
         {
 
-            Logging.Write(Colors.Yellow, "Should bot rest? "+Settings.CrPaused);
+            
             if (Settings.CrPaused == true)
             {
                 Logging.Write(Colors.Yellow, @"[ShinraEx] Paused...");
@@ -266,10 +268,16 @@ namespace ShinraCo
         public static async Task<bool> SummonChocobo()
         {
 
-            Logging.Write(Colors.Yellow, "Should bot (SummonChocobo) rest? " + Settings.CrPaused);
+           
             if (Settings.CrPaused)
             {
+                if (MovementManager.IsMoving)
+                {
+                    Navigator.PlayerMover.MoveStop();
+                }
+
                 Logging.Write(Colors.Yellow, @"[ShinraEx] Paused...");
+                await Coroutine.Wait(10000, () => false);
                 return false;
             }
 
