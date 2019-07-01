@@ -23,6 +23,7 @@ namespace ShinraCo.Rotations
         {
             if (!ActionManager.HasSpell(MySpells.Broil.Name) && !StopDamage)
             {
+				// Logging.Write(Colors.Pink, @"[ShinraEx] Ruin Cast...");
                 return await MySpells.Ruin.Cast();
             }
             return false;
@@ -32,6 +33,7 @@ namespace ShinraCo.Rotations
         {
             if (!ActionManager.HasSpell(MySpells.BroilII.Name) && !StopDamage)
             {
+				// Logging.Write(Colors.Pink, @"[ShinraEx] BroilII Cast...");
                 return await MySpells.Broil.Cast();
             }
             return false;
@@ -39,9 +41,20 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BroilII()
         {
+            if (!ActionManager.HasSpell(MySpells.BroilIII.Name) && !StopDamage)
+            {
+				// Logging.Write(Colors.Pink, @"[ShinraEx] BroilII Cast...");
+                return await MySpells.BroilII.Cast();
+            }
+            return false;
+        }
+		
+        private async Task<bool> BroilIII()
+        {
             if (!StopDamage)
             {
-                return await MySpells.BroilII.Cast();
+				// Logging.Write(Colors.Pink, @"[ShinraEx] BroilIII Cast...");
+                return await MySpells.BroilIII.Cast();
             }
             return false;
         }
@@ -52,9 +65,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Bio()
         {
-            if (!ActionManager.HasSpell(MySpells.BioII.Name) && !StopDots &&
-                !Core.Player.CurrentTarget.HasAura(MySpells.Bio.Name, true, 3000))
+            if (!ActionManager.HasSpell(MySpells.BioII.Name) && !StopDots && !Core.Player.CurrentTarget.HasAura(MySpells.Bio.Name, true, 3000))
             {
+				// Logging.Write(Colors.Pink, @"[ShinraEx] Bio Cast...");
                 return await MySpells.Bio.Cast();
             }
             return false;
@@ -62,46 +75,56 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BioII()
         {
-            if (!StopDots && !Core.Player.CurrentTarget.HasAura(MySpells.BioII.Name, true, 3000))
+            if (!ActionManager.HasSpell(MySpells.Biolysis.Name) && !StopDots && !Core.Player.CurrentTarget.HasAura(MySpells.Biolysis.Name, true, 3000))
             {
+				// Logging.Write(Colors.Pink, @"[ShinraEx] BioII Cast...");
                 return await MySpells.BioII.Cast();
             }
             return false;
         }
 
-        private async Task<bool> Miasma()
+        private async Task<bool> Biolysis()
         {
-            if (!StopDots && !Core.Player.CurrentTarget.HasAura(MySpells.Miasma.Name, true, 4000))
+            if (!StopDots && !Core.Player.CurrentTarget.HasAura(MySpells.Biolysis.Name, true, 3000))
             {
-                return await MySpells.Miasma.Cast();
+				// Logging.Write(Colors.Pink, @"[ShinraEx] Biolysis Cast...");
+                return await MySpells.Biolysis.Cast();
             }
             return false;
         }
+        // private async Task<bool> Miasma()
+        // {
+            // if (!StopDots && !Core.Player.CurrentTarget.HasAura(MySpells.Miasma.Name, true, 4000))
+            // {
+                // return await MySpells.Miasma.Cast();
+            // }
+            // return false;
+        // }
 
         #endregion
 
         #region AoE
 
-        private async Task<bool> Bane()
-        {
-            if (ShinraEx.Settings.RotationMode != Modes.Single && ShinraEx.Settings.ScholarBane &&
-                Core.Player.CurrentTarget.HasAura(BioDebuff, true, 20000) &&
-                Core.Player.CurrentTarget.HasAura(MySpells.Miasma.Name, true, 14000))
-            {
-                return await MySpells.Bane.Cast(null, false);
-            }
-            return false;
-        }
+        // private async Task<bool> Bane()
+        // {
+            // if (ShinraEx.Settings.RotationMode != Modes.Single && ShinraEx.Settings.ScholarBane &&
+                // Core.Player.CurrentTarget.HasAura(BioDebuff, true, 20000) &&
+                // Core.Player.CurrentTarget.HasAura(MySpells.Miasma.Name, true, 14000))
+            // {
+                // return await MySpells.Bane.Cast(null, false);
+            // }
+            // return false;
+        // }
 
-        private async Task<bool> MiasmaII()
-        {
-            if (ShinraEx.Settings.RotationMode != Modes.Single && !StopDamage &&
-                !Core.Player.CurrentTarget.HasAura(MySpells.MiasmaII.Name, true, 3000))
-            {
-                return await MySpells.MiasmaII.Cast();
-            }
-            return false;
-        }
+        // private async Task<bool> MiasmaII()
+        // {
+            // if (ShinraEx.Settings.RotationMode != Modes.Single && !StopDamage &&
+                // !Core.Player.CurrentTarget.HasAura(MySpells.MiasmaII.Name, true, 3000))
+            // {
+                // return await MySpells.MiasmaII.Cast();
+            // }
+            // return false;
+        // }
 
         #endregion
 

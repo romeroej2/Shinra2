@@ -37,11 +37,11 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Buff,
             CastType = CastType.Self
         };
-
+//done 16230
         public Spell Physick { get; } = new Spell
         {
             Name = "Physick",
-            ID = 190,
+            ID = 16230,
             Level = 4,
             GCDType = GCDType.On,
             SpellType = SpellType.Heal,
