@@ -223,15 +223,7 @@ namespace ShinraCo.Spells.Main
 
 
 
-        public Spell Enochian { get; } = new Spell
-        {
-            Name = "Enochian",
-            ID = 3575,
-            Level = 56,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };
+       
 
         public Spell BlizzardIV { get; } = new Spell
         {

@@ -233,7 +233,7 @@ namespace ShinraCo
         {
 
             Logging.Write(Colors.Yellow, "Should bot rest? "+Settings.CrPaused);
-            if (Settings.CrPaused)
+            if (Settings.CrPaused == true)
             {
                 Logging.Write(Colors.Yellow, @"[ShinraEx] Paused...");
                 return true;
@@ -270,7 +270,7 @@ namespace ShinraCo
             if (Settings.CrPaused)
             {
                 Logging.Write(Colors.Yellow, @"[ShinraEx] Paused...");
-                return true;
+                return false;
             }
 
             if (!Settings.SummonChocobo || !BotManager.Current.IsAutonomous || !ChocoboManager.CanSummon || MovementManager.IsMoving ||
