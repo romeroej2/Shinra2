@@ -43,7 +43,7 @@ namespace ShinraCo.Settings.Forms
         private void ShinraForm_Load(object sender, EventArgs e)
         {
             ShinraBanner.Image = _shinraBanner;
-            ShinraDonate.Image = _shinraDonate;
+            //ShinraDonate.Image = _shinraDonate;
             ShinraEx.UnregisterHotkeys();
             Location = ShinraEx.Settings.WindowLocation;
             var kc = new KeysConverter();
@@ -697,8 +697,6 @@ namespace ShinraCo.Settings.Forms
             #region Red Mage
 
             #region Role
-
-            RedMageDrain.Checked = ShinraEx.Settings.RedMageDrain;
             RedMageLucidDreaming.Checked = ShinraEx.Settings.RedMageLucidDreaming;
             RedMageSwiftcast.Checked = ShinraEx.Settings.RedMageSwiftcast;
 
@@ -2848,10 +2846,6 @@ namespace ShinraCo.Settings.Forms
 
         #region Role
 
-        private void RedMageDrain_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.RedMageDrain = RedMageDrain.Checked;
-        }
 
         private void RedMageLucidDreaming_CheckedChanged(object sender, EventArgs e)
         {
@@ -3904,5 +3898,6 @@ namespace ShinraCo.Settings.Forms
         #endregion
 
         #endregion
+
     }
 }
