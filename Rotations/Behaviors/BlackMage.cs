@@ -66,7 +66,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
-            Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Running Combat Buff");
+           
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.BlackMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
