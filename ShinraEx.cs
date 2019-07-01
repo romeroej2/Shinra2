@@ -231,13 +231,15 @@ namespace ShinraCo
 
         public async Task<bool> Rest()
         {
+
+            Logging.Write(Colors.Yellow, "Should bot rest? "+Settings.CrPaused);
             if (Settings.CrPaused)
             {
                 Logging.Write(Colors.Yellow, @"[ShinraEx] Paused...");
                 return true;
             }
 
-            Logging.Write(Colors.Yellow, Core.Player.CurrentManaPercent + "(Mana) / " + Core.Player.CurrentTPPercent);
+            
 
              
 
@@ -263,6 +265,14 @@ namespace ShinraCo
 
         public static async Task<bool> SummonChocobo()
         {
+
+            Logging.Write(Colors.Yellow, "Should bot (SummonChocobo) rest? " + Settings.CrPaused);
+            if (Settings.CrPaused)
+            {
+                Logging.Write(Colors.Yellow, @"[ShinraEx] Paused...");
+                return true;
+            }
+
             if (!Settings.SummonChocobo || !BotManager.Current.IsAutonomous || !ChocoboManager.CanSummon || MovementManager.IsMoving ||
                 ChocoboManager.Summoned)
             {

@@ -43,7 +43,7 @@ namespace ShinraCo.Settings.Forms
         private void ShinraForm_Load(object sender, EventArgs e)
         {
             ShinraBanner.Image = _shinraBanner;
-            ShinraDonate.Image = _shinraDonate;
+          
             ShinraEx.UnregisterHotkeys();
             Location = ShinraEx.Settings.WindowLocation;
             var kc = new KeysConverter();
@@ -1116,15 +1116,7 @@ namespace ShinraCo.Settings.Forms
             Close();
         }
 
-        private void ShinraPause_Click(object sender, EventArgs e)
-        {
-            //ShinraEx.isPaused = !ShinraEx.isPaused;
-
-            if(ShinraEx.Settings.CrPaused == true)
-                ShinraEx.Settings.CrPaused = false;
-            else
-                 ShinraEx.Settings.CrPaused = true;
-        }
+      
 
         #region Main Settings
 
@@ -3904,5 +3896,16 @@ namespace ShinraCo.Settings.Forms
         #endregion
 
         #endregion
+
+        private void pauseCheck_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (ShinraEx.Settings.CrPaused == true)
+                ShinraEx.Settings.CrPaused = false;
+            else
+                ShinraEx.Settings.CrPaused = true;
+
+            ShinraEx.Overlay.UpdateText();
+        }
     }
 }
