@@ -4,8 +4,10 @@ using System.Threading.Tasks;
 using Buddy.Coroutines;
 using ff14bot;
 using ff14bot.Managers;
+using ff14bot.Helpers;
 using ShinraCo.Spells;
 using ShinraCo.Spells.Main;
+using System.Windows.Media;
 using Resource = ff14bot.Managers.ActionResourceManager.BlackMage;
 
 namespace ShinraCo.Rotations
@@ -361,9 +363,11 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> LucidDreaming()
         {
+            
+            Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Lucid Enabled{0}  Mana Stuff{1} ", ShinraEx.Settings.BlackMageLucidDreaming, Core.Player.CurrentManaPercent < ShinraEx.Settings.BlackMageLucidDreamingPct);
             if (ShinraEx.Settings.BlackMageLucidDreaming && Core.Player.CurrentManaPercent < ShinraEx.Settings.BlackMageLucidDreamingPct)
             {
-                return await MySpells.Role.LucidDreaming.Cast();
+                return await MySpells.Role.LucidDreaming.Cast(null,false);
             }
             return false;
         }

@@ -262,11 +262,11 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            BlackMageDrain.Checked = ShinraEx.Settings.BlackMageDrain;
+           
             BlackMageLucidDreaming.Checked = ShinraEx.Settings.BlackMageLucidDreaming;
             BlackMageSwiftcast.Checked = ShinraEx.Settings.BlackMageSwiftcast;
 
-            BlackMageDrainPct.Value = ShinraEx.Settings.BlackMageDrainPct;
+          
             BlackMageLucidDreamingPct.Value = ShinraEx.Settings.BlackMageLucidDreamingPct;
 
             #endregion
@@ -1701,11 +1701,7 @@ namespace ShinraCo.Settings.Forms
 
         #region Role
 
-        private void BlackMageDrain_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.BlackMageDrain = BlackMageDrain.Checked;
-        }
-
+     
         private void BlackMageLucidDreaming_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.BlackMageLucidDreaming = BlackMageLucidDreaming.Checked;
@@ -1716,10 +1712,7 @@ namespace ShinraCo.Settings.Forms
             ShinraEx.Settings.BlackMageSwiftcast = BlackMageSwiftcast.Checked;
         }
 
-        private void BlackMageDrainPct_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.BlackMageDrainPct = Convert.ToInt32(BlackMageDrainPct.Value);
-        }
+       
 
         private void BlackMageLucidDreamingPct_ValueChanged(object sender, EventArgs e)
         {
@@ -3906,6 +3899,11 @@ namespace ShinraCo.Settings.Forms
                 ShinraEx.Settings.CrPaused = true;
 
             ShinraEx.Overlay.UpdateText();
+        }
+
+        private void BlackMageSurecast_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

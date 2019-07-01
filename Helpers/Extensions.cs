@@ -30,17 +30,18 @@ namespace ShinraCo
             ClassJobType.RedMage,
             ClassJobType.Scholar,
             ClassJobType.Summoner,
+            ClassJobType.BlackMage,
+            ClassJobType.Thaumaturge,
             ClassJobType.WhiteMage
         };
 
 
-        /*
+        
         public static float CurrentEnergyPct => ManaJobs.Contains(Core.Player.CurrentJob)
             ? Core.Player.CurrentManaPercent
             : Core.Player.CurrentTPPercent;
-            */
+            
 
-        public static float CurrentEnergyPct =>  Core.Player.CurrentManaPercent; // BLM workaround
 
 
         private static readonly string VersionPath = Path.Combine(Environment.CurrentDirectory, @"Routines\ShinraEx\Properties\Version.txt");
