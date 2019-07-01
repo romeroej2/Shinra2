@@ -32,7 +32,7 @@
             this.ShinraContainer = new System.Windows.Forms.Panel();
             this.ShinraBanner = new System.Windows.Forms.PictureBox();
             this.ShinraClose = new ShinraCo.Settings.Forms.Design.NoSelectButton();
-            this.ShinraPause = new ShinraCo.Settings.Forms.Design.NoSelectButton();
+            this.ShinraPause = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.tabSettings = new ShinraCo.Settings.Forms.Design.CustomTab();
             this.pgeMain = new System.Windows.Forms.TabPage();
             this.SpellGroup = new ShinraCo.Settings.Forms.Design.CustomGroup();
@@ -875,21 +875,7 @@
             this.ShinraClose.Text = "Close";
             this.ShinraClose.UseVisualStyleBackColor = true;
             this.ShinraClose.Click += new System.EventHandler(this.ShinraClose_Click);
-            // 
-            // ShinraPause
-            // 
-            this.ShinraPause.FlatAppearance.BorderSize = 0;
-            this.ShinraPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ShinraPause.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ShinraPause.ForeColor = System.Drawing.Color.White;
-            this.ShinraPause.Location = new System.Drawing.Point(890, 405);
-            this.ShinraPause.Name = "ShinraPause";
-            this.ShinraPause.Size = new System.Drawing.Size(100, 35);
-            this.ShinraPause.TabIndex = 0;
-            this.ShinraPause.TabStop = false;
-            this.ShinraPause.Text = "Pause";
-            this.ShinraPause.UseVisualStyleBackColor = true;
-            this.ShinraPause.Click += new System.EventHandler(this.ShinraPause_Click);
+          
 
 
             // 
@@ -1052,6 +1038,24 @@
             this.DisableDebug.Text = "Disable debug logging";
             this.DisableDebug.UseVisualStyleBackColor = true;
             this.DisableDebug.CheckedChanged += new System.EventHandler(this.DisableDebug_CheckedChanged);
+
+            // 
+            // Pause
+            // 
+            this.ShinraPause.AutoSize = true;
+            this.ShinraPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShinraPause.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.ShinraPause.ForeColor = System.Drawing.Color.White;
+            this.ShinraPause.Location = new System.Drawing.Point(200, 39);
+            this.ShinraPause.Name = "ShinraPause";
+            this.ShinraPause.Size = new System.Drawing.Size(142, 17);
+            this.ShinraPause.TabIndex = 2;
+            this.ShinraPause.TabStop = false;
+            this.ShinraPause.Text = "ShinraPause";
+            this.ShinraPause.UseVisualStyleBackColor = true;
+            this.ShinraPause.CheckedChanged += new System.EventHandler(this.DisablePause_CheckedChanged);
+
+
             // 
             // IgnoreSmart
             // 
@@ -10662,7 +10666,7 @@
         private System.Windows.Forms.TabPage pgeRanged;
         private System.Windows.Forms.TabPage pgeTanks;
         private Design.NoSelectButton ShinraClose;
-        private Design.NoSelectButton ShinraPause;
+        private Design.CustomCheck ShinraPause;
 
         private Design.CustomTab tabCasters;
         private System.Windows.Forms.TabPage pgeBlackMage;

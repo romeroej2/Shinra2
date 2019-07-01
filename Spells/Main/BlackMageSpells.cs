@@ -280,5 +280,38 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Damage,
             CastType = CastType.Target
         };
+
+
+        public Spell Despair { get; } = new Spell
+        {
+            Name = "Despair",
+            ID = 9999,
+            Level = 72,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+
+        public Spell UmbralSoul { get; } = new Spell
+        {
+            Name = "Umbral Soul",
+            ID = 9999,
+            Level = 76,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
+        };
+
+
+        public Spell Xenoglossy { get; } = new Spell
+        {
+            Name = "Xenoglossy",
+            ID = 9999,
+            Level = 80,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+
     }
 }

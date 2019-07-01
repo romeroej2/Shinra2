@@ -73,6 +73,26 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+
+        private async Task<bool> Despair()
+        {
+            if (AstralFire && Resource.Enochian)
+            {
+                return await MySpells.Despair.Cast();
+            }
+            return false;
+        }
+
+
+        private async Task<bool> Xenoglossy()
+        {
+            if (Resource.PolyglotStatus)
+            {
+                return await MySpells.Xenoglossy.Cast();
+            }
+            return false;
+        }
+
         private async Task<bool> Foul()
         {
             if (UmbralIce)
@@ -300,6 +320,16 @@ namespace ShinraCo.Rotations
                 Resource.StackTimer.TotalMilliseconds > 6000)
             {
                 return await MySpells.Enochian.Cast(null, false);
+            }
+            return false;
+        }
+
+
+        private async Task<bool> UmbralSoul()
+        {
+            if (Resource.Enochian && UmbralIce && Core.Player.ClassLevel >= 76)
+            {
+                return await MySpells.UmbralSoul.Cast(null, false);
             }
             return false;
         }

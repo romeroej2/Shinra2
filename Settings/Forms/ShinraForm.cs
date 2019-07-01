@@ -1267,6 +1267,12 @@ namespace ShinraCo.Settings.Forms
             ShinraEx.Settings.DisableDebug = DisableDebug.Checked;
         }
 
+        private void DisablePause_CheckedChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.CrPaused = ShinraPause.Checked;
+        }
+
+
         #endregion
 
         #endregion
