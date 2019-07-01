@@ -364,10 +364,18 @@ namespace ShinraCo.Rotations
         private async Task<bool> LucidDreaming()
         {
             
-            Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Lucid Enabled{0}  Mana Stuff{1} ", ShinraEx.Settings.BlackMageLucidDreaming, Core.Player.CurrentManaPercent < ShinraEx.Settings.BlackMageLucidDreamingPct);
+
+
+           
+
+
             if (ShinraEx.Settings.BlackMageLucidDreaming && Core.Player.CurrentManaPercent < ShinraEx.Settings.BlackMageLucidDreamingPct)
             {
-                return await MySpells.Role.LucidDreaming.Cast(null,false);
+                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Trying to Cast LucidDreaming");
+
+                ActionManager.DoAction(7562, Core.Me);
+                return true;
+                //return await MySpells.Role.LucidDreaming.Cast();
             }
             return false;
         }
