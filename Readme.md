@@ -7,5 +7,6 @@ Updated for StormBlood.
 Focusing on BlackMage.
 
 
+With <3 for y2krazy and zzi
 
 Use at your own risk. Or better use the original one.

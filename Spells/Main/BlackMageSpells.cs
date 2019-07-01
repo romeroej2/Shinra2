@@ -221,6 +221,10 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Self
         };
 
+
+
+       
+
         public Spell BlizzardIV { get; } = new Spell
         {
             Name = "Blizzard IV",
@@ -285,7 +289,7 @@ namespace ShinraCo.Spells.Main
         public Spell Despair { get; } = new Spell
         {
             Name = "Despair",
-            ID = 9999,
+            ID = 16505,
             Level = 72,
             GCDType = GCDType.On,
             SpellType = SpellType.Damage,
@@ -295,7 +299,7 @@ namespace ShinraCo.Spells.Main
         public Spell UmbralSoul { get; } = new Spell
         {
             Name = "Umbral Soul",
-            ID = 9999,
+            ID = 16506,
             Level = 76,
             GCDType = GCDType.Off,
             SpellType = SpellType.Buff,
@@ -306,7 +310,7 @@ namespace ShinraCo.Spells.Main
         public Spell Xenoglossy { get; } = new Spell
         {
             Name = "Xenoglossy",
-            ID = 9999,
+            ID = 16507,
             Level = 80,
             GCDType = GCDType.On,
             SpellType = SpellType.Damage,
