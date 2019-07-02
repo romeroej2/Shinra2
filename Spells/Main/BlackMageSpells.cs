@@ -221,10 +221,6 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Self
         };
 
-
-
-       
-
         public Spell BlizzardIV { get; } = new Spell
         {
             Name = "Blizzard IV",
