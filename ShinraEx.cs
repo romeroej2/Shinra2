@@ -65,9 +65,8 @@ namespace ShinraCo
         public sealed override void OnButtonPress()
         {
             if (_configForm == null || _configForm.IsDisposed || _configForm.Disposing)
-            {
                 _configForm = new ShinraForm();
-            }
+
             _configForm.ShowDialog();
         }
 
@@ -231,19 +230,13 @@ namespace ShinraCo
 
         #region Rest
 
-        public async Task<bool> Rest()
+        private async Task<bool> Rest()
         {
-
-            
             if (Settings.CrPaused == true)
             {
                 Logging.Write(Colors.Yellow, @"[ShinraEx] Paused...");
                 return true;
             }
-
-            
-
-             
 
             if (!BotManager.Current.IsAutonomous || WorldManager.InSanctuary || Core.Player.HasAura("Sprint") ||
                 (!Settings.RestHealth || Core.Player.CurrentHealthPercent > Settings.RestHealthPct) &&
@@ -251,10 +244,8 @@ namespace ShinraCo
             {
                 return false;
             }
-            if (MovementManager.IsMoving)
-            {
-                Navigator.PlayerMover.MoveStop();
-            }
+            
+            if (MovementManager.IsMoving) Navigator.PlayerMover.MoveStop();
             Logging.Write(Colors.Yellow, @"[ShinraEx] Resting...");
             return true;
         }
@@ -290,10 +281,7 @@ namespace ShinraCo
             await Coroutine.Wait(2000, () => ChocoboManager.Summoned);
             Logging.Write(Colors.Yellow, @"[ShinraEx] Summoning Chocobo...");
 
-            if (!ChocoboManager.Summoned)
-            {
-                return await SummonChocobo();
-            }
+            if (!ChocoboManager.Summoned) return await SummonChocobo();
             return true;
         }
 
@@ -304,9 +292,7 @@ namespace ShinraCo
         public static async Task<bool> ChocoboStance()
         {
             if (!Settings.SummonChocobo || !ChocoboManager.Summoned || Core.Player.IsMounted || ChocoboManager.Object == null)
-            {
                 return false;
-            }
 
             if (Settings.ChocoboStanceDance)
             {
@@ -328,37 +314,25 @@ namespace ShinraCo
             switch (Settings.ChocoboStance)
             {
                 case Stances.Free:
-                    if (ChocoboManager.Stance == CompanionStance.Free)
-                    {
-                        break;
-                    }
+                    if (ChocoboManager.Stance == CompanionStance.Free) break;
                     ChocoboManager.FreeStance();
                     await Coroutine.Wait(1000, () => ChocoboManager.Stance == CompanionStance.Free);
                     Logging.Write(Colors.Yellow, @"[ShinraEx] Chocobo Stance >>> Free");
                     return true;
                 case Stances.Attacker:
-                    if (ChocoboManager.Stance == CompanionStance.Attacker)
-                    {
-                        break;
-                    }
+                    if (ChocoboManager.Stance == CompanionStance.Attacker) break;
                     ChocoboManager.AttackerStance();
                     await Coroutine.Wait(1000, () => ChocoboManager.Stance == CompanionStance.Attacker);
                     Logging.Write(Colors.Yellow, @"[ShinraEx] Chocobo Stance >>> Attacker");
                     return true;
                 case Stances.Healer:
-                    if (ChocoboManager.Stance == CompanionStance.Healer)
-                    {
-                        break;
-                    }
+                    if (ChocoboManager.Stance == CompanionStance.Healer) break;
                     ChocoboManager.HealerStance();
                     await Coroutine.Wait(1000, () => ChocoboManager.Stance == CompanionStance.Healer);
                     Logging.Write(Colors.Yellow, @"[ShinraEx] Chocobo Stance >>> Healer");
                     return true;
                 case Stances.Defender:
-                    if (ChocoboManager.Stance == CompanionStance.Defender)
-                    {
-                        break;
-                    }
+                    if (ChocoboManager.Stance == CompanionStance.Defender) break;
                     ChocoboManager.DefenderStance();
                     await Coroutine.Wait(1000, () => ChocoboManager.Stance == CompanionStance.Defender);
                     Logging.Write(Colors.Yellow, @"[ShinraEx] Chocobo Stance >>> Defender");
@@ -374,7 +348,10 @@ namespace ShinraCo
         #region LastSpell
 
         private static Spell _lastSpell;
-        public static Spell LastSpell { get { return _lastSpell ?? (_lastSpell = new Spell()); } set { _lastSpell = value; } }
+        public static Spell LastSpell {
+            get => _lastSpell ?? (_lastSpell = new Spell());
+            set => _lastSpell = value;
+        }
 
         #endregion
     }

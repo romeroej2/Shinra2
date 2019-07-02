@@ -6,9 +6,9 @@ using static ShinraCo.Constants;
 
 namespace ShinraCo
 {
-    public class DotManager
+    public static class DotManager
     {
-        public static readonly Dictionary<string, Tuple<DateTime, int, int>> DotSnapshots =
+        private static readonly Dictionary<string, Tuple<DateTime, int, int>> DotSnapshots =
             new Dictionary<string, Tuple<DateTime, int, int>>();
 
         private static readonly Dictionary<string, int> CritBuffs =
@@ -42,7 +42,7 @@ namespace ShinraCo
 
         public static bool BuffExpiring => CritExpiring || DamageExpiring;
 
-        public static int CritBonus
+        private static int CritBonus
         {
             get
             {
@@ -58,7 +58,7 @@ namespace ShinraCo
             get { return CritBuffs.Any(dic => Me.AuraExpiring(dic.Key)) || CritDebuffs.Any(dic => Target.AuraExpiring(dic.Key)); }
         }
 
-        public static int DamageBonus
+        private static int DamageBonus
         {
             get
             {

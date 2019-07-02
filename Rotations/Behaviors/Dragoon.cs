@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using ShinraCo.Settings;
 
 namespace ShinraCo.Rotations
@@ -9,41 +9,40 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            if (ShinraEx.Settings.RotationMode == Modes.Smart)
+            switch (ShinraEx.Settings.RotationMode)
             {
-                if (ShinraEx.Settings.DragoonOpener) { if (await Helpers.ExecuteOpener()) return true; }
-                if (await SonicThrust()) return true;
-                if (await DoomSpike()) return true;
-                if (await WheelingThrust()) return true;
-                if (await FangAndClaw()) return true;
-                if (await ChaosThrust()) return true;
-                if (await Disembowel()) return true;
-                if (await FullThrust()) return true;
-                if (await VorpalThrust()) return true;
-                if (await HeavyThrust()) return true;
-                if (await ImpulseDrive()) return true;
-                return await TrueThrust();
+                case Modes.Smart:
+                {
+                    if (ShinraEx.Settings.DragoonOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await SonicThrust()) return true;
+                    if (await DoomSpike()) return true;
+                    if (await WheelingThrust()) return true;
+                    if (await FangAndClaw()) return true;
+                    if (await ChaosThrust()) return true;
+                    if (await Disembowel()) return true;
+                    if (await FullThrust()) return true;
+                    if (await VorpalThrust()) return true;
+                    return await TrueThrust();
+                }
+
+                case Modes.Single:
+                {
+                    if (ShinraEx.Settings.DragoonOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await WheelingThrust()) return true;
+                    if (await FangAndClaw()) return true;
+                    if (await ChaosThrust()) return true;
+                    if (await Disembowel()) return true;
+                    if (await FullThrust()) return true;
+                    if (await VorpalThrust()) return true;
+                    return await TrueThrust();
+                }
+
+                case Modes.Multi when await SonicThrust():
+                case Modes.Multi when await DoomSpike():
+                    return true;
+                default:
+                    return false;
             }
-            if (ShinraEx.Settings.RotationMode == Modes.Single)
-            {
-                if (ShinraEx.Settings.DragoonOpener) { if (await Helpers.ExecuteOpener()) return true; }
-                if (await WheelingThrust()) return true;
-                if (await FangAndClaw()) return true;
-                if (await ChaosThrust()) return true;
-                if (await Disembowel()) return true;
-                if (await FullThrust()) return true;
-                if (await VorpalThrust()) return true;
-                if (await HeavyThrust()) return true;
-                if (await ImpulseDrive()) return true;
-                return await TrueThrust();
-            }
-            if (ShinraEx.Settings.RotationMode == Modes.Multi)
-            {
-                if (await SonicThrust()) return true;
-                if (await DoomSpike()) return true;
-                return await HeavyThrust();
-            }
-            return false;
         }
 
         #endregion

@@ -250,5 +250,45 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Cooldown,
             CastType = CastType.Target
         };
+        
+        public Spell CoerthanTorment { get; } = new Spell
+        {
+            Name = "Coerthan Torment",
+            ID = 16477,
+            Level = 72,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Cooldown,
+            CastType = CastType.SelfLocation
+        };
+        
+        public Spell HighJump { get; } = new Spell
+        {
+            Name = "High Jump",
+            ID = 16478,
+            Level = 74,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.AoE,
+            CastType = CastType.Target
+        };
+        
+        public Spell RaidenThrust { get; } = new Spell
+        {
+            Name = "Raiden Thrust",
+            ID = 16479,
+            Level = 76,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+        
+        public Spell Stardiver { get; } = new Spell
+        {
+            Name = "Stardiver",
+            ID = 16480,
+            Level = 80,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.AoE,
+            CastType = CastType.Target
+        };
     }
 }

@@ -34,15 +34,10 @@ namespace ShinraCo
             ClassJobType.Thaumaturge,
             ClassJobType.WhiteMage
         };
-
-
         
         public static float CurrentEnergyPct => ManaJobs.Contains(Core.Player.CurrentJob)
             ? Core.Player.CurrentManaPercent
             : Core.Player.CurrentTPPercent;
-            
-
-
 
         private static readonly string VersionPath = Path.Combine(Environment.CurrentDirectory, @"Routines\ShinraEx\Properties\Version.txt");
 
@@ -79,7 +74,7 @@ namespace ShinraCo
             Logging.Write(Colors.OrangeRed, $@"[ShinraEx] DEBUG - {msg}");
         }
 
-        public static void DisplayToast(string msg, int duration = 1000)
+        private static void DisplayToast(string msg, int duration = 1000)
         {
             if (ShinraEx.Settings.RotationMessages)
             {
