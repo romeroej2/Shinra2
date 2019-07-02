@@ -15,13 +15,10 @@ namespace ShinraCo
         public static bool InView(Vector3 playerLocation, float playerHeading, Vector3 targetLocation)
         {
             var d = Math.Abs(MathEx.NormalizeRadian(playerHeading -
-                                                    MathEx.NormalizeRadian(MathHelper.CalculateHeading(playerLocation, targetLocation) +
-                                                                           (float)Math.PI)));
+                    MathEx.NormalizeRadian(MathHelper.CalculateHeading(playerLocation, targetLocation) +
+                    (float)Math.PI)));
 
-            if (d > Math.PI)
-            {
-                d = Math.Abs(d - 2 * (float)Math.PI);
-            }
+            if (d > Math.PI) d = Math.Abs(d - 2 * (float)Math.PI);
             return d < 0.78539f;
         }
 
@@ -31,7 +28,7 @@ namespace ShinraCo
                 : cp.HasTarget && cp.Distance2D(cp.CurrentTarget) - cp.CombatReach - cp.CurrentTarget.CombatReach <= range;
         }
 
-        public static bool UnitDistance(this LocalPlayer cp, GameObject unit, float range, bool useMinRange = true)
+        private static bool UnitDistance(this LocalPlayer cp, GameObject unit, float range, bool useMinRange = true)
         {
             return useMinRange ? cp.Distance2D(unit) - cp.CombatReach - unit.CombatReach >= range
                 : cp.Distance2D(unit) - cp.CombatReach - unit.CombatReach <= range;

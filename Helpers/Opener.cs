@@ -18,7 +18,7 @@ namespace ShinraCo
 {
     public static partial class Helpers
     {
-        public static int OpenerStep;
+        private static int OpenerStep;
         public static bool OpenerFinished;
 
         private static List<Spell> current;
@@ -254,19 +254,15 @@ namespace ShinraCo
                     break;
 
                 case ClassJobType.Monk:
-                    if (OpenerStep == 0)
+                    switch (OpenerStep)
                     {
-                        if (!Me.HasAura(109))
-                        {
+                        case 0 when !Me.HasAura(109):
                             if (Me.HasAura(108)) await Monk.TwinSnakes.Cast();
                             await Monk.Bootshine.Cast();
                             return true;
-                        }
-                        if (!Me.HasAura(105))
-                        {
+                        case 0 when !Me.HasAura(105):
                             await Monk.FistsOfWind.Cast(null, false);
                             return true;
-                        }
                     }
                     if (spell.Name == Monk.RiddleOfWind.Name && Monk.RiddleOfWind.Cooldown() > 0)
                     {
@@ -501,7 +497,7 @@ namespace ShinraCo
             return true;
         }
 
-        public static void AbortOpener(string msg)
+        private static void AbortOpener(string msg)
         {
             Debug(msg);
             OpenerFinished = true;
