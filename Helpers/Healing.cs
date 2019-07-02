@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ff14bot;
@@ -10,9 +10,9 @@ namespace ShinraCo
 {
     public static partial class Helpers
     {
-        public static List<BattleCharacter> HealManager = new List<BattleCharacter>();
-        public static List<BattleCharacter> RessManager = new List<BattleCharacter>();
-        public static List<BattleCharacter> GoadManager = new List<BattleCharacter>();
+        public static List<BattleCharacter> HealManager = new List<BattleCharacter>(), 
+                                            RessManager = new List<BattleCharacter>(),
+                                            GoadManager = new List<BattleCharacter>();
 
         public static readonly HashSet<string> HealingSpells = new HashSet<string>
         {
@@ -54,10 +54,10 @@ namespace ShinraCo
             {
                 healList.Add(Core.Player);
             }
-/*             if (Core.Player.Pet != null && (int)PetManager.ActivePetType < 10)
-            {
-                healList.Add(Core.Player.Pet);
-            } */
+            //if (Core.Player.Pet != null && (int)PetManager.ActivePetType < 10)
+            //{
+            //    healList.Add(Core.Player.Pet);
+            //}
             if (ChocoboManager.Object != null)
             {
                 healList.Add(ChocoboManager.Object);
@@ -88,25 +88,16 @@ namespace ShinraCo
         {
             var score = c.CurrentHealthPercent;
 
-            if (c.IsTank())
-            {
-                score -= 5f;
-            }
-            if (c.IsHealer())
-            {
-                score -= 3f;
-            }
+            if (c.IsTank()) score -= 5f;
+            if (c.IsHealer()) score -= 3f;
             return score;
         }
 
         private static float TPScore(BattleCharacter c)
         {
-            var score = 100; //c.CurrentTPPercent;
+            var score = c.CurrentTPPercent;
 
-            if (c.IsDPS())
-            {
-                score -= 10;
-            }
+            if (c.IsDPS()) score -= 10;
             return score;
         }
 
