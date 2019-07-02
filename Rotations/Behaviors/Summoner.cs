@@ -30,23 +30,20 @@ namespace ShinraCo.Rotations
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.SummonerOpener) { if (await Helpers.ExecuteOpener()) return true; }
-            if (await Sic()) return true;
+/*             if (await Sic()) return true;
             if (await SummonIII()) return true;
             if (await SummonII()) return true;
-            if (await Summon()) return true;
+            if (await Summon()) return true; */
             if (await EnkindleBahamut()) return true;
             if (await SummonBahamut()) return true;
             if (await Deathflare()) return true;
             if (await DreadwyrmTrance()) return true;
             if (await TriDisaster()) return true;
-            if (await Bane()) return true;
             if (await Painflare()) return true;
             if (await Fester()) return true;
             if (await EnergyDrain()) return true;
-            if (await Aetherflow()) return true;
             if (await Rouse()) return true;
             if (await Enkindle()) return true;
-            if (await ShadowFlare()) return true;
             if (await Aetherpact()) return true;
             if (await Addle()) return true;
             return await LucidDreaming();
@@ -71,11 +68,11 @@ namespace ShinraCo.Rotations
         public override async Task<bool> PreCombatBuff()
         {
             if (await ShinraEx.SummonChocobo()) return true;
-            if (await AetherflowPreCombat()) return true;
+/*             if (await AetherflowPreCombat()) return true;
             if (await SummonIII()) return true;
             if (await SummonII()) return true;
-            if (await Summon()) return true;
-            return await Obey();
+            if (await Summon()) return true; await Obey(); */
+            return false; 
         }
 
         #endregion

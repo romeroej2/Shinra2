@@ -120,6 +120,7 @@ namespace ShinraCo
                 case ClassJobType.Marauder:
                 case ClassJobType.Paladin:
                 case ClassJobType.Warrior:
+				case ClassJobType.Gunbreaker:
                     return true;
                 default:
                     return false;

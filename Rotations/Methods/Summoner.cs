@@ -37,12 +37,9 @@ namespace ShinraCo.Rotations
             if (MovementManager.IsMoving ||
                 Core.Player.HasAura("Further Ruin") ||
                 RecentBahamut ||
-                UseBane ||
-                UseFester ||
                 UsePainflare ||
                 UseAddle ||
-                UsePet ||
-                UseShadowFlare ||
+//                UsePet ||
                 UseTriDisaster ||
                 ResourceArcanist.Aetherflow == 0 && MySpells.Aetherflow.Cooldown() <= 0 ||
                 ResourceArcanist.Aetherflow == 3 && ActionManager.CanCast(MySpells.SummonBahamut.Name, Core.Player) ||
@@ -585,7 +582,7 @@ namespace ShinraCo.Rotations
         private static string BioDebuff => Core.Player.ClassLevel >= 66 ? "Bio III" : Core.Player.ClassLevel >= 26 ? "Bio II" : "Bio";
         private static string MiasmaDebuff => Core.Player.ClassLevel >= 66 ? "Miasma III" : "Miasma";
         private static bool RecentDoT { get { return Spell.RecentSpell.Keys.Any(key => key.Contains("Tri-disaster")); } }
-        private static bool RecentBahamut => Spell.RecentSpell.ContainsKey("Summon Bahamut") || (int)PetManager.ActivePetType == 10;
+        private static bool RecentBahamut => Spell.RecentSpell.ContainsKey("Summon Bahamut"); //|| (int)PetManager.ActivePetType == 10;
         private static bool PetExists => Core.Player.Pet != null;
 
         private static bool UseTriDisaster => ShinraEx.Settings.SummonerTriDisaster &&
@@ -617,7 +614,7 @@ namespace ShinraCo.Rotations
 
         private bool UseShadowFlare => ShinraEx.Settings.SummonerShadowFlare && !MovementManager.IsMoving &&
                                        ActionManager.CanCastLocation(MySpells.ShadowFlare.Name, Core.Player.CurrentTarget.Location);
-
+								 
         private bool UseAddle => ShinraEx.Settings.SummonerAddle && RecentBahamut &&
                                  ActionManager.CanCast(MySpells.Role.Addle.Name, Core.Player.CurrentTarget);
 

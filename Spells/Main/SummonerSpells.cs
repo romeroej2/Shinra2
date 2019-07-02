@@ -33,7 +33,7 @@ namespace ShinraCo.Spells.Main
             Name = "Summon",
             ID = 165,
             Level = 4,
-            GCDType = GCDType.On,
+            GCDType = GCDType.Off,
             SpellType = SpellType.Buff,
             CastType = CastType.Self
         };
@@ -56,9 +56,9 @@ namespace ShinraCo.Spells.Main
             GCDType = GCDType.Off,
             SpellType = SpellType.Buff,
             CastType = CastType.Self
-        };
+        }; 
 
-        public Spell EnergyDrain { get; } = new Spell
+		public Spell EnergyDrain { get; } = new Spell
         {
             Name = "Energy Drain",
             ID = 167,
@@ -83,7 +83,7 @@ namespace ShinraCo.Spells.Main
             Name = "Summon II",
             ID = 170,
             Level = 15,
-            GCDType = GCDType.On,
+            GCDType = GCDType.Off,
             SpellType = SpellType.Buff,
             CastType = CastType.Self
         };
