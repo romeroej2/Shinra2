@@ -5,7 +5,130 @@ namespace ShinraCo.Spells.Main
     public class ScholarSpells : ArcanistSpells
     {
         public new HealerSpells Role { get; } = new HealerSpells();
-        
+//start
+        public Spell Ruin { get; } = new Spell
+        {
+            Name = "Ruin",
+            ID = 17869,
+            Level = 1,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+
+        public Spell Bio { get; } = new Spell
+        {
+            Name = "Bio",
+            ID = 17864,
+            Level = 2,
+            GCDType = GCDType.On,
+            SpellType = SpellType.DoT,
+            CastType = CastType.Target
+        };
+		//EOS
+        public Spell Summon { get; } = new Spell
+        {
+            Name = "Summon",
+            ID = 17215,
+            Level = 4,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
+        };
+
+        public Spell Physick { get; } = new Spell
+        {
+            Name = "Physick",
+            ID = 190,
+            Level = 4,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Heal,
+            CastType = CastType.Target
+        };
+
+        public Spell Aetherflow { get; } = new Spell
+        {
+            Name = "Aetherflow",
+            ID = 166,
+            Level = 45,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
+        };
+
+		//selene
+        public Spell SummonII { get; } = new Spell
+        {
+            Name = "Summon II",
+            ID = 17216,
+            Level = 15,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
+        };
+
+        public Spell Sustain { get; } = new Spell
+        {
+            Name = "Sustain",
+            ID = 171,
+            Level = 18,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Heal,
+            CastType = CastType.Self
+        };
+
+        public Spell Resurrection { get; } = new Spell
+        {
+            Name = "Resurrection",
+            ID = 173,
+            Level = 18,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Heal,
+            CastType = CastType.Target
+        };
+
+        public Spell BioII { get; } = new Spell
+        {
+            Name = "Bio II",
+            ID = 17865,
+            Level = 26,
+            GCDType = GCDType.On,
+            SpellType = SpellType.DoT,
+            CastType = CastType.Target
+        };
+
+        public Spell Biolysis { get; } = new Spell
+        {
+            Name = "Biolysis",
+            ID = 16540,
+            Level = 72,
+            GCDType = GCDType.On,
+            SpellType = SpellType.DoT,
+            CastType = CastType.Target
+        };
+		
+        public Spell ArtOfWar { get; } = new Spell
+        {
+            Name = "Bane",
+            ID = 16539,
+            Level = 46,
+            GCDType = GCDType.On,
+            SpellType = SpellType.AoE,
+            CastType = CastType.Self
+        };
+
+        public Spell RuinII { get; } = new Spell
+        {
+            Name = "Ruin II",
+            ID = 17870,
+            Level = 38,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+		
+
+ //stop
         public Spell Adloquium { get; } = new Spell
         {
             Name = "Adloquium",
@@ -34,16 +157,6 @@ namespace ShinraCo.Spells.Main
             GCDType = GCDType.Off,
             SpellType = SpellType.Heal,
             CastType = CastType.TargetLocation
-        };
-
-        public Spell MiasmaII { get; } = new Spell
-        {
-            Name = "Miasma II",
-            ID = 177,
-            Level = 46,
-            GCDType = GCDType.On,
-            SpellType = SpellType.AoE,
-            CastType = CastType.Self
         };
 
         public Spell Lustrate { get; } = new Spell
@@ -126,6 +239,16 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
+        public Spell BroilIII { get; } = new Spell
+        {
+            Name = "Broil III",
+            ID = 16541,
+            Level = 72,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+		
         public Spell ChainStrategem { get; } = new Spell
         {
             Name = "Chain Strategem",

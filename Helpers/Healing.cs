@@ -54,10 +54,10 @@ namespace ShinraCo
             {
                 healList.Add(Core.Player);
             }
-            if (Core.Player.Pet != null && (int)PetManager.ActivePetType < 10)
+/*             if (Core.Player.Pet != null && (int)PetManager.ActivePetType < 10)
             {
                 healList.Add(Core.Player.Pet);
-            }
+            } */
             if (ChocoboManager.Object != null)
             {
                 healList.Add(ChocoboManager.Object);
@@ -101,7 +101,7 @@ namespace ShinraCo
 
         private static float TPScore(BattleCharacter c)
         {
-            var score = c.CurrentTPPercent;
+            var score = 100; //c.CurrentTPPercent;
 
             if (c.IsDPS())
             {
@@ -110,6 +110,7 @@ namespace ShinraCo
             return score;
         }
 
+		//TODO: Add New Tank
         public static bool IsTank(this Character c)
         {
             switch (c.CurrentJob)
@@ -119,6 +120,7 @@ namespace ShinraCo
                 case ClassJobType.Marauder:
                 case ClassJobType.Paladin:
                 case ClassJobType.Warrior:
+				case ClassJobType.Gunbreaker:
                     return true;
                 default:
                     return false;
