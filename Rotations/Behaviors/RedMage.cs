@@ -12,9 +12,11 @@ namespace ShinraCo.Rotations
             if (ShinraEx.Settings.RotationMode == Modes.Smart)
             {
                 if (ShinraEx.Settings.RedMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
-                if (await Drain()) return true;
                 if (await EnchantedMoulinet()) return true;
+                if (await Impact()) return true;
                 if (await Scatter()) return true;
+                if (await Veraero2()) return true;
+                if (await Verthunder2()) return true;
                 if (await Verholy()) return true;
                 if (await Verflare()) return true;
                 if (await EnchantedRiposte()) return true;
@@ -24,7 +26,6 @@ namespace ShinraCo.Rotations
                 if (await Verthunder()) return true;
                 if (await Verstone()) return true;
                 if (await Verfire()) return true;
-                if (await Impact()) return true;
                 if (await JoltII()) return true;
                 if (await Jolt()) return true;
                 return await Riposte();
@@ -32,7 +33,7 @@ namespace ShinraCo.Rotations
             if (ShinraEx.Settings.RotationMode == Modes.Single)
             {
                 if (ShinraEx.Settings.RedMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
-                if (await Drain()) return true;
+                if (await Scorch()) return true;
                 if (await Verholy()) return true;
                 if (await Verflare()) return true;
                 if (await EnchantedRiposte()) return true;
@@ -47,11 +48,19 @@ namespace ShinraCo.Rotations
                 if (await Jolt()) return true;
                 return await Riposte();
             }
+            /*
+             * AoE rotation 
+             * 1 - spame melee AoE cone
+             * 2 - Alternate between Black & White
+             * 3 - Use higher potency AoE after black/white
+             */
             if (ShinraEx.Settings.RotationMode == Modes.Multi)
             {
-                if (await Drain()) return true;
                 if (await EnchantedMoulinet()) return true;
+                if (await Impact()) return true;
                 if (await Scatter()) return true;
+                if (await Veraero2()) return true;
+                if (await Verthunder2()) return true;
                 return await Riposte();
             }
             return false;

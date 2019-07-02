@@ -29,7 +29,8 @@ namespace ShinraCo.Spells.Opener
             Spells.EnchantedRiposte,
             Spells.EnchantedZwerchhau,
             Spells.EnchantedRedoublement,
-            Spells.Verflare
+            Spells.Verflare,
+            Spells.Scorch
         };
     }
 }

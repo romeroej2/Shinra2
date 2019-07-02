@@ -37,11 +37,6 @@ namespace ShinraCo.Rotations
             return await MySpells.JoltII.Cast();
         }
 
-        private async Task<bool> Impact()
-        {
-            return await MySpells.Impact.Cast();
-        }
-
         private async Task<bool> Verthunder()
         {
             if (Core.Player.HasAura("Dualcast") || Core.Player.HasAura("Swiftcast"))
@@ -99,17 +94,42 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Verflare()
         {
-            return await MySpells.Verflare.Cast();
+            if (ActionManager.LastSpell.Name == MySpells.EnchantedRedoublement.Name && WhiteMana >= BlackMana)
+            {
+                return await MySpells.Verflare.Cast();
+            }
+            return false;
         }
 
         private async Task<bool> Verholy()
         {
-            if (BlackMana >= WhiteMana)
+            if (ActionManager.LastSpell.Name == MySpells.EnchantedRedoublement.Name && BlackMana >= WhiteMana)
             {
                 return await MySpells.Verholy.Cast();
             }
             return false;
         }
+
+        private async Task<bool> Scorch()
+        {
+            if (ActionManager.LastSpell.Name == MySpells.Verholy.Name || ActionManager.LastSpell.Name == MySpells.Verflare.Name)
+            {
+                return await MySpells.Scorch.Cast();
+            }
+            return false;
+        }
+
+        private async Task<bool> EnchantedReprise()
+        {
+            
+            if (MovementManager.IsMoving && (BlackMana > 10 && WhiteMana > 10))
+            {
+                return await MySpells.EnchantedReprise.Cast();
+            }
+            return false;
+        }
+
+
 
         #endregion
 
@@ -117,12 +137,41 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Scatter()
         {
-            return await MySpells.Scatter.Cast();
+            if (!ActionManager.HasSpell(MySpells.Impact.Name))
+            {
+                return await MySpells.Scatter.Cast();
+            }
+            return false;
+        }
+
+        private async Task<bool> Impact()
+        {
+            if (Core.Player.HasAura("Dualcast") || Core.Player.HasAura("Swiftcast"))
+            {
+                return await MySpells.Impact.Cast();
+            }
+            return false;
+        }
+
+        private async Task<bool> Veraero2()
+        {
+            if (BlackMana > WhiteMana)
+            {
+                return await MySpells.VeraeroII.Cast();
+            }
+            return false;
+        }
+
+        private async Task<bool> Verthunder2()
+        {
+
+            return await MySpells.VerthunderII.Cast();
+
         }
 
         private async Task<bool> EnchantedMoulinet()
         {
-            if (WhiteMana >= 30 && BlackMana >= 30)
+            if (WhiteMana >= 20 && BlackMana >= 20)
             {
                 return await MySpells.EnchantedMoulinet.Cast();
             }
@@ -265,16 +314,6 @@ namespace ShinraCo.Rotations
         #endregion
 
         #region Role
-
-        private async Task<bool> Drain()
-        {
-            if (ShinraEx.Settings.RedMageDrain && Core.Player.CurrentHealthPercent < ShinraEx.Settings.RedMageDrainPct)
-            {
-                return await MySpells.Role.Drain.Cast();
-            }
-            return false;
-        }
-
         private async Task<bool> LucidDreaming()
         {
             if (ShinraEx.Settings.RedMageLucidDreaming && Core.Player.CurrentManaPercent < ShinraEx.Settings.RedMageLucidDreamingPct)
@@ -396,8 +435,12 @@ namespace ShinraCo.Rotations
         private static int WhiteMana => Resource.WhiteMana;
         private static int BlackMana => Resource.BlackMana;
 
-        private static bool UseOffGCD => ActionManager.LastSpell.Name == "Veraero" || ActionManager.LastSpell.Name == "Verthunder" ||
-                                         ActionManager.LastSpell.Name == "Scatter";
+        private static bool UseOffGCD =>    ActionManager.LastSpell.Name == "Veraero" || 
+                                            ActionManager.LastSpell.Name == "Verthunder" ||
+                                            ActionManager.LastSpell.Name == "Scatter" || 
+                                            ActionManager.LastSpell.Name == "Impact" ||
+                                            ActionManager.LastSpell.Name == "Verholy" ||
+                                            ActionManager.LastSpell.Name == "Verflare";
 
         #endregion
     }
