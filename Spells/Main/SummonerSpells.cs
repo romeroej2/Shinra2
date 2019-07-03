@@ -1,4 +1,4 @@
-﻿using ShinraCo.Spells.PVP;
+using ShinraCo.Spells.PVP;
 using ShinraCo.Spells.Role;
 
 namespace ShinraCo.Spells.Main
@@ -181,10 +181,10 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
-        public Spell TriBind { get; } = new Spell
+        public Spell Outburst { get; } = new Spell
         {
-            Name = "Tri-bind",
-            ID = 182,
+            Name = "Outburst",
+            ID = 16511,
             Level = 40,
             GCDType = GCDType.On,
             SpellType = SpellType.Damage,
@@ -316,6 +316,56 @@ namespace ShinraCo.Spells.Main
             Name = "Enkindle Bahamut",
             ID = 7429,
             Level = 70,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Cooldown,
+            CastType = CastType.Target
+        };
+
+        public Spell FirebirdTrance { get; } = new Spell
+        {
+            Name = "Firebird Trance",
+            ID = 16549,
+            Level = 72,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
+        };
+
+        public Spell FountainOfFire { get; } = new Spell
+        {
+            Name = "Fountain of Fire",
+            ID = 16514,
+            Level = 72,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+
+        public Spell BrandOfPurgatory { get; } = new Spell
+        {
+            Name = "Brand of Purgatory",
+            ID = 16515,
+            Level = 72,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+
+        public Spell EverlastingFlight { get; } = new Spell
+        {
+            Name = "Everlasting Flight",
+            ID = 16517,
+            Level = 80,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
+        };
+
+        public Spell EnkindlePhoenix { get; } = new Spell
+        {
+            Name = "EnkindlePhoenix",
+            ID = 16516,
+            Level = 80,
             GCDType = GCDType.Off,
             SpellType = SpellType.Cooldown,
             CastType = CastType.Target
