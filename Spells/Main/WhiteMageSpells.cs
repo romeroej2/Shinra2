@@ -76,16 +76,6 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
-        public Spell Repose { get; } = new Spell
-        {
-            Name = "Repose",
-            ID = 128,
-            Level = 26,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Damage,
-            CastType = CastType.Target
-        };
-
         public Spell CureII { get; } = new Spell
         {
             Name = "Cure II",
@@ -198,17 +188,17 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Heal,
             CastType = CastType.Self
         };
-
-        public Spell AeroIII { get; } = new Spell
+        
+        public Spell ThinAir { get; } = new Spell
         {
-            Name = "Aero III",
-            ID = 3572,
+            Name = "Thin Air",
+            ID = 7430,
             Level = 58,
-            GCDType = GCDType.On,
-            SpellType = SpellType.DoT,
-            CastType = CastType.Target
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
         };
-
+        
         public Spell Tetragrammaton { get; } = new Spell
         {
             Name = "Tetragrammaton",
@@ -217,16 +207,6 @@ namespace ShinraCo.Spells.Main
             GCDType = GCDType.Off,
             SpellType = SpellType.Heal,
             CastType = CastType.Target
-        };
-
-        public Spell ThinAir { get; } = new Spell
-        {
-            Name = "Thin Air",
-            ID = 7430,
-            Level = 62,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
         };
 
         public Spell StoneIV { get; } = new Spell
@@ -256,6 +236,56 @@ namespace ShinraCo.Spells.Main
             Level = 70,
             GCDType = GCDType.Off,
             SpellType = SpellType.Heal,
+            CastType = CastType.Self
+        };
+        
+        public Spell Dia { get; } = new Spell
+        {
+            Name = "Dia",
+            ID = 16532,
+            Level = 72,
+            GCDType = GCDType.On,
+            SpellType = SpellType.DoT,
+            CastType = CastType.Target
+        };
+        
+        public Spell Glare { get; } = new Spell
+        {
+            Name = "Glare",
+            ID = 16533,
+            Level = 72,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+        
+        public Spell AfflatusMisery { get; } = new Spell
+        {
+            Name = "Afflatus Misery",
+            ID = 16535,
+            Level = 74,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.TargetLocation
+        };
+        
+        public Spell AfflatusRapture { get; } = new Spell
+        {
+            Name = "Afflatus Rapture",
+            ID = 16534,
+            Level = 76,
+            GCDType = GCDType.On,
+            SpellType = SpellType.AoE,
+            CastType = CastType.TargetLocation
+        };
+        
+        public Spell Temperance { get; } = new Spell
+        {
+            Name = "Temperance",
+            ID = 16536,
+            Level = 80,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
             CastType = CastType.Self
         };
     }
