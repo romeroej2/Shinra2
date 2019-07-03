@@ -53,6 +53,24 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        private async Task<bool> Glare()
+        {
+            if (!StopDamage)
+            {
+                return await MySpells.Glare.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> AfflatusMisery()
+        {
+            if (!StopDamage)
+            {
+                return await MySpells.AfflatusMisery.Cast();
+            }
+            return false;
+        }
+        
         #endregion
 
         #region DoT
@@ -76,15 +94,15 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        private async Task<bool> AeroIII()
+        private async Task<bool> Dia()
         {
-            if (!StopDots && !Core.Player.CurrentTarget.HasAura(MySpells.AeroIII.Name, true, 4000))
+            if (!StopDots && !Core.Player.CurrentTarget.HasAura(MySpells.Dia.Name, true, 3000))
             {
-                return await MySpells.AeroIII.Cast();
+                return await MySpells.Dia.Cast();
             }
             return false;
         }
-
+        
         #endregion
 
         #region AoE
@@ -102,14 +120,29 @@ namespace ShinraCo.Rotations
                         await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.ThinAir.Name));
                     }
                 }
-                if (!StopDamage)
-                {
-                    return await MySpells.Holy.Cast();
-                }
+                if (!StopDamage) return await MySpells.Holy.Cast();
             }
             return false;
         }
 
+        private async Task<bool> AfflatusRapture()
+        {
+            var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
+
+            if (!MovementManager.IsMoving && (ShinraEx.Settings.RotationMode == Modes.Multi || Helpers.EnemiesNearPlayer(8) >= count))
+            {
+                if (ShinraEx.Settings.WhiteMageThinAir && ActionManager.CanCast(MySpells.Holy.Name, Core.Player))
+                {
+                    if (await MySpells.ThinAir.Cast(null, false))
+                    {
+                        await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.ThinAir.Name));
+                    }
+                }
+                if (!StopDamage) return await MySpells.AfflatusRapture.Cast();
+            }
+            return false;
+        }
+        
         #endregion
 
         #region Buff
@@ -127,6 +160,19 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        private async Task<bool> Temperance()
+        {
+            if (ShinraEx.Settings.WhiteMagePartyHeal && ShinraEx.Settings.WhiteMageTemperance)
+            {
+                if (Helpers.HealManager.Count(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageTemperancePct) >=
+                    ShinraEx.Settings.WhiteMageTemperanceCount)
+                {
+                    return await MySpells.Temperance.Cast(null, false);
+                }
+            }
+            return false;
+        }
+        
         #endregion
 
         #region Heal
@@ -341,22 +387,6 @@ namespace ShinraCo.Rotations
             if (ShinraEx.Settings.WhiteMageClericStance)
             {
                 return await MySpells.Role.ClericStance.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Protect()
-        {
-            if (ShinraEx.Settings.WhiteMageProtect)
-            {
-                var target = ShinraEx.Settings.WhiteMagePartyHeal
-                    ? Helpers.HealManager.FirstOrDefault(hm => !hm.HasAura(MySpells.Role.Protect.Name) && hm.Type == GameObjectType.Pc)
-                    : !Core.Player.HasAura(MySpells.Role.Protect.Name) ? Core.Player : null;
-
-                if (target != null)
-                {
-                    return await MySpells.Role.Protect.Cast(target);
-                }
             }
             return false;
         }

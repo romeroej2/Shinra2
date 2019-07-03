@@ -1822,9 +1822,6 @@ namespace ShinraCo.Settings
         public bool WhiteMageClericStance { get; set; }
 
         [Setting, DefaultValue(true)]
-        public bool WhiteMageProtect { get; set; }
-
-        [Setting, DefaultValue(true)]
         public bool WhiteMageEsuna { get; set; }
 
         [Setting, DefaultValue(true)]
@@ -1880,6 +1877,15 @@ namespace ShinraCo.Settings
         [Setting, DefaultValue(50)]
         public int WhiteMagePresenceOfMindPct { get; set; }
 
+        [Setting, DefaultValue(true)]
+        public bool WhiteMageTemperance { get; set; }
+
+        [Setting, DefaultValue(2)]
+        public int WhiteMageTemperanceCount { get; set; }
+
+        [Setting, DefaultValue(50)]
+        public int WhiteMageTemperancePct { get; set; }
+        
         [Setting, DefaultValue(true)]
         public bool WhiteMageThinAir { get; set; }
 

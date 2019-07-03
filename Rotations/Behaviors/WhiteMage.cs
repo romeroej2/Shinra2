@@ -11,7 +11,6 @@ namespace ShinraCo.Rotations
         {
             if (ShinraEx.Settings.RotationMode == Modes.Smart)
             {
-                if (await AeroIII()) return true;
                 if (await Holy()) return true;
                 if (await AeroII()) return true;
                 if (await Aero()) return true;
@@ -22,7 +21,6 @@ namespace ShinraCo.Rotations
             }
             if (ShinraEx.Settings.RotationMode == Modes.Single)
             {
-                if (await AeroIII()) return true;
                 if (await AeroII()) return true;
                 if (await Aero()) return true;
                 if (await StoneIV()) return true;
@@ -32,7 +30,6 @@ namespace ShinraCo.Rotations
             }
             if (ShinraEx.Settings.RotationMode == Modes.Multi)
             {
-                if (await AeroIII()) return true;
                 return await Holy();
             }
             return false;
@@ -71,8 +68,7 @@ namespace ShinraCo.Rotations
             if (await Cure()) return true;
             if (await Regen()) return true;
             if (await Raise()) return true;
-            if (await Esuna()) return true;
-            return await Protect();
+            return await Esuna();
         }
 
         #endregion

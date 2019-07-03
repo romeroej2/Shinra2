@@ -11,12 +11,8 @@ namespace ShinraCo.Settings.Forms
     public partial class ShinraForm : Form
     {
         private readonly Image _shinraBanner = Resources.ShinraBanner;
-        private readonly Image _shinraDonate = Resources.ShinraDonate;
 
-        public ShinraForm()
-        {
-            InitializeComponent();
-        }
+        public ShinraForm() => InitializeComponent();
 
         #region Draggable
 
@@ -30,10 +26,7 @@ namespace ShinraCo.Settings.Forms
 
         private void ShinraForm_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left)
-            {
-                return;
-            }
+            if (e.Button != MouseButtons.Left) return;
             ReleaseCapture();
             SendMessage(Handle, WmNclbuttondown, HtCaption, 0);
         }
@@ -1032,7 +1025,6 @@ namespace ShinraCo.Settings.Forms
             #region Role
 
             WhiteMageClericStance.Checked = ShinraEx.Settings.WhiteMageClericStance;
-            WhiteMageProtect.Checked = ShinraEx.Settings.WhiteMageProtect;
             WhiteMageEsuna.Checked = ShinraEx.Settings.WhiteMageEsuna;
             WhiteMageLucidDreaming.Checked = ShinraEx.Settings.WhiteMageLucidDreaming;
             WhiteMageLucidDreamingPct.Value = ShinraEx.Settings.WhiteMageLucidDreamingPct;
@@ -1060,6 +1052,9 @@ namespace ShinraCo.Settings.Forms
             WhiteMagePresenceOfMind.Checked = ShinraEx.Settings.WhiteMagePresenceOfMind;
             WhiteMagePresenceOfMindCount.Value = ShinraEx.Settings.WhiteMagePresenceOfMindCount;
             WhiteMagePresenceOfMindPct.Value = ShinraEx.Settings.WhiteMagePresenceOfMindPct;
+            WhiteMageTemperance.Checked = ShinraEx.Settings.WhiteMageTemperance;
+            WhiteMageTemperanceCount.Value = ShinraEx.Settings.WhiteMageTemperanceCount;
+            WhiteMageTemperancePct.Value = ShinraEx.Settings.WhiteMageTemperancePct;
             WhiteMageThinAir.Checked = ShinraEx.Settings.WhiteMageThinAir;
 
             #endregion
@@ -1096,13 +1091,7 @@ namespace ShinraCo.Settings.Forms
 
             #endregion
         }
-
-        private void ShinraDonate_Click(object sender, EventArgs e)
-        {
-            
-            
-        }
-
+        
         private void ShinraForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             ShinraEx.RegisterHotkeys();
@@ -3661,11 +3650,6 @@ namespace ShinraCo.Settings.Forms
             ShinraEx.Settings.WhiteMageClericStance = WhiteMageClericStance.Checked;
         }
 
-        private void WhiteMageProtect_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.WhiteMageProtect = WhiteMageProtect.Checked;
-        }
-
         private void WhiteMageEsuna_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.WhiteMageEsuna = WhiteMageEsuna.Checked;
@@ -3754,6 +3738,21 @@ namespace ShinraCo.Settings.Forms
             ShinraEx.Settings.WhiteMagePresenceOfMindPct = Convert.ToInt32(WhiteMagePresenceOfMindPct.Value);
         }
 
+        private void WhiteMageTemperance_CheckedChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.WhiteMageTemperance = WhiteMageTemperance.Checked;
+        }
+
+        private void WhiteMageTemperanceCount_ValueChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.WhiteMageTemperanceCount = Convert.ToInt32(WhiteMageTemperanceCount.Value);
+        }
+
+        private void WhiteMageTemperancePct_ValueChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.WhiteMageTemperancePct = Convert.ToInt32(WhiteMageTemperancePct.Value);
+        }
+        
         private void WhiteMageThinAir_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.WhiteMageThinAir = WhiteMageThinAir.Checked;
