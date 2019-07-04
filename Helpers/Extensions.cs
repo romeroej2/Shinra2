@@ -39,7 +39,7 @@ namespace ShinraCo
             ? Core.Player.CurrentManaPercent
             : Core.Player.CurrentTPPercent;
 
-        private static readonly string VersionPath = Path.Combine(Environment.CurrentDirectory, @"Routines\ShinraEx\Properties\Version.txt");
+        private static readonly string VersionPath = Path.Combine(Environment.CurrentDirectory, @"Routines\Shinra2\Properties\Version.txt");
 
         public static string GetLocalVersion()
         {
