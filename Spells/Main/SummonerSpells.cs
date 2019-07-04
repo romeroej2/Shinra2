@@ -373,10 +373,10 @@ namespace ShinraCo.Spells.Main
 
         public Spell TriBind { get; } = new Spell
         {
-            Name = "TriBind",
-            ID = 99999,
-            Level = 90,
-            GCDType = GCDType.Off,
+            Name = "Tri-Bind",
+            ID = 182,
+            Level = 40,
+            GCDType = GCDType.On,
             SpellType = SpellType.Cooldown,
             CastType = CastType.Target
         };
