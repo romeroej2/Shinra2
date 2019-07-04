@@ -25,10 +25,7 @@ namespace ShinraCo.Rotations
             if (await StoneII()) return true;
             if (await Stone()) return true;
             // Gladiator
-            if (await Flash()) return true;
-            if (await RageOfHalone()) return true;
             if (await RiotBlade()) return true;
-            if (await SavageBlade()) return true;
             if (await FastBlade()) return true;
             // Lancer
             if (await FullThrust()) return true;
