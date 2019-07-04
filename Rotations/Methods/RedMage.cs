@@ -137,17 +137,32 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Scatter()
         {
-            if (!ActionManager.HasSpell(MySpells.Impact.Name))
+            if (!ActionManager.HasSpell(MySpells.Impact.Name) &&  (Core.Player.HasAura("Dualcast") || Core.Player.HasAura("Swiftcast")))
             {
                 return await MySpells.Scatter.Cast();
             }
             return false;
         }
 
+        private async Task<bool> ImpactOrScatter()
+        {
+            if (Core.Player.HasAura("Dualcast") || Core.Player.HasAura("Swiftcast"))
+            {
+                if (!ActionManager.HasSpell(MySpells.Impact.Name))
+                {
+                    return await MySpells.Scatter.Cast();
+                }
+                return await MySpells.Impact.Cast();
+            }
+            return false;
+        }
+
+
         private async Task<bool> Impact()
         {
             if (Core.Player.HasAura("Dualcast") || Core.Player.HasAura("Swiftcast"))
             {
+
                 return await MySpells.Impact.Cast();
             }
             return false;
@@ -258,6 +273,7 @@ namespace ShinraCo.Rotations
             {
                 if (UseOffGCD && WhiteMana >= 40 && WhiteMana < 60 && BlackMana >= 40 && BlackMana < 60)
                 {
+                    Helpers.Debug("Manafication Cast...");
                     return await MySpells.Manafication.Cast();
                 }
             }

@@ -16,8 +16,7 @@ namespace ShinraCo.Rotations
                     Helpers.Debug("Combat - smart...");
                     if (ShinraEx.Settings.RedMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
                     if (await EnchantedMoulinet()) return true;
-                    if (await Impact()) return true;
-                    if (await Scatter()) return true;
+                    if (await ImpactOrScatter()) return true;
                     if (await Veraero2()) return true;
                     if (await Verthunder2()) return true;
                     if (await Verholy()) return true;
@@ -48,7 +47,6 @@ namespace ShinraCo.Rotations
                     if (await Verthunder()) return true;
                     if (await Verstone()) return true;
                     if (await Verfire()) return true;
-                    if (await Impact()) return true;
                     if (await JoltII()) return true;
                     if (await Jolt()) return true;
                     return await Riposte();
@@ -64,8 +62,7 @@ namespace ShinraCo.Rotations
                 {
                     Helpers.Debug("Combat - multi...");
                     if (await EnchantedMoulinet()) return true;
-                    if (await Impact()) return true;
-                    if (await Scatter()) return true;
+                    if (await ImpactOrScatter()) return true;
                     if (await Veraero2()) return true;
                     if (await Verthunder2()) return true;
                     return await Riposte();
