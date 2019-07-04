@@ -13,6 +13,7 @@ namespace ShinraCo.Rotations
             {
                 case Modes.Smart:
                 {
+                    Helpers.Debug("Combat - smart...");
                     if (ShinraEx.Settings.DragoonOpener) { if (await Helpers.ExecuteOpener()) return true; }
                     if (await SonicThrust()) return true;
                     if (await DoomSpike()) return true;
@@ -27,6 +28,7 @@ namespace ShinraCo.Rotations
 
                 case Modes.Single:
                 {
+                    Helpers.Debug("Combat - single...");
                     if (ShinraEx.Settings.DragoonOpener) { if (await Helpers.ExecuteOpener()) return true; }
                     if (await WheelingThrust()) return true;
                     if (await FangAndClaw()) return true;
@@ -37,12 +39,15 @@ namespace ShinraCo.Rotations
                     return await TrueThrust();
                 }
 
-                case Modes.Multi when await SonicThrust():
-                case Modes.Multi when await DoomSpike():
-                    return true;
-                default:
-                    return false;
+                case Modes.Multi:
+                {
+                    Helpers.Debug("Combat - multi...");
+                    if (await SonicThrust()) return true;
+                    return await DoomSpike();
+                }
             }
+
+            return false;
         }
 
         #endregion
@@ -51,6 +56,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
+            Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.DragoonOpener) { if (await Helpers.ExecuteOpener()) return true; }
@@ -77,6 +83,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
+            Helpers.Debug("Heal...");
             if (await SecondWind()) return true;
             return await Bloodbath();
         }
@@ -87,6 +94,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
+            Helpers.Debug("PreCombatBuff...");
             return await ShinraEx.SummonChocobo();
         }
 
@@ -96,6 +104,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
+            Helpers.Debug("Pull...");
             return await Combat();
         }
 
@@ -105,6 +114,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
+            Helpers.Debug("CombatPVP...");
             if (await NastrondPVP()) return true;
             if (await GeirskogulPVP()) return true;
             if (await BloodOfTheDragonPVP()) return true;

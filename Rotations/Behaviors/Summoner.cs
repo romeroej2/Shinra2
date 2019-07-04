@@ -8,6 +8,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
+            Helpers.Debug("Combat...");
             if (ShinraEx.Settings.SummonerOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await Drain()) return true;
             if (await MiasmaIII()) return true;
@@ -27,13 +28,14 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
+            Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.SummonerOpener) { if (await Helpers.ExecuteOpener()) return true; }
-/*             if (await Sic()) return true;
-            if (await SummonIII()) return true;
-            if (await SummonII()) return true;
-            if (await Summon()) return true; */
+            //if (await Sic()) return true;
+            //if (await SummonIII()) return true;
+            //if (await SummonII()) return true;
+            //if (await Summon()) return true;
             if (await EnkindleBahamut()) return true;
             if (await SummonBahamut()) return true;
             if (await Deathflare()) return true;
@@ -55,6 +57,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
+            Helpers.Debug("Heal...");
             if (await UpdateHealing()) return true;
             if (await Resurrection()) return true;
             if (await Sustain()) return true;
@@ -67,11 +70,12 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
+            Helpers.Debug("PreCombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
-/*             if (await AetherflowPreCombat()) return true;
-            if (await SummonIII()) return true;
-            if (await SummonII()) return true;
-            if (await Summon()) return true; await Obey(); */
+            //if (await AetherflowPreCombat()) return true;
+            //if (await SummonIII()) return true;
+            //if (await SummonII()) return true;
+            //if (await Summon()) return true; await Obey();
             return false; 
         }
 
@@ -81,6 +85,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
+            Helpers.Debug("Pull...");
             if (ShinraEx.Settings.SummonerOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await TriDisaster()) return true;
             return await Combat();
@@ -92,6 +97,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
+            Helpers.Debug("CombatPVP...");
             if (await EnkindleBahamutPVP()) return true;
             if (await SummonBahamutPVP()) return true;
             if (await DeathflarePVP()) return true;

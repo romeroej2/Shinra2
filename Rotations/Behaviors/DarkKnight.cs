@@ -9,38 +9,47 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            if (ShinraEx.Settings.RotationMode == Modes.Smart)
+            switch (ShinraEx.Settings.RotationMode)
             {
-                if (ShinraEx.Settings.DarkKnightOpener) { if (await Helpers.ExecuteOpener()) return true; }
-                if (await Quietus()) return true;
-                if (await AbyssalDrain()) return true;
-                if (await Unleash()) return true;
-                if (await Bloodspiller()) return true;
-                if (await Souleater()) return true;
-                if (await SyphonStrike()) return true;
-                if (await PowerSlash()) return true;
-                if (await SpinningSlash()) return true;
-                return await HardSlash();
+                case Modes.Smart:
+                {
+                    Helpers.Debug("Combat - smart...");
+                    if (ShinraEx.Settings.DarkKnightOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await Quietus()) return true;
+                    if (await AbyssalDrain()) return true;
+                    if (await Unleash()) return true;
+                    if (await Bloodspiller()) return true;
+                    if (await Souleater()) return true;
+                    if (await SyphonStrike()) return true;
+                    if (await PowerSlash()) return true;
+                    if (await SpinningSlash()) return true;
+                    return await HardSlash();
+                }
+
+                case Modes.Single:
+                {
+                    Helpers.Debug("Combat - single...");
+                    if (ShinraEx.Settings.DarkKnightOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await Bloodspiller()) return true;
+                    if (await Souleater()) return true;
+                    if (await SyphonStrike()) return true;
+                    if (await PowerSlash()) return true;
+                    if (await SpinningSlash()) return true;
+                    return await HardSlash();
+                }
+
+                case Modes.Multi:
+                {
+                    Helpers.Debug("Combat - multi...");
+                    if (await Quietus()) return true;
+                    if (await AbyssalDrain()) return true;
+                    if (await Unleash()) return true;
+                    if (await Souleater()) return true;
+                    if (await SyphonStrike()) return true;
+                    return await HardSlash();
+                }
             }
-            if (ShinraEx.Settings.RotationMode == Modes.Single)
-            {
-                if (ShinraEx.Settings.DarkKnightOpener) { if (await Helpers.ExecuteOpener()) return true; }
-                if (await Bloodspiller()) return true;
-                if (await Souleater()) return true;
-                if (await SyphonStrike()) return true;
-                if (await PowerSlash()) return true;
-                if (await SpinningSlash()) return true;
-                return await HardSlash();
-            }
-            if (ShinraEx.Settings.RotationMode == Modes.Multi)
-            {
-                if (await Quietus()) return true;
-                if (await AbyssalDrain()) return true;
-                if (await Unleash()) return true;
-                if (await Souleater()) return true;
-                if (await SyphonStrike()) return true;
-                return await HardSlash();
-            }
+            
             return false;
         }
 
@@ -50,6 +59,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
+            Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.DarkKnightOpener) { if (await Helpers.ExecuteOpener()) return true; }
@@ -78,6 +88,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
+            Helpers.Debug("Heal...");
             return false;
         }
 
@@ -87,6 +98,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
+            Helpers.Debug("PreCombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await Grit()) return true;
             return await Darkside();
@@ -98,6 +110,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
+            Helpers.Debug("Pull...");
             return await Combat();
         }
 
@@ -107,6 +120,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
+            Helpers.Debug("CombatPVP...");
             return false;
         }
 

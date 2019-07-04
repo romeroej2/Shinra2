@@ -9,33 +9,42 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            if (ShinraEx.Settings.RotationMode == Modes.Smart)
+            switch (ShinraEx.Settings.RotationMode)
             {
-                if (await StellarDetonation()) return true;
-                if (await EarthlyStar()) return true;
-                if (await Gravity()) return true;
-                if (await CombustII()) return true;
-                if (await Combust()) return true;
-                if (await MaleficIII()) return true;
-                if (await MaleficII()) return true;
-                return await Malefic();
+                case Modes.Smart:
+                {
+                    Helpers.Debug("Combat - smart ...");
+                    if (await StellarDetonation()) return true;
+                    if (await EarthlyStar()) return true;
+                    if (await Gravity()) return true;
+                    if (await CombustII()) return true;
+                    if (await Combust()) return true;
+                    if (await MaleficIII()) return true;
+                    if (await MaleficII()) return true;
+                    return await Malefic();
+                }
+
+                case Modes.Single:
+                {
+                    Helpers.Debug("Combat - single ...");
+                    if (await CombustII()) return true;
+                    if (await Combust()) return true;
+                    if (await MaleficIII()) return true;
+                    if (await MaleficII()) return true;
+                    return await Malefic();
+                }
+
+                case Modes.Multi:
+                {
+                    Helpers.Debug("Combat - multi...");
+                    if (await StellarDetonation()) return true;
+                    if (await EarthlyStar()) return true;
+                    if (await Gravity()) return true;
+                    if (await CombustII()) return true;
+                    return await Combust();
+                }
             }
-            if (ShinraEx.Settings.RotationMode == Modes.Single)
-            {
-                if (await CombustII()) return true;
-                if (await Combust()) return true;
-                if (await MaleficIII()) return true;
-                if (await MaleficII()) return true;
-                return await Malefic();
-            }
-            if (ShinraEx.Settings.RotationMode == Modes.Multi)
-            {
-                if (await StellarDetonation()) return true;
-                if (await EarthlyStar()) return true;
-                if (await Gravity()) return true;
-                if (await CombustII()) return true;
-                return await Combust();
-            }
+            
             return false;
         }
 
@@ -45,6 +54,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
+            Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (await CelestialOpposition()) return true;
@@ -72,6 +82,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
+            Helpers.Debug("Heal...");
             if (await UpdateHealing()) return true;
             if (await StopCasting()) return true;
             if (await EssentialDignity()) return true;
@@ -97,6 +108,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
+            Helpers.Debug("PreCombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await NocturnalSect()) return true;
             if (await DiurnalSect()) return true;
@@ -119,6 +131,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
+            Helpers.Debug("Pull...");
             if (await CombustII()) return true;
             if (await Combust()) return true;
             return await Combat();
@@ -130,6 +143,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
+            Helpers.Debug("CombatPVP...");
             return false;
         }
 

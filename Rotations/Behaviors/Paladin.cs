@@ -9,35 +9,44 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            if (ShinraEx.Settings.RotationMode == Modes.Smart)
+            switch (ShinraEx.Settings.RotationMode)
             {
-                if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
-                if (await TotalEclipse()) return true;
-                if (await Flash()) return true;
-                if (await HolySpirit()) return true;
-                if (await GoringBlade()) return true;
-                if (await RoyalAuthority()) return true;
-                if (await RiotBlade()) return true;
-                if (await RageOfHalone()) return true;
-                if (await SavageBlade()) return true;
-                return await FastBlade();
+                case Modes.Smart:
+                {
+                    Helpers.Debug("Combat - smart...");
+                    if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await TotalEclipse()) return true;
+                    if (await Flash()) return true;
+                    if (await HolySpirit()) return true;
+                    if (await GoringBlade()) return true;
+                    if (await RoyalAuthority()) return true;
+                    if (await RiotBlade()) return true;
+                    if (await RageOfHalone()) return true;
+                    if (await SavageBlade()) return true;
+                    return await FastBlade();
+                }
+
+                case Modes.Single:
+                {
+                    Helpers.Debug("Combat - single...");
+                    if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await HolySpirit()) return true;
+                    if (await GoringBlade()) return true;
+                    if (await RoyalAuthority()) return true;
+                    if (await RiotBlade()) return true;
+                    if (await RageOfHalone()) return true;
+                    if (await SavageBlade()) return true;
+                    return await FastBlade();
+                }
+
+                case Modes.Multi:
+                {
+                    Helpers.Debug("Combat - multi...");
+                    if (await TotalEclipse()) return true;
+                    return await Flash();
+                }
             }
-            if (ShinraEx.Settings.RotationMode == Modes.Single)
-            {
-                if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
-                if (await HolySpirit()) return true;
-                if (await GoringBlade()) return true;
-                if (await RoyalAuthority()) return true;
-                if (await RiotBlade()) return true;
-                if (await RageOfHalone()) return true;
-                if (await SavageBlade()) return true;
-                return await FastBlade();
-            }
-            if (ShinraEx.Settings.RotationMode == Modes.Multi)
-            {
-                if (await TotalEclipse()) return true;
-                return await Flash();
-            }
+
             return false;
         }
 
@@ -47,6 +56,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
+            Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (await PassageOfArms()) return true;
@@ -75,6 +85,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
+            Helpers.Debug("Heal...");
             return await Clemency();
         }
 
@@ -84,6 +95,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
+            Helpers.Debug("PreCombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await SwordOath()) return true;
             return await ShieldOath();
@@ -95,6 +107,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
+            Helpers.Debug("Pull...");
             if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await ShieldLob()) return true;
             return await Combat();
@@ -106,6 +119,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
+            Helpers.Debug("CombatPVP...");
             if (await RequiescatPVP()) return true;
             if (await HolySpiritPVP()) return true;
             if (await RageOfHalonePVP()) return true;

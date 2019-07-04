@@ -8,6 +8,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
+            Helpers.Debug("Combat...");
             if (await Drain()) return true;
             // Arcanist
             if (await Miasma()) return true;
@@ -63,6 +64,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
+            Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             // Arcanist
@@ -98,6 +100,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
+            Helpers.Debug("Heal...");
             // Arcanist
             if (await Physick()) return true;
             // Conjurer
@@ -113,6 +116,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
+            Helpers.Debug("PreCombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             // Arcanist
             if (await SummonII()) return true;
@@ -127,6 +131,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
+            Helpers.Debug("Pull...");
             return await Combat();
         }
 
@@ -136,6 +141,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
+            Helpers.Debug("CombatPVP...");
             return false;
         }
 
