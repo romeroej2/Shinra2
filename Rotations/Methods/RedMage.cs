@@ -273,6 +273,7 @@ namespace ShinraCo.Rotations
             {
                 if (UseOffGCD && WhiteMana >= 40 && WhiteMana < 60 && BlackMana >= 40 && BlackMana < 60)
                 {
+                    Helpers.Debug("Manafication Cast...");
                     return await MySpells.Manafication.Cast();
                 }
             }
