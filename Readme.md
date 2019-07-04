@@ -29,6 +29,7 @@ So you should see the `ShinraEx.cs`  in `<rebornbuddy folder>\Routines\Shinra2`.
 | ![BLM](https://i.imgur.com/Ow0iuBQ.png) | ***5.0*** |?|
 | ![SMN](https://i.imgur.com/W6cu7WL.png) | 4.5* |?|
 | ![RDM](https://i.imgur.com/zza5SV5.png) | ***5.0*** |?|
+
 *Current status unknown
 
 With <3 for y2krazy and zzi and Freiheit
