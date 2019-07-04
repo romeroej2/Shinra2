@@ -370,5 +370,15 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Cooldown,
             CastType = CastType.Target
         };
+
+        public Spell TriBind { get; } = new Spell
+        {
+            Name = "TriBind",
+            ID = 99999,
+            Level = 90,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Cooldown,
+            CastType = CastType.Target
+        };
     }
 }
