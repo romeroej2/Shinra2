@@ -51,7 +51,7 @@ namespace ShinraCo.Rotations
         {
             if (!Core.Player.HasAura(MySpells.HotShot.Name, true, 6000) ||
                 !Core.Player.HasAura(MySpells.HotShot.Name, true, 55000) && Resource.Heat == 0 &&
-                Resource.Timer < TimeSpan.FromMilliseconds(3000))
+                Resource.Battery >1) //Prolly Broken as well.
             {
                 return await MySpells.HotShot.Cast();
             }
@@ -62,10 +62,10 @@ namespace ShinraCo.Rotations
         {
             if (!ShinraEx.Settings.MachinistCooldown) return false;
 
-            if (Overheated && !Core.Player.HasAura("Enhanced Slug Shot") && !Core.Player.HasAura("Cleaner Shot") && Resource.Ammo < 2)
+            if (Overheated && !Core.Player.HasAura("Enhanced Slug Shot") && !Core.Player.HasAura("Cleaner Shot") && Resource.Battery < 2)
                 return await MySpells.Cooldown.Cast();
 
-            if (Overheated || Resource.Heat < 95 || Resource.Ammo > 0) return false;
+            if (Overheated || Resource.Heat < 95 || Resource.Battery > 0) return false;
 
             if (!ActionManager.CanCast(MySpells.BarrelStabilizer.Name, Core.Player) || !UseWildfire || WildfireCooldown > 3000)
                 return await MySpells.Cooldown.Cast();
@@ -160,7 +160,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Reload()
         {
-            if (!ShinraEx.Settings.MachinistReload || ShinraEx.LastSpell.Name == MySpells.QuickReload.Name || Resource.Ammo > 0)
+            if (!ShinraEx.Settings.MachinistReload || ShinraEx.LastSpell.Name == MySpells.QuickReload.Name || Resource.Battery > 0)
                 return false;
 
             return await MySpells.Reload.Cast();
@@ -185,14 +185,14 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> QuickReload()
         {
-            if (ShinraEx.LastSpell.Name == MySpells.Reload.Name || Resource.Ammo == 3) return false;
+            if (ShinraEx.LastSpell.Name == MySpells.Reload.Name || Resource.Battery == 3) return false;
 
             return await MySpells.QuickReload.Cast();
         }
 
         private async Task<bool> QuickReloadPre()
         {
-            if (Resource.Ammo < 2 && ShinraEx.LastSpell.Name != MySpells.HotShot.Name && ShinraEx.LastSpell.Name != MySpells.GaussRound.Name)
+            if (Resource.Battery < 2 && ShinraEx.LastSpell.Name != MySpells.HotShot.Name && ShinraEx.LastSpell.Name != MySpells.GaussRound.Name)
             {
                 return await MySpells.QuickReload.Cast(null, false);
             }
@@ -213,7 +213,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> GaussBarrel()
         {
-            if (ShinraEx.Settings.MachinistGaussBarrel && !Resource.GaussBarrel)
+            if (ShinraEx.Settings.MachinistGaussBarrel && Resource.Battery>1) //Prolly Broken
             {
                 return await MySpells.GaussBarrel.Cast(null, false);
             }
@@ -394,7 +394,7 @@ namespace ShinraCo.Rotations
         private static double FlamethrowerCooldown => DataManager.GetSpellData(7418).Cooldown.TotalMilliseconds;
         private static double WildfireCooldown => DataManager.GetSpellData(2878).Cooldown.TotalMilliseconds;
         private static double BarrelCooldown => DataManager.GetSpellData(7414).Cooldown.TotalMilliseconds;
-        private static bool Overheated => Resource.Heat == 100 && Resource.Timer.TotalMilliseconds > 0;
+        private static bool Overheated => Resource.Heat == 100; //&& Resource.Battery.TotalMilliseconds > 0; //Broken
         private static bool UseFlamethrower => ShinraEx.Settings.RotationMode == Modes.Multi ||
                                                ShinraEx.Settings.RotationMode == Modes.Smart && Helpers.EnemiesNearTarget(5) >= AoECount;
 
