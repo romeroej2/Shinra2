@@ -9,29 +9,38 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            if (ShinraEx.Settings.RotationMode == Modes.Smart)
+            switch (ShinraEx.Settings.RotationMode)
             {
-                if (await Holy()) return true;
-                if (await AeroII()) return true;
-                if (await Aero()) return true;
-                if (await StoneIV()) return true;
-                if (await StoneIII()) return true;
-                if (await StoneII()) return true;
-                return await Stone();
+                case Modes.Smart:
+                {
+                    Helpers.Debug("Combat...");
+                    if (await Holy()) return true;
+                    if (await AeroII()) return true;
+                    if (await Aero()) return true;
+                    if (await StoneIV()) return true;
+                    if (await StoneIII()) return true;
+                    if (await StoneII()) return true;
+                    return await Stone();
+                }
+
+                case Modes.Single:
+                {
+                    Helpers.Debug("Combat...");
+                    if (await AeroII()) return true;
+                    if (await Aero()) return true;
+                    if (await StoneIV()) return true;
+                    if (await StoneIII()) return true;
+                    if (await StoneII()) return true;
+                    return await Stone();
+                }
+
+                case Modes.Multi:
+                {
+                    Helpers.Debug("Combat...");
+                    return await Holy();
+                }
             }
-            if (ShinraEx.Settings.RotationMode == Modes.Single)
-            {
-                if (await AeroII()) return true;
-                if (await Aero()) return true;
-                if (await StoneIV()) return true;
-                if (await StoneIII()) return true;
-                if (await StoneII()) return true;
-                return await Stone();
-            }
-            if (ShinraEx.Settings.RotationMode == Modes.Multi)
-            {
-                return await Holy();
-            }
+
             return false;
         }
 
@@ -41,6 +50,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
+            Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (await LucidDreaming()) return true;
@@ -53,6 +63,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
+            Helpers.Debug("Heal...");
             if (await UpdateHealing()) return true;
             if (await StopCasting()) return true;
             if (await Benediction()) return true;
@@ -77,6 +88,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
+            Helpers.Debug("PreCombatBuff...");
             return await ShinraEx.SummonChocobo();
         }
 
@@ -86,6 +98,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
+            Helpers.Debug("Pull...");
             if (await AeroII()) return true;
             if (await Aero()) return true;
             return await Combat();
@@ -97,6 +110,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
+            Helpers.Debug("CombatPVP...");
             return false;
         }
 

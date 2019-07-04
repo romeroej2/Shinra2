@@ -8,6 +8,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
+            Helpers.Debug("Combat...");
             if (ShinraEx.Settings.BardOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await BarrageActive()) return true;
             if (await DotSnapshot()) return true;
@@ -27,6 +28,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
+            Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.BardOpener) { if (await Helpers.ExecuteOpener()) return true; }
@@ -59,6 +61,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
+            Helpers.Debug("Heal...");
             return await SecondWind();
         }
 
@@ -68,6 +71,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
+            Helpers.Debug("PreCombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             return await Peloton();
         }
@@ -78,6 +82,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
+            Helpers.Debug("Pull...");
             if (await FoeRequiem()) return true;
             return await Combat();
         }
@@ -88,6 +93,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
+            Helpers.Debug("CombatPVP...");
             if (await TroubadourPVP()) return true;
             if (await BarragePVP()) return true;
             if (await BloodletterPVP()) return true;

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Runtime.Remoting.Messaging;
+using System.Threading.Tasks;
 using ShinraCo.Settings;
 
 namespace ShinraCo.Rotations
@@ -9,35 +10,44 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            if (ShinraEx.Settings.RotationMode == Modes.Smart)
+            switch (ShinraEx.Settings.RotationMode)
             {
-                if (ShinraEx.Settings.MonkOpener) { if (await Helpers.ExecuteOpener()) return true; }
-                if (await Rockbreaker()) return true;
-                if (await Demolish()) return true;
-                if (await SnapPunch()) return true;
-                if (await DragonKick()) return true;
-                if (await TwinSnakes()) return true;
-                if (await TrueStrike()) return true;
-                return await Bootshine();
+                case Modes.Smart:
+                {
+                    Helpers.Debug("Combat - smart...");
+                    if (ShinraEx.Settings.MonkOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await Rockbreaker()) return true;
+                    if (await Demolish()) return true;
+                    if (await SnapPunch()) return true;
+                    if (await DragonKick()) return true;
+                    if (await TwinSnakes()) return true;
+                    if (await TrueStrike()) return true;
+                    return await Bootshine();
+                }
+
+                case Modes.Single:
+                {
+                    Helpers.Debug("Combat - single...");
+                    if (ShinraEx.Settings.MonkOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await Demolish()) return true;
+                    if (await SnapPunch()) return true;
+                    if (await DragonKick()) return true;
+                    if (await TwinSnakes()) return true;
+                    if (await TrueStrike()) return true;
+                    return await Bootshine();
+                }
+
+                case Modes.Multi:
+                {
+                    Helpers.Debug("Combat - multi...");
+                    if (await Rockbreaker()) return true;
+                    if (await TwinSnakes()) return true;
+                    if (await TrueStrike()) return true;
+                    if (await DragonKick()) return true;
+                    return await Bootshine();
+                }
             }
-            if (ShinraEx.Settings.RotationMode == Modes.Single)
-            {
-                if (ShinraEx.Settings.MonkOpener) { if (await Helpers.ExecuteOpener()) return true; }
-                if (await Demolish()) return true;
-                if (await SnapPunch()) return true;
-                if (await DragonKick()) return true;
-                if (await TwinSnakes()) return true;
-                if (await TrueStrike()) return true;
-                return await Bootshine();
-            }
-            if (ShinraEx.Settings.RotationMode == Modes.Multi)
-            {
-                if (await Rockbreaker()) return true;
-                if (await TwinSnakes()) return true;
-                if (await TrueStrike()) return true;
-                if (await DragonKick()) return true;
-                return await Bootshine();
-            }
+
             return false;
         }
 
@@ -47,6 +57,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
+            Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.MonkOpener) { if (await Helpers.ExecuteOpener()) return true; }
@@ -75,6 +86,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
+            Helpers.Debug("Heal...");
             if (await SecondWind()) return true;
             return await Bloodbath();
         }
@@ -85,6 +97,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
+            Helpers.Debug("PreCombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await Meditation()) return true;
             if (await FormShift()) return true;
@@ -99,6 +112,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
+            Helpers.Debug("Pull...");
             return await Combat();
         }
 
@@ -108,6 +122,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
+            Helpers.Debug("CombatPVP...");
             if (await RiddleOfFirePVP()) return true;
             if (await TornadoKickPVP()) return true;
             if (await TheForbiddenChakraPVP()) return true;

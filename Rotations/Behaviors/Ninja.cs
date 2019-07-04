@@ -9,55 +9,64 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            if (ShinraEx.Settings.RotationMode == Modes.Smart)
+            switch (ShinraEx.Settings.RotationMode)
             {
-                if (ShinraEx.Settings.NinjaOpener) { if (await Helpers.ExecuteOpener()) return true; }
-                if (await TenChiJinBuff()) return true;
-                if (await Huton()) return true;
-                if (await Doton()) return true;
-                if (await Katon()) return true;
-                if (await Suiton()) return true;
-                if (await FumaShuriken()) return true;
-                if (await DeathBlossom()) return true;
-                if (await Duality()) return true;
-                if (await DualityActive()) return true;
-                if (await ShadowFang()) return true;
-                if (await ArmorCrush()) return true;
-                if (await AeolianEdge()) return true;
-                if (await GustSlash()) return true;
-                return await SpinningEdge();
+                case Modes.Smart:
+                {
+                    Helpers.Debug("Combat - smart...");
+                    if (ShinraEx.Settings.NinjaOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await TenChiJinBuff()) return true;
+                    if (await Huton()) return true;
+                    if (await Doton()) return true;
+                    if (await Katon()) return true;
+                    if (await Suiton()) return true;
+                    if (await FumaShuriken()) return true;
+                    if (await DeathBlossom()) return true;
+                    if (await Duality()) return true;
+                    if (await DualityActive()) return true;
+                    if (await ShadowFang()) return true;
+                    if (await ArmorCrush()) return true;
+                    if (await AeolianEdge()) return true;
+                    if (await GustSlash()) return true;
+                    return await SpinningEdge();
+                }
+
+                case Modes.Single:
+                {
+                    Helpers.Debug("Combat - single...");
+                    if (ShinraEx.Settings.NinjaOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await TenChiJinBuff()) return true;
+                    if (await Huton()) return true;
+                    if (await Suiton()) return true;
+                    if (await FumaShuriken()) return true;
+                    if (await Duality()) return true;
+                    if (await DualityActive()) return true;
+                    if (await ShadowFang()) return true;
+                    if (await ArmorCrush()) return true;
+                    if (await AeolianEdge()) return true;
+                    if (await GustSlash()) return true;
+                    return await SpinningEdge();
+                }
+
+                case Modes.Multi:
+                {
+                    Helpers.Debug("Combat - multi...");
+                    if (await TenChiJinBuff()) return true;
+                    if (await Huton()) return true;
+                    if (await Doton()) return true;
+                    if (await Katon()) return true;
+                    if (await FumaShuriken()) return true;
+                    if (await DeathBlossom()) return true;
+                    if (await Duality()) return true;
+                    if (await DualityActive()) return true;
+                    if (await ShadowFang()) return true;
+                    if (await ArmorCrush()) return true;
+                    if (await AeolianEdge()) return true;
+                    if (await GustSlash()) return true;
+                    return await SpinningEdge();
+                }
             }
-            if (ShinraEx.Settings.RotationMode == Modes.Single)
-            {
-                if (ShinraEx.Settings.NinjaOpener) { if (await Helpers.ExecuteOpener()) return true; }
-                if (await TenChiJinBuff()) return true;
-                if (await Huton()) return true;
-                if (await Suiton()) return true;
-                if (await FumaShuriken()) return true;
-                if (await Duality()) return true;
-                if (await DualityActive()) return true;
-                if (await ShadowFang()) return true;
-                if (await ArmorCrush()) return true;
-                if (await AeolianEdge()) return true;
-                if (await GustSlash()) return true;
-                return await SpinningEdge();
-            }
-            if (ShinraEx.Settings.RotationMode == Modes.Multi)
-            {
-                if (await TenChiJinBuff()) return true;
-                if (await Huton()) return true;
-                if (await Doton()) return true;
-                if (await Katon()) return true;
-                if (await FumaShuriken()) return true;
-                if (await DeathBlossom()) return true;
-                if (await Duality()) return true;
-                if (await DualityActive()) return true;
-                if (await ShadowFang()) return true;
-                if (await ArmorCrush()) return true;
-                if (await AeolianEdge()) return true;
-                if (await GustSlash()) return true;
-                return await SpinningEdge();
-            }
+
             return false;
         }
 
@@ -67,6 +76,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
+            Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.NinjaOpener) { if (await Helpers.ExecuteOpener()) return true; }
@@ -93,6 +103,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
+            Helpers.Debug("Heal...");
             if (await SecondWind()) return true;
             return await Bloodbath();
         }
@@ -103,9 +114,9 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
+            Helpers.Debug("PreCombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
-            if (await Huton()) return true;
-            return false;
+            return await Huton();
         }
 
         #endregion
@@ -114,6 +125,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
+            Helpers.Debug("Pull...");
             return await Combat();
         }
 
@@ -123,6 +135,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
+            Helpers.Debug("CombatPVP...");
             return false;
         }
 

@@ -136,7 +136,7 @@
 
         #endregion
 
-        private ShinraCo.Settings.Forms.Design.CustomNumeric customNumeric1;
+        private CustomNumeric customNumeric1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;

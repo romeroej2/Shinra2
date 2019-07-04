@@ -1,7 +1,5 @@
 ﻿using System.Threading.Tasks;
 using ShinraCo.Settings;
-using System.Windows.Media;
-using ff14bot.Helpers;
 
 namespace ShinraCo.Rotations
 {
@@ -11,6 +9,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
+            Helpers.Debug("Combat...");
             if (ShinraEx.Settings.RotationMode == Modes.Multi || ShinraEx.Settings.RotationMode == Modes.Smart &&
                 Helpers.EnemiesNearTarget(5) > 2)
             {
@@ -21,6 +20,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Single()
         {
+            Helpers.Debug("Combat - single...");
             if (ShinraEx.Settings.BlackMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await Transpose()) return true;
             if (await Triplecast()) return true;
@@ -46,6 +46,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Multi()
         {
+            Helpers.Debug("Combat - multi...");
             //if (await Drain()) return true; //Deprecated
             if (await Foul()) return true;
             if (await ThunderIV()) return true;
@@ -66,7 +67,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
-           
+            Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.BlackMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
@@ -83,6 +84,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
+            Helpers.Debug("Heal...");
             return false;
         }
 
@@ -92,6 +94,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
+            Helpers.Debug("PreCombatBuff...");
             return await ShinraEx.SummonChocobo();
         }
 
@@ -101,6 +104,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
+            Helpers.Debug("Pull...");
             return await Combat();
         }
 
@@ -110,6 +114,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
+            Helpers.Debug("CombatPVP...");
             if (await ThunderIIIPVP()) return true;
             if (await ThunderPVP()) return true;
             if (await FlarePVP()) return true;

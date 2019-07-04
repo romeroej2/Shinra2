@@ -9,43 +9,52 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            if (ShinraEx.Settings.RotationMode == Modes.Smart)
+            switch (ShinraEx.Settings.RotationMode)
             {
-                if (ShinraEx.Settings.WarriorOpener) { if (await Helpers.ExecuteOpener()) return true; }
-                if (await Decimate()) return true;
-                if (await SteelCyclone()) return true;
-                if (await FellCleave()) return true;
-                if (await InnerBeast()) return true;
-                if (await Overpower()) return true;
-                if (await StormsEye()) return true;
-                if (await StormsPath()) return true;
-                if (await Maim()) return true;
-                if (await ButchersBlock()) return true;
-                if (await SkullSunder()) return true;
-                return await HeavySwing();
+                case Modes.Smart:
+                {
+                    Helpers.Debug("Combat - smart...");
+                    if (ShinraEx.Settings.WarriorOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await Decimate()) return true;
+                    if (await SteelCyclone()) return true;
+                    if (await FellCleave()) return true;
+                    if (await InnerBeast()) return true;
+                    if (await Overpower()) return true;
+                    if (await StormsEye()) return true;
+                    if (await StormsPath()) return true;
+                    if (await Maim()) return true;
+                    if (await ButchersBlock()) return true;
+                    if (await SkullSunder()) return true;
+                    return await HeavySwing();
+                }
+
+                case Modes.Single:
+                {
+                    Helpers.Debug("Combat - single...");
+                    if (ShinraEx.Settings.WarriorOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await FellCleave()) return true;
+                    if (await InnerBeast()) return true;
+                    if (await StormsEye()) return true;
+                    if (await StormsPath()) return true;
+                    if (await Maim()) return true;
+                    if (await ButchersBlock()) return true;
+                    if (await SkullSunder()) return true;
+                    return await HeavySwing();
+                }
+
+                case Modes.Multi:
+                {
+                    Helpers.Debug("Combat - multi...");
+                    if (await Decimate()) return true;
+                    if (await SteelCyclone()) return true;
+                    if (await Overpower()) return true;
+                    if (await StormsEye()) return true;
+                    if (await StormsPath()) return true;
+                    if (await Maim()) return true;
+                    return await HeavySwing();
+                }
             }
-            if (ShinraEx.Settings.RotationMode == Modes.Single)
-            {
-                if (ShinraEx.Settings.WarriorOpener) { if (await Helpers.ExecuteOpener()) return true; }
-                if (await FellCleave()) return true;
-                if (await InnerBeast()) return true;
-                if (await StormsEye()) return true;
-                if (await StormsPath()) return true;
-                if (await Maim()) return true;
-                if (await ButchersBlock()) return true;
-                if (await SkullSunder()) return true;
-                return await HeavySwing();
-            }
-            if (ShinraEx.Settings.RotationMode == Modes.Multi)
-            {
-                if (await Decimate()) return true;
-                if (await SteelCyclone()) return true;
-                if (await Overpower()) return true;
-                if (await StormsEye()) return true;
-                if (await StormsPath()) return true;
-                if (await Maim()) return true;
-                return await HeavySwing();
-            }
+
             return false;
         }
 
@@ -55,6 +64,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
+            Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.WarriorOpener) { if (await Helpers.ExecuteOpener()) return true; }
@@ -83,6 +93,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
+            Helpers.Debug("Heal...");
             return await Equilibrium();
         }
 
@@ -92,6 +103,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
+            Helpers.Debug("PreCombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await Deliverance()) return true;
             return await Defiance();
@@ -103,6 +115,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
+            Helpers.Debug("Pull...");
             return await Combat();
         }
 
@@ -112,6 +125,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
+            Helpers.Debug("CombatPVP...");
             return false;
         }
 

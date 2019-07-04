@@ -1,24 +1,14 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Media;
-using Buddy.Coroutines;
-using ff14bot;
-using ff14bot.Enums;
-using ff14bot.Helpers;
-using ff14bot.Managers;
-
-
+﻿using System.Threading.Tasks;
 
 namespace ShinraCo.Rotations
 {
     public sealed partial class Scholar : Rotation
     {
         #region Combat
-		private bool debug = false;
 		
         public override async Task<bool> Combat()
         {
-			if (debug) Logging.Write(Colors.Pink, @"[ShinraEx] Combat...");
+            Helpers.Debug("Combat...");
             if (await Biolysis()) return true;
             if (await BioII()) return true;
             if (await Bio()) return true;
@@ -34,7 +24,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
-			if (debug) Logging.Write(Colors.Pink, @"[ShinraEx] Combat Buff...");
+            Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             // if (await SummonII()) return true;
@@ -46,7 +36,7 @@ namespace ShinraCo.Rotations
             // if (await ClericStance()) return true;
             // if (await Bane()) return true;
             // if (await EnergyDrain()) return true;
-            return false;//await ShadowFlare();
+            return await ChainStrategem();//await ShadowFlare();
         }
 
         #endregion
@@ -55,7 +45,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
-			if (debug) Logging.Write(Colors.Pink, @"[ShinraEx] Heal...");
+            Helpers.Debug("Heal...");
             if (await UpdateHealing()) return true;
             if (await StopCasting()) return true;
             if (await Lustrate()) return true;
@@ -78,7 +68,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
-			if (debug) Logging.Write(Colors.Pink, @"[ShinraEx] PreCombatBuff...");
+            Helpers.Debug("PreCombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await Aetherflow()) return true;
             // if (await SummonII()) return true;
@@ -91,7 +81,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
-			if (debug) Logging.Write(Colors.Pink, @"[ShinraEx] Pull...");
+            Helpers.Debug("Pull...");
 			if (await Biolysis()) return true;
             if (await BioII()) return true;
             if (await Bio()) return true;
@@ -104,6 +94,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
+            Helpers.Debug("CombatPVP...");
             return false;
         }
 
