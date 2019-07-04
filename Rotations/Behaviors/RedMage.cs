@@ -90,6 +90,7 @@ namespace ShinraCo.Rotations
             if (await ContreSixte()) return true;
             if (await Acceleration()) return true;
             if (await Swiftcast()) return true;
+            if (await UsePotion()) return true;
             return await LucidDreaming();
         }
 

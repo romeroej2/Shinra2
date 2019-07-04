@@ -272,8 +272,7 @@ namespace ShinraCo.Rotations
             if (ShinraEx.Settings.RedMageManafication)
             {
                 if (UseOffGCD && WhiteMana >= 40 && WhiteMana < 60 && BlackMana >= 40 && BlackMana < 60)
-                {
-                    Helpers.Debug("Manafication Cast...");
+                {                    
                     return await MySpells.Manafication.Cast();
                 }
             }
@@ -345,6 +344,15 @@ namespace ShinraCo.Rotations
                 !Core.Player.HasAura("Verstone Ready"))
             {
                 return await MySpells.Role.Swiftcast.Cast();
+            }
+            return false;
+        }
+
+        private async Task<bool> UsePotion()
+        {
+            if (ShinraEx.Settings.RedMagePotion && UseOffGCD)
+            {
+                return await Helpers.UsePotion(Helpers.PotionIds.Int);
             }
             return false;
         }
