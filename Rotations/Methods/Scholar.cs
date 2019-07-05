@@ -399,7 +399,7 @@ namespace ShinraCo.Rotations
                 {
                     if (await MySpells.Role.Swiftcast.Cast(null, false))
                     {
-                        await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.Role.Swiftcast.Name));
+                        await Coroutine.Wait(1000, () => Core.Player.HasAura(MySpells.Role.Swiftcast.Name));
                     }
                 }
                 return await MySpells.SummonII.Cast();
@@ -410,31 +410,6 @@ namespace ShinraCo.Rotations
         #endregion
 
         #region Role
-
-        private async Task<bool> ClericStance()
-        {
-            if (ShinraEx.Settings.ScholarClericStance)
-            {
-                return await MySpells.Role.ClericStance.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Protect()
-        {
-            if (ShinraEx.Settings.ScholarProtect)
-            {
-                var target = ShinraEx.Settings.ScholarPartyHeal
-                    ? Helpers.HealManager.FirstOrDefault(hm => !hm.HasAura(MySpells.Role.Protect.Name) && hm.Type == GameObjectType.Pc)
-                    : !Core.Player.HasAura(MySpells.Role.Protect.Name) ? Core.Player : null;
-
-                if (target != null)
-                {
-                    return await MySpells.Role.Protect.Cast(target);
-                }
-            }
-            return false;
-        }
 
         private async Task<bool> Esuna()
         {
@@ -456,35 +431,6 @@ namespace ShinraCo.Rotations
             if (ShinraEx.Settings.ScholarLucidDreaming && Core.Player.CurrentManaPercent < ShinraEx.Settings.ScholarLucidDreamingPct)
             {
                 return await MySpells.Role.LucidDreaming.Cast(null, false);
-            }
-            return false;
-        }
-
-        private async Task<bool> EyeForAnEye()
-        {
-            if (ShinraEx.Settings.ScholarPartyHeal && ShinraEx.Settings.ScholarEyeForAnEye)
-            {
-                var target = Helpers.HealManager.FirstOrDefault(hm => hm.IsTank() &&
-                                                                      hm.CurrentHealthPercent < ShinraEx.Settings.ScholarEyeForAnEyePct &&
-                                                                      !hm.HasAura("Eye for an Eye"));
-
-                if (target != null)
-                {
-                    return await MySpells.Role.EyeForAnEye.Cast(target, false);
-                }
-            }
-            return false;
-        }
-
-        private async Task<bool> Largesse()
-        {
-            if (ShinraEx.Settings.ScholarPartyHeal && ShinraEx.Settings.ScholarLargesse)
-            {
-                if (Helpers.HealManager.Count(hm => hm.CurrentHealthPercent < ShinraEx.Settings.ScholarLargessePct) >=
-                    ShinraEx.Settings.ScholarLargesseCount)
-                {
-                    return await MySpells.Role.Largesse.Cast(null, false);
-                }
             }
             return false;
         }

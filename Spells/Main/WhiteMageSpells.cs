@@ -149,6 +149,16 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Self
         };
 
+        public Spell AfflatusSolace { get; } = new Spell
+        {
+            Name = "Afflatus Solace",
+            ID = 16531,
+            Level = 52,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Heal,
+            CastType = CastType.Target
+        };
+
         public Spell Benediction { get; } = new Spell
         {
             Name = "Benediction",
@@ -158,7 +168,7 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Heal,
             CastType = CastType.Target
         };
-
+        
         public Spell Asylum { get; } = new Spell
         {
             Name = "Asylum",

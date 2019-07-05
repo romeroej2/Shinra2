@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using Buddy.Coroutines;
 using ff14bot;
-using ff14bot.Enums;
 using ff14bot.Helpers;
 using ff14bot.Managers;
 using ShinraCo.Settings;
 using ShinraCo.Spells.Main;
+using Resource = ff14bot.Managers.ActionResourceManager.WhiteMage;
 
 namespace ShinraCo.Rotations
 {
@@ -17,6 +17,16 @@ namespace ShinraCo.Rotations
 
         #region Damage
 
+        private async Task<bool> FluidAura()
+        {
+            if (!StopDamage)
+            {
+                return await MySpells.FluidAura.Cast();
+            }
+            return false;
+        }
+
+        
         private async Task<bool> Stone()
         {
             if (!ActionManager.HasSpell(MySpells.StoneII.Name) && !StopDamage)
@@ -46,7 +56,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> StoneIV()
         {
-            if (!StopDamage)
+            if (!ActionManager.HasSpell(MySpells.Glare.Name) && !StopDamage)
             {
                 return await MySpells.StoneIV.Cast();
             }
@@ -58,15 +68,6 @@ namespace ShinraCo.Rotations
             if (!StopDamage)
             {
                 return await MySpells.Glare.Cast();
-            }
-            return false;
-        }
-        
-        private async Task<bool> AfflatusMisery()
-        {
-            if (!StopDamage)
-            {
-                return await MySpells.AfflatusMisery.Cast();
             }
             return false;
         }
@@ -124,22 +125,24 @@ namespace ShinraCo.Rotations
             }
             return false;
         }
-
-        private async Task<bool> AfflatusRapture()
+        
+        private async Task<bool> AfflatusMisery()
         {
             var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
-
-            if (!MovementManager.IsMoving && (ShinraEx.Settings.RotationMode == Modes.Multi || Helpers.EnemiesNearPlayer(8) >= count))
+            
+            // This require bloodlilies to be implemented
+            if (!MovementManager.IsMoving && (ShinraEx.Settings.RotationMode == Modes.Multi || Helpers.EnemiesNearPlayer(5) >= count))
             {
-                if (ShinraEx.Settings.WhiteMageThinAir && ActionManager.CanCast(MySpells.Holy.Name, Core.Player))
+                if (ShinraEx.Settings.WhiteMageThinAir && ActionManager.CanCast(MySpells.AfflatusMisery.Name, Core.Player))
                 {
                     if (await MySpells.ThinAir.Cast(null, false))
                     {
                         await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.ThinAir.Name));
                     }
                 }
-                if (!StopDamage) return await MySpells.AfflatusRapture.Cast();
+                if (!StopDamage) return await MySpells.AfflatusMisery.Cast();
             }
+            
             return false;
         }
         
@@ -248,6 +251,22 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        private async Task<bool> CureIII()
+        {
+            if (ShinraEx.Settings.WhiteMageCureIII && UseAoEHeals)
+            {
+                var target = ShinraEx.Settings.WhiteMagePartyHeal
+                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageCureIIIPct)
+                    : Core.Player.CurrentHealthPercent < ShinraEx.Settings.WhiteMageCureIIIPct ? Core.Player : null;
+
+                if (target != null)
+                {
+                    return await MySpells.CureIII.Cast(target);
+                }
+            }
+            return false;
+        }
+        
         private async Task<bool> Tetragrammaton()
         {
             if (ShinraEx.Settings.WhiteMageTetragrammaton)
@@ -327,9 +346,43 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        private async Task<bool> AfflatusSolace()
+        {
+            if (ShinraEx.Settings.WhiteMageAfflatusSolace && ShinraEx.Settings.WhiteMagePartyHeal && Resource.Lily >= 1)
+            {
+                var target = ShinraEx.Settings.WhiteMagePartyHeal
+                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageAfflatusSolacePct)
+                    : Core.Player.CurrentHealthPercent < ShinraEx.Settings.WhiteMageAfflatusSolacePct ? Core.Player : null;
+                
+                if (target != null)
+                {
+                    return await MySpells.AfflatusSolace.Cast(target);
+                }
+            }
+            return false;
+        }
+        
+        private async Task<bool> AfflatusRapture()
+        {
+            if (ShinraEx.Settings.WhiteMageAfflatusRapture && ShinraEx.Settings.WhiteMagePartyHeal && UseAoEHeals &&
+                Resource.Lily >= 1)
+            {
+                var target = ShinraEx.Settings.WhiteMagePartyHeal
+                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageAfflatusRapturePct)
+                    : Core.Player.CurrentHealthPercent < ShinraEx.Settings.WhiteMageAfflatusRapturePct ? Core.Player : null;
+
+                if (target != null)
+                {
+                    return await MySpells.AfflatusRapture.Cast(target);
+                }
+            }
+            return false;
+        }
+        
         private async Task<bool> Assize()
         {
-            if (ShinraEx.Settings.WhiteMageAssize && ShinraEx.Settings.WhiteMagePartyHeal && UseAoEHeals && Core.Player.CurrentManaPercent < 85)
+            if (ShinraEx.Settings.WhiteMageAssize && ShinraEx.Settings.WhiteMagePartyHeal && UseAoEHeals && 
+                Core.Player.CurrentManaPercent < 85)
             {
                 var count = Helpers.FriendsNearPlayer(ShinraEx.Settings.WhiteMageAssizePct);
 
@@ -369,7 +422,7 @@ namespace ShinraCo.Rotations
                     {
                         if (await MySpells.Role.Swiftcast.Cast(null, false))
                         {
-                            await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.Role.Swiftcast.Name));
+                            await Coroutine.Wait(1000, () => Core.Player.HasAura(MySpells.Role.Swiftcast.Name));
                         }
                     }
                     return await MySpells.Raise.Cast(target);
@@ -381,15 +434,6 @@ namespace ShinraCo.Rotations
         #endregion
 
         #region Role
-
-        private async Task<bool> ClericStance()
-        {
-            if (ShinraEx.Settings.WhiteMageClericStance)
-            {
-                return await MySpells.Role.ClericStance.Cast();
-            }
-            return false;
-        }
 
         private async Task<bool> Esuna()
         {
@@ -414,36 +458,7 @@ namespace ShinraCo.Rotations
             }
             return false;
         }
-
-        private async Task<bool> EyeForAnEye()
-        {
-            if (ShinraEx.Settings.WhiteMagePartyHeal && ShinraEx.Settings.WhiteMageEyeForAnEye)
-            {
-                var target = Helpers.HealManager.FirstOrDefault(hm => hm.IsTank() &&
-                                                                      hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageEyeForAnEyePct &&
-                                                                      !hm.HasAura("Eye for an Eye"));
-
-                if (target != null)
-                {
-                    return await MySpells.Role.EyeForAnEye.Cast(target, false);
-                }
-            }
-            return false;
-        }
-
-        private async Task<bool> Largesse()
-        {
-            if (ShinraEx.Settings.WhiteMagePartyHeal && ShinraEx.Settings.WhiteMageLargesse)
-            {
-                if (Helpers.HealManager.Count(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageLargessePct) >=
-                    ShinraEx.Settings.WhiteMageLargesseCount)
-                {
-                    return await MySpells.Role.Largesse.Cast(null, false);
-                }
-            }
-            return false;
-        }
-
+        
         #endregion
 
         #region Custom

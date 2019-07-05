@@ -212,10 +212,7 @@ namespace ShinraCo.Settings
         #region Role
 
         [Setting, DefaultValue(true)]
-        public bool AstrologianClericStance { get; set; }
-
-        [Setting, DefaultValue(true)]
-        public bool AstrologianProtect { get; set; }
+        public bool AstrologianRepose { get; set; }
 
         [Setting, DefaultValue(true)]
         public bool AstrologianEsuna { get; set; }
@@ -228,21 +225,6 @@ namespace ShinraCo.Settings
 
         [Setting, DefaultValue(true)]
         public bool AstrologianSwiftcast { get; set; }
-
-        [Setting, DefaultValue(true)]
-        public bool AstrologianEyeForAnEye { get; set; }
-
-        [Setting, DefaultValue(70)]
-        public int AstrologianEyeForAnEyePct { get; set; }
-
-        [Setting, DefaultValue(true)]
-        public bool AstrologianLargesse { get; set; }
-
-        [Setting, DefaultValue(2)]
-        public int AstrologianLargesseCount { get; set; }
-
-        [Setting, DefaultValue(60)]
-        public int AstrologianLargessePct { get; set; }
 
         #endregion
 
@@ -1422,11 +1404,8 @@ namespace ShinraCo.Settings
         #region Role
 
         [Setting, DefaultValue(true)]
-        public bool ScholarClericStance { get; set; }
-
-        [Setting, DefaultValue(true)]
-        public bool ScholarProtect { get; set; }
-
+        public bool ScholarRepose { get; set; }
+        
         [Setting, DefaultValue(true)]
         public bool ScholarEsuna { get; set; }
 
@@ -1438,21 +1417,6 @@ namespace ShinraCo.Settings
 
         [Setting, DefaultValue(true)]
         public bool ScholarSwiftcast { get; set; }
-
-        [Setting, DefaultValue(true)]
-        public bool ScholarEyeForAnEye { get; set; }
-
-        [Setting, DefaultValue(70)]
-        public int ScholarEyeForAnEyePct { get; set; }
-
-        [Setting, DefaultValue(true)]
-        public bool ScholarLargesse { get; set; }
-
-        [Setting, DefaultValue(2)]
-        public int ScholarLargesseCount { get; set; }
-
-        [Setting, DefaultValue(60)]
-        public int ScholarLargessePct { get; set; }
 
         #endregion
 
@@ -1819,7 +1783,7 @@ namespace ShinraCo.Settings
         #region Role
 
         [Setting, DefaultValue(true)]
-        public bool WhiteMageClericStance { get; set; }
+        public bool WhiteMageRepose { get; set; }
 
         [Setting, DefaultValue(true)]
         public bool WhiteMageEsuna { get; set; }
@@ -1832,21 +1796,6 @@ namespace ShinraCo.Settings
 
         [Setting, DefaultValue(true)]
         public bool WhiteMageSwiftcast { get; set; }
-
-        [Setting, DefaultValue(true)]
-        public bool WhiteMageEyeForAnEye { get; set; }
-
-        [Setting, DefaultValue(70)]
-        public int WhiteMageEyeForAnEyePct { get; set; }
-
-        [Setting, DefaultValue(true)]
-        public bool WhiteMageLargesse { get; set; }
-
-        [Setting, DefaultValue(2)]
-        public int WhiteMageLargesseCount { get; set; }
-
-        [Setting, DefaultValue(60)]
-        public int WhiteMageLargessePct { get; set; }
 
         #endregion
 
@@ -1901,12 +1850,15 @@ namespace ShinraCo.Settings
 
         [Setting, DefaultValue(true)]
         public bool WhiteMageInterruptOverheal { get; set; }
-
+        
         [Setting, DefaultValue(true)]
         public bool WhiteMageCure { get; set; }
 
         [Setting, DefaultValue(true)]
         public bool WhiteMageCureII { get; set; }
+
+        [Setting, DefaultValue(true)]
+        public bool WhiteMageCureIII { get; set; }
 
         [Setting, DefaultValue(true)]
         public bool WhiteMageTetragrammaton { get; set; }
@@ -1918,10 +1870,22 @@ namespace ShinraCo.Settings
         public bool WhiteMageRegen { get; set; }
 
         [Setting, DefaultValue(true)]
+        public bool WhiteMageAfflatusSolace { get; set; }
+        
+        [Setting, DefaultValue(50)]
+        public int WhiteMageAfflatusSolacePct { get; set; }
+        
+        [Setting, DefaultValue(true)]
         public bool WhiteMageMedica { get; set; }
 
         [Setting, DefaultValue(true)]
         public bool WhiteMageMedicaII { get; set; }
+        
+        [Setting, DefaultValue(true)]
+        public bool WhiteMageAfflatusRapture { get; set; }
+        
+        [Setting, DefaultValue(50)]
+        public int WhiteMageAfflatusRapturePct { get; set; }
 
         [Setting, DefaultValue(true)]
         public bool WhiteMageAssize { get; set; }
@@ -1938,6 +1902,9 @@ namespace ShinraCo.Settings
         [Setting, DefaultValue(40)]
         public int WhiteMageCureIIPct { get; set; }
 
+        [Setting, DefaultValue(30)]
+        public int WhiteMageCureIIIPct { get; set; }
+        
         [Setting, DefaultValue(30)]
         public int WhiteMageTetragrammatonPct { get; set; }
 

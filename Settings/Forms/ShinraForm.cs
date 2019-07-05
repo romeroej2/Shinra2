@@ -2,8 +2,6 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-
-using System.Diagnostics;
 using ShinraCo.Properties;
 
 namespace ShinraCo.Settings.Forms
@@ -102,17 +100,10 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            AstrologianClericStance.Checked = ShinraEx.Settings.AstrologianClericStance;
-            AstrologianProtect.Checked = ShinraEx.Settings.AstrologianProtect;
             AstrologianEsuna.Checked = ShinraEx.Settings.AstrologianEsuna;
             AstrologianLucidDreaming.Checked = ShinraEx.Settings.AstrologianLucidDreaming;
             AstrologianLucidDreamingPct.Value = ShinraEx.Settings.AstrologianLucidDreamingPct;
             AstrologianSwiftcast.Checked = ShinraEx.Settings.AstrologianSwiftcast;
-            AstrologianEyeForAnEye.Checked = ShinraEx.Settings.AstrologianEyeForAnEye;
-            AstrologianEyeForAnEyePct.Value = ShinraEx.Settings.AstrologianEyeForAnEyePct;
-            AstrologianLargesse.Checked = ShinraEx.Settings.AstrologianLargesse;
-            AstrologianLargesseCount.Value = ShinraEx.Settings.AstrologianLargesseCount;
-            AstrologianLargessePct.Value = ShinraEx.Settings.AstrologianLargessePct;
 
             #endregion
 
@@ -797,17 +788,10 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            ScholarClericStance.Checked = ShinraEx.Settings.ScholarClericStance;
-            ScholarProtect.Checked = ShinraEx.Settings.ScholarProtect;
             ScholarEsuna.Checked = ShinraEx.Settings.ScholarEsuna;
             ScholarLucidDreaming.Checked = ShinraEx.Settings.ScholarLucidDreaming;
             ScholarLucidDreamingPct.Value = ShinraEx.Settings.ScholarLucidDreamingPct;
             ScholarSwiftcast.Checked = ShinraEx.Settings.ScholarSwiftcast;
-            ScholarEyeForAnEye.Checked = ShinraEx.Settings.ScholarEyeForAnEye;
-            ScholarEyeForAnEyePct.Value = ShinraEx.Settings.ScholarEyeForAnEyePct;
-            ScholarLargesse.Checked = ShinraEx.Settings.ScholarLargesse;
-            ScholarLargesseCount.Value = ShinraEx.Settings.ScholarLargesseCount;
-            ScholarLargessePct.Value = ShinraEx.Settings.ScholarLargessePct;
 
             #endregion
 
@@ -1024,16 +1008,10 @@ namespace ShinraCo.Settings.Forms
 
             #region Role
 
-            WhiteMageClericStance.Checked = ShinraEx.Settings.WhiteMageClericStance;
             WhiteMageEsuna.Checked = ShinraEx.Settings.WhiteMageEsuna;
             WhiteMageLucidDreaming.Checked = ShinraEx.Settings.WhiteMageLucidDreaming;
             WhiteMageLucidDreamingPct.Value = ShinraEx.Settings.WhiteMageLucidDreamingPct;
             WhiteMageSwiftcast.Checked = ShinraEx.Settings.WhiteMageSwiftcast;
-            WhiteMageEyeForAnEye.Checked = ShinraEx.Settings.WhiteMageEyeForAnEye;
-            WhiteMageEyeForAnEyePct.Value = ShinraEx.Settings.WhiteMageEyeForAnEyePct;
-            WhiteMageLargesse.Checked = ShinraEx.Settings.WhiteMageLargesse;
-            WhiteMageLargesseCount.Value = ShinraEx.Settings.WhiteMageLargesseCount;
-            WhiteMageLargessePct.Value = ShinraEx.Settings.WhiteMageLargessePct;
 
             #endregion
 
@@ -1067,18 +1045,21 @@ namespace ShinraCo.Settings.Forms
             WhiteMageCure.Checked = ShinraEx.Settings.WhiteMageCure;
             WhiteMageCureII.Checked = ShinraEx.Settings.WhiteMageCureII;
             WhiteMageTetragrammaton.Checked = ShinraEx.Settings.WhiteMageTetragrammaton;
+            WhiteMageAfflatusSolace.Checked = ShinraEx.Settings.WhiteMageAfflatusSolace;
             WhiteMageBenediction.Checked = ShinraEx.Settings.WhiteMageBenediction;
+            WhiteMageAfflatusRapture.Checked = ShinraEx.Settings.WhiteMageAfflatusRapture;
             WhiteMageRegen.Checked = ShinraEx.Settings.WhiteMageRegen;
             WhiteMageMedica.Checked = ShinraEx.Settings.WhiteMageMedica;
             WhiteMageMedicaII.Checked = ShinraEx.Settings.WhiteMageMedicaII;
             WhiteMageAssize.Checked = ShinraEx.Settings.WhiteMageAssize;
             WhiteMagePlenary.Checked = ShinraEx.Settings.WhiteMagePlenary;
             WhiteMageRaise.Checked = ShinraEx.Settings.WhiteMageRaise;
-
             WhiteMageCurePct.Value = ShinraEx.Settings.WhiteMageCurePct;
             WhiteMageCureIIPct.Value = ShinraEx.Settings.WhiteMageCureIIPct;
             WhiteMageTetragrammatonPct.Value = ShinraEx.Settings.WhiteMageTetragrammatonPct;
+            WhiteMageAfflatusSolacePct.Value = ShinraEx.Settings.WhiteMageAfflatusSolacePct;
             WhiteMageBenedictionPct.Value = ShinraEx.Settings.WhiteMageBenedictionPct;
+            WhiteMageAfflatusRapturePct.Value = ShinraEx.Settings.WhiteMageAfflatusRapturePct;
             WhiteMageRegenPct.Value = ShinraEx.Settings.WhiteMageRegenPct;
             WhiteMageMedicaPct.Value = ShinraEx.Settings.WhiteMageMedicaPct;
             WhiteMageMedicaIIPct.Value = ShinraEx.Settings.WhiteMageMedicaIIPct;
@@ -1264,16 +1245,6 @@ namespace ShinraCo.Settings.Forms
 
         #region Role
 
-        private void AstrologianClericStance_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.AstrologianClericStance = AstrologianClericStance.Checked;
-        }
-
-        private void AstrologianProtect_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.AstrologianProtect = AstrologianProtect.Checked;
-        }
-
         private void AstrologianEsuna_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.AstrologianEsuna = AstrologianEsuna.Checked;
@@ -1292,31 +1263,6 @@ namespace ShinraCo.Settings.Forms
         private void AstrologianSwiftcast_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.AstrologianSwiftcast = AstrologianSwiftcast.Checked;
-        }
-
-        private void AstrologianEyeForAnEye_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.AstrologianEyeForAnEye = AstrologianEyeForAnEye.Checked;
-        }
-
-        private void AstrologianEyeForAnEyePct_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.AstrologianEyeForAnEyePct = Convert.ToInt32(AstrologianEyeForAnEyePct.Value);
-        }
-
-        private void AstrologianLargesse_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.AstrologianLargesse = AstrologianLargesse.Checked;
-        }
-
-        private void AstrologianLargesseCount_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.AstrologianLargesseCount = Convert.ToInt32(AstrologianLargesseCount.Value);
-        }
-
-        private void AstrologianLargessePct_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.AstrologianLargessePct = Convert.ToInt32(AstrologianLargessePct.Value);
         }
 
         #endregion
@@ -3043,16 +2989,6 @@ namespace ShinraCo.Settings.Forms
 
         #region Role
 
-        private void ScholarClericStance_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.ScholarClericStance = ScholarClericStance.Checked;
-        }
-
-        private void ScholarProtect_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.ScholarProtect = ScholarProtect.Checked;
-        }
-
         private void ScholarEsuna_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.ScholarEsuna = ScholarEsuna.Checked;
@@ -3071,31 +3007,6 @@ namespace ShinraCo.Settings.Forms
         private void ScholarSwiftcast_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.ScholarSwiftcast = ScholarSwiftcast.Checked;
-        }
-
-        private void ScholarEyeForAnEye_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.ScholarEyeForAnEye = ScholarEyeForAnEye.Checked;
-        }
-
-        private void ScholarEyeForAnEyePct_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.ScholarEyeForAnEyePct = Convert.ToInt32(ScholarEyeForAnEyePct.Value);
-        }
-
-        private void ScholarLargesse_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.ScholarLargesse = ScholarLargesse.Checked;
-        }
-
-        private void ScholarLargesseCount_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.ScholarLargesseCount = Convert.ToInt32(ScholarLargesseCount.Value);
-        }
-
-        private void ScholarLargessePct_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.ScholarLargessePct = Convert.ToInt32(ScholarLargessePct.Value);
         }
 
         #endregion
@@ -3645,11 +3556,6 @@ namespace ShinraCo.Settings.Forms
 
         #region Role
 
-        private void WhiteMageClericStance_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.WhiteMageClericStance = WhiteMageClericStance.Checked;
-        }
-
         private void WhiteMageEsuna_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.WhiteMageEsuna = WhiteMageEsuna.Checked;
@@ -3668,31 +3574,6 @@ namespace ShinraCo.Settings.Forms
         private void WhiteMageSwiftcast_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.WhiteMageSwiftcast = WhiteMageSwiftcast.Checked;
-        }
-
-        private void WhiteMageEyeForAnEye_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.WhiteMageEyeForAnEye = WhiteMageEyeForAnEye.Checked;
-        }
-
-        private void WhiteMageEyeForAnEyePct_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.WhiteMageEyeForAnEyePct = Convert.ToInt32(WhiteMageEyeForAnEyePct.Value);
-        }
-
-        private void WhiteMageLargesse_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.WhiteMageLargesse = WhiteMageLargesse.Checked;
-        }
-
-        private void WhiteMageLargesseCount_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.WhiteMageLargesseCount = Convert.ToInt32(WhiteMageLargesseCount.Value);
-        }
-
-        private void WhiteMageLargessePct_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.WhiteMageLargessePct = Convert.ToInt32(WhiteMageLargessePct.Value);
         }
 
         #endregion
@@ -3792,9 +3673,19 @@ namespace ShinraCo.Settings.Forms
             ShinraEx.Settings.WhiteMageTetragrammaton = WhiteMageTetragrammaton.Checked;
         }
 
+        private void WhiteMageAfflatusSolce_CheckedChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.WhiteMageAfflatusSolace = WhiteMageAfflatusRapture.Checked;
+        }
+
         private void WhiteMageBenediction_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.WhiteMageBenediction = WhiteMageBenediction.Checked;
+        }
+
+        private void WhiteMageAfflatusRapture_CheckedChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.WhiteMageAfflatusRapture = WhiteMageAfflatusRapture.Checked;
         }
 
         private void WhiteMageRegen_CheckedChanged(object sender, EventArgs e)
@@ -3842,9 +3733,19 @@ namespace ShinraCo.Settings.Forms
             ShinraEx.Settings.WhiteMageTetragrammatonPct = Convert.ToInt32(WhiteMageTetragrammatonPct.Value);
         }
 
+        private void WhiteMageAfflatusSolacePct_ValueChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.WhiteMageAfflatusSolacePct = Convert.ToInt32(WhiteMageAfflatusSolacePct.Value);
+        }
+
         private void WhiteMageBenedictionPct_ValueChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.WhiteMageBenedictionPct = Convert.ToInt32(WhiteMageBenedictionPct.Value);
+        }
+
+        private void WhiteMageAfflatusRapturePct_ValueChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.WhiteMageAfflatusRapturePct = Convert.ToInt32(WhiteMageAfflatusRapturePct.Value);
         }
 
         private void WhiteMageRegenPct_ValueChanged(object sender, EventArgs e)
@@ -3881,12 +3782,7 @@ namespace ShinraCo.Settings.Forms
 
         private void pauseCheck_CheckedChanged(object sender, EventArgs e)
         {
-
-            if (ShinraEx.Settings.CrPaused == true)
-                ShinraEx.Settings.CrPaused = false;
-            else
-                ShinraEx.Settings.CrPaused = true;
-
+            ShinraEx.Settings.CrPaused = ShinraEx.Settings.CrPaused != true;
             ShinraEx.Overlay.UpdateText();
         }
 
