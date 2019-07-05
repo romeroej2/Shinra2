@@ -26,6 +26,17 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
+
+        public Spell SyphonStrike { get; } = new Spell
+        {
+            Name = "Syphon Strike",
+            ID = 3623,
+            Level = 2,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+
         public Spell Unleash { get; } = new Spell
         {
             Name = "Unleash",
@@ -36,14 +47,14 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Self
         };
 
-        public Spell SyphonStrike { get; } = new Spell
+        public Spell Grit { get; } = new Spell
         {
-            Name = "Syphon Strike",
-            ID = 3623,
+            Name = "Grit",
+            ID = 3629,
             Level = 10,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Damage,
-            CastType = CastType.Target
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
         };
 
         public Spell Unmend { get; } = new Spell
@@ -56,91 +67,31 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
-        public Spell BloodWeapon { get; } = new Spell
+        public Spell Souleater { get; } = new Spell
         {
-            Name = "Blood Weapon",
-            ID = 3625,
-            Level = 18,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };
-
-        public Spell PowerSlash { get; } = new Spell
-        {
-            Name = "Power Slash",
-            ID = 3627,
+            Name = "Souleater",
+            ID = 3632,
             Level = 26,
             GCDType = GCDType.On,
             SpellType = SpellType.Damage,
             CastType = CastType.Target
         };
 
-        public Spell Grit { get; } = new Spell
+        public Spell FloodOfDarkness { get; } = new Spell
         {
-            Name = "Grit",
-            ID = 3629,
-            Level = 30,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };
-
-        public Spell Darkside { get; } = new Spell
-        {
-            Name = "Darkside",
-            ID = 3628,
+            Name = "Flood of Darkness",
+            ID = 16466,
             Level = 30,
             GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
+            SpellType = SpellType.AoE,
+            CastType = CastType.TargetLocation
         };
 
-        public Spell BloodPrice { get; } = new Spell
+        public Spell BloodWeapon { get; } = new Spell
         {
-            Name = "Blood Price",
-            ID = 3631,
+            Name = "Blood Weapon",
+            ID = 3625,
             Level = 35,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };
-
-        public Spell Souleater { get; } = new Spell
-        {
-            Name = "Souleater",
-            ID = 3632,
-            Level = 38,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Damage,
-            CastType = CastType.Target
-        };
-
-        public Spell DarkPassenger { get; } = new Spell
-        {
-            Name = "Dark Passenger",
-            ID = 3633,
-            Level = 40,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Cooldown,
-            CastType = CastType.Target
-        };
-
-        public Spell DarkMind { get; } = new Spell
-        {
-            Name = "Dark Mind",
-            ID = 3634,
-            Level = 42,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };
-
-        public Spell DarkArts { get; } = new Spell
-        {
-            Name = "Dark Arts",
-            ID = 3635,
-            Level = 45,
             GCDType = GCDType.Off,
             SpellType = SpellType.Buff,
             CastType = CastType.Self
@@ -150,7 +101,27 @@ namespace ShinraCo.Spells.Main
         {
             Name = "Shadow Wall",
             ID = 3636,
-            Level = 46,
+            Level = 38,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
+        };
+
+        public Spell EdgeOfDarkness { get; } = new Spell
+        {
+            Name = "Edge Of Darkness",
+            ID = 16467,
+            Level = 40,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+
+        public Spell DarkMind { get; } = new Spell
+        {
+            Name = "Dark Mind",
+            ID = 3634,
+            Level = 45,
             GCDType = GCDType.Off,
             SpellType = SpellType.Buff,
             CastType = CastType.Self
@@ -165,6 +136,7 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Buff,
             CastType = CastType.Self
         };
+
 
         public Spell SaltedEarth { get; } = new Spell
         {
@@ -196,15 +168,6 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
-        public Spell SoleSurvivor { get; } = new Spell
-        {
-            Name = "Sole Survivor",
-            ID = 3642,
-            Level = 58,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Cooldown,
-            CastType = CastType.Target
-        };
 
         public Spell CarveAndSpit { get; } = new Spell
         {
@@ -216,14 +179,14 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
-        public Spell Delirium { get; } = new Spell
+        public Spell Bloodspiller { get; } = new Spell
         {
-            Name = "Delirium",
-            ID = 7390,
+            Name = "Bloodspiller",
+            ID = 7392,
             Level = 62,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
         };
 
         public Spell Quietus { get; } = new Spell
@@ -236,14 +199,16 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Self
         };
 
-        public Spell Bloodspiller { get; } = new Spell
+
+
+        public Spell Delirium { get; } = new Spell
         {
-            Name = "Bloodspiller",
-            ID = 7392,
+            Name = "Delirium",
+            ID = 7390,
             Level = 68,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Damage,
-            CastType = CastType.Target
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
         };
 
         public Spell BlackestNight { get; } = new Spell
@@ -255,5 +220,60 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Buff,
             CastType = CastType.Self
         };
+
+        public Spell StalwartSoul { get; } = new Spell
+        {
+            Name = "Stalwart Soul",
+            ID = 16468,
+            Level = 72,
+            GCDType = GCDType.On,
+            SpellType = SpellType.AoE,
+            CastType = CastType.Target
+        };
+
+      
+
+        public Spell FloodOfShadow { get; } = new Spell
+        {
+            Name = "Flood of Shadow",
+            ID = 16469,
+            Level = 74,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.AoE,
+            CastType = CastType.TargetLocation
+        };
+
+        public Spell EdgeOfShadow { get; } = new Spell
+        {
+            Name = "Edge Of Shadow",
+            ID = 16470,
+            Level = 74,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+
+        public Spell DarkMissionary { get; } = new Spell
+        {
+            Name = "DarkMissionary",
+            ID = 16471,
+            Level = 76,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
+        };
+
+        public Spell LivingShadow { get; } = new Spell
+        {
+            Name = "Living Shadow",
+            ID = 16472,
+            Level = 80,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
+        };
+
+         
+
     }
 }
