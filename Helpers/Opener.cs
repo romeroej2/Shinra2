@@ -180,11 +180,7 @@ namespace ShinraCo
                     break;
 
                 case ClassJobType.DarkKnight:
-                    if (spell.Name == DarkKnight.DarkArts.Name && !Me.HasAura(DarkKnight.Darkside.Name))
-                    {
-                        AbortOpener("Aborted opener due to Darkside.");
-                        return true;
-                    }
+                  
                     if (spell.Name == DarkKnight.BloodWeapon.Name && Me.HasAura(DarkKnight.Grit.Name))
                     {
                         Debug($"Skipping opener step {OpenerStep} due to Grit >>> {spell.Name}");

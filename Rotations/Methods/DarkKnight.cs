@@ -28,6 +28,7 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        /*
         private async Task<bool> PowerSlash()
         {
             if (ActionManager.LastSpell.Name == MySpells.SpinningSlash.Name)
@@ -35,7 +36,7 @@ namespace ShinraCo.Rotations
                 return await MySpells.PowerSlash.Cast();
             }
             return false;
-        }
+        } */
 
         private async Task<bool> SyphonStrike()
         {
@@ -59,14 +60,15 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        /*
         private async Task<bool> Bloodspiller()
         {
-            if (ShinraEx.Settings.DarkKnightBloodspiller && BloodValue >= 50 && Core.Player.HasAura(MySpells.DarkArts.Name))
+            if (ShinraEx.Settings.DarkKnightBloodspiller && BloodValue >= 50 ))//&& Core.Player.HasAura(MySpells.DarkArts.Name
             {
                 return await MySpells.Bloodspiller.Cast();
             }
             return false;
-        }
+        }*/
 
         #endregion
 
@@ -90,16 +92,18 @@ namespace ShinraCo.Rotations
                 if (ShinraEx.Settings.DarkKnightAbyssalArts && Core.Player.CurrentHealthPercent < 70 && Core.Player.CurrentManaPercent > 60 &&
                     ActionManager.CanCast(MySpells.AbyssalDrain.Name, Core.Player.CurrentTarget) && Helpers.EnemiesNearTarget(5) >= count)
                 {
+                    /*
                     if (await MySpells.DarkArts.Cast(null, false))
                     {
                         await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.DarkArts.Name));
-                    }
+                    }*/
                 }
                 return await MySpells.AbyssalDrain.Cast();
             }
             return false;
         }
 
+        /*
         private async Task<bool> Quietus()
         {
             if (ShinraEx.Settings.DarkKnightQuietus && Core.Player.CurrentManaPercent < 70 && BloodValue >= 50)
@@ -117,7 +121,7 @@ namespace ShinraCo.Rotations
                 return await MySpells.Quietus.Cast();
             }
             return false;
-        }
+        }*/
 
         #endregion
 
@@ -141,12 +145,14 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        /*
         private async Task<bool> CarveAndSpit()
         {
             if (ShinraEx.Settings.DarkKnightCarveAndSpit)
             {
                 if (ShinraEx.Settings.DarkKnightCarveArts && ActionManager.CanCast(MySpells.CarveAndSpit.Name, Core.Player.CurrentTarget))
                 {
+                    
                     if (await MySpells.DarkArts.Cast())
                     {
                         await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.DarkArts.Name));
@@ -160,7 +166,7 @@ namespace ShinraCo.Rotations
                 }
             }
             return false;
-        }
+        }*/
 
         #endregion
 
@@ -175,6 +181,7 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        /*
         private async Task<bool> BloodPrice()
         {
             if (ShinraEx.Settings.DarkKnightBloodPrice && Core.Player.CurrentManaPercent < ShinraEx.Settings.DarkKnightBloodPricePct)
@@ -182,8 +189,9 @@ namespace ShinraCo.Rotations
                 return await MySpells.BloodPrice.Cast();
             }
             return false;
-        }
+        }*/
 
+        /*
         private async Task<bool> DarkArts()
         {
             if (!Core.Player.HasAura(MySpells.DarkArts.Name))
@@ -209,7 +217,7 @@ namespace ShinraCo.Rotations
                 }
             }
             return false;
-        }
+        }*/
 
         private async Task<bool> ShadowWall()
         {
@@ -229,6 +237,7 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        /*
         private async Task<bool> Delirium()
         {
             if (!ShinraEx.Settings.DarkKnightDelirium) return false;
@@ -238,7 +247,7 @@ namespace ShinraCo.Rotations
                 return await MySpells.Delirium.Cast();
             }
             return false;
-        }
+        }*/
 
         private async Task<bool> BlackestNight()
         {
@@ -262,6 +271,7 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        /*
         private async Task<bool> Darkside()
         {
             if (ShinraEx.Settings.DarkKnightDarkside && !Core.Player.HasAura(MySpells.Darkside.Name))
@@ -269,7 +279,7 @@ namespace ShinraCo.Rotations
                 return await MySpells.Darkside.Cast(null, false);
             }
             return false;
-        }
+        }*/
 
         #endregion
 
