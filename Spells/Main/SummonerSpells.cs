@@ -147,16 +147,6 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
-        public Spell Swiftcast { get; } = new Spell
-        {
-            Name = "Swiftcast",
-            ID = 7561,
-            Level = 18,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };
-
     }
 
     public class SummonerSpells : ArcanistSpells
