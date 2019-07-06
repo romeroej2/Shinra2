@@ -116,6 +116,18 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Self
         };
 
+
+        public Spell Play { get; } = new Spell
+        {
+            Name = "Play",
+            ID = 17055,
+            Level = 30,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Card,
+            CastType = CastType.Self
+        };
+
+
         public Spell AspectedBenefic { get; } = new Spell
         {
             Name = "Aspected Benefic",
@@ -126,35 +138,16 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
-        public Spell RoyalRoad { get; } = new Spell
+        public Spell Redraw { get; } = new Spell
         {
-            Name = "Royal Road",
-            ID = 3591,
-            Level = 35,
-            GCDType = GCDType.On,
+            Name = "Redraw",
+            ID = 3593,
+            Level = 40,
+            GCDType = GCDType.Off,
             SpellType = SpellType.Card,
             CastType = CastType.Self
         };
 
-        public Spell Spread { get; } = new Spell
-        {
-            Name = "Spread",
-            ID = 3592,
-            Level = 40,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Card,
-            CastType = CastType.Self
-        };
-
-        public Spell UndrawSpread { get; } = new Spell
-        {
-            Name = "Undraw Spread",
-            ID = 4646,
-            Level = 40,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Card,
-            CastType = CastType.Self
-        };
 
         public Spell AspectedHelios { get; } = new Spell
         {
@@ -163,18 +156,20 @@ namespace ShinraCo.Spells.Main
             Level = 42,
             GCDType = GCDType.On,
             SpellType = SpellType.Heal,
-            CastType = CastType.Self
+            CastType = CastType.Target
         };
 
-        public Spell Redraw { get; } = new Spell
+        public Spell Gravity { get; } = new Spell
         {
-            Name = "Redraw",
-            ID = 3593,
+            Name = "Gravity",
+            ID = 3615,
             Level = 45,
             GCDType = GCDType.On,
-            SpellType = SpellType.Card,
-            CastType = CastType.Self
+            SpellType = SpellType.AoE,
+            CastType = CastType.Target
         };
+
+
 
         public Spell CombustII { get; } = new Spell
         {
@@ -186,6 +181,7 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
+
         public Spell NocturnalSect { get; } = new Spell
         {
             Name = "Nocturnal Sect",
@@ -195,6 +191,7 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Buff,
             CastType = CastType.Self
         };
+
 
         public Spell Synastry { get; } = new Spell
         {
@@ -206,14 +203,25 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
-        public Spell Gravity { get; } = new Spell
+        public Spell MinorArcana { get; } = new Spell
         {
-            Name = "Gravity",
-            ID = 3615,
-            Level = 52,
+            Name = "Minor Arcana",
+            ID = 7443,
+            Level = 50,
             GCDType = GCDType.On,
-            SpellType = SpellType.AoE,
-            CastType = CastType.Target
+            SpellType = SpellType.Card,
+            CastType = CastType.Self
+        };
+
+
+        public Spell Divination { get; } = new Spell
+        {
+            Name = "Divination",
+            ID = 16552,
+            Level = 50,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
         };
 
         public Spell MaleficII { get; } = new Spell
@@ -225,17 +233,6 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Damage,
             CastType = CastType.Target
         };
-
-        public Spell TimeDilation { get; } = new Spell
-        {
-            Name = "Time Dilation",
-            ID = 3611,
-            Level = 56,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Target
-        };
-
         public Spell CollectiveUnconscious { get; } = new Spell
         {
             Name = "Collective Unconscious",
@@ -265,17 +262,6 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Cooldown,
             CastType = CastType.TargetLocation
         };
-
-        public Spell StellarDetonation { get; } = new Spell
-        {
-            Name = "Stellar Detonation",
-            ID = 8324,
-            Level = 62,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Cooldown,
-            CastType = CastType.Self
-        };
-
         public Spell MaleficIII { get; } = new Spell
         {
             Name = "Malefic III",
@@ -285,37 +271,6 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Damage,
             CastType = CastType.Target
         };
-
-        public Spell MinorArcana { get; } = new Spell
-        {
-            Name = "Minor Arcana",
-            ID = 7443,
-            Level = 66,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Card,
-            CastType = CastType.Self
-        };
-
-        public Spell LordOfCrowns { get; } = new Spell
-        {
-            Name = "Lord of Crowns",
-            ID = 7444,
-            Level = 66,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Card,
-            CastType = CastType.Target
-        };
-
-        public Spell LadyOfCrowns { get; } = new Spell
-        {
-            Name = "Lady of Crowns",
-            ID = 7445,
-            Level = 66,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Card,
-            CastType = CastType.Target
-        };
-
         public Spell SleeveDraw { get; } = new Spell
         {
             Name = "Sleeve Draw",
@@ -325,5 +280,140 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Card,
             CastType = CastType.Self
         };
+
+        public Spell CombustIII { get; } = new Spell
+        {
+            Name = "Combust III",
+            ID = 16554,
+            Level = 72,
+            GCDType = GCDType.On,
+            SpellType = SpellType.DoT,
+            CastType = CastType.Target
+        };
+
+        public Spell MaleficIV { get; } = new Spell
+        {
+            Name = "Malefic IV",
+            ID = 16555,
+            Level = 72,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+
+        public Spell CelestialIntersection { get; } = new Spell
+        {
+            Name = "Celestial Intersection",
+            ID = 16556,
+            Level = 74,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Heal,
+            CastType = CastType.Target
+        };
+        public Spell Horoscope { get; } = new Spell
+        {
+            Name = "Horoscope",
+            ID = 16557,
+            Level = 76,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Target
+        };
+        public Spell NeutralSect { get; } = new Spell
+        {
+            Name = "Neutral Sect",
+            ID = 16559,
+            Level = 80,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Target
+        };
+
+
+        public Spell TheBalance { get; } = new Spell
+        {
+            Name = "The Balance",
+            ID = 4401,
+            Level = 30,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Card,
+            CastType = CastType.Target
+        };
+
+
+        public Spell TheArrow { get; } = new Spell
+        {
+            Name = "The Arrow",
+            ID = 4402,
+            Level = 30,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Card,
+            CastType = CastType.Target
+        };
+
+        public Spell TheSpear { get; } = new Spell
+        {
+            Name = "The Spear",
+            ID = 4403,
+            Level = 30,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Card,
+            CastType = CastType.Target
+        };
+
+        public Spell TheBole { get; } = new Spell
+        {
+            Name = "The Bole",
+            ID = 4404,
+            Level = 30,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Card,
+            CastType = CastType.Target
+        };
+
+
+        public Spell TheEwer { get; } = new Spell
+        {
+            Name = "The Ewer",
+            ID = 4405,
+            Level = 30,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Card,
+            CastType = CastType.Target
+        };
+
+        public Spell TheSpire { get; } = new Spell
+        {
+            Name = "The Spire",
+            ID = 4406,
+            Level = 30,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Card,
+            CastType = CastType.Target
+        };
+
+        public Spell LordOfCrowns { get; } = new Spell
+        {
+            Name = "Lord of Crowns",
+            ID = 7444,
+            Level = 50,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Card,
+            CastType = CastType.Target
+        };
+
+        public Spell LadyOfCrowns { get; } = new Spell
+        {
+            Name = "Lady of Crowns",
+            ID = 7445,
+            Level = 50,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Card,
+            CastType = CastType.Target
+        };
+
+      
+
+   
     }
 }
