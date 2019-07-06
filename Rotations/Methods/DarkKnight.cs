@@ -91,11 +91,11 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Unmend()
         {
-            //if ()
+            if (ActionManager.LastSpell.Name != MySpells.Unmend.Name)    
             {
                 return await MySpells.Unmend.Cast();
             }
-            //return false;
+            return false;
         }
 
         /*
