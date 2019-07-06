@@ -35,5 +35,6 @@ So you should see the `ShinraEx.cs`  in `<rebornbuddy folder>\Routines\Shinra2`.
 With <3 for y2krazy and zzi and Freiheit
 
 Also kudos to all the pull request. Feel free to update this Readme on your next pull :)
-
+ - CimmeriaCode
+ - miracle091
 Use at your own risk. Or better use the original one.

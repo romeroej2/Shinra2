@@ -83,8 +83,8 @@ namespace ShinraCo.Spells.Main
             ID = 16466,
             Level = 30,
             GCDType = GCDType.Off,
-            SpellType = SpellType.AoE,
-            CastType = CastType.TargetLocation
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
         };
 
         public Spell BloodWeapon { get; } = new Spell

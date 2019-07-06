@@ -72,11 +72,11 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> FloodOfDarkness()
         {
-            //if ()
+            if (Core.Player.CurrentMana > 3500 )
             {
                 return await MySpells.FloodOfDarkness.Cast();
             }
-            //return false;
+            return false;
         }
 
         private async Task<bool> EdgeOfDarkness()

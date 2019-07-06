@@ -81,7 +81,7 @@ namespace ShinraCo.Rotations
                 if (await DrawTargetted()) return true;
                 
             }
-            return true;
+            return false;
         }
 
         #endregion
