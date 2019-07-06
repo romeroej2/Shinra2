@@ -423,12 +423,22 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Play()
         {
-            if (HasArcana && ActionManager.CanCast(MySpells.Draw.ID,Core.Player))
+            if (HasCard && ActionManager.CanCast(MySpells.Draw.ID,Core.Player))
             {
                 return await MySpells.Play.Cast();
             }
             return false;
         }
+
+        private async Task<bool> Divination()
+        {
+            if (HasSpread)
+            {
+                return await MySpells.Divination.Cast();
+            }
+            return false;
+        }
+
 
 
         private async Task<bool> Undraw()
@@ -596,7 +606,7 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        #endregion
+        #endregion  
 
         #region Custom
 

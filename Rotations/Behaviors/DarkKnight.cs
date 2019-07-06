@@ -23,7 +23,12 @@ namespace ShinraCo.Rotations
                     if (await SyphonStrike()) return true;
                   //  if (await PowerSlash()) return true;
                     if (await SpinningSlash()) return true;
-                    return await HardSlash();
+                        if (await FloodOfDarkness()) return true;
+                        if (await EdgeOfDarkness()) return true;
+                        if (await Unmend()) return true;
+                        
+                        if (await LowBlow()) return true;
+                        return await HardSlash();
                 }
 
                 case Modes.Single:
@@ -35,7 +40,11 @@ namespace ShinraCo.Rotations
                     if (await SyphonStrike()) return true;
                    // if (await PowerSlash()) return true;
                     if (await SpinningSlash()) return true;
-                    return await HardSlash();
+                        if (await FloodOfDarkness()) return true;
+                        if (await EdgeOfDarkness()) return true;
+                        if (await Unmend()) return true;
+                        if (await LowBlow()) return true;
+                        return await HardSlash();
                 }
 
                 case Modes.Multi:
@@ -69,9 +78,11 @@ namespace ShinraCo.Rotations
             if (await BlackestNight()) return true;
             //if (await Delirium()) return true;
             if (await Rampart()) return true;
-            if (await Convalescence()) return true;
+            if (await ArmsLength()) return true;
+            
+           // if (await Convalescence()) return true;
             if (await Anticipation()) return true;
-            if (await Awareness()) return true;
+            //if (await Awareness()) return true;
             if (await Reprisal()) return true;
             if (await Plunge()) return true;
            // if (await Darkside()) return true;
@@ -80,7 +91,7 @@ namespace ShinraCo.Rotations
            // if (await CarveAndSpit()) return true;
             if (await SaltedEarth()) return true;
             //  return await DarkArts();
-            return true;
+            return false;
         }
 
         #endregion

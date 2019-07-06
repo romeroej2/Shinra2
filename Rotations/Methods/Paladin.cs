@@ -286,7 +286,7 @@ namespace ShinraCo.Rotations
             }
             return false;
         }
-
+        /*
         private async Task<bool> Convalescence()
         {
             if (ShinraEx.Settings.PaladinConvalescence && Core.Player.CurrentHealthPercent < ShinraEx.Settings.PaladinConvalescencePct)
@@ -294,7 +294,7 @@ namespace ShinraCo.Rotations
                 return await MySpells.Role.Convalescence.Cast();
             }
             return false;
-        }
+        }*/
 
         private async Task<bool> Anticipation()
         {
@@ -314,6 +314,7 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        /*
         private async Task<bool> Awareness()
         {
             if (ShinraEx.Settings.PaladinAwareness && Core.Player.CurrentHealthPercent < ShinraEx.Settings.PaladinAwarenessPct)
@@ -321,7 +322,7 @@ namespace ShinraCo.Rotations
                 return await MySpells.Role.Awareness.Cast();
             }
             return false;
-        }
+        }*/
 
         #endregion
 

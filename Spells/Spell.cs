@@ -468,8 +468,8 @@ namespace ShinraCo.Spells
                         if (DataManager.GetSpellData(119).Cooldown.TotalMilliseconds < 1000) return false;
                         break;
                     case ClassJobType.DarkKnight:
-                        if (DataManager.GetSpellData(3617).Cooldown.TotalMilliseconds < 1000) return false;
-                        break;
+                       // if (DataManager.GetSpellData(3617).Cooldown.TotalMilliseconds < 1000) return false;
+                       // break;
                     case ClassJobType.Gladiator:
                     case ClassJobType.Paladin:
                         if (DataManager.GetSpellData(9).Cooldown.TotalMilliseconds < 1000) return false;

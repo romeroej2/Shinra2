@@ -58,10 +58,12 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
+            
             Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (await Play()) return true;
+            if (await Divination()) return true;
             if (await CelestialOpposition()) return true;
             if (await LucidDreaming()) return true;
             if (await NeutralSect()) return true;

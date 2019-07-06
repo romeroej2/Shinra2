@@ -66,9 +66,9 @@ namespace ShinraCo.Rotations
             if (await Sentinel()) return true;
             if (await Bulwark()) return true;
             if (await Rampart()) return true;
-            if (await Convalescence()) return true;
+            //if (await Convalescence()) return true;
             if (await Anticipation()) return true;
-            if (await Awareness()) return true;
+            //if (await Awareness()) return true;
             if (await Reprisal()) return true;
             if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await Sheltron()) return true;

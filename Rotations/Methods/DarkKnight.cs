@@ -60,6 +60,44 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        private async Task<bool> LowBlow()
+        {
+            //if ()
+            {
+                return await MySpells.Role.LowBlow.Cast();
+            }
+            //return false;
+        }
+
+
+        private async Task<bool> FloodOfDarkness()
+        {
+            //if ()
+            {
+                return await MySpells.FloodOfDarkness.Cast();
+            }
+            //return false;
+        }
+
+        private async Task<bool> EdgeOfDarkness()
+        {
+            //if ()
+            {
+                return await MySpells.EdgeOfDarkness.Cast();
+            }
+            //return false;
+        }
+
+
+        private async Task<bool> Unmend()
+        {
+            //if ()
+            {
+                return await MySpells.Unmend.Cast();
+            }
+            //return false;
+        }
+
         /*
         private async Task<bool> Bloodspiller()
         {
@@ -294,6 +332,7 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        /*
         private async Task<bool> Convalescence()
         {
             if (ShinraEx.Settings.DarkKnightConvalescence && Core.Player.CurrentHealthPercent < ShinraEx.Settings.DarkKnightConvalescencePct)
@@ -301,7 +340,7 @@ namespace ShinraCo.Rotations
                 return await MySpells.Role.Convalescence.Cast();
             }
             return false;
-        }
+        }*/
 
         private async Task<bool> Anticipation()
         {
@@ -321,6 +360,16 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        private async Task<bool> ArmsLength()
+        {
+            if (ShinraEx.Settings.DarkKnightReprisal)
+            {
+                return await MySpells.Role.ArmsLength.Cast();
+            }
+            return false;
+        }
+
+        /*
         private async Task<bool> Awareness()
         {
             if (ShinraEx.Settings.DarkKnightAwareness && Core.Player.CurrentHealthPercent < ShinraEx.Settings.DarkKnightAwarenessPct)
@@ -328,7 +377,7 @@ namespace ShinraCo.Rotations
                 return await MySpells.Role.Awareness.Cast();
             }
             return false;
-        }
+        }*/
 
         #endregion
 
