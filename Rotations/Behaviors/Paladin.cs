@@ -16,13 +16,10 @@ namespace ShinraCo.Rotations
                     Helpers.Debug("Combat - smart...");
                     if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
                     if (await TotalEclipse()) return true;
-                    if (await Flash()) return true;
                     if (await HolySpirit()) return true;
                     if (await GoringBlade()) return true;
                     if (await RoyalAuthority()) return true;
                     if (await RiotBlade()) return true;
-                    if (await RageOfHalone()) return true;
-                    if (await SavageBlade()) return true;
                     return await FastBlade();
                 }
 
@@ -34,8 +31,6 @@ namespace ShinraCo.Rotations
                     if (await GoringBlade()) return true;
                     if (await RoyalAuthority()) return true;
                     if (await RiotBlade()) return true;
-                    if (await RageOfHalone()) return true;
-                    if (await SavageBlade()) return true;
                     return await FastBlade();
                 }
 
@@ -43,7 +38,7 @@ namespace ShinraCo.Rotations
                 {
                     Helpers.Debug("Combat - multi...");
                     if (await TotalEclipse()) return true;
-                    return await Flash();
+                    return false;
                 }
             }
 
@@ -74,7 +69,6 @@ namespace ShinraCo.Rotations
             if (await Sheltron()) return true;
             if (await Requiescat()) return true;
             if (await FightOrFlight()) return true;
-            if (await ShieldSwipe()) return true;
             if (await CircleOfScorn()) return true;
             return await SpiritsWithin();
         }

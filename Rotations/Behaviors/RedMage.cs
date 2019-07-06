@@ -21,6 +21,7 @@ namespace ShinraCo.Rotations
                     if (await Verthunder2()) return true;
                     if (await Verholy()) return true;
                     if (await Verflare()) return true;
+                    if (await Scorch()) return true;
                     if (await EnchantedRiposte()) return true;
                     if (await EnchantedZwerchhau()) return true;
                     if (await EnchantedRedoublement()) return true;
@@ -40,6 +41,7 @@ namespace ShinraCo.Rotations
                     if (await Scorch()) return true;
                     if (await Verholy()) return true;
                     if (await Verflare()) return true;
+                    if (await Scorch()) return true;
                     if (await EnchantedRiposte()) return true;
                     if (await EnchantedZwerchhau()) return true;
                     if (await EnchantedRedoublement()) return true;
@@ -90,6 +92,7 @@ namespace ShinraCo.Rotations
             if (await ContreSixte()) return true;
             if (await Acceleration()) return true;
             if (await Swiftcast()) return true;
+            if (await UsePotion()) return true;
             return await LucidDreaming();
         }
 

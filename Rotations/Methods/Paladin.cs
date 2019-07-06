@@ -18,23 +18,6 @@ namespace ShinraCo.Rotations
             return await MySpells.FastBlade.Cast();
         }
 
-        private async Task<bool> SavageBlade()
-        {
-            if (ActionManager.LastSpell.Name == MySpells.FastBlade.Name)
-            {
-                return await MySpells.SavageBlade.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> RageOfHalone()
-        {
-            if (ActionManager.LastSpell.Name == MySpells.SavageBlade.Name)
-            {
-                return await MySpells.RageOfHalone.Cast();
-            }
-            return false;
-        }
 
         private async Task<bool> RiotBlade()
         {
@@ -93,14 +76,6 @@ namespace ShinraCo.Rotations
 
         #region AoE
 
-        private async Task<bool> Flash()
-        {
-            if (ShinraEx.Settings.PaladinFlash && Core.Player.CurrentManaPercent > 40)
-            {
-                return await MySpells.Flash.Cast();
-            }
-            return false;
-        }
 
         private async Task<bool> TotalEclipse()
         {
@@ -114,16 +89,6 @@ namespace ShinraCo.Rotations
         #endregion
 
         #region Cooldown
-
-        private async Task<bool> ShieldSwipe()
-        {
-            if (ShinraEx.Settings.PaladinShieldSwipe)
-            {
-                return await MySpells.ShieldSwipe.Cast();
-            }
-            return false;
-        }
-
         private async Task<bool> SpiritsWithin()
         {
             if (ShinraEx.Settings.PaladinSpiritsWithin && ShinraEx.LastSpell.Name != MySpells.CircleOfScorn.Name)

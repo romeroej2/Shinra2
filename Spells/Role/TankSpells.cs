@@ -86,9 +86,9 @@
         /*
         public Spell Ultimatum { get; } = new Spell
         {
-            Name = "Ultimatum",
-            ID = 7539,
-            Level = 44,
+            Name = "Arm's Length",
+            ID = 7548,
+            Level = 32,
             GCDType = GCDType.Off,
             SpellType = SpellType.AoE,
             CastType = CastType.Self

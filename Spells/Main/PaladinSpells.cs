@@ -28,26 +28,6 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Self
         };
 
-        public Spell SavageBlade { get; } = new Spell
-        {
-            Name = "Savage Blade",
-            ID = 11,
-            Level = 4,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Damage,
-            CastType = CastType.Target
-        };
-
-        public Spell Flash { get; } = new Spell
-        {
-            Name = "Flash",
-            ID = 14,
-            Level = 6,
-            GCDType = GCDType.On,
-            SpellType = SpellType.AoE,
-            CastType = CastType.Self
-        };
-
         public Spell RiotBlade { get; } = new Spell
         {
             Name = "Riot Blade",
@@ -85,16 +65,6 @@ namespace ShinraCo.Spells.Main
             Level = 26,
             GCDType = GCDType.On,
             SpellType = SpellType.Damage,
-            CastType = CastType.Target
-        };
-
-        public Spell ShieldSwipe { get; } = new Spell
-        {
-            Name = "Shield Swipe",
-            ID = 25,
-            Level = 30,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Cooldown,
             CastType = CastType.Target
         };
 

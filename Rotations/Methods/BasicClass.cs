@@ -232,24 +232,6 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        private async Task<bool> SavageBlade()
-        {
-            if (ActionManager.LastSpell.Name == MySpells.Gladiator.FastBlade.Name)
-            {
-                return await MySpells.Gladiator.SavageBlade.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Flash()
-        {
-            if (ShinraEx.Settings.RotationMode != Modes.Single && ShinraEx.Settings.PaladinFlash && Core.Player.CurrentManaPercent > 40)
-            {
-                return await MySpells.Gladiator.Flash.Cast();
-            }
-            return false;
-        }
-
         private async Task<bool> RiotBlade()
         {
             if (ActionManager.LastSpell.Name == MySpells.Gladiator.FastBlade.Name && Core.Player.CurrentManaPercent < 40)
@@ -259,14 +241,6 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        private async Task<bool> RageOfHalone()
-        {
-            if (ActionManager.LastSpell.Name == MySpells.Gladiator.SavageBlade.Name)
-            {
-                return await MySpells.Gladiator.RageOfHalone.Cast();
-            }
-            return false;
-        }
 
         #endregion
 
