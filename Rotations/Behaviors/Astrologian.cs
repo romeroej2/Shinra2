@@ -97,7 +97,7 @@ namespace ShinraCo.Rotations
             if (await CelestialIntersection()) return true;
             if (await Lightspeed()) return true;
             if (await Synastry()) return true;
-            if (await EyeForAnEye()) return true;
+           // if (await EyeForAnEye()) return true;
            
             if (await LadyOfCrowns()) return true;
             if (await AspectedHelios()) return true;

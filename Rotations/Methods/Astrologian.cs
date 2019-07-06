@@ -552,6 +552,7 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        /*
         private async Task<bool> EyeForAnEye()
         {
             if (ShinraEx.Settings.AstrologianPartyHeal && ShinraEx.Settings.AstrologianEyeForAnEye)
@@ -566,8 +567,9 @@ namespace ShinraCo.Rotations
                 }
             }
             return false;
-        }
+        }*/
 
+        /*
         private async Task<bool> Largesse()
         {
             if (ShinraEx.Settings.AstrologianPartyHeal && ShinraEx.Settings.AstrologianLargesse)
@@ -579,7 +581,7 @@ namespace ShinraCo.Rotations
                 }
             }
             return false;
-        }
+        }*/
 
         #endregion  
 
