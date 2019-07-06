@@ -81,7 +81,7 @@ namespace ShinraCo.Rotations
                 if (await DrawTargetted()) return true;
                 
             }
-            return await ClericStance();
+            return true;
         }
 
         #endregion
@@ -96,7 +96,6 @@ namespace ShinraCo.Rotations
             if (await EssentialDignity()) return true;
             if (await CelestialIntersection()) return true;
             if (await Lightspeed()) return true;
-            if (await Largesse()) return true;
             if (await Synastry()) return true;
             if (await EyeForAnEye()) return true;
            
@@ -108,8 +107,7 @@ namespace ShinraCo.Rotations
             if (await Benefic()) return true;
             if (await AspectedBenefic()) return true;
             if (await Ascend()) return true;
-            if (await Esuna()) return true;
-            return await Protect();
+            return await Esuna();
         }
 
         #endregion

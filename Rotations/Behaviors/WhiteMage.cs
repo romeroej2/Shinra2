@@ -13,30 +13,38 @@ namespace ShinraCo.Rotations
             {
                 case Modes.Smart:
                 {
-                    Helpers.Debug("Combat...");
+                    Helpers.Debug("Combat - smart...");
+                    if (await AfflatusMisery()) return true;
                     if (await Holy()) return true;
+                    if (await Dia()) return true;
                     if (await AeroII()) return true;
                     if (await Aero()) return true;
+                    if (await Glare()) return true;
                     if (await StoneIV()) return true;
                     if (await StoneIII()) return true;
                     if (await StoneII()) return true;
-                    return await Stone();
+                    if (await Stone()) return true;
+                    return await FluidAura();
                 }
 
                 case Modes.Single:
                 {
-                    Helpers.Debug("Combat...");
+                    Helpers.Debug("Combat - single...");
+                    if (await Dia()) return true;
                     if (await AeroII()) return true;
                     if (await Aero()) return true;
+                    if (await Glare()) return true;
                     if (await StoneIV()) return true;
                     if (await StoneIII()) return true;
                     if (await StoneII()) return true;
-                    return await Stone();
+                    if (await Stone()) return true;
+                    return await FluidAura();
                 }
 
                 case Modes.Multi:
                 {
-                    Helpers.Debug("Combat...");
+                    Helpers.Debug("Combat - multi...");
+                    if (await AfflatusMisery()) return true;
                     return await Holy();
                 }
             }
@@ -53,8 +61,8 @@ namespace ShinraCo.Rotations
             Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
-            if (await LucidDreaming()) return true;
-            return await ClericStance();
+            if (await Temperance()) return true;
+            return await LucidDreaming();
         }
 
         #endregion
@@ -69,12 +77,13 @@ namespace ShinraCo.Rotations
             if (await Benediction()) return true;
             if (await Tetragrammaton()) return true;
             if (await PresenceOfMind()) return true;
-            if (await Largesse()) return true;
-            if (await EyeForAnEye()) return true;
             if (await PlenaryIndulgence()) return true;
             if (await Assize()) return true;
+            if (await AfflatusRapture()) return true;
             if (await MedicaII()) return true;
             if (await Medica()) return true;
+            if (await CureIII()) return true;
+            if (await AfflatusSolace()) return true;
             if (await CureII()) return true;
             if (await Cure()) return true;
             if (await Regen()) return true;
@@ -99,6 +108,7 @@ namespace ShinraCo.Rotations
         public override async Task<bool> Pull()
         {
             Helpers.Debug("Pull...");
+            if (await Dia()) return true;
             if (await AeroII()) return true;
             if (await Aero()) return true;
             return await Combat();
