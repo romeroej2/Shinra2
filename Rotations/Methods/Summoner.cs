@@ -31,19 +31,22 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> RuinII()
         {
-            if (Resource.DreadwyrmTrance && !Core.Player.HasAura("Further Ruin") && !RecentBahamut)
+            
+            if (Spell.RecentSpell.ContainsKey(MySpells.DreadwyrmTrance.Name) || Core.Player.HasAura("Everlasting Flight"))
                 return false;
+            
 
             if (MovementManager.IsMoving ||
                 Core.Player.HasAura("Further Ruin") ||
-                RecentBahamut ||
+                UseBane ||
+                UseFester ||
                 UsePainflare ||
-                UseAddle ||
-//                UsePet ||
                 UseTriDisaster ||
-                ResourceArcanist.Aetherflow == 0 && MySpells.Aetherflow.Cooldown() <= 0 ||
-                ResourceArcanist.Aetherflow == 3 && ActionManager.CanCast(MySpells.SummonBahamut.Name, Core.Player) ||
-                ActionManager.CanCast(MySpells.DreadwyrmTrance.Name, Core.Player))
+                ResourceArcanist.Aetherflow == 0 && 
+                MySpells.EnergyDrain.Cooldown() <= 0 ||                
+                ActionManager.CanCast(MySpells.SummonBahamut.Name, Core.Player) ||
+                ActionManager.CanCast(MySpells.DreadwyrmTrance.Name, Core.Player) ||
+                ActionManager.CanCast(MySpells.FirebirdTrance.Name, Core.Player))
             {
                 return await MySpells.RuinII.Cast();
             }
@@ -54,6 +57,25 @@ namespace ShinraCo.Rotations
         {
             return await MySpells.RuinIII.Cast();
         }
+
+        private async Task<bool> FountainOfFire()
+        {
+            if (Core.Player.HasAura("Everlasting Flight"))
+            {
+                return await MySpells.BrandOfPurgatory.Cast();
+            }
+            return false;
+        }
+
+        private async Task<bool> BrandOfPurgatory()
+        {
+            if (Core.Player.HasAura("Hellish Conduit") &&  Resource.Timer.TotalMilliseconds >= 1500)
+            {
+                return await MySpells.BrandOfPurgatory.Cast();
+            }
+            return false;
+        }
+
 
         #endregion
 
@@ -96,7 +118,8 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Miasma()
         {
-            if (!ActionManager.HasSpell(MySpells.MiasmaIII.Name) && !RecentDoT &&
+            if (!ActionManager.HasSpell(MySpells.MiasmaIII.Name) &&
+                !RecentDoT &&
                 !Core.Player.CurrentTarget.HasAura(MySpells.Miasma.Name, true, 5000))
             {
                 if (!ActionManager.HasSpell(MySpells.TriDisaster.Name) || MySpells.TriDisaster.Cooldown() > 5000)
@@ -142,16 +165,16 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        private async Task<bool> TriBind()
+        private async Task<bool> Outburst()
         {
             if (ShinraEx.Settings.RotationMode == Modes.Single || Resource.DreadwyrmTrance && Resource.Timer.TotalMilliseconds < 3500)
                 return false;
 
             if (ShinraEx.Settings.RotationMode == Modes.Multi ||
-                Resource.DreadwyrmTrance && Helpers.EnemiesNearTarget(5) >= 2 ||
-                Helpers.EnemiesNearTarget(5) >= 5)
+                (Resource.DreadwyrmTrance && Helpers.EnemiesNearTarget(5) >= 3) ||
+                Helpers.EnemiesNearTarget(5) >= 3)
             {
-                return await MySpells.TriBind.Cast();
+                return await MySpells.Outburst.Cast();
             }
             return false;
         }
@@ -162,9 +185,18 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> EnergyDrain()
         {
-            if (!ActionManager.HasSpell(MySpells.Fester.Name) && !AetherLow)
+            if (ResourceArcanist.Aetherflow == 0)
             {
                 return await MySpells.EnergyDrain.Cast();
+            }
+            return false;
+        }
+
+        private async Task<bool> EnergySiphon()
+        {
+            if (ShinraEx.Settings.RotationMode != Modes.Single && ResourceArcanist.Aetherflow == 0 && Helpers.EnemiesNearTarget(5) >= 3)
+            {
+                return await MySpells.EnergySiphon.Cast();
             }
             return false;
         }
@@ -178,14 +210,6 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        private async Task<bool> ShadowFlare()
-        {
-            if (UseShadowFlare)
-            {
-                return await MySpells.ShadowFlare.Cast();
-            }
-            return false;
-        }
 
         private async Task<bool> Enkindle()
         {
@@ -205,7 +229,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Deathflare()
         {
-            if (Resource.DreadwyrmTrance && Resource.Timer.TotalMilliseconds < 2000)
+            if (Resource.DreadwyrmTrance && Resource.Timer.TotalMilliseconds < 2500)
             {
                 return await MySpells.Deathflare.Cast();
             }
@@ -220,41 +244,28 @@ namespace ShinraCo.Rotations
             }
             return false;
         }
+        private async Task<bool> EnkindlePhoenix()
+        {
+            return await MySpells.EnkindlePhoenix.Cast();
+        }
 
         #endregion
 
         #region Buff
-
-        private async Task<bool> Aetherflow()
-        {
-            if (ResourceArcanist.Aetherflow > 0) return false;
-
-            return await MySpells.Aetherflow.Cast();
-        }
-
-        private async Task<bool> AetherflowPreCombat()
-        {
-            if (ResourceArcanist.Aetherflow == 0 || ShinraEx.Settings.SummonerOpener && ResourceArcanist.Aetherflow < 3)
-            {
-                return await MySpells.Aetherflow.Cast(null, false);
-            }
-            return false;
-        }
-
-        private async Task<bool> Rouse()
-        {
-            if (ShinraEx.Settings.SummonerRouse && PetExists)
-            {
-                return await MySpells.Rouse.Cast();
-            }
-            return false;
-        }
 
         private async Task<bool> DreadwyrmTrance()
         {
             if (ShinraEx.Settings.SummonerDreadwyrmTrance)
             {
                 return await MySpells.DreadwyrmTrance.Cast();
+            }
+            return false;
+        }
+        private async Task<bool> FirebirdTrance()
+        {
+            if (ShinraEx.Settings.SummonerDreadwyrmTrance)
+            {
+                return await MySpells.FirebirdTrance.Cast();
             }
             return false;
         }
@@ -270,7 +281,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SummonBahamut()
         {
-            if (ShinraEx.Settings.SummonerSummonBahamut && ResourceArcanist.Aetherflow == 3)
+            if (ShinraEx.Settings.SummonerSummonBahamut)
             {
                 if (await MySpells.SummonBahamut.Cast())
                 {
@@ -306,19 +317,6 @@ namespace ShinraCo.Rotations
                 if (target != null)
                 {
                     return await MySpells.Physick.Cast(target);
-                }
-            }
-            return false;
-        }
-
-        private async Task<bool> Sustain()
-        {
-            if (ShinraEx.Settings.SummonerSustain && PetExists)
-            {
-                if (Core.Player.Pet.CurrentHealthPercent < ShinraEx.Settings.SummonerSustainPct &&
-                    !Core.Player.Pet.HasAura(MySpells.Sustain.Name))
-                {
-                    return await MySpells.Sustain.Cast();
                 }
             }
             return false;
@@ -361,15 +359,6 @@ namespace ShinraCo.Rotations
 
             if (PetManager.ActivePetType != PetType.Emerald_Carbuncle && PetManager.ActivePetType != PetType.Garuda_Egi && !RecentBahamut)
             {
-                if (ShinraEx.Settings.SummonerSwiftcast && !ShinraEx.Settings.SummonerResurrection &&
-                    ActionManager.CanCast(MySpells.Summon.Name, Core.Player) &&
-                    (!ShinraEx.Settings.SummonerOpener || !ShinraEx.Settings.SummonerOpenerGaruda || Helpers.OpenerFinished))
-                {
-                    if (await MySpells.Role.Swiftcast.Cast(null, false))
-                    {
-                        await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.Role.Swiftcast.Name));
-                    }
-                }
                 return await MySpells.Summon.Cast();
             }
             return false;
@@ -385,14 +374,7 @@ namespace ShinraCo.Rotations
             if (ShinraEx.Settings.SummonerPet == SummonerPets.Titan && PetManager.ActivePetType != PetType.Topaz_Carbuncle &&
                 PetManager.ActivePetType != PetType.Titan_Egi && !RecentBahamut)
             {
-                if (ShinraEx.Settings.SummonerSwiftcast && !ShinraEx.Settings.SummonerResurrection &&
-                    ActionManager.CanCast(MySpells.SummonII.Name, Core.Player))
-                {
-                    if (await MySpells.Role.Swiftcast.Cast(null, false))
-                    {
-                        await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.SummonII.Name, Core.Player));
-                    }
-                }
+
                 return await MySpells.SummonII.Cast();
             }
             return false;
@@ -407,14 +389,6 @@ namespace ShinraCo.Rotations
 
             if (ShinraEx.Settings.SummonerPet == SummonerPets.Ifrit && PetManager.ActivePetType != PetType.Ifrit_Egi && !RecentBahamut)
             {
-                if (ShinraEx.Settings.SummonerSwiftcast && !ShinraEx.Settings.SummonerResurrection &&
-                    ActionManager.CanCast(MySpells.SummonIII.Name, Core.Player))
-                {
-                    if (await MySpells.Role.Swiftcast.Cast(null, false))
-                    {
-                        await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.SummonIII.Name, Core.Player));
-                    }
-                }
                 return await MySpells.SummonIII.Cast();
             }
             return false;
@@ -585,38 +559,35 @@ namespace ShinraCo.Rotations
         private static bool RecentBahamut => Spell.RecentSpell.ContainsKey("Summon Bahamut"); //|| (int)PetManager.ActivePetType == 10;
         private static bool PetExists => Core.Player.Pet != null;
 
-        private static bool UseTriDisaster => ShinraEx.Settings.SummonerTriDisaster &&
+        private  bool UseTriDisaster => ShinraEx.Settings.SummonerTriDisaster &&
                                               (!Core.Player.CurrentTarget.HasAura(BioDebuff, true, 3000) ||
-                                               !Core.Player.CurrentTarget.HasAura(MiasmaDebuff, true, 3000));
+                                               !Core.Player.CurrentTarget.HasAura(MiasmaDebuff, true, 3000) ||
+                                                (MySpells.DreadwyrmTrance.Cooldown()  < 10) || MySpells.FirebirdTrance.Cooldown() < 10);
 
-        private bool AetherLow => !ActionManager.HasSpell(MySpells.DreadwyrmTrance.Name) && ResourceArcanist.Aetherflow == 1 &&
-                                  DataManager.GetSpellData(166).Cooldown.TotalMilliseconds > 8000;
+        private bool AetherLow => ResourceArcanist.Aetherflow == 1 &&
+                                    DataManager.GetSpellData(166).Cooldown.TotalMilliseconds > 8000;
 
-        private bool UseBane => ShinraEx.Settings.RotationMode != Modes.Single && ShinraEx.Settings.SummonerBane &&
+        private bool UseBane => ShinraEx.Settings.RotationMode != Modes.Single &&
+                                ShinraEx.Settings.SummonerBane &&
                                 ActionManager.CanCast(MySpells.Bane.Name, Core.Player.CurrentTarget) &&
-                                (ShinraEx.Settings.RotationMode == Modes.Multi || Helpers.EnemiesNearTarget(5) >= AoECount) &&
-                                Core.Player.CurrentTarget.HasAura(BioDebuff, true, 20000) &&
-                                Core.Player.CurrentTarget.HasAura(MiasmaDebuff, true, 14000);
+                                (ShinraEx.Settings.RotationMode == Modes.Multi || Helpers.EnemiesNearTarget(8) >= AoECount) &&
+                                Core.Player.CurrentTarget.HasAura(BioDebuff, true, 17000) &&
+                                Core.Player.CurrentTarget.HasAura(MiasmaDebuff, true, 17000);
 
         private bool UseFester => (ShinraEx.Settings.RotationMode == Modes.Single ||
-                                   ShinraEx.Settings.RotationMode == Modes.Smart && Helpers.EnemiesNearTarget(5) < AoECount) &&
-                                  ActionManager.CanCast(MySpells.Fester.Name, Core.Player.CurrentTarget) && !AetherLow &&
+                                   ShinraEx.Settings.RotationMode == Modes.Smart &&
+                                   Helpers.EnemiesNearTarget(5) < AoECount) &&
+                                  ActionManager.CanCast(MySpells.Fester.Name, Core.Player.CurrentTarget) &&
                                   Core.Player.CurrentTarget.HasAura(BioDebuff, true) &&
                                   Core.Player.CurrentTarget.HasAura(MiasmaDebuff, true);
 
         private bool UsePainflare => ShinraEx.Settings.RotationMode != Modes.Single &&
-                                     (ShinraEx.Settings.RotationMode == Modes.Multi || Helpers.EnemiesNearTarget(5) >= AoECount) &&
-                                     ActionManager.CanCast(MySpells.Painflare.Name, Core.Player.CurrentTarget) && !AetherLow;
+                                     (ShinraEx.Settings.RotationMode == Modes.Multi ||
+                                        Helpers.EnemiesNearTarget(5) >= AoECount) &&
+                                     ActionManager.CanCast(MySpells.Painflare.Name, Core.Player.CurrentTarget);
 
-        private bool UsePet => PetExists && (ShinraEx.Settings.SummonerRouse && ActionManager.CanCast(MySpells.Rouse.Name, Core.Player) ||
-                                             ShinraEx.Settings.SummonerEnkindle &&
-                                             ActionManager.CanCast(MySpells.Enkindle.Name, Core.Player.CurrentTarget));
-
-        private bool UseShadowFlare => ShinraEx.Settings.SummonerShadowFlare && !MovementManager.IsMoving &&
-                                       ActionManager.CanCastLocation(MySpells.ShadowFlare.Name, Core.Player.CurrentTarget.Location);
-								 
-        private bool UseAddle => ShinraEx.Settings.SummonerAddle && RecentBahamut &&
-                                 ActionManager.CanCast(MySpells.Role.Addle.Name, Core.Player.CurrentTarget);
+        private bool UseAddle => ShinraEx.Settings.SummonerAddle &&
+            ActionManager.CanCast(MySpells.Role.Addle.Name, Core.Player.CurrentTarget);
 
         #endregion
     }
