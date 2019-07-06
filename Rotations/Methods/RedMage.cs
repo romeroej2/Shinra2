@@ -464,7 +464,8 @@ namespace ShinraCo.Rotations
                                             ActionManager.LastSpell.Name == "Scatter" || 
                                             ActionManager.LastSpell.Name == "Impact" ||
                                             ActionManager.LastSpell.Name == "Verholy" ||
-                                            ActionManager.LastSpell.Name == "Verflare";
+                                            ActionManager.LastSpell.Name == "Verflare" ||
+                                            ActionManager.LastSpell.Name == "Scorch";
 
         #endregion
     }
