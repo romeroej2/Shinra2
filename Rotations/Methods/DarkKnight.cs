@@ -72,7 +72,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> FloodOfDarkness()
         {
-            if (Core.Player.CurrentMana > 3500 )
+            if (Core.Player.CurrentMana > 3500 && ActionManager.LastSpell.Name != MySpells.FloodOfDarkness.Name)
             {
                 return await MySpells.FloodOfDarkness.Cast();
             }
