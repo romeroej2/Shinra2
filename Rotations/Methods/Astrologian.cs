@@ -80,8 +80,10 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> CombustIII()
         {
-            if (!StopDots && !Core.Player.CurrentTarget.HasAura(MySpells.CombustIII.Name, true, 4000))
-            {
+         
+            //if (!StopDots && !Core.Player.CurrentTarget.HasAura(MySpells.CombustIII.Name, true, 4000))
+                if (!StopDots && !Core.Player.CurrentTarget.HasAura(1881))
+                {
                 return await MySpells.CombustIII.Cast();
             }
             return false;
