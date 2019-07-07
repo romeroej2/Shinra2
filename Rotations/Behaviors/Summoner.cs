@@ -36,6 +36,9 @@ namespace ShinraCo.Rotations
             if (await SummonIII()) return true;
             if (await SummonII()) return true;
             if (await Summon()) return true;
+            //Egi
+            if (await EgiAssault()) return true;
+            if (await EgiAssaultII()) return true;
             //Dot Refresh
             if (await TriDisaster()) return true;
             //Bahamut
@@ -55,6 +58,7 @@ namespace ShinraCo.Rotations
             if (await EnergySiphon()) return true;
             if (await EnergyDrain()) return true;
             if (await Enkindle()) return true;
+            //Egi
             if (await Addle()) return true;
             return await LucidDreaming();
         }

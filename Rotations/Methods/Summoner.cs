@@ -42,8 +42,8 @@ namespace ShinraCo.Rotations
                 UseFester ||
                 UsePainflare ||
                 UseTriDisaster ||
-                ResourceArcanist.Aetherflow == 0 && 
-                MySpells.EnergyDrain.Cooldown() <= 0 ||                
+                (ResourceArcanist.Aetherflow == 0 && 
+                MySpells.EnergyDrain.Cooldown() <= 0) ||                
                 ActionManager.CanCast(MySpells.SummonBahamut.Name, Core.Player) ||
                 ActionManager.CanCast(MySpells.DreadwyrmTrance.Name, Core.Player) ||
                 ActionManager.CanCast(MySpells.FirebirdTrance.Name, Core.Player))
@@ -69,7 +69,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BrandOfPurgatory()
         {
-            if (Core.Player.HasAura("Hellish Conduit") &&  Resource.Timer.TotalMilliseconds >= 1500)
+            if (Core.Player.HasAura("Hellish Conduit") &&  Resource.Timer.TotalMilliseconds > 2500 && Resource.DreadwyrmTrance)
             {
                 return await MySpells.BrandOfPurgatory.Cast();
             }
@@ -167,7 +167,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Outburst()
         {
-            if (ShinraEx.Settings.RotationMode == Modes.Single || Resource.DreadwyrmTrance && Resource.Timer.TotalMilliseconds < 3500)
+            if (ShinraEx.Settings.RotationMode == Modes.Single || (Resource.DreadwyrmTrance && Resource.Timer.TotalMilliseconds < 3500))
                 return false;
 
             if (ShinraEx.Settings.RotationMode == Modes.Multi ||
@@ -209,7 +209,6 @@ namespace ShinraCo.Rotations
             }
             return false;
         }
-
 
         private async Task<bool> Enkindle()
         {
@@ -292,6 +291,23 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        private async Task<bool> EgiAssault()
+        {
+            if (PetExists && (ActionManager.LastSpell.Name == "Ruin II" || ActionManager.LastSpell.Name == "Ruin IV"))
+            {
+                return await MySpells.EgiAssault.Cast();
+            }
+            return false;
+        }
+
+        private async Task<bool> EgiAssaultII()
+        {
+            if (PetExists && (ActionManager.LastSpell.Name == "Ruin II" || ActionManager.LastSpell.Name == "Ruin IV"))
+            {
+                return await MySpells.EgiAssault.Cast();
+            }
+            return false;
+        }
         #endregion
 
         #region Heal
