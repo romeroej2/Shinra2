@@ -17,7 +17,7 @@ namespace ShinraCo
         public static readonly HashSet<string> HealingSpells = new HashSet<string>
         {
             "Benefic", "Benefic II", "Helios", "Aspected Helios", "Ascend",
-            "Cure", "Cure II", "Medica", "Medica II", "Raise",
+            "Cure", "Cure II", "Cure III", "Medica", "Medica II", "Afflatus Rapture", "Afflatus Solace", "Raise",
             "Physick", "Adloquium", "Succor", "Resurrection", "Esuna"
         };
 

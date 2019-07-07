@@ -3675,7 +3675,7 @@ namespace ShinraCo.Settings.Forms
 
         private void WhiteMageAfflatusSolce_CheckedChanged(object sender, EventArgs e)
         {
-            ShinraEx.Settings.WhiteMageAfflatusSolace = WhiteMageAfflatusRapture.Checked;
+            ShinraEx.Settings.WhiteMageAfflatusSolace = WhiteMageAfflatusSolace.Checked;
         }
 
         private void WhiteMageBenediction_CheckedChanged(object sender, EventArgs e)

@@ -195,7 +195,7 @@ namespace ShinraCo.Settings
         [Setting, DefaultValue(false)]
         public bool IgnoreSmart { get; set; }
 
-        [Setting, DefaultValue(false)]
+        [Setting, DefaultValue(true)]
         public bool DisableDebug { get; set; }
 
 
@@ -1905,7 +1905,7 @@ namespace ShinraCo.Settings
         [Setting, DefaultValue(30)]
         public int WhiteMageCureIIIPct { get; set; }
         
-        [Setting, DefaultValue(30)]
+        [Setting, DefaultValue(20)]
         public int WhiteMageTetragrammatonPct { get; set; }
 
         [Setting, DefaultValue(10)]

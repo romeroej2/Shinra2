@@ -1115,7 +1115,7 @@
             this.RestEnergy.Size = new System.Drawing.Size(67, 17);
             this.RestEnergy.TabIndex = 1;
             this.RestEnergy.TabStop = false;
-            this.RestEnergy.Text = "Mana/TP";
+            this.RestEnergy.Text = "Mana";
             this.RestEnergy.UseVisualStyleBackColor = true;
             this.RestEnergy.CheckedChanged += new System.EventHandler(this.RestEnergy_CheckedChanged);
             // 
