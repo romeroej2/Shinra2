@@ -114,7 +114,7 @@ namespace ShinraCo.Rotations
             if (await ShinraEx.SummonChocobo()) return true;
             if (await Grit()) return true;
             // return await Darkside();
-            return true;
+            return false;
         }
 
         #endregion
