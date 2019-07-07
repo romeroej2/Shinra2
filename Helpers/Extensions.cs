@@ -35,9 +35,7 @@ namespace ShinraCo
             ClassJobType.WhiteMage
         };
         
-        public static float CurrentEnergyPct => ManaJobs.Contains(Core.Player.CurrentJob)
-            ? Core.Player.CurrentManaPercent
-            : Core.Player.CurrentTPPercent;
+        public static float CurrentEnergyPct => Core.Player.CurrentManaPercent;
 
         private static readonly string VersionPath = Path.Combine(Environment.CurrentDirectory, @"Routines\Shinra2\Properties\Version.txt");
 

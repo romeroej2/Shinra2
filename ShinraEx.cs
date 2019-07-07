@@ -258,8 +258,6 @@ namespace ShinraCo
 
         public static async Task<bool> SummonChocobo()
         {
-
-           
             if (Settings.CrPaused)
             {
                 if (MovementManager.IsMoving)
@@ -272,7 +270,10 @@ namespace ShinraCo
                 return false;
             }
 
-            if (!Settings.SummonChocobo || !BotManager.Current.IsAutonomous || !ChocoboManager.CanSummon || MovementManager.IsMoving ||
+            if (!Settings.SummonChocobo ||
+                !BotManager.Current.IsAutonomous || 
+                !ChocoboManager.CanSummon || 
+                MovementManager.IsMoving ||
                 ChocoboManager.Summoned)
             {
                 return false;
