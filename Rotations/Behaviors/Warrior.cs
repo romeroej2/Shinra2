@@ -74,9 +74,6 @@ namespace ShinraCo.Rotations
             if (await Vengeance()) return true;
             if (await ShakeItOff()) return true;
             if (await Rampart()) return true;
-            //if (await Convalescence()) return true;
-            if (await Anticipation()) return true;
-           // if (await Awareness()) return true;
             if (await Reprisal()) return true;
             if (await Onslaught()) return true;
             if (await EquilibriumTP()) return true;

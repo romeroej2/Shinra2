@@ -19,8 +19,8 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> FluidAura()
         {
-            var target = GameObjectManager.GetObjectByObjectId(Core.Player.SpellCastInfo.TargetId);
-            if (!StopDamage && !Core.Player.CurrentTarget.HasAura("Bind", false, 600))
+            if (!StopDamage && !Core.Player.CurrentTarget.IsBoss() && 
+                !Core.Player.CurrentTarget.HasAura("Bind", false, 600))
             {
                 return await MySpells.FluidAura.Cast();
             }
@@ -183,11 +183,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> UpdateHealing()
         {
-            if (ShinraEx.Settings.WhiteMagePartyHeal && !await Helpers.UpdateHealManager())
-            {
-                return true;
-            }
-            return false;
+            return ShinraEx.Settings.WhiteMagePartyHeal && !await Helpers.UpdateHealManager();
         }
 
         private async Task<bool> StopCasting()
@@ -309,7 +305,7 @@ namespace ShinraCo.Rotations
                 var target = ShinraEx.Settings.WhiteMagePartyHeal
                     ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageRegenPct &&
                                                                !hm.HasAura(MySpells.Regen.Name))
-                    : Core.Player.CurrentHealthPercent < ShinraEx.Settings.WhiteMageRegenPct && !Core.Player.HasAura(MySpells.Regen.Name)
+                    : Core.Player.CurrentHealthPercent < ShinraEx.Settings.WhiteMageRegenPct && !Core.Player.HasAura(MySpells.Regen.Name) 
                         ? Core.Player : null;
 
                 if (target != null)

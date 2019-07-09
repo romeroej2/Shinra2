@@ -76,21 +76,12 @@ namespace ShinraCo.Rotations
             if (await LivingDead()) return true;
             if (await ShadowWall()) return true;
             if (await BlackestNight()) return true;
-            //if (await Delirium()) return true;
             if (await Rampart()) return true;
             if (await ArmsLength()) return true;
-            
-           // if (await Convalescence()) return true;
-            if (await Anticipation()) return true;
-            //if (await Awareness()) return true;
             if (await Reprisal()) return true;
             if (await Plunge()) return true;
-           // if (await Darkside()) return true;
-           // if (await BloodPrice()) return true;
             if (await BloodWeapon()) return true;
-           // if (await CarveAndSpit()) return true;
             if (await SaltedEarth()) return true;
-            //  return await DarkArts();
             return false;
         }
 

@@ -51,48 +51,15 @@
             CastType = CastType.Target
         };
 
-        /*
-        public Spell Awareness { get; } = new Spell
-        {
-            Name = "Awareness",
-            ID = 7534,
-            Level = 36,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };*/
-
-
         public Spell ArmsLength { get; } = new Spell
-        {
-            Name = "Arm's Length",
-            ID = 7548,
-            Level = 24,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };
-
-        public Spell Anticipation { get; } = new Spell
-        {
-            Name = "Anticipation",
-            ID = 7536,
-            Level = 24,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self,
-        };
-
-        /*
-        public Spell Ultimatum { get; } = new Spell
         {
             Name = "Arm's Length",
             ID = 7548,
             Level = 32,
             GCDType = GCDType.Off,
-            SpellType = SpellType.AoE,
+            SpellType = SpellType.Buff,
             CastType = CastType.Self
-        };*/
+        };
 
         public Spell Shirk { get; } = new Spell
         {

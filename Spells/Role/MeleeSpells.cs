@@ -12,16 +12,6 @@
             CastType = CastType.Self
         };
 
-        public Spell ArmsLength { get; } = new Spell
-        {
-            Name = "Arm's Length",
-            ID = 7548,
-            Level = 12,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };
-
         public Spell LegSweep { get; } = new Spell
         {
             Name = "Leg Sweep",
