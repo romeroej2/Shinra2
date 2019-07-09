@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using ShinraCo.Settings;
 
 namespace ShinraCo.Rotations
@@ -20,6 +20,7 @@ namespace ShinraCo.Rotations
                     if (await HolyCircle()) return true;
                     if (await HolySpirit()) return true;
                     if (await Atonement()) return true;
+                    if (await RiotBlade()) return true;
                     if (await GoringBlade()) return true;
                     if (await RageOfHalone()) return true;
                     if (await RoyalAuthority()) return true;
@@ -34,8 +35,8 @@ namespace ShinraCo.Rotations
                     if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
                     if (await HolySpirit()) return true;
                     if (await Atonement()) return true;
-                    if (await GoringBlade()) return true;
                     if (await RiotBlade()) return true;
+                    if (await GoringBlade()) return true;
                     if (await RageOfHalone()) return true;
                     if (await RoyalAuthority()) return true;
                     return await FastBlade();
