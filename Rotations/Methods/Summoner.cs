@@ -293,7 +293,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> EgiAssault()
         {
-            if (PetExists && (ActionManager.LastSpell.Name == "Ruin II" || ActionManager.LastSpell.Name == "Ruin IV"))
+            if (PetExists && ActionManager.CanCast(MySpells.EgiAssault.Name, Core.Player) && (ActionManager.LastSpell.Name == "Ruin II" || ActionManager.LastSpell.Name == "Ruin IV"))
             {
                 return await MySpells.EgiAssault.Cast();
             }
@@ -302,7 +302,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> EgiAssaultII()
         {
-            if (PetExists && (ActionManager.LastSpell.Name == "Ruin II" || ActionManager.LastSpell.Name == "Ruin IV"))
+            if (PetExists && ActionManager.CanCast(MySpells.EgiAssaultII.Name, Core.Player) && (ActionManager.LastSpell.Name == "Ruin II" || ActionManager.LastSpell.Name == "Ruin IV"))
             {
                 return await MySpells.EgiAssault.Cast();
             }

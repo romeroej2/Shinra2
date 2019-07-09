@@ -405,6 +405,13 @@ namespace ShinraCo
                             return true;
                         }
                     }
+                    if (spell.Name == Summoner.RuinIII.Name)
+                    {
+                        if (MovementManager.IsMoving)
+                        {
+                            spell = Summoner.RuinII;
+                        }
+                    }
                     //if (spell.Name == Summoner.DreadwyrmTrance.Name && Resource.Arcanist.AetherAttunement < 3)
                     //{
                     //    await Coroutine.Wait(2000, () => Resource.Arcanist.AetherAttunement == 3);

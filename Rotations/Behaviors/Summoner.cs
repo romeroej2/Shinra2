@@ -31,8 +31,11 @@ namespace ShinraCo.Rotations
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.SummonerOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            //blow it up
+            if (await EnkindleBahamut()) return true;
+            if (await EnkindlePhoenix()) return true;
             //Pets
-            if (await Sic()) return true;
+            // if (await Sic()) return true;
             if (await SummonIII()) return true;
             if (await SummonII()) return true;
             if (await Summon()) return true;
@@ -42,10 +45,8 @@ namespace ShinraCo.Rotations
             //Dot Refresh
             if (await TriDisaster()) return true;
             //Bahamut
-            if (await EnkindleBahamut()) return true;
             if (await SummonBahamut()) return true;
             //Phoenix
-            if (await EnkindlePhoenix()) return true;
             if (await FirebirdTrance()) return true;
             //Dread Trance
             if (await Deathflare()) return true;
