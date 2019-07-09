@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using ff14bot;
 using ff14bot.Managers;
 using ShinraCo.Settings;
@@ -18,17 +18,11 @@ namespace ShinraCo.Rotations
             return await MySpells.FastBlade.Cast();
         }
 
-
         private async Task<bool> RiotBlade()
         {
             if (ActionManager.LastSpell.Name == MySpells.FastBlade.Name)
             {
-                if (ActionManager.HasSpell(MySpells.RoyalAuthority.Name) && 
-                    ActionManager.HasSpell(MySpells.GoringBlade.Name) &&
-                    Core.Player.CurrentManaPercent < 40)
-                {
-                    return await MySpells.RiotBlade.Cast();
-                }
+                return await MySpells.RiotBlade.Cast();
             }
             return false;
         }
