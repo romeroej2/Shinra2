@@ -32,12 +32,42 @@ namespace ShinraCo.Spells.Main
         {
             Name = "Riot Blade",
             ID = 15,
-            Level = 10,
+            Level = 4,
             GCDType = GCDType.On,
             SpellType = SpellType.Damage,
             CastType = CastType.Target
         };
 
+        public Spell TotalEclipse { get; } = new Spell
+        {
+            Name = "Total Eclipse",
+            ID = 7381,
+            Level = 6,
+            GCDType = GCDType.On,
+            SpellType = SpellType.AoE,
+            CastType = CastType.Self
+        };
+        
+        public Spell ShieldBash { get; } = new Spell
+        {
+            Name = "Shield Bash",
+            ID = 16,
+            Level = 10,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Cooldown,
+            CastType = CastType.Target
+        };
+
+        public Spell IronWill { get; } = new Spell
+        {
+            Name = "Iron Will",
+            ID = 28,
+            Level = 10,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+        
         public Spell ShieldLob { get; } = new Spell
         {
             Name = "Shield Lob",
@@ -45,16 +75,6 @@ namespace ShinraCo.Spells.Main
             Level = 15,
             GCDType = GCDType.On,
             SpellType = SpellType.Damage,
-            CastType = CastType.Target
-        };
-
-        public Spell ShieldBash { get; } = new Spell
-        {
-            Name = "Shield Bash",
-            ID = 16,
-            Level = 18,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Cooldown,
             CastType = CastType.Target
         };
 
@@ -67,7 +87,30 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Damage,
             CastType = CastType.Target
         };
+    }
 
+    public class PaladinSpells : GladiatorSpells
+    {
+        public Spell SpiritsWithin { get; } = new Spell
+        {
+            Name = "Spirits Within",
+            ID = 29,
+            Level = 30,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Cooldown,
+            CastType = CastType.Target
+        };
+        
+        public Spell Sheltron { get; } = new Spell
+        {
+            Name = "Sheltron",
+            ID = 3542,
+            Level = 35,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
+        };
+        
         public Spell Sentinel { get; } = new Spell
         {
             Name = "Sentinel",
@@ -77,27 +120,27 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Buff,
             CastType = CastType.Self
         };
-
-        public Spell TemperedWill { get; } = new Spell
+        
+        public Spell Prominence { get; } = new Spell
         {
-            Name = "TemperedWill",
-            ID = 19,
-            Level = 42,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
+            Name = "Prominence",
+            ID = 16457,
+            Level = 40,
+            GCDType = GCDType.On,
+            SpellType = SpellType.AoE,
             CastType = CastType.Self
         };
-
-        public Spell Bulwark { get; } = new Spell
+        
+        public Spell Cover { get; } = new Spell
         {
-            Name = "Bulwark",
-            ID = 22,
-            Level = 46,
+            Name = "Cover",
+            ID = 27,
+            Level = 45,
             GCDType = GCDType.Off,
             SpellType = SpellType.Buff,
-            CastType = CastType.Self
+            CastType = CastType.Target
         };
-
+        
         public Spell CircleOfScorn { get; } = new Spell
         {
             Name = "Circle of Scorn",
@@ -107,60 +150,7 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Cooldown,
             CastType = CastType.Self
         };
-    }
-
-    public class PaladinSpells : GladiatorSpells
-    {
-        public Spell ShieldOath { get; } = new Spell
-        {
-            Name = "Shield Oath",
-            ID = 28,
-            Level = 30,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };
-
-        public Spell SwordOath { get; } = new Spell
-        {
-            Name = "Sword Oath",
-            ID = 26,
-            Level = 35,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };
-
-        public Spell Cover { get; } = new Spell
-        {
-            Name = "Cover",
-            ID = 27,
-            Level = 40,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Target
-        };
-
-        public Spell SpiritsWithin { get; } = new Spell
-        {
-            Name = "Spirits Within",
-            ID = 29,
-            Level = 45,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Cooldown,
-            CastType = CastType.Target
-        };
-
-        public Spell TotalEclipse { get; } = new Spell
-        {
-            Name = "Total Eclipse",
-            ID = 7381,
-            Level = 46,
-            GCDType = GCDType.On,
-            SpellType = SpellType.AoE,
-            CastType = CastType.Self
-        };
-
+        
         public Spell HallowedGround { get; } = new Spell
         {
             Name = "Hallowed Ground",
@@ -170,17 +160,7 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Buff,
             CastType = CastType.Self
         };
-
-        public Spell Sheltron { get; } = new Spell
-        {
-            Name = "Sheltron",
-            ID = 3542,
-            Level = 52,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };
-
+        
         public Spell GoringBlade { get; } = new Spell
         {
             Name = "Goring Blade",
@@ -260,5 +240,47 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Buff,
             CastType = CastType.Self
         };
+        
+        
+        public Spell HolyCircle { get; } = new Spell
+        {
+            Name = "Holy Circle",
+            ID = 16458,
+            Level = 72,
+            GCDType = GCDType.On,
+            SpellType = SpellType.AoE,
+            CastType = CastType.Self
+        };
+        
+        public Spell Intervene { get; } = new Spell
+        {
+            Name = "Intervene",
+            ID = 16461,
+            Level = 74,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Target
+        };
+        
+        public Spell Atonement { get; } = new Spell
+        {
+            Name = "Atonement",
+            ID = 16460,
+            Level = 76,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+        
+        public Spell Confiteor { get; } = new Spell
+        {
+            Name = "Confiteor",
+            ID = 16459,
+            Level = 80,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+        
     }
 }

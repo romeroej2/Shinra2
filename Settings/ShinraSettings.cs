@@ -65,13 +65,6 @@ namespace ShinraCo.Settings
         Fire
     }
 
-    public enum PaladinOaths
-    {
-        None,
-        Shield,
-        Sword
-    }
-
     public enum ScholarPets
     {
         None,
@@ -549,28 +542,13 @@ namespace ShinraCo.Settings
         public bool DarkKnightRampart { get; set; }
 
         [Setting, DefaultValue(true)]
-        public bool DarkKnightConvalescence { get; set; }
-
-        [Setting, DefaultValue(true)]
-        public bool DarkKnightAnticipation { get; set; }
-
-        [Setting, DefaultValue(true)]
         public bool DarkKnightReprisal { get; set; }
 
         [Setting, DefaultValue(true)]
-        public bool DarkKnightAwareness { get; set; }
+        public bool DarkKnightArmsLength { get; set; }
 
         [Setting, DefaultValue(60)]
         public int DarkKnightRampartPct { get; set; }
-
-        [Setting, DefaultValue(70)]
-        public int DarkKnightConvalescencePct { get; set; }
-
-        [Setting, DefaultValue(80)]
-        public int DarkKnightAnticipationPct { get; set; }
-
-        [Setting, DefaultValue(80)]
-        public int DarkKnightAwarenessPct { get; set; }
 
         #endregion
 
@@ -1123,52 +1101,31 @@ namespace ShinraCo.Settings
         public bool PaladinRampart { get; set; }
 
         [Setting, DefaultValue(true)]
-        public bool PaladinConvalescence { get; set; }
-
-        [Setting, DefaultValue(true)]
-        public bool PaladinAnticipation { get; set; }
-
-        [Setting, DefaultValue(true)]
         public bool PaladinReprisal { get; set; }
 
         [Setting, DefaultValue(true)]
-        public bool PaladinAwareness { get; set; }
+        public bool PaladinArmsLength { get; set; }
 
         [Setting, DefaultValue(60)]
         public int PaladinRampartPct { get; set; }
-
-        [Setting, DefaultValue(70)]
-        public int PaladinConvalescencePct { get; set; }
-
-        [Setting, DefaultValue(80)]
-        public int PaladinAnticipationPct { get; set; }
-
-        [Setting, DefaultValue(80)]
-        public int PaladinAwarenessPct { get; set; }
-
-        #endregion
-
-        #region Damage
-
-        [Setting, DefaultValue(true)]
-        public bool PaladinGoringBlade { get; set; }
 
         #endregion
 
         #region AoE
 
         [Setting, DefaultValue(true)]
-        public bool PaladinFlash { get; set; }
+        public bool PaladinTotalEclipse { get; set; }
 
         [Setting, DefaultValue(true)]
-        public bool PaladinTotalEclipse { get; set; }
+        public bool PaladinProminence { get; set; }
+
+        [Setting, DefaultValue(true)]
+        public bool PaladinHolyCircle { get; set; }
+
 
         #endregion
 
         #region Cooldown
-
-        [Setting, DefaultValue(true)]
-        public bool PaladinShieldSwipe { get; set; }
 
         [Setting, DefaultValue(true)]
         public bool PaladinSpiritsWithin { get; set; }
@@ -1187,9 +1144,6 @@ namespace ShinraCo.Settings
         public bool PaladinFightOrFlight { get; set; }
 
         [Setting, DefaultValue(true)]
-        public bool PaladinBulwark { get; set; }
-
-        [Setting, DefaultValue(true)]
         public bool PaladinSentinel { get; set; }
 
         [Setting, DefaultValue(true)]
@@ -1201,8 +1155,6 @@ namespace ShinraCo.Settings
         [Setting, DefaultValue(60)]
         public int PaladinSentinelPct { get; set; }
 
-        [Setting, DefaultValue(60)]
-        public int PaladinBulwarkPct { get; set; }
 
         [Setting, DefaultValue(10)]
         public int PaladinHallowedGroundPct { get; set; }
@@ -1216,13 +1168,6 @@ namespace ShinraCo.Settings
 
         [Setting, DefaultValue(50)]
         public int PaladinClemencyPct { get; set; }
-
-        #endregion
-
-        #region Oath
-
-        [Setting, DefaultValue(PaladinOaths.Shield)]
-        public PaladinOaths PaladinOath { get; set; }
 
         #endregion
 
@@ -1648,28 +1593,13 @@ namespace ShinraCo.Settings
         public bool WarriorRampart { get; set; }
 
         [Setting, DefaultValue(true)]
-        public bool WarriorConvalescence { get; set; }
-
-        [Setting, DefaultValue(true)]
-        public bool WarriorAnticipation { get; set; }
-
-        [Setting, DefaultValue(true)]
         public bool WarriorReprisal { get; set; }
 
         [Setting, DefaultValue(true)]
-        public bool WarriorAwareness { get; set; }
+        public bool WarriorArmsLength { get; set; }
 
         [Setting, DefaultValue(60)]
         public int WarriorRampartPct { get; set; }
-
-        [Setting, DefaultValue(70)]
-        public int WarriorConvalescencePct { get; set; }
-
-        [Setting, DefaultValue(80)]
-        public int WarriorAnticipationPct { get; set; }
-
-        [Setting, DefaultValue(80)]
-        public int WarriorAwarenessPct { get; set; }
 
         #endregion
 
