@@ -88,7 +88,8 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Xenoglossy()
         {
-            if (Resource.PolyglotStatus)
+            //if (Resource.PolyglotStatus)
+            if (ActionResourceManager.CostTypesStruct.offset_E.Equals(1))
             {
                 return await MySpells.Xenoglossy.Cast();
             }
@@ -97,7 +98,11 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Foul()
         {
-            if (Resource.PolyglotStatus)
+
+            //struct: ResourceTable: { timer: 0, timer2: 14759, offset_8: 0, offset_9: 0, offset_A: 167, offset_B: 57, offset_C: 3, offset_D: 0, offset_E: 1 }
+
+
+            if (ActionResourceManager.CostTypesStruct.offset_E.Equals(1))
             {
                 return await MySpells.Foul.Cast();
             }
@@ -363,10 +368,10 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> LucidDreaming()
         {
-            
 
 
-           
+
+
 
 
             if (ShinraEx.Settings.BlackMageLucidDreaming && Core.Player.CurrentManaPercent < ShinraEx.Settings.BlackMageLucidDreamingPct)
@@ -399,7 +404,7 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-      
+
 
         #endregion
 
@@ -509,7 +514,7 @@ namespace ShinraCo.Rotations
 
         private static double ManaReduction => Resource.AstralStacks > 1 ? 0.25 : Resource.AstralStacks > 0 ? 0.5 : 1;
         private static double BlizzardIIICost => DataManager.GetSpellData("Blizzard III").Cost * ManaReduction;
-        
+
         private static bool RecentTranspose { get { return Spell.RecentSpell.Keys.Any(rs => rs.Contains("Transpose")); } }
         private static bool RecentTriplecast => Core.Player.HasAura(1211) || ShinraEx.LastSpell.ID == 7421;
         private static bool AstralFire => Resource.AstralStacks > 0 && ShinraEx.LastSpell.Name != "Transpose";

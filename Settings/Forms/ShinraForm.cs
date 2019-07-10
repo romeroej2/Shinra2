@@ -45,6 +45,7 @@ namespace ShinraCo.Settings.Forms
 
             RotationOverlay.Checked = ShinraEx.Settings.RotationOverlay;
             RotationMessages.Checked = ShinraEx.Settings.RotationMessages;
+            userHealthPotion.Checked = ShinraEx.Settings.UseHealthPotion;
 
             RotationMode.Text = Convert.ToString(ShinraEx.Settings.RotationMode);
             CooldownMode.Text = Convert.ToString(ShinraEx.Settings.CooldownMode);
@@ -53,6 +54,7 @@ namespace ShinraCo.Settings.Forms
             RotationHotkey.Text = kc.ConvertToString(ShinraEx.Settings.RotationHotkey);
             CooldownHotkey.Text = kc.ConvertToString(ShinraEx.Settings.CooldownHotkey);
             TankHotkey.Text = kc.ConvertToString(ShinraEx.Settings.TankHotkey);
+
 
             #endregion
 
@@ -3649,13 +3651,13 @@ namespace ShinraCo.Settings.Forms
 
         private void pauseCheck_CheckedChanged(object sender, EventArgs e)
         {
-            ShinraEx.Settings.CrPaused = !ShinraEx.Settings.CrPaused ;
+            ShinraEx.Settings.CrPaused =  pauseCheck.Checked;
             ShinraEx.Overlay.UpdateText();
         }
 
         private void UserHealthPotion_CheckedChanged(object sender, EventArgs e)
         {
-            ShinraEx.Settings.UseHealthPotion = !ShinraEx.Settings.CrPaused ;
+            ShinraEx.Settings.UseHealthPotion = userHealthPotion.Checked;
         }
     }
 }
