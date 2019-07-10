@@ -10765,6 +10765,7 @@
         private Design.CustomCheckDisabled WarriorProvoke;
         private Design.CustomCheckDisabled WarriorLowBlow;
         private Design.CustomCheck WarriorRampart;
+        private Design.CustomCheck userHealthPotion;
         private Design.UserNumeric WarriorRampartPct;
         private Design.CustomGroup WarriorBuffGroup;
         private Design.CustomCheck WarriorBerserk;
