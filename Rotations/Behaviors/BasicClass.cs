@@ -68,7 +68,6 @@ namespace ShinraCo.Rotations
             if (await SummonII()) return true;
             if (await Summon()) return true;
             if (await EnergyDrain()) return true;
-            if (await Aetherflow()) return true;
             // Archer
             if (await Bloodletter()) return true;
             if (await MiserysEnd()) return true;

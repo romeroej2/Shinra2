@@ -1,4 +1,4 @@
-using ShinraCo.Spells.PVP;
+﻿using ShinraCo.Spells.PVP;
 using ShinraCo.Spells.Role;
 
 namespace ShinraCo.Spells.Main
@@ -34,10 +34,10 @@ namespace ShinraCo.Spells.Main
             ID = 165,
             Level = 4,
             GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
+            SpellType = SpellType.Cooldown,
             CastType = CastType.Self
         };
-//done 16230
+
         public Spell Physick { get; } = new Spell
         {
             Name = "Physick",
@@ -47,34 +47,33 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Heal,
             CastType = CastType.Target
         };
-
-        public Spell Aetherflow { get; } = new Spell
-        {
-            Name = "Aetherflow",
-            ID = 166,
-            Level = 6,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        }; 
-
-		public Spell EnergyDrain { get; } = new Spell
-        {
-            Name = "Energy Drain",
-            ID = 167,
-            Level = 6,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Cooldown,
-            CastType = CastType.Target
-        };
-
         public Spell Miasma { get; } = new Spell
         {
             Name = "Miasma",
             ID = 168,
-            Level = 10,
+            Level = 6,
             GCDType = GCDType.On,
             SpellType = SpellType.DoT,
+            CastType = CastType.Target
+        };
+
+        public Spell EgiAssault { get; } = new Spell
+        {
+            Name = "Egi Assault",
+            ID = 16509,
+            Level = 10,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+
+        public Spell Resurrection { get; } = new Spell
+        {
+            Name = "Resurrection",
+            ID = 173,
+            Level = 12,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Heal,
             CastType = CastType.Target
         };
 
@@ -84,27 +83,27 @@ namespace ShinraCo.Spells.Main
             ID = 170,
             Level = 15,
             GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
+            SpellType = SpellType.Cooldown,
             CastType = CastType.Self
         };
 
-        public Spell Sustain { get; } = new Spell
+        public Spell Fester { get; } = new Spell
         {
-            Name = "Sustain",
-            ID = 171,
+            Name = "Fester",
+            ID = 181,
             Level = 18,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Heal,
-            CastType = CastType.Self
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Cooldown,
+            CastType = CastType.Target
         };
 
-        public Spell Resurrection { get; } = new Spell
+        public Spell EnergyDrain { get; } = new Spell
         {
-            Name = "Resurrection",
-            ID = 173,
+            Name = "Energy Drain",
+            ID = 16508,
             Level = 18,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Heal,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Cooldown,
             CastType = CastType.Target
         };
 
@@ -138,25 +137,16 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
-        public Spell Rouse { get; } = new Spell
+        public Spell EgiAssaultII { get; } = new Spell
         {
-            Name = "Rouse",
-            ID = 176,
-            Level = 42,
+            Name = "Egi Assault II",
+            ID = 16512,
+            Level = 40,
             GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
         };
 
-        public Spell ShadowFlare { get; } = new Spell
-        {
-            Name = "Shadow Flare",
-            ID = 179,
-            Level = 50,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Cooldown,
-            CastType = CastType.TargetLocation
-        };
     }
 
     public class SummonerSpells : ArcanistSpells
@@ -166,15 +156,15 @@ namespace ShinraCo.Spells.Main
             Name = "Summon III",
             ID = 180,
             Level = 30,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Buff,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Cooldown,
             CastType = CastType.Self
         };
 
-        public Spell Fester { get; } = new Spell
+        public Spell EnergySiphon { get; } = new Spell
         {
-            Name = "Fester",
-            ID = 181,
+            Name = "Energy Siphon",
+            ID = 16510,
             Level = 35,
             GCDType = GCDType.Off,
             SpellType = SpellType.Cooldown,
@@ -187,17 +177,7 @@ namespace ShinraCo.Spells.Main
             ID = 16511,
             Level = 40,
             GCDType = GCDType.On,
-            SpellType = SpellType.Damage,
-            CastType = CastType.Target
-        };
-
-        public Spell Contagion { get; } = new Spell
-        {
-            Name = "Contagion",
-            ID = 795,
-            Level = 40,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Pet,
+            SpellType = SpellType.AoE,
             CastType = CastType.Target
         };
 
@@ -321,19 +301,9 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
-        public Spell FirebirdTrance { get; } = new Spell
-        {
-            Name = "Firebird Trance",
-            ID = 16549,
-            Level = 72,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };
-
         public Spell FountainOfFire { get; } = new Spell
         {
-            Name = "Fountain of Fire",
+            Name = "Fountain Of Fire",
             ID = 16514,
             Level = 72,
             GCDType = GCDType.On,
@@ -343,40 +313,30 @@ namespace ShinraCo.Spells.Main
 
         public Spell BrandOfPurgatory { get; } = new Spell
         {
-            Name = "Brand of Purgatory",
+            Name = "Brand Of Purgatory",
             ID = 16515,
             Level = 72,
-            GCDType = GCDType.Off,
+            GCDType = GCDType.On,
             SpellType = SpellType.Damage,
             CastType = CastType.Target
         };
 
-        public Spell EverlastingFlight { get; } = new Spell
+        public Spell FirebirdTrance { get; } = new Spell
         {
-            Name = "Everlasting Flight",
-            ID = 16517,
-            Level = 80,
+            Name = "Firebird Trance",
+            ID = 16513,
+            Level = 72,
             GCDType = GCDType.Off,
             SpellType = SpellType.Buff,
             CastType = CastType.Self
         };
 
-        public Spell EnkindlePhoenix { get; } = new Spell
+        public Spell EnkindlePhoenix{ get; } = new Spell
         {
-            Name = "EnkindlePhoenix",
+            Name = "Enkindle Phoenix",
             ID = 16516,
             Level = 80,
             GCDType = GCDType.Off,
-            SpellType = SpellType.Cooldown,
-            CastType = CastType.Target
-        };
-
-        public Spell TriBind { get; } = new Spell
-        {
-            Name = "Tri-Bind",
-            ID = 182,
-            Level = 40,
-            GCDType = GCDType.On,
             SpellType = SpellType.Cooldown,
             CastType = CastType.Target
         };

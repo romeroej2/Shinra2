@@ -66,11 +66,6 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        private async Task<bool> Aetherflow()
-        {
-            return await MySpells.Arcanist.Aetherflow.Cast();
-        }
-
         private async Task<bool> EnergyDrain()
         {
             return await MySpells.Arcanist.EnergyDrain.Cast();

@@ -154,7 +154,7 @@ namespace ShinraCo.Spells.Main
             Level = 76,
             GCDType = GCDType.Off,
             SpellType = SpellType.Buff,
-            CastType = CastType.Self
+            CastType = CastType.Target
         };
 
         public Spell NoMercy { get; } = new Spell

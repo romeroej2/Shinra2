@@ -92,11 +92,11 @@
     <Compile Include="Rotations\Behaviors\Bard.cs" />
     <Compile Include="Rotations\Behaviors\BasicClass.cs" />
     <Compile Include="Rotations\Behaviors\BlackMage.cs" />
-    <Compile Include="Rotations\Behaviors\Dancer - Behaviour.cs" />
+    <Compile Include="Rotations\Behaviors\Dancer.cs" />
     <Compile Include="Rotations\Behaviors\DarkKnight.cs" />
     <Compile Include="Rotations\Behaviors\Default.cs" />
     <Compile Include="Rotations\Behaviors\Dragoon.cs" />
-    <Compile Include="Rotations\Behaviors\Gunbreaker - Behaviour.cs" />
+    <Compile Include="Rotations\Behaviors\Gunbreaker.cs" />
     <Compile Include="Rotations\Behaviors\Machinist.cs" />
     <Compile Include="Rotations\Behaviors\Monk.cs" />
     <Compile Include="Rotations\Behaviors\Ninja.cs" />
@@ -111,11 +111,11 @@
     <Compile Include="Rotations\Methods\Bard.cs" />
     <Compile Include="Rotations\Methods\BasicClass.cs" />
     <Compile Include="Rotations\Methods\BlackMage.cs" />
-    <Compile Include="Rotations\Methods\Dancer - Methods.cs" />
+    <Compile Include="Rotations\Methods\Dancer.cs" />
     <Compile Include="Rotations\Methods\DarkKnight.cs" />
     <Compile Include="Rotations\Methods\Default.cs" />
     <Compile Include="Rotations\Methods\Dragoon.cs" />
-    <Compile Include="Rotations\Methods\Gunbreaker - Methods.cs" />
+    <Compile Include="Rotations\Methods\Gunbreaker.cs" />
     <Compile Include="Rotations\Methods\Machinist.cs" />
     <Compile Include="Rotations\Methods\Monk.cs" />
     <Compile Include="Rotations\Methods\Ninja.cs" />

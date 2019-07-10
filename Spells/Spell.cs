@@ -467,6 +467,9 @@ namespace ShinraCo.Spells
                     case ClassJobType.WhiteMage:
                         if (DataManager.GetSpellData(119).Cooldown.TotalMilliseconds < 1000) return false;
                         break;
+                    case ClassJobType.Dancer:
+                        if (DataManager.GetSpellData(15989).Cooldown.TotalMilliseconds < 1000) return false;
+                        break;
                     case ClassJobType.DarkKnight:
                        // if (DataManager.GetSpellData(3617).Cooldown.TotalMilliseconds < 1000) return false;
                        // break;
@@ -481,6 +484,9 @@ namespace ShinraCo.Spells
                         else if (DataManager.GetSpellData(75).Cooldown.TotalMilliseconds < 1000)
                             return false;
 
+                        break;
+                    case ClassJobType.Gunbreaker:
+                        if (DataManager.GetSpellData(16137).Cooldown.TotalMilliseconds < 1000) return false;
                         break;
                     case ClassJobType.Machinist:
                         if (DataManager.GetSpellData(2866).Cooldown.TotalMilliseconds < 1000) return false;

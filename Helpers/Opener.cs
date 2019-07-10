@@ -354,44 +354,44 @@ namespace ShinraCo
                     break;
 
                 case ClassJobType.Summoner:
-                    if (!ActionManager.HasSpell("Swiftcast"))
-                    {
-                        AbortOpener("Aborting opener as Swiftcast is not set.");
-                        return false;
-                    }
-                    if (PetManager.ActivePetType == PetType.Ifrit_Egi && PetManager.PetMode != PetMode.Sic)
-                    {
-                        if (await Coroutine.Wait(1000, () => PetManager.DoAction("Sic", Me)))
-                        {
-                            Logging.Write(Colors.GreenYellow, @"[ShinraEx] Casting >>> Sic");
-                            return await Coroutine.Wait(3000, () => PetManager.PetMode == PetMode.Sic);
-                        }
-                    }
-                    if (OpenerStep == 1)
-                    {
-                        if (PetManager.ActivePetType == PetType.Garuda_Egi && PetManager.PetMode == PetMode.Obey)
-                        {
-                            if (await Summoner.Contagion.Cast())
-                            {
-                                return true;
-                            }
-                        }
-                        if (Resource.Arcanist.Aetherflow < 3 && Summoner.Aetherflow.Cooldown() > 15000)
-                        {
-                            AbortOpener("Aborting opener due to Aetherflow charges.");
-                            return false;
-                        }
-                    }
-                    if (spell.Name == Summoner.SummonIII.Name)
-                    {
-                        if (!ShinraEx.Settings.SummonerOpenerGaruda || PetManager.ActivePetType == PetType.Ifrit_Egi ||
-                            !Me.HasAura(Summoner.Role.Swiftcast.Name))
-                        {
-                            Debug($"Skipping opener step {OpenerStep} due to Swiftcast/not using Garuda >>> {spell.Name}");
-                            OpenerStep++;
-                            return true;
-                        }
-                    }
+                    //if (!ActionManager.HasSpell("Swiftcast"))
+                    //{
+                    //    AbortOpener("Aborting opener as Swiftcast is not set.");
+                    //    return false;
+                    //}
+                    //if (PetManager.ActivePetType == PetType.Ifrit_Egi && PetManager.PetMode != PetMode.Sic)
+                    //{
+                    //    if (await Coroutine.Wait(1000, () => PetManager.DoAction("Sic", Me)))
+                    //    {
+                    //        Logging.Write(Colors.GreenYellow, @"[ShinraEx] Casting >>> Sic");
+                    //        return await Coroutine.Wait(3000, () => PetManager.PetMode == PetMode.Sic);
+                    //    }
+                    //}
+                    //if (OpenerStep == 1)
+                    //{
+                    //    if (PetManager.ActivePetType == PetType.Garuda_Egi && PetManager.PetMode == PetMode.Obey)
+                    //    {
+                    //        if (await Summoner.Contagion.Cast())
+                    //        {
+                    //            return true;
+                    //        }
+                    //    }
+                    //    if (Resource.Arcanist.Aetherflow < 3 && Summoner.Aetherflow.Cooldown() > 15000)
+                    //    {
+                    //        AbortOpener("Aborting opener due to Aetherflow charges.");
+                    //        return false;
+                    //    }
+                    //}
+                    //if (spell.Name == Summoner.SummonIII.Name)
+                    //{
+                    //    if (!ShinraEx.Settings.SummonerOpenerGaruda || PetManager.ActivePetType == PetType.Ifrit_Egi ||
+                    //        !Me.HasAura(Summoner.Role.Swiftcast.Name))
+                    //    {
+                    //        Debug($"Skipping opener step {OpenerStep} due to Swiftcast/not using Garuda >>> {spell.Name}");
+                    //        OpenerStep++;
+                    //        return true;
+                    //    }
+                    //}
                     if (spell.Name == Summoner.Fester.Name)
                     {
                         if (Resource.Arcanist.Aetherflow > 0 && spell.Cooldown() > 0)
@@ -405,15 +405,22 @@ namespace ShinraCo
                             return true;
                         }
                     }
-                    if (spell.Name == Summoner.DreadwyrmTrance.Name && Resource.Arcanist.AetherAttunement < 3)
+                    if (spell.Name == Summoner.RuinIII.Name)
                     {
-                        await Coroutine.Wait(2000, () => Resource.Arcanist.AetherAttunement == 3);
-                        if (Resource.Arcanist.AetherAttunement < 3)
+                        if (MovementManager.IsMoving)
                         {
-                            AbortOpener("Aborting opener due to Aethertrail Attunement.");
-                            return false;
+                            spell = Summoner.RuinII;
                         }
                     }
+                    //if (spell.Name == Summoner.DreadwyrmTrance.Name && Resource.Arcanist.AetherAttunement < 3)
+                    //{
+                    //    await Coroutine.Wait(2000, () => Resource.Arcanist.AetherAttunement == 3);
+                    //    if (Resource.Arcanist.AetherAttunement < 3)
+                    //    {
+                    //        AbortOpener("Aborting opener due to Aethertrail Attunement.");
+                    //        return false;
+                    //    }
+                    //}
                     break;
 
                 case ClassJobType.Warrior:
