@@ -96,6 +96,7 @@
     <Compile Include="Rotations\Behaviors\DarkKnight.cs" />
     <Compile Include="Rotations\Behaviors\Default.cs" />
     <Compile Include="Rotations\Behaviors\Dragoon.cs" />
+    <Compile Include="Rotations\Behaviors\Gunbreaker.cs" />
     <Compile Include="Rotations\Behaviors\Machinist.cs" />
     <Compile Include="Rotations\Behaviors\Monk.cs" />
     <Compile Include="Rotations\Behaviors\Ninja.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Rotations\Methods\DarkKnight.cs" />
     <Compile Include="Rotations\Methods\Default.cs" />
     <Compile Include="Rotations\Methods\Dragoon.cs" />
+    <Compile Include="Rotations\Methods\Gunbreaker.cs" />
     <Compile Include="Rotations\Methods\Machinist.cs" />
     <Compile Include="Rotations\Methods\Monk.cs" />
     <Compile Include="Rotations\Methods\Ninja.cs" />
@@ -153,6 +155,7 @@
     <Compile Include="Spells\Main\DancerSpells.cs" />
     <Compile Include="Spells\Main\DarkKnightSpells.cs" />
     <Compile Include="Spells\Main\DragoonSpells.cs" />
+    <Compile Include="Spells\Main\GunbreakerSpells.cs" />
     <Compile Include="Spells\Main\MachinistSpells.cs" />
     <Compile Include="Spells\Main\MonkSpells.cs" />
     <Compile Include="Spells\Main\NinjaSpells.cs" />

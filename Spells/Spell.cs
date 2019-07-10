@@ -485,6 +485,9 @@ namespace ShinraCo.Spells
                             return false;
 
                         break;
+                    case ClassJobType.Gunbreaker:
+                        if (DataManager.GetSpellData(16137).Cooldown.TotalMilliseconds < 1000) return false;
+                        break;
                     case ClassJobType.Machinist:
                         if (DataManager.GetSpellData(2866).Cooldown.TotalMilliseconds < 1000) return false;
                         break;
