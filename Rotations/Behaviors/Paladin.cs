@@ -94,8 +94,8 @@ namespace ShinraCo.Rotations
         public override async Task<bool> PreCombatBuff()
         {
             Helpers.Debug("PreCombatBuff...");
-            if (await IronWill()) return true;
-            return await ShinraEx.SummonChocobo();
+            if (await ShinraEx.SummonChocobo()) return true;
+            return await IronWill();
         }
 
         #endregion
