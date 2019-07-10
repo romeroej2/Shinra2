@@ -281,24 +281,6 @@ namespace ShinraCo.Rotations
             }
             return false;
         }
-        /*
-        private async Task<bool> Convalescence()
-        {
-            if (ShinraEx.Settings.WarriorConvalescence && Core.Player.CurrentHealthPercent < ShinraEx.Settings.WarriorConvalescencePct)
-            {
-                return await MySpells.Role.Convalescence.Cast();
-            }
-            return false;
-        }*/
-
-        private async Task<bool> Anticipation()
-        {
-            if (ShinraEx.Settings.WarriorAnticipation && Core.Player.CurrentHealthPercent < ShinraEx.Settings.WarriorAnticipationPct)
-            {
-                return await MySpells.Role.Anticipation.Cast();
-            }
-            return false;
-        }
 
         private async Task<bool> Reprisal()
         {
@@ -308,15 +290,6 @@ namespace ShinraCo.Rotations
             }
             return false;
         }
-        /*
-        private async Task<bool> Awareness()
-        {
-            if (ShinraEx.Settings.WarriorAwareness && Core.Player.CurrentHealthPercent < ShinraEx.Settings.WarriorAwarenessPct)
-            {
-                return await MySpells.Role.Awareness.Cast();
-            }
-            return false;
-        }*/
 
         #endregion
 

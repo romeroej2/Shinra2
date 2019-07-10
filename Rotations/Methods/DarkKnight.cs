@@ -332,25 +332,6 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        /*
-        private async Task<bool> Convalescence()
-        {
-            if (ShinraEx.Settings.DarkKnightConvalescence && Core.Player.CurrentHealthPercent < ShinraEx.Settings.DarkKnightConvalescencePct)
-            {
-                return await MySpells.Role.Convalescence.Cast();
-            }
-            return false;
-        }*/
-
-        private async Task<bool> Anticipation()
-        {
-            if (ShinraEx.Settings.DarkKnightAnticipation && Core.Player.CurrentHealthPercent < ShinraEx.Settings.DarkKnightAnticipationPct)
-            {
-                return await MySpells.Role.Anticipation.Cast();
-            }
-            return false;
-        }
-
         private async Task<bool> Reprisal()
         {
             if (ShinraEx.Settings.DarkKnightReprisal)

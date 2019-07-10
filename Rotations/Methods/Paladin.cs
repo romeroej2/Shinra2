@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using ff14bot;
 using ff14bot.Managers;
 using ShinraCo.Settings;
@@ -18,17 +18,11 @@ namespace ShinraCo.Rotations
             return await MySpells.FastBlade.Cast();
         }
 
-
         private async Task<bool> RiotBlade()
         {
             if (ActionManager.LastSpell.Name == MySpells.FastBlade.Name)
             {
-                if (ShinraEx.Settings.TankMode == TankModes.DPS && ActionManager.HasSpell(MySpells.RoyalAuthority.Name) ||
-                    ShinraEx.Settings.PaladinGoringBlade && ActionManager.HasSpell(MySpells.GoringBlade.Name) &&
-                    !Core.Player.CurrentTarget.HasAura(MySpells.GoringBlade.Name, true, 4000) || Core.Player.CurrentManaPercent < 40)
-                {
-                    return await MySpells.RiotBlade.Cast();
-                }
+                return await MySpells.RiotBlade.Cast();
             }
             return false;
         }
@@ -36,7 +30,7 @@ namespace ShinraCo.Rotations
         private async Task<bool> GoringBlade()
         {
             if (ActionManager.LastSpell.Name == MySpells.RiotBlade.Name &&
-                !Core.Player.CurrentTarget.HasAura(MySpells.GoringBlade.Name, true, 4000))
+                !Core.Player.CurrentTarget.HasAura(MySpells.GoringBlade.Name, true, 2100))
             {
                 return await MySpells.GoringBlade.Cast();
             }
@@ -52,20 +46,50 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        private async Task<bool> RageOfHalone()
+        {
+            if (ActionManager.LastSpell.Name == MySpells.RiotBlade.Name)
+            {
+                return await MySpells.RageOfHalone.Cast();
+            }
+            return false;
+        }
+        
         private async Task<bool> HolySpirit()
         {
-            if (ShinraEx.Settings.TankMode != TankModes.DPS || MovementManager.IsMoving) return false;
+            if (ShinraEx.Settings.TankMode == TankModes.Enmity || MovementManager.IsMoving) return false;
 
-            if (ShinraEx.LastSpell.Name == MySpells.Requiescat.Name || Core.Player.HasAura(MySpells.Requiescat.Name, true, 1000))
+            if (ShinraEx.LastSpell.Name == MySpells.Requiescat.Name ||
+                Core.Player.HasAura(MySpells.Requiescat.Name, true, 1200))
             {
                 return await MySpells.HolySpirit.Cast();
             }
             return false;
         }
-
+        
+        private async Task<bool> Atonement()
+        {
+            if (ActionManager.LastSpell.Name == MySpells.RoyalAuthority.Name || 
+                Core.Player.HasAura("Sword Oath", true))
+            {
+                return await MySpells.Atonement.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> Confiteor()
+        {
+            if (ShinraEx.LastSpell.Name == MySpells.Requiescat.Name ||
+                Core.Player.HasAura(MySpells.Requiescat.Name, true, 1200))
+            {
+                return await MySpells.Confiteor.Cast();
+            }
+            return false;
+        }
+        
         private async Task<bool> ShieldLob()
         {
-            if (Core.Player.TargetDistance(10))
+            if (Core.Player.TargetDistance(10) && ShinraEx.Settings.TankMode == TankModes.Enmity)
             {
                 return await MySpells.ShieldLob.Cast();
             }
@@ -76,16 +100,39 @@ namespace ShinraCo.Rotations
 
         #region AoE
 
-
         private async Task<bool> TotalEclipse()
         {
-            if (ShinraEx.Settings.PaladinTotalEclipse && Core.Player.CurrentTPPercent > 40)
+            var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
+            
+            if (ShinraEx.Settings.PaladinTotalEclipse && Helpers.EnemiesNearTarget(5) >= count)
             {
                 return await MySpells.TotalEclipse.Cast();
             }
             return false;
         }
 
+        private async Task<bool> Prominence()
+        {
+            var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
+            
+            if (ShinraEx.Settings.PaladinProminence && Core.Player.CurrentManaPercent < 30 && Helpers.EnemiesNearTarget(5) >= count)
+            {
+                return await MySpells.Prominence.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> HolyCircle()
+        {
+            var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
+            
+            if (ShinraEx.Settings.PaladinHolyCircle && Core.Player.CurrentManaPercent < 20 && Helpers.EnemiesNearTarget(5) >= count)
+            {
+                return await MySpells.HolyCircle.Cast();
+            }
+            return false;
+        }
+        
         #endregion
 
         #region Cooldown
@@ -130,6 +177,16 @@ namespace ShinraCo.Rotations
 
         #region Buff
 
+        private async Task<bool> IronWill()
+        {
+            if (ShinraEx.Settings.TankMode != TankModes.DPS && Core.Player.HasAura(MySpells.IronWill.Name))
+            {
+                return false;
+            }
+
+            return await MySpells.IronWill.Cast();
+        }
+        
         private async Task<bool> FightOrFlight()
         {
             if (!ShinraEx.Settings.PaladinFightOrFlight || ShinraEx.LastSpell.Name == MySpells.Requiescat.Name ||
@@ -150,15 +207,6 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        private async Task<bool> Bulwark()
-        {
-            if (ShinraEx.Settings.PaladinBulwark && Core.Player.CurrentHealthPercent < ShinraEx.Settings.PaladinBulwarkPct)
-            {
-                return await MySpells.Bulwark.Cast();
-            }
-            return false;
-        }
-
         private async Task<bool> HallowedGround()
         {
             if (ShinraEx.Settings.PaladinHallowedGround && Core.Player.CurrentHealthPercent < ShinraEx.Settings.PaladinHallowedGroundPct)
@@ -172,7 +220,7 @@ namespace ShinraCo.Rotations
         {
             if (ShinraEx.Settings.PaladinSheltron && !Core.Player.HasAura(MySpells.Sheltron.Name))
             {
-                if (OathValue == 100 || OathValue > 50 && Core.Player.CurrentManaPercent < 70)
+                if (OathValue == 100 || OathValue > 50)
                 {
                     return await MySpells.Sheltron.Cast();
                 }
@@ -212,35 +260,6 @@ namespace ShinraCo.Rotations
 
         #endregion
 
-        #region Oath
-
-        private async Task<bool> ShieldOath()
-        {
-            if (ShinraEx.Settings.PaladinOath == PaladinOaths.Shield || ShinraEx.Settings.PaladinOath == PaladinOaths.Sword &&
-                !ActionManager.HasSpell(MySpells.SwordOath.Name))
-            {
-                if (!Core.Player.HasAura(MySpells.ShieldOath.Name))
-                {
-                    return await MySpells.ShieldOath.Cast();
-                }
-            }
-            return false;
-        }
-
-        private async Task<bool> SwordOath()
-        {
-            if (ShinraEx.Settings.PaladinOath == PaladinOaths.Sword)
-            {
-                if (!Core.Player.HasAura(MySpells.SwordOath.Name))
-                {
-                    return await MySpells.SwordOath.Cast();
-                }
-            }
-            return false;
-        }
-
-        #endregion
-
         #region Role
 
         private async Task<bool> Rampart()
@@ -248,24 +267,6 @@ namespace ShinraCo.Rotations
             if (ShinraEx.Settings.PaladinRampart && Core.Player.CurrentHealthPercent < ShinraEx.Settings.PaladinRampartPct)
             {
                 return await MySpells.Role.Rampart.Cast();
-            }
-            return false;
-        }
-        /*
-        private async Task<bool> Convalescence()
-        {
-            if (ShinraEx.Settings.PaladinConvalescence && Core.Player.CurrentHealthPercent < ShinraEx.Settings.PaladinConvalescencePct)
-            {
-                return await MySpells.Role.Convalescence.Cast();
-            }
-            return false;
-        }*/
-
-        private async Task<bool> Anticipation()
-        {
-            if (ShinraEx.Settings.PaladinAnticipation && Core.Player.CurrentHealthPercent < ShinraEx.Settings.PaladinAnticipationPct)
-            {
-                return await MySpells.Role.Anticipation.Cast();
             }
             return false;
         }
@@ -278,17 +279,7 @@ namespace ShinraCo.Rotations
             }
             return false;
         }
-
-        /*
-        private async Task<bool> Awareness()
-        {
-            if (ShinraEx.Settings.PaladinAwareness && Core.Player.CurrentHealthPercent < ShinraEx.Settings.PaladinAwarenessPct)
-            {
-                return await MySpells.Role.Awareness.Cast();
-            }
-            return false;
-        }*/
-
+        
         #endregion
 
         #region PVP

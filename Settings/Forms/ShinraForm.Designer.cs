@@ -568,17 +568,11 @@
             this.DarkKnightDarkside = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.DarkKnightGrit = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.DarkKnightRoleGroup = new ShinraCo.Settings.Forms.Design.CustomGroup();
-            this.DarkKnightAwarenessPct = new ShinraCo.Settings.Forms.Design.UserNumeric();
-            this.DarkKnightAnticipationPct = new ShinraCo.Settings.Forms.Design.UserNumeric();
-            this.DarkKnightConvalescencePct = new ShinraCo.Settings.Forms.Design.UserNumeric();
             this.DarkKnightRampartPct = new ShinraCo.Settings.Forms.Design.UserNumeric();
             this.DarkKnightShirk = new ShinraCo.Settings.Forms.Design.CustomCheckDisabled();
-            this.DarkKnightUltimatum = new ShinraCo.Settings.Forms.Design.CustomCheckDisabled();
             this.DarkKnightInterject = new ShinraCo.Settings.Forms.Design.CustomCheckDisabled();
-            this.DarkKnightAwareness = new ShinraCo.Settings.Forms.Design.CustomCheck();
+            this.DarkKnightArmsLength = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.DarkKnightReprisal = new ShinraCo.Settings.Forms.Design.CustomCheck();
-            this.DarkKnightAnticipation = new ShinraCo.Settings.Forms.Design.CustomCheck();
-            this.DarkKnightConvalescence = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.DarkKnightProvoke = new ShinraCo.Settings.Forms.Design.CustomCheckDisabled();
             this.DarkKnightLowBlow = new ShinraCo.Settings.Forms.Design.CustomCheckDisabled();
             this.DarkKnightRampart = new ShinraCo.Settings.Forms.Design.CustomCheck();
@@ -586,42 +580,30 @@
             this.PaladinMiscGroup = new ShinraCo.Settings.Forms.Design.CustomGroup();
             this.PaladinPotion = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.PaladinOpener = new ShinraCo.Settings.Forms.Design.CustomCheck();
-            this.PaladinOathGroup = new ShinraCo.Settings.Forms.Design.CustomGroup();
-            this.PaladinOath = new ShinraCo.Settings.Forms.Design.CustomCombo();
             this.PaladinHealGroup = new ShinraCo.Settings.Forms.Design.CustomGroup();
             this.PaladinClemencyPct = new ShinraCo.Settings.Forms.Design.UserNumeric();
             this.PaladinClemency = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.PaladinBuffGroup = new ShinraCo.Settings.Forms.Design.CustomGroup();
             this.PaladinSheltron = new ShinraCo.Settings.Forms.Design.CustomCheck();
-            this.PaladinBulwarkPct = new ShinraCo.Settings.Forms.Design.UserNumeric();
             this.PaladinSentinelPct = new ShinraCo.Settings.Forms.Design.UserNumeric();
             this.PaladinHallowedGroundPct = new ShinraCo.Settings.Forms.Design.UserNumeric();
             this.PaladinHallowedGround = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.PaladinSentinel = new ShinraCo.Settings.Forms.Design.CustomCheck();
-            this.PaladinBulwark = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.PaladinFightOrFlight = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.PaladinAoEGroup = new ShinraCo.Settings.Forms.Design.CustomGroup();
+            this.PaladinHolyCircle = new ShinraCo.Settings.Forms.Design.CustomCheck();
+            this.PaladinProminence = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.PaladinTotalEclipse = new ShinraCo.Settings.Forms.Design.CustomCheck();
-            this.PaladinFlash = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.PaladinCooldownGroup = new ShinraCo.Settings.Forms.Design.CustomGroup();
             this.PaladinRequiescat = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.PaladinCircleOfScorn = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.PaladinSpiritsWithin = new ShinraCo.Settings.Forms.Design.CustomCheck();
-            this.PaladinShieldSwipe = new ShinraCo.Settings.Forms.Design.CustomCheck();
-            this.PaladinDamageGroup = new ShinraCo.Settings.Forms.Design.CustomGroup();
-            this.PaladinGoringBlade = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.PaladinRoleGroup = new ShinraCo.Settings.Forms.Design.CustomGroup();
-            this.PaladinAwarenessPct = new ShinraCo.Settings.Forms.Design.UserNumeric();
-            this.PaladinAnticipationPct = new ShinraCo.Settings.Forms.Design.UserNumeric();
-            this.PaladinConvalescencePct = new ShinraCo.Settings.Forms.Design.UserNumeric();
             this.PaladinRampartPct = new ShinraCo.Settings.Forms.Design.UserNumeric();
             this.PaladinShirk = new ShinraCo.Settings.Forms.Design.CustomCheckDisabled();
-            this.PaladinUltimatum = new ShinraCo.Settings.Forms.Design.CustomCheckDisabled();
             this.PaladinInterject = new ShinraCo.Settings.Forms.Design.CustomCheckDisabled();
-            this.PaladinAwareness = new ShinraCo.Settings.Forms.Design.CustomCheck();
+            this.PaladinArmsLength = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.PaladinReprisal = new ShinraCo.Settings.Forms.Design.CustomCheck();
-            this.PaladinAnticipation = new ShinraCo.Settings.Forms.Design.CustomCheck();
-            this.PaladinConvalescence = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.PaladinProvoke = new ShinraCo.Settings.Forms.Design.CustomCheckDisabled();
             this.PaladinLowBlow = new ShinraCo.Settings.Forms.Design.CustomCheckDisabled();
             this.PaladinRampart = new ShinraCo.Settings.Forms.Design.CustomCheck();
@@ -659,17 +641,11 @@
             this.WarriorSteelCyclone = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.WarriorOverpower = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.WarriorRoleGroup = new ShinraCo.Settings.Forms.Design.CustomGroup();
-            this.WarriorAwarenessPct = new ShinraCo.Settings.Forms.Design.UserNumeric();
-            this.WarriorAnticipationPct = new ShinraCo.Settings.Forms.Design.UserNumeric();
-            this.WarriorConvalescencePct = new ShinraCo.Settings.Forms.Design.UserNumeric();
             this.WarriorRampartPct = new ShinraCo.Settings.Forms.Design.UserNumeric();
             this.WarriorShirk = new ShinraCo.Settings.Forms.Design.CustomCheckDisabled();
-            this.WarriorUltimatum = new ShinraCo.Settings.Forms.Design.CustomCheckDisabled();
             this.WarriorInterject = new ShinraCo.Settings.Forms.Design.CustomCheckDisabled();
-            this.WarriorAwareness = new ShinraCo.Settings.Forms.Design.CustomCheck();
+            this.WarriorArmsLength = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.WarriorReprisal = new ShinraCo.Settings.Forms.Design.CustomCheck();
-            this.WarriorAnticipation = new ShinraCo.Settings.Forms.Design.CustomCheck();
-            this.WarriorConvalescence = new ShinraCo.Settings.Forms.Design.CustomCheck();
             this.WarriorProvoke = new ShinraCo.Settings.Forms.Design.CustomCheckDisabled();
             this.WarriorLowBlow = new ShinraCo.Settings.Forms.Design.CustomCheckDisabled();
             this.WarriorRampart = new ShinraCo.Settings.Forms.Design.CustomCheck();
@@ -787,12 +763,10 @@
             this.DarkKnightRoleGroup.SuspendLayout();
             this.pgePaladin.SuspendLayout();
             this.PaladinMiscGroup.SuspendLayout();
-            this.PaladinOathGroup.SuspendLayout();
             this.PaladinHealGroup.SuspendLayout();
             this.PaladinBuffGroup.SuspendLayout();
             this.PaladinAoEGroup.SuspendLayout();
             this.PaladinCooldownGroup.SuspendLayout();
-            this.PaladinDamageGroup.SuspendLayout();
             this.PaladinRoleGroup.SuspendLayout();
             this.pgeWarrior.SuspendLayout();
             this.WarriorMiscGroup.SuspendLayout();
@@ -9101,17 +9075,11 @@
             // 
             // DarkKnightRoleGroup
             // 
-            this.DarkKnightRoleGroup.Controls.Add(this.DarkKnightAwarenessPct);
-            this.DarkKnightRoleGroup.Controls.Add(this.DarkKnightAnticipationPct);
-            this.DarkKnightRoleGroup.Controls.Add(this.DarkKnightConvalescencePct);
             this.DarkKnightRoleGroup.Controls.Add(this.DarkKnightRampartPct);
             this.DarkKnightRoleGroup.Controls.Add(this.DarkKnightShirk);
-            this.DarkKnightRoleGroup.Controls.Add(this.DarkKnightUltimatum);
             this.DarkKnightRoleGroup.Controls.Add(this.DarkKnightInterject);
-            this.DarkKnightRoleGroup.Controls.Add(this.DarkKnightAwareness);
+            this.DarkKnightRoleGroup.Controls.Add(this.DarkKnightArmsLength);
             this.DarkKnightRoleGroup.Controls.Add(this.DarkKnightReprisal);
-            this.DarkKnightRoleGroup.Controls.Add(this.DarkKnightAnticipation);
-            this.DarkKnightRoleGroup.Controls.Add(this.DarkKnightConvalescence);
             this.DarkKnightRoleGroup.Controls.Add(this.DarkKnightProvoke);
             this.DarkKnightRoleGroup.Controls.Add(this.DarkKnightLowBlow);
             this.DarkKnightRoleGroup.Controls.Add(this.DarkKnightRampart);
@@ -9119,41 +9087,10 @@
             this.DarkKnightRoleGroup.Location = new System.Drawing.Point(17, 7);
             this.DarkKnightRoleGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DarkKnightRoleGroup.Name = "DarkKnightRoleGroup";
-            this.DarkKnightRoleGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.DarkKnightRoleGroup.Size = new System.Drawing.Size(273, 308);
+            this.DarkKnightRoleGroup.Size = new System.Drawing.Size(205, 180);
             this.DarkKnightRoleGroup.TabIndex = 0;
             this.DarkKnightRoleGroup.TabStop = false;
             this.DarkKnightRoleGroup.Text = "Role";
-            // 
-            // DarkKnightAwarenessPct
-            // 
-            this.DarkKnightAwarenessPct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.DarkKnightAwarenessPct.Location = new System.Drawing.Point(147, 190);
-            this.DarkKnightAwarenessPct.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.DarkKnightAwarenessPct.Name = "DarkKnightAwarenessPct";
-            this.DarkKnightAwarenessPct.Size = new System.Drawing.Size(119, 27);
-            this.DarkKnightAwarenessPct.TabIndex = 28;
-            this.DarkKnightAwarenessPct.ValueChanged += new System.EventHandler(this.DarkKnightAwarenessPct_ValueChanged);
-            // 
-            // DarkKnightAnticipationPct
-            // 
-            this.DarkKnightAnticipationPct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.DarkKnightAnticipationPct.Location = new System.Drawing.Point(147, 133);
-            this.DarkKnightAnticipationPct.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.DarkKnightAnticipationPct.Name = "DarkKnightAnticipationPct";
-            this.DarkKnightAnticipationPct.Size = new System.Drawing.Size(119, 27);
-            this.DarkKnightAnticipationPct.TabIndex = 27;
-            this.DarkKnightAnticipationPct.ValueChanged += new System.EventHandler(this.DarkKnightAnticipationPct_ValueChanged);
-            // 
-            // DarkKnightConvalescencePct
-            // 
-            this.DarkKnightConvalescencePct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.DarkKnightConvalescencePct.Location = new System.Drawing.Point(147, 105);
-            this.DarkKnightConvalescencePct.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.DarkKnightConvalescencePct.Name = "DarkKnightConvalescencePct";
-            this.DarkKnightConvalescencePct.Size = new System.Drawing.Size(119, 27);
-            this.DarkKnightConvalescencePct.TabIndex = 26;
-            this.DarkKnightConvalescencePct.ValueChanged += new System.EventHandler(this.DarkKnightConvalescencePct_ValueChanged);
             // 
             // DarkKnightRampartPct
             // 
@@ -9172,30 +9109,13 @@
             this.DarkKnightShirk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DarkKnightShirk.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.DarkKnightShirk.ForeColor = System.Drawing.Color.DimGray;
-            this.DarkKnightShirk.Location = new System.Drawing.Point(8, 274);
-            this.DarkKnightShirk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DarkKnightShirk.Location = new System.Drawing.Point(6, 154);
             this.DarkKnightShirk.Name = "DarkKnightShirk";
             this.DarkKnightShirk.Size = new System.Drawing.Size(57, 23);
             this.DarkKnightShirk.TabIndex = 24;
             this.DarkKnightShirk.TabStop = false;
             this.DarkKnightShirk.Text = "Shirk";
             this.DarkKnightShirk.UseVisualStyleBackColor = true;
-            // 
-            // DarkKnightUltimatum
-            // 
-            this.DarkKnightUltimatum.AutoCheck = false;
-            this.DarkKnightUltimatum.AutoSize = true;
-            this.DarkKnightUltimatum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DarkKnightUltimatum.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.DarkKnightUltimatum.ForeColor = System.Drawing.Color.DimGray;
-            this.DarkKnightUltimatum.Location = new System.Drawing.Point(8, 246);
-            this.DarkKnightUltimatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.DarkKnightUltimatum.Name = "DarkKnightUltimatum";
-            this.DarkKnightUltimatum.Size = new System.Drawing.Size(92, 23);
-            this.DarkKnightUltimatum.TabIndex = 23;
-            this.DarkKnightUltimatum.TabStop = false;
-            this.DarkKnightUltimatum.Text = "Ultimatum";
-            this.DarkKnightUltimatum.UseVisualStyleBackColor = true;
             // 
             // DarkKnightInterject
             // 
@@ -9204,8 +9124,7 @@
             this.DarkKnightInterject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DarkKnightInterject.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.DarkKnightInterject.ForeColor = System.Drawing.Color.DimGray;
-            this.DarkKnightInterject.Location = new System.Drawing.Point(8, 218);
-            this.DarkKnightInterject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DarkKnightInterject.Location = new System.Drawing.Point(6, 85);
             this.DarkKnightInterject.Name = "DarkKnightInterject";
             this.DarkKnightInterject.Size = new System.Drawing.Size(77, 23);
             this.DarkKnightInterject.TabIndex = 22;
@@ -9213,21 +9132,20 @@
             this.DarkKnightInterject.Text = "Interject";
             this.DarkKnightInterject.UseVisualStyleBackColor = true;
             // 
-            // DarkKnightAwareness
+            // DarkKnightArmsLength
             // 
-            this.DarkKnightAwareness.AutoSize = true;
-            this.DarkKnightAwareness.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DarkKnightAwareness.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.DarkKnightAwareness.ForeColor = System.Drawing.Color.White;
-            this.DarkKnightAwareness.Location = new System.Drawing.Point(8, 190);
-            this.DarkKnightAwareness.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.DarkKnightAwareness.Name = "DarkKnightAwareness";
-            this.DarkKnightAwareness.Size = new System.Drawing.Size(92, 23);
-            this.DarkKnightAwareness.TabIndex = 21;
-            this.DarkKnightAwareness.TabStop = false;
-            this.DarkKnightAwareness.Text = "Awareness";
-            this.DarkKnightAwareness.UseVisualStyleBackColor = true;
-            this.DarkKnightAwareness.CheckedChanged += new System.EventHandler(this.DarkKnightAwareness_CheckedChanged);
+            this.DarkKnightArmsLength.AutoSize = true;
+            this.DarkKnightArmsLength.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DarkKnightArmsLength.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.DarkKnightArmsLength.ForeColor = System.Drawing.Color.White;
+            this.DarkKnightArmsLength.Location = new System.Drawing.Point(6, 131);
+            this.DarkKnightArmsLength.Name = "DarkKnightArmsLength";
+            this.DarkKnightArmsLength.Size = new System.Drawing.Size(90, 17);
+            this.DarkKnightArmsLength.TabIndex = 21;
+            this.DarkKnightArmsLength.TabStop = false;
+            this.DarkKnightArmsLength.Text = "Arm\'s Length";
+            this.DarkKnightArmsLength.UseVisualStyleBackColor = true;
+            this.DarkKnightArmsLength.CheckedChanged += new System.EventHandler(this.DarkKnightArmsLength_CheckedChanged);
             // 
             // DarkKnightReprisal
             // 
@@ -9235,8 +9153,7 @@
             this.DarkKnightReprisal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DarkKnightReprisal.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.DarkKnightReprisal.ForeColor = System.Drawing.Color.White;
-            this.DarkKnightReprisal.Location = new System.Drawing.Point(8, 161);
-            this.DarkKnightReprisal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DarkKnightReprisal.Location = new System.Drawing.Point(6, 108);
             this.DarkKnightReprisal.Name = "DarkKnightReprisal";
             this.DarkKnightReprisal.Size = new System.Drawing.Size(74, 23);
             this.DarkKnightReprisal.TabIndex = 20;
@@ -9244,38 +9161,6 @@
             this.DarkKnightReprisal.Text = "Reprisal";
             this.DarkKnightReprisal.UseVisualStyleBackColor = true;
             this.DarkKnightReprisal.CheckedChanged += new System.EventHandler(this.DarkKnightReprisal_CheckedChanged);
-            // 
-            // DarkKnightAnticipation
-            // 
-            this.DarkKnightAnticipation.AutoSize = true;
-            this.DarkKnightAnticipation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DarkKnightAnticipation.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.DarkKnightAnticipation.ForeColor = System.Drawing.Color.White;
-            this.DarkKnightAnticipation.Location = new System.Drawing.Point(8, 133);
-            this.DarkKnightAnticipation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.DarkKnightAnticipation.Name = "DarkKnightAnticipation";
-            this.DarkKnightAnticipation.Size = new System.Drawing.Size(100, 23);
-            this.DarkKnightAnticipation.TabIndex = 19;
-            this.DarkKnightAnticipation.TabStop = false;
-            this.DarkKnightAnticipation.Text = "Anticipation";
-            this.DarkKnightAnticipation.UseVisualStyleBackColor = true;
-            this.DarkKnightAnticipation.CheckedChanged += new System.EventHandler(this.DarkKnightAnticipation_CheckedChanged);
-            // 
-            // DarkKnightConvalescence
-            // 
-            this.DarkKnightConvalescence.AutoSize = true;
-            this.DarkKnightConvalescence.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DarkKnightConvalescence.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.DarkKnightConvalescence.ForeColor = System.Drawing.Color.White;
-            this.DarkKnightConvalescence.Location = new System.Drawing.Point(8, 105);
-            this.DarkKnightConvalescence.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.DarkKnightConvalescence.Name = "DarkKnightConvalescence";
-            this.DarkKnightConvalescence.Size = new System.Drawing.Size(116, 23);
-            this.DarkKnightConvalescence.TabIndex = 18;
-            this.DarkKnightConvalescence.TabStop = false;
-            this.DarkKnightConvalescence.Text = "Convalescence";
-            this.DarkKnightConvalescence.UseVisualStyleBackColor = true;
-            this.DarkKnightConvalescence.CheckedChanged += new System.EventHandler(this.DarkKnightConvalescence_CheckedChanged);
             // 
             // DarkKnightProvoke
             // 
@@ -9329,12 +9214,10 @@
             // 
             this.pgePaladin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.pgePaladin.Controls.Add(this.PaladinMiscGroup);
-            this.pgePaladin.Controls.Add(this.PaladinOathGroup);
             this.pgePaladin.Controls.Add(this.PaladinHealGroup);
             this.pgePaladin.Controls.Add(this.PaladinBuffGroup);
             this.pgePaladin.Controls.Add(this.PaladinAoEGroup);
             this.pgePaladin.Controls.Add(this.PaladinCooldownGroup);
-            this.pgePaladin.Controls.Add(this.PaladinDamageGroup);
             this.pgePaladin.Controls.Add(this.PaladinRoleGroup);
             this.pgePaladin.Location = new System.Drawing.Point(104, 4);
             this.pgePaladin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -9350,8 +9233,7 @@
             this.PaladinMiscGroup.Controls.Add(this.PaladinPotion);
             this.PaladinMiscGroup.Controls.Add(this.PaladinOpener);
             this.PaladinMiscGroup.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.PaladinMiscGroup.Location = new System.Drawing.Point(459, 242);
-            this.PaladinMiscGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PaladinMiscGroup.Location = new System.Drawing.Point(572, 6);
             this.PaladinMiscGroup.Name = "PaladinMiscGroup";
             this.PaladinMiscGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PaladinMiscGroup.Size = new System.Drawing.Size(125, 81);
@@ -9391,45 +9273,12 @@
             this.PaladinOpener.UseVisualStyleBackColor = true;
             this.PaladinOpener.CheckedChanged += new System.EventHandler(this.PaladinOpener_CheckedChanged);
             // 
-            // PaladinOathGroup
-            // 
-            this.PaladinOathGroup.Controls.Add(this.PaladinOath);
-            this.PaladinOathGroup.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.PaladinOathGroup.Location = new System.Drawing.Point(299, 303);
-            this.PaladinOathGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PaladinOathGroup.Name = "PaladinOathGroup";
-            this.PaladinOathGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PaladinOathGroup.Size = new System.Drawing.Size(136, 53);
-            this.PaladinOathGroup.TabIndex = 6;
-            this.PaladinOathGroup.TabStop = false;
-            this.PaladinOathGroup.Text = "Oath";
-            // 
-            // PaladinOath
-            // 
-            this.PaladinOath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.PaladinOath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PaladinOath.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.PaladinOath.ForeColor = System.Drawing.Color.White;
-            this.PaladinOath.FormattingEnabled = true;
-            this.PaladinOath.Items.AddRange(new object[] {
-            "None",
-            "Shield",
-            "Sword"});
-            this.PaladinOath.Location = new System.Drawing.Point(8, 20);
-            this.PaladinOath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PaladinOath.Name = "PaladinOath";
-            this.PaladinOath.Size = new System.Drawing.Size(119, 27);
-            this.PaladinOath.TabIndex = 1;
-            this.PaladinOath.TabStop = false;
-            this.PaladinOath.SelectedValueChanged += new System.EventHandler(this.PaladinOath_SelectedValueChanged);
-            // 
             // PaladinHealGroup
             // 
             this.PaladinHealGroup.Controls.Add(this.PaladinClemencyPct);
             this.PaladinHealGroup.Controls.Add(this.PaladinClemency);
             this.PaladinHealGroup.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.PaladinHealGroup.Location = new System.Drawing.Point(459, 181);
-            this.PaladinHealGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PaladinHealGroup.Location = new System.Drawing.Point(344, 123);
             this.PaladinHealGroup.Name = "PaladinHealGroup";
             this.PaladinHealGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PaladinHealGroup.Size = new System.Drawing.Size(240, 54);
@@ -9466,19 +9315,16 @@
             // PaladinBuffGroup
             // 
             this.PaladinBuffGroup.Controls.Add(this.PaladinSheltron);
-            this.PaladinBuffGroup.Controls.Add(this.PaladinBulwarkPct);
             this.PaladinBuffGroup.Controls.Add(this.PaladinSentinelPct);
             this.PaladinBuffGroup.Controls.Add(this.PaladinHallowedGroundPct);
             this.PaladinBuffGroup.Controls.Add(this.PaladinHallowedGround);
             this.PaladinBuffGroup.Controls.Add(this.PaladinSentinel);
-            this.PaladinBuffGroup.Controls.Add(this.PaladinBulwark);
             this.PaladinBuffGroup.Controls.Add(this.PaladinFightOrFlight);
             this.PaladinBuffGroup.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.PaladinBuffGroup.Location = new System.Drawing.Point(459, 7);
             this.PaladinBuffGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PaladinBuffGroup.Name = "PaladinBuffGroup";
-            this.PaladinBuffGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PaladinBuffGroup.Size = new System.Drawing.Size(296, 166);
+            this.PaladinBuffGroup.Size = new System.Drawing.Size(222, 111);
             this.PaladinBuffGroup.TabIndex = 4;
             this.PaladinBuffGroup.TabStop = false;
             this.PaladinBuffGroup.Text = "Buff";
@@ -9489,8 +9335,7 @@
             this.PaladinSheltron.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PaladinSheltron.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.PaladinSheltron.ForeColor = System.Drawing.Color.White;
-            this.PaladinSheltron.Location = new System.Drawing.Point(8, 133);
-            this.PaladinSheltron.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PaladinSheltron.Location = new System.Drawing.Point(6, 85);
             this.PaladinSheltron.Name = "PaladinSheltron";
             this.PaladinSheltron.Size = new System.Drawing.Size(78, 23);
             this.PaladinSheltron.TabIndex = 0;
@@ -9499,21 +9344,11 @@
             this.PaladinSheltron.UseVisualStyleBackColor = true;
             this.PaladinSheltron.CheckedChanged += new System.EventHandler(this.PaladinSheltron_CheckedChanged);
             // 
-            // PaladinBulwarkPct
-            // 
-            this.PaladinBulwarkPct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.PaladinBulwarkPct.Location = new System.Drawing.Point(169, 48);
-            this.PaladinBulwarkPct.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.PaladinBulwarkPct.Name = "PaladinBulwarkPct";
-            this.PaladinBulwarkPct.Size = new System.Drawing.Size(119, 27);
-            this.PaladinBulwarkPct.TabIndex = 6;
-            this.PaladinBulwarkPct.ValueChanged += new System.EventHandler(this.PaladinBulwarkPct_ValueChanged);
-            // 
             // PaladinSentinelPct
             // 
             this.PaladinSentinelPct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.PaladinSentinelPct.Location = new System.Drawing.Point(169, 76);
-            this.PaladinSentinelPct.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.PaladinSentinelPct.Location = new System.Drawing.Point(127, 39);
+            this.PaladinSentinelPct.Margin = new System.Windows.Forms.Padding(4);
             this.PaladinSentinelPct.Name = "PaladinSentinelPct";
             this.PaladinSentinelPct.Size = new System.Drawing.Size(119, 27);
             this.PaladinSentinelPct.TabIndex = 5;
@@ -9522,8 +9357,8 @@
             // PaladinHallowedGroundPct
             // 
             this.PaladinHallowedGroundPct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.PaladinHallowedGroundPct.Location = new System.Drawing.Point(169, 105);
-            this.PaladinHallowedGroundPct.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.PaladinHallowedGroundPct.Location = new System.Drawing.Point(127, 62);
+            this.PaladinHallowedGroundPct.Margin = new System.Windows.Forms.Padding(4);
             this.PaladinHallowedGroundPct.Name = "PaladinHallowedGroundPct";
             this.PaladinHallowedGroundPct.Size = new System.Drawing.Size(119, 27);
             this.PaladinHallowedGroundPct.TabIndex = 4;
@@ -9535,8 +9370,7 @@
             this.PaladinHallowedGround.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PaladinHallowedGround.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.PaladinHallowedGround.ForeColor = System.Drawing.Color.White;
-            this.PaladinHallowedGround.Location = new System.Drawing.Point(8, 105);
-            this.PaladinHallowedGround.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PaladinHallowedGround.Location = new System.Drawing.Point(6, 62);
             this.PaladinHallowedGround.Name = "PaladinHallowedGround";
             this.PaladinHallowedGround.Size = new System.Drawing.Size(134, 23);
             this.PaladinHallowedGround.TabIndex = 3;
@@ -9551,8 +9385,7 @@
             this.PaladinSentinel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PaladinSentinel.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.PaladinSentinel.ForeColor = System.Drawing.Color.White;
-            this.PaladinSentinel.Location = new System.Drawing.Point(8, 76);
-            this.PaladinSentinel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PaladinSentinel.Location = new System.Drawing.Point(6, 39);
             this.PaladinSentinel.Name = "PaladinSentinel";
             this.PaladinSentinel.Size = new System.Drawing.Size(75, 23);
             this.PaladinSentinel.TabIndex = 2;
@@ -9560,22 +9393,6 @@
             this.PaladinSentinel.Text = "Sentinel";
             this.PaladinSentinel.UseVisualStyleBackColor = true;
             this.PaladinSentinel.CheckedChanged += new System.EventHandler(this.PaladinSentinel_CheckedChanged);
-            // 
-            // PaladinBulwark
-            // 
-            this.PaladinBulwark.AutoSize = true;
-            this.PaladinBulwark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PaladinBulwark.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.PaladinBulwark.ForeColor = System.Drawing.Color.White;
-            this.PaladinBulwark.Location = new System.Drawing.Point(8, 48);
-            this.PaladinBulwark.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PaladinBulwark.Name = "PaladinBulwark";
-            this.PaladinBulwark.Size = new System.Drawing.Size(75, 23);
-            this.PaladinBulwark.TabIndex = 1;
-            this.PaladinBulwark.TabStop = false;
-            this.PaladinBulwark.Text = "Bulwark";
-            this.PaladinBulwark.UseVisualStyleBackColor = true;
-            this.PaladinBulwark.CheckedChanged += new System.EventHandler(this.PaladinBulwark_CheckedChanged);
             // 
             // PaladinFightOrFlight
             // 
@@ -9595,17 +9412,44 @@
             // 
             // PaladinAoEGroup
             // 
+            this.PaladinAoEGroup.Controls.Add(this.PaladinHolyCircle);
+            this.PaladinAoEGroup.Controls.Add(this.PaladinProminence);
             this.PaladinAoEGroup.Controls.Add(this.PaladinTotalEclipse);
-            this.PaladinAoEGroup.Controls.Add(this.PaladinFlash);
             this.PaladinAoEGroup.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.PaladinAoEGroup.Location = new System.Drawing.Point(299, 68);
-            this.PaladinAoEGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PaladinAoEGroup.Location = new System.Drawing.Point(224, 6);
             this.PaladinAoEGroup.Name = "PaladinAoEGroup";
-            this.PaladinAoEGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PaladinAoEGroup.Size = new System.Drawing.Size(152, 81);
+            this.PaladinAoEGroup.Size = new System.Drawing.Size(114, 89);
             this.PaladinAoEGroup.TabIndex = 3;
             this.PaladinAoEGroup.TabStop = false;
             this.PaladinAoEGroup.Text = "AoE";
+            // 
+            // PaladinHolyCircle
+            // 
+            this.PaladinHolyCircle.AutoSize = true;
+            this.PaladinHolyCircle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PaladinHolyCircle.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.PaladinHolyCircle.ForeColor = System.Drawing.Color.White;
+            this.PaladinHolyCircle.Location = new System.Drawing.Point(6, 62);
+            this.PaladinHolyCircle.Name = "PaladinHolyCircle";
+            this.PaladinHolyCircle.Size = new System.Drawing.Size(77, 17);
+            this.PaladinHolyCircle.TabIndex = 3;
+            this.PaladinHolyCircle.TabStop = false;
+            this.PaladinHolyCircle.Text = "Holy Circle";
+            this.PaladinHolyCircle.UseVisualStyleBackColor = true;
+            // 
+            // PaladinProminence
+            // 
+            this.PaladinProminence.AutoSize = true;
+            this.PaladinProminence.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PaladinProminence.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.PaladinProminence.ForeColor = System.Drawing.Color.White;
+            this.PaladinProminence.Location = new System.Drawing.Point(6, 39);
+            this.PaladinProminence.Name = "PaladinProminence";
+            this.PaladinProminence.Size = new System.Drawing.Size(83, 17);
+            this.PaladinProminence.TabIndex = 2;
+            this.PaladinProminence.TabStop = false;
+            this.PaladinProminence.Text = "Prominence";
+            this.PaladinProminence.UseVisualStyleBackColor = true;
             // 
             // PaladinTotalEclipse
             // 
@@ -9613,8 +9457,7 @@
             this.PaladinTotalEclipse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PaladinTotalEclipse.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.PaladinTotalEclipse.ForeColor = System.Drawing.Color.White;
-            this.PaladinTotalEclipse.Location = new System.Drawing.Point(8, 48);
-            this.PaladinTotalEclipse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PaladinTotalEclipse.Location = new System.Drawing.Point(6, 16);
             this.PaladinTotalEclipse.Name = "PaladinTotalEclipse";
             this.PaladinTotalEclipse.Size = new System.Drawing.Size(100, 23);
             this.PaladinTotalEclipse.TabIndex = 1;
@@ -9623,34 +9466,15 @@
             this.PaladinTotalEclipse.UseVisualStyleBackColor = true;
             this.PaladinTotalEclipse.CheckedChanged += new System.EventHandler(this.PaladinTotalEclipse_CheckedChanged);
             // 
-            // PaladinFlash
-            // 
-            this.PaladinFlash.AutoSize = true;
-            this.PaladinFlash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PaladinFlash.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.PaladinFlash.ForeColor = System.Drawing.Color.White;
-            this.PaladinFlash.Location = new System.Drawing.Point(8, 20);
-            this.PaladinFlash.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PaladinFlash.Name = "PaladinFlash";
-            this.PaladinFlash.Size = new System.Drawing.Size(58, 23);
-            this.PaladinFlash.TabIndex = 0;
-            this.PaladinFlash.TabStop = false;
-            this.PaladinFlash.Text = "Flash";
-            this.PaladinFlash.UseVisualStyleBackColor = true;
-            this.PaladinFlash.CheckedChanged += new System.EventHandler(this.PaladinFlash_CheckedChanged);
-            // 
             // PaladinCooldownGroup
             // 
             this.PaladinCooldownGroup.Controls.Add(this.PaladinRequiescat);
             this.PaladinCooldownGroup.Controls.Add(this.PaladinCircleOfScorn);
             this.PaladinCooldownGroup.Controls.Add(this.PaladinSpiritsWithin);
-            this.PaladinCooldownGroup.Controls.Add(this.PaladinShieldSwipe);
             this.PaladinCooldownGroup.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.PaladinCooldownGroup.Location = new System.Drawing.Point(299, 156);
-            this.PaladinCooldownGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PaladinCooldownGroup.Location = new System.Drawing.Point(224, 101);
             this.PaladinCooldownGroup.Name = "PaladinCooldownGroup";
-            this.PaladinCooldownGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PaladinCooldownGroup.Size = new System.Drawing.Size(152, 139);
+            this.PaladinCooldownGroup.Size = new System.Drawing.Size(114, 90);
             this.PaladinCooldownGroup.TabIndex = 2;
             this.PaladinCooldownGroup.TabStop = false;
             this.PaladinCooldownGroup.Text = "Cooldown";
@@ -9661,8 +9485,7 @@
             this.PaladinRequiescat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PaladinRequiescat.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.PaladinRequiescat.ForeColor = System.Drawing.Color.White;
-            this.PaladinRequiescat.Location = new System.Drawing.Point(8, 105);
-            this.PaladinRequiescat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PaladinRequiescat.Location = new System.Drawing.Point(6, 67);
             this.PaladinRequiescat.Name = "PaladinRequiescat";
             this.PaladinRequiescat.Size = new System.Drawing.Size(92, 23);
             this.PaladinRequiescat.TabIndex = 3;
@@ -9677,8 +9500,7 @@
             this.PaladinCircleOfScorn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PaladinCircleOfScorn.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.PaladinCircleOfScorn.ForeColor = System.Drawing.Color.White;
-            this.PaladinCircleOfScorn.Location = new System.Drawing.Point(8, 76);
-            this.PaladinCircleOfScorn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PaladinCircleOfScorn.Location = new System.Drawing.Point(6, 44);
             this.PaladinCircleOfScorn.Name = "PaladinCircleOfScorn";
             this.PaladinCircleOfScorn.Size = new System.Drawing.Size(114, 23);
             this.PaladinCircleOfScorn.TabIndex = 2;
@@ -9693,8 +9515,7 @@
             this.PaladinSpiritsWithin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PaladinSpiritsWithin.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.PaladinSpiritsWithin.ForeColor = System.Drawing.Color.White;
-            this.PaladinSpiritsWithin.Location = new System.Drawing.Point(8, 48);
-            this.PaladinSpiritsWithin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PaladinSpiritsWithin.Location = new System.Drawing.Point(6, 21);
             this.PaladinSpiritsWithin.Name = "PaladinSpiritsWithin";
             this.PaladinSpiritsWithin.Size = new System.Drawing.Size(108, 23);
             this.PaladinSpiritsWithin.TabIndex = 1;
@@ -9703,64 +9524,13 @@
             this.PaladinSpiritsWithin.UseVisualStyleBackColor = true;
             this.PaladinSpiritsWithin.CheckedChanged += new System.EventHandler(this.PaladinSpiritsWithin_CheckedChanged);
             // 
-            // PaladinShieldSwipe
-            // 
-            this.PaladinShieldSwipe.AutoSize = true;
-            this.PaladinShieldSwipe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PaladinShieldSwipe.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.PaladinShieldSwipe.ForeColor = System.Drawing.Color.White;
-            this.PaladinShieldSwipe.Location = new System.Drawing.Point(8, 20);
-            this.PaladinShieldSwipe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PaladinShieldSwipe.Name = "PaladinShieldSwipe";
-            this.PaladinShieldSwipe.Size = new System.Drawing.Size(102, 23);
-            this.PaladinShieldSwipe.TabIndex = 0;
-            this.PaladinShieldSwipe.TabStop = false;
-            this.PaladinShieldSwipe.Text = "Shield Swipe";
-            this.PaladinShieldSwipe.UseVisualStyleBackColor = true;
-            this.PaladinShieldSwipe.CheckedChanged += new System.EventHandler(this.PaladinShieldSwipe_CheckedChanged);
-            // 
-            // PaladinDamageGroup
-            // 
-            this.PaladinDamageGroup.Controls.Add(this.PaladinGoringBlade);
-            this.PaladinDamageGroup.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.PaladinDamageGroup.Location = new System.Drawing.Point(299, 7);
-            this.PaladinDamageGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PaladinDamageGroup.Name = "PaladinDamageGroup";
-            this.PaladinDamageGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PaladinDamageGroup.Size = new System.Drawing.Size(152, 53);
-            this.PaladinDamageGroup.TabIndex = 1;
-            this.PaladinDamageGroup.TabStop = false;
-            this.PaladinDamageGroup.Text = "Damage";
-            // 
-            // PaladinGoringBlade
-            // 
-            this.PaladinGoringBlade.AutoSize = true;
-            this.PaladinGoringBlade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PaladinGoringBlade.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.PaladinGoringBlade.ForeColor = System.Drawing.Color.White;
-            this.PaladinGoringBlade.Location = new System.Drawing.Point(8, 20);
-            this.PaladinGoringBlade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PaladinGoringBlade.Name = "PaladinGoringBlade";
-            this.PaladinGoringBlade.Size = new System.Drawing.Size(106, 23);
-            this.PaladinGoringBlade.TabIndex = 0;
-            this.PaladinGoringBlade.TabStop = false;
-            this.PaladinGoringBlade.Text = "Goring Blade";
-            this.PaladinGoringBlade.UseVisualStyleBackColor = true;
-            this.PaladinGoringBlade.CheckedChanged += new System.EventHandler(this.PaladinGoringBlade_CheckedChanged);
-            // 
             // PaladinRoleGroup
             // 
-            this.PaladinRoleGroup.Controls.Add(this.PaladinAwarenessPct);
-            this.PaladinRoleGroup.Controls.Add(this.PaladinAnticipationPct);
-            this.PaladinRoleGroup.Controls.Add(this.PaladinConvalescencePct);
             this.PaladinRoleGroup.Controls.Add(this.PaladinRampartPct);
             this.PaladinRoleGroup.Controls.Add(this.PaladinShirk);
-            this.PaladinRoleGroup.Controls.Add(this.PaladinUltimatum);
             this.PaladinRoleGroup.Controls.Add(this.PaladinInterject);
-            this.PaladinRoleGroup.Controls.Add(this.PaladinAwareness);
+            this.PaladinRoleGroup.Controls.Add(this.PaladinArmsLength);
             this.PaladinRoleGroup.Controls.Add(this.PaladinReprisal);
-            this.PaladinRoleGroup.Controls.Add(this.PaladinAnticipation);
-            this.PaladinRoleGroup.Controls.Add(this.PaladinConvalescence);
             this.PaladinRoleGroup.Controls.Add(this.PaladinProvoke);
             this.PaladinRoleGroup.Controls.Add(this.PaladinLowBlow);
             this.PaladinRoleGroup.Controls.Add(this.PaladinRampart);
@@ -9768,41 +9538,10 @@
             this.PaladinRoleGroup.Location = new System.Drawing.Point(17, 7);
             this.PaladinRoleGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PaladinRoleGroup.Name = "PaladinRoleGroup";
-            this.PaladinRoleGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PaladinRoleGroup.Size = new System.Drawing.Size(273, 308);
+            this.PaladinRoleGroup.Size = new System.Drawing.Size(205, 185);
             this.PaladinRoleGroup.TabIndex = 0;
             this.PaladinRoleGroup.TabStop = false;
             this.PaladinRoleGroup.Text = "Role";
-            // 
-            // PaladinAwarenessPct
-            // 
-            this.PaladinAwarenessPct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.PaladinAwarenessPct.Location = new System.Drawing.Point(147, 190);
-            this.PaladinAwarenessPct.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.PaladinAwarenessPct.Name = "PaladinAwarenessPct";
-            this.PaladinAwarenessPct.Size = new System.Drawing.Size(119, 27);
-            this.PaladinAwarenessPct.TabIndex = 14;
-            this.PaladinAwarenessPct.ValueChanged += new System.EventHandler(this.PaladinAwarenessPct_ValueChanged);
-            // 
-            // PaladinAnticipationPct
-            // 
-            this.PaladinAnticipationPct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.PaladinAnticipationPct.Location = new System.Drawing.Point(147, 133);
-            this.PaladinAnticipationPct.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.PaladinAnticipationPct.Name = "PaladinAnticipationPct";
-            this.PaladinAnticipationPct.Size = new System.Drawing.Size(119, 27);
-            this.PaladinAnticipationPct.TabIndex = 12;
-            this.PaladinAnticipationPct.ValueChanged += new System.EventHandler(this.PaladinAnticipationPct_ValueChanged);
-            // 
-            // PaladinConvalescencePct
-            // 
-            this.PaladinConvalescencePct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.PaladinConvalescencePct.Location = new System.Drawing.Point(147, 105);
-            this.PaladinConvalescencePct.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.PaladinConvalescencePct.Name = "PaladinConvalescencePct";
-            this.PaladinConvalescencePct.Size = new System.Drawing.Size(119, 27);
-            this.PaladinConvalescencePct.TabIndex = 11;
-            this.PaladinConvalescencePct.ValueChanged += new System.EventHandler(this.PaladinConvalescencePct_ValueChanged);
             // 
             // PaladinRampartPct
             // 
@@ -9821,30 +9560,13 @@
             this.PaladinShirk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PaladinShirk.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.PaladinShirk.ForeColor = System.Drawing.Color.DimGray;
-            this.PaladinShirk.Location = new System.Drawing.Point(8, 274);
-            this.PaladinShirk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PaladinShirk.Location = new System.Drawing.Point(6, 154);
             this.PaladinShirk.Name = "PaladinShirk";
             this.PaladinShirk.Size = new System.Drawing.Size(57, 23);
             this.PaladinShirk.TabIndex = 9;
             this.PaladinShirk.TabStop = false;
             this.PaladinShirk.Text = "Shirk";
             this.PaladinShirk.UseVisualStyleBackColor = true;
-            // 
-            // PaladinUltimatum
-            // 
-            this.PaladinUltimatum.AutoCheck = false;
-            this.PaladinUltimatum.AutoSize = true;
-            this.PaladinUltimatum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PaladinUltimatum.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.PaladinUltimatum.ForeColor = System.Drawing.Color.DimGray;
-            this.PaladinUltimatum.Location = new System.Drawing.Point(8, 246);
-            this.PaladinUltimatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PaladinUltimatum.Name = "PaladinUltimatum";
-            this.PaladinUltimatum.Size = new System.Drawing.Size(92, 23);
-            this.PaladinUltimatum.TabIndex = 8;
-            this.PaladinUltimatum.TabStop = false;
-            this.PaladinUltimatum.Text = "Ultimatum";
-            this.PaladinUltimatum.UseVisualStyleBackColor = true;
             // 
             // PaladinInterject
             // 
@@ -9853,8 +9575,7 @@
             this.PaladinInterject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PaladinInterject.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.PaladinInterject.ForeColor = System.Drawing.Color.DimGray;
-            this.PaladinInterject.Location = new System.Drawing.Point(8, 218);
-            this.PaladinInterject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PaladinInterject.Location = new System.Drawing.Point(6, 85);
             this.PaladinInterject.Name = "PaladinInterject";
             this.PaladinInterject.Size = new System.Drawing.Size(77, 23);
             this.PaladinInterject.TabIndex = 7;
@@ -9862,21 +9583,20 @@
             this.PaladinInterject.Text = "Interject";
             this.PaladinInterject.UseVisualStyleBackColor = true;
             // 
-            // PaladinAwareness
+            // PaladinArmsLength
             // 
-            this.PaladinAwareness.AutoSize = true;
-            this.PaladinAwareness.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PaladinAwareness.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.PaladinAwareness.ForeColor = System.Drawing.Color.White;
-            this.PaladinAwareness.Location = new System.Drawing.Point(8, 190);
-            this.PaladinAwareness.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PaladinAwareness.Name = "PaladinAwareness";
-            this.PaladinAwareness.Size = new System.Drawing.Size(92, 23);
-            this.PaladinAwareness.TabIndex = 6;
-            this.PaladinAwareness.TabStop = false;
-            this.PaladinAwareness.Text = "Awareness";
-            this.PaladinAwareness.UseVisualStyleBackColor = true;
-            this.PaladinAwareness.CheckedChanged += new System.EventHandler(this.PaladinAwareness_CheckedChanged);
+            this.PaladinArmsLength.AutoSize = true;
+            this.PaladinArmsLength.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PaladinArmsLength.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.PaladinArmsLength.ForeColor = System.Drawing.Color.White;
+            this.PaladinArmsLength.Location = new System.Drawing.Point(6, 131);
+            this.PaladinArmsLength.Name = "PaladinArmsLength";
+            this.PaladinArmsLength.Size = new System.Drawing.Size(90, 17);
+            this.PaladinArmsLength.TabIndex = 5;
+            this.PaladinArmsLength.TabStop = false;
+            this.PaladinArmsLength.Text = "Arm\'s Length";
+            this.PaladinArmsLength.UseVisualStyleBackColor = true;
+            this.PaladinArmsLength.CheckedChanged += new System.EventHandler(this.PaladinArmsLength_CheckedChanged);
             // 
             // PaladinReprisal
             // 
@@ -9884,47 +9604,14 @@
             this.PaladinReprisal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PaladinReprisal.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.PaladinReprisal.ForeColor = System.Drawing.Color.White;
-            this.PaladinReprisal.Location = new System.Drawing.Point(8, 161);
-            this.PaladinReprisal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PaladinReprisal.Location = new System.Drawing.Point(6, 108);
             this.PaladinReprisal.Name = "PaladinReprisal";
-            this.PaladinReprisal.Size = new System.Drawing.Size(74, 23);
-            this.PaladinReprisal.TabIndex = 5;
+            this.PaladinReprisal.Size = new System.Drawing.Size(64, 17);
+            this.PaladinReprisal.TabIndex = 4;
             this.PaladinReprisal.TabStop = false;
             this.PaladinReprisal.Text = "Reprisal";
             this.PaladinReprisal.UseVisualStyleBackColor = true;
             this.PaladinReprisal.CheckedChanged += new System.EventHandler(this.PaladinReprisal_CheckedChanged);
-            // 
-            // PaladinAnticipation
-            // 
-            this.PaladinAnticipation.AutoSize = true;
-            this.PaladinAnticipation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PaladinAnticipation.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.PaladinAnticipation.ForeColor = System.Drawing.Color.White;
-            this.PaladinAnticipation.Location = new System.Drawing.Point(8, 133);
-            this.PaladinAnticipation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PaladinAnticipation.Name = "PaladinAnticipation";
-            this.PaladinAnticipation.Size = new System.Drawing.Size(100, 23);
-            this.PaladinAnticipation.TabIndex = 4;
-            this.PaladinAnticipation.TabStop = false;
-            this.PaladinAnticipation.Text = "Anticipation";
-            this.PaladinAnticipation.UseVisualStyleBackColor = true;
-            this.PaladinAnticipation.CheckedChanged += new System.EventHandler(this.PaladinAnticipation_CheckedChanged);
-            // 
-            // PaladinConvalescence
-            // 
-            this.PaladinConvalescence.AutoSize = true;
-            this.PaladinConvalescence.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PaladinConvalescence.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.PaladinConvalescence.ForeColor = System.Drawing.Color.White;
-            this.PaladinConvalescence.Location = new System.Drawing.Point(8, 105);
-            this.PaladinConvalescence.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PaladinConvalescence.Name = "PaladinConvalescence";
-            this.PaladinConvalescence.Size = new System.Drawing.Size(116, 23);
-            this.PaladinConvalescence.TabIndex = 3;
-            this.PaladinConvalescence.TabStop = false;
-            this.PaladinConvalescence.Text = "Convalescence";
-            this.PaladinConvalescence.UseVisualStyleBackColor = true;
-            this.PaladinConvalescence.CheckedChanged += new System.EventHandler(this.PaladinConvalescence_CheckedChanged);
             // 
             // PaladinProvoke
             // 
@@ -10484,17 +10171,11 @@
             // 
             // WarriorRoleGroup
             // 
-            this.WarriorRoleGroup.Controls.Add(this.WarriorAwarenessPct);
-            this.WarriorRoleGroup.Controls.Add(this.WarriorAnticipationPct);
-            this.WarriorRoleGroup.Controls.Add(this.WarriorConvalescencePct);
             this.WarriorRoleGroup.Controls.Add(this.WarriorRampartPct);
             this.WarriorRoleGroup.Controls.Add(this.WarriorShirk);
-            this.WarriorRoleGroup.Controls.Add(this.WarriorUltimatum);
             this.WarriorRoleGroup.Controls.Add(this.WarriorInterject);
-            this.WarriorRoleGroup.Controls.Add(this.WarriorAwareness);
+            this.WarriorRoleGroup.Controls.Add(this.WarriorArmsLength);
             this.WarriorRoleGroup.Controls.Add(this.WarriorReprisal);
-            this.WarriorRoleGroup.Controls.Add(this.WarriorAnticipation);
-            this.WarriorRoleGroup.Controls.Add(this.WarriorConvalescence);
             this.WarriorRoleGroup.Controls.Add(this.WarriorProvoke);
             this.WarriorRoleGroup.Controls.Add(this.WarriorLowBlow);
             this.WarriorRoleGroup.Controls.Add(this.WarriorRampart);
@@ -10502,41 +10183,10 @@
             this.WarriorRoleGroup.Location = new System.Drawing.Point(17, 7);
             this.WarriorRoleGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.WarriorRoleGroup.Name = "WarriorRoleGroup";
-            this.WarriorRoleGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.WarriorRoleGroup.Size = new System.Drawing.Size(273, 308);
+            this.WarriorRoleGroup.Size = new System.Drawing.Size(205, 180);
             this.WarriorRoleGroup.TabIndex = 0;
             this.WarriorRoleGroup.TabStop = false;
             this.WarriorRoleGroup.Text = "Role";
-            // 
-            // WarriorAwarenessPct
-            // 
-            this.WarriorAwarenessPct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.WarriorAwarenessPct.Location = new System.Drawing.Point(147, 190);
-            this.WarriorAwarenessPct.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.WarriorAwarenessPct.Name = "WarriorAwarenessPct";
-            this.WarriorAwarenessPct.Size = new System.Drawing.Size(119, 27);
-            this.WarriorAwarenessPct.TabIndex = 23;
-            this.WarriorAwarenessPct.ValueChanged += new System.EventHandler(this.WarriorAwarenessPct_ValueChanged);
-            // 
-            // WarriorAnticipationPct
-            // 
-            this.WarriorAnticipationPct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.WarriorAnticipationPct.Location = new System.Drawing.Point(147, 133);
-            this.WarriorAnticipationPct.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.WarriorAnticipationPct.Name = "WarriorAnticipationPct";
-            this.WarriorAnticipationPct.Size = new System.Drawing.Size(119, 27);
-            this.WarriorAnticipationPct.TabIndex = 22;
-            this.WarriorAnticipationPct.ValueChanged += new System.EventHandler(this.WarriorAnticipationPct_ValueChanged);
-            // 
-            // WarriorConvalescencePct
-            // 
-            this.WarriorConvalescencePct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.WarriorConvalescencePct.Location = new System.Drawing.Point(147, 105);
-            this.WarriorConvalescencePct.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.WarriorConvalescencePct.Name = "WarriorConvalescencePct";
-            this.WarriorConvalescencePct.Size = new System.Drawing.Size(119, 27);
-            this.WarriorConvalescencePct.TabIndex = 21;
-            this.WarriorConvalescencePct.ValueChanged += new System.EventHandler(this.WarriorConvalescencePct_ValueChanged);
             // 
             // WarriorRampartPct
             // 
@@ -10555,30 +10205,13 @@
             this.WarriorShirk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.WarriorShirk.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.WarriorShirk.ForeColor = System.Drawing.Color.DimGray;
-            this.WarriorShirk.Location = new System.Drawing.Point(8, 274);
-            this.WarriorShirk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.WarriorShirk.Location = new System.Drawing.Point(6, 154);
             this.WarriorShirk.Name = "WarriorShirk";
             this.WarriorShirk.Size = new System.Drawing.Size(57, 23);
             this.WarriorShirk.TabIndex = 19;
             this.WarriorShirk.TabStop = false;
             this.WarriorShirk.Text = "Shirk";
             this.WarriorShirk.UseVisualStyleBackColor = true;
-            // 
-            // WarriorUltimatum
-            // 
-            this.WarriorUltimatum.AutoCheck = false;
-            this.WarriorUltimatum.AutoSize = true;
-            this.WarriorUltimatum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.WarriorUltimatum.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.WarriorUltimatum.ForeColor = System.Drawing.Color.DimGray;
-            this.WarriorUltimatum.Location = new System.Drawing.Point(8, 246);
-            this.WarriorUltimatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.WarriorUltimatum.Name = "WarriorUltimatum";
-            this.WarriorUltimatum.Size = new System.Drawing.Size(92, 23);
-            this.WarriorUltimatum.TabIndex = 18;
-            this.WarriorUltimatum.TabStop = false;
-            this.WarriorUltimatum.Text = "Ultimatum";
-            this.WarriorUltimatum.UseVisualStyleBackColor = true;
             // 
             // WarriorInterject
             // 
@@ -10587,8 +10220,7 @@
             this.WarriorInterject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.WarriorInterject.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.WarriorInterject.ForeColor = System.Drawing.Color.DimGray;
-            this.WarriorInterject.Location = new System.Drawing.Point(8, 218);
-            this.WarriorInterject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.WarriorInterject.Location = new System.Drawing.Point(6, 85);
             this.WarriorInterject.Name = "WarriorInterject";
             this.WarriorInterject.Size = new System.Drawing.Size(77, 23);
             this.WarriorInterject.TabIndex = 17;
@@ -10596,21 +10228,20 @@
             this.WarriorInterject.Text = "Interject";
             this.WarriorInterject.UseVisualStyleBackColor = true;
             // 
-            // WarriorAwareness
+            // WarriorArmsLength
             // 
-            this.WarriorAwareness.AutoSize = true;
-            this.WarriorAwareness.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.WarriorAwareness.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.WarriorAwareness.ForeColor = System.Drawing.Color.White;
-            this.WarriorAwareness.Location = new System.Drawing.Point(8, 190);
-            this.WarriorAwareness.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.WarriorAwareness.Name = "WarriorAwareness";
-            this.WarriorAwareness.Size = new System.Drawing.Size(92, 23);
-            this.WarriorAwareness.TabIndex = 16;
-            this.WarriorAwareness.TabStop = false;
-            this.WarriorAwareness.Text = "Awareness";
-            this.WarriorAwareness.UseVisualStyleBackColor = true;
-            this.WarriorAwareness.CheckedChanged += new System.EventHandler(this.WarriorAwareness_CheckedChanged);
+            this.WarriorArmsLength.AutoSize = true;
+            this.WarriorArmsLength.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.WarriorArmsLength.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.WarriorArmsLength.ForeColor = System.Drawing.Color.White;
+            this.WarriorArmsLength.Location = new System.Drawing.Point(6, 131);
+            this.WarriorArmsLength.Name = "WarriorArmsLength";
+            this.WarriorArmsLength.Size = new System.Drawing.Size(90, 17);
+            this.WarriorArmsLength.TabIndex = 16;
+            this.WarriorArmsLength.TabStop = false;
+            this.WarriorArmsLength.Text = "Arm\'s Length";
+            this.WarriorArmsLength.UseVisualStyleBackColor = true;
+            this.WarriorArmsLength.CheckedChanged += new System.EventHandler(this.WarriorArmsLength_CheckedChanged);
             // 
             // WarriorReprisal
             // 
@@ -10618,8 +10249,7 @@
             this.WarriorReprisal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.WarriorReprisal.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.WarriorReprisal.ForeColor = System.Drawing.Color.White;
-            this.WarriorReprisal.Location = new System.Drawing.Point(8, 161);
-            this.WarriorReprisal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.WarriorReprisal.Location = new System.Drawing.Point(6, 108);
             this.WarriorReprisal.Name = "WarriorReprisal";
             this.WarriorReprisal.Size = new System.Drawing.Size(74, 23);
             this.WarriorReprisal.TabIndex = 15;
@@ -10627,38 +10257,6 @@
             this.WarriorReprisal.Text = "Reprisal";
             this.WarriorReprisal.UseVisualStyleBackColor = true;
             this.WarriorReprisal.CheckedChanged += new System.EventHandler(this.WarriorReprisal_CheckedChanged);
-            // 
-            // WarriorAnticipation
-            // 
-            this.WarriorAnticipation.AutoSize = true;
-            this.WarriorAnticipation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.WarriorAnticipation.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.WarriorAnticipation.ForeColor = System.Drawing.Color.White;
-            this.WarriorAnticipation.Location = new System.Drawing.Point(8, 133);
-            this.WarriorAnticipation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.WarriorAnticipation.Name = "WarriorAnticipation";
-            this.WarriorAnticipation.Size = new System.Drawing.Size(100, 23);
-            this.WarriorAnticipation.TabIndex = 14;
-            this.WarriorAnticipation.TabStop = false;
-            this.WarriorAnticipation.Text = "Anticipation";
-            this.WarriorAnticipation.UseVisualStyleBackColor = true;
-            this.WarriorAnticipation.CheckedChanged += new System.EventHandler(this.WarriorAnticipation_CheckedChanged);
-            // 
-            // WarriorConvalescence
-            // 
-            this.WarriorConvalescence.AutoSize = true;
-            this.WarriorConvalescence.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.WarriorConvalescence.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.WarriorConvalescence.ForeColor = System.Drawing.Color.White;
-            this.WarriorConvalescence.Location = new System.Drawing.Point(8, 105);
-            this.WarriorConvalescence.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.WarriorConvalescence.Name = "WarriorConvalescence";
-            this.WarriorConvalescence.Size = new System.Drawing.Size(116, 23);
-            this.WarriorConvalescence.TabIndex = 13;
-            this.WarriorConvalescence.TabStop = false;
-            this.WarriorConvalescence.Text = "Convalescence";
-            this.WarriorConvalescence.UseVisualStyleBackColor = true;
-            this.WarriorConvalescence.CheckedChanged += new System.EventHandler(this.WarriorConvalescence_CheckedChanged);
             // 
             // WarriorProvoke
             // 
@@ -10934,7 +10532,6 @@
             this.pgePaladin.ResumeLayout(false);
             this.PaladinMiscGroup.ResumeLayout(false);
             this.PaladinMiscGroup.PerformLayout();
-            this.PaladinOathGroup.ResumeLayout(false);
             this.PaladinHealGroup.ResumeLayout(false);
             this.PaladinHealGroup.PerformLayout();
             this.PaladinBuffGroup.ResumeLayout(false);
@@ -10943,8 +10540,6 @@
             this.PaladinAoEGroup.PerformLayout();
             this.PaladinCooldownGroup.ResumeLayout(false);
             this.PaladinCooldownGroup.PerformLayout();
-            this.PaladinDamageGroup.ResumeLayout(false);
-            this.PaladinDamageGroup.PerformLayout();
             this.PaladinRoleGroup.ResumeLayout(false);
             this.PaladinRoleGroup.PerformLayout();
             this.pgeWarrior.ResumeLayout(false);
@@ -11078,43 +10673,29 @@
         private Design.CustomCheck SummonerPhysick;
         private Design.CustomGroup PaladinAoEGroup;
         private Design.CustomGroup PaladinCooldownGroup;
-        private Design.CustomGroup PaladinDamageGroup;
         private Design.CustomGroup PaladinRoleGroup;
         private Design.CustomCheck PaladinTotalEclipse;
-        private Design.CustomCheck PaladinFlash;
-        private Design.CustomCheck PaladinGoringBlade;
-        private Design.UserNumeric PaladinAwarenessPct;
-        private Design.UserNumeric PaladinAnticipationPct;
-        private Design.UserNumeric PaladinConvalescencePct;
         private Design.UserNumeric PaladinRampartPct;
         private Design.CustomCheckDisabled PaladinShirk;
-        private Design.CustomCheckDisabled PaladinUltimatum;
         private Design.CustomCheckDisabled PaladinInterject;
-        private Design.CustomCheck PaladinAwareness;
+        private Design.CustomCheck PaladinArmsLength;
         private Design.CustomCheck PaladinReprisal;
-        private Design.CustomCheck PaladinAnticipation;
-        private Design.CustomCheck PaladinConvalescence;
         private Design.CustomCheckDisabled PaladinProvoke;
         private Design.CustomCheckDisabled PaladinLowBlow;
         private Design.CustomCheck PaladinRampart;
         private Design.CustomCheck PaladinRequiescat;
         private Design.CustomCheck PaladinCircleOfScorn;
         private Design.CustomCheck PaladinSpiritsWithin;
-        private Design.CustomCheck PaladinShieldSwipe;
         private Design.CustomGroup PaladinBuffGroup;
         private Design.CustomCheck PaladinHallowedGround;
         private Design.CustomCheck PaladinSentinel;
-        private Design.CustomCheck PaladinBulwark;
         private Design.CustomCheck PaladinFightOrFlight;
-        private Design.UserNumeric PaladinBulwarkPct;
         private Design.UserNumeric PaladinSentinelPct;
         private Design.UserNumeric PaladinHallowedGroundPct;
         private Design.CustomGroup PaladinHealGroup;
         private Design.UserNumeric PaladinClemencyPct;
         private Design.CustomCheck PaladinClemency;
-        private Design.CustomCombo PaladinOath;
         private Design.CustomCheck PaladinSheltron;
-        private Design.CustomGroup PaladinOathGroup;
         private Design.CustomGroup SamuraiBuffGroup;
         private Design.CustomGroup RedMageBuffGroup;
         private Design.CustomGroup AstrologianRoleGroup;
@@ -11178,18 +10759,12 @@
         private Design.CustomCheck DragoonMirage;
         private Design.CustomGroup WarriorRoleGroup;
         private Design.CustomCheckDisabled WarriorShirk;
-        private Design.CustomCheckDisabled WarriorUltimatum;
         private Design.CustomCheckDisabled WarriorInterject;
-        private Design.CustomCheck WarriorAwareness;
+        private Design.CustomCheck WarriorArmsLength;
         private Design.CustomCheck WarriorReprisal;
-        private Design.CustomCheck WarriorAnticipation;
-        private Design.CustomCheck WarriorConvalescence;
         private Design.CustomCheckDisabled WarriorProvoke;
         private Design.CustomCheckDisabled WarriorLowBlow;
         private Design.CustomCheck WarriorRampart;
-        private Design.UserNumeric WarriorAwarenessPct;
-        private Design.UserNumeric WarriorAnticipationPct;
-        private Design.UserNumeric WarriorConvalescencePct;
         private Design.UserNumeric WarriorRampartPct;
         private Design.CustomGroup WarriorBuffGroup;
         private Design.CustomCheck WarriorBerserk;
@@ -11226,17 +10801,11 @@
         private System.Windows.Forms.Label TankModeLabel;
         private Design.CustomCombo TankMode;
         private Design.CustomGroup DarkKnightRoleGroup;
-        private Design.UserNumeric DarkKnightAwarenessPct;
-        private Design.UserNumeric DarkKnightAnticipationPct;
-        private Design.UserNumeric DarkKnightConvalescencePct;
         private Design.UserNumeric DarkKnightRampartPct;
         private Design.CustomCheckDisabled DarkKnightShirk;
-        private Design.CustomCheckDisabled DarkKnightUltimatum;
         private Design.CustomCheckDisabled DarkKnightInterject;
-        private Design.CustomCheck DarkKnightAwareness;
+        private Design.CustomCheck DarkKnightArmsLength;
         private Design.CustomCheck DarkKnightReprisal;
-        private Design.CustomCheck DarkKnightAnticipation;
-        private Design.CustomCheck DarkKnightConvalescence;
         private Design.CustomCheckDisabled DarkKnightProvoke;
         private Design.CustomCheckDisabled DarkKnightLowBlow;
         private Design.CustomCheck DarkKnightRampart;
@@ -11614,6 +11183,7 @@
         private Design.CustomCheck WhiteMageAfflatusRapture;
         private Design.UserNumeric WhiteMageAfflatusSolacePct;
         private Design.CustomCheck WhiteMageAfflatusSolace;
-        private Design.CustomCheck userHealthPotion;
+        private Design.CustomCheck PaladinHolyCircle;
+        private Design.CustomCheck PaladinProminence;
     }
 }

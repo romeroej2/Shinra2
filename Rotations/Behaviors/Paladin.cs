@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using ShinraCo.Settings;
 
 namespace ShinraCo.Rotations
@@ -16,10 +16,16 @@ namespace ShinraCo.Rotations
                     Helpers.Debug("Combat - smart...");
                     if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
                     if (await TotalEclipse()) return true;
+                    if (await Prominence()) return true;
+                    if (await HolyCircle()) return true;
                     if (await HolySpirit()) return true;
-                    if (await GoringBlade()) return true;
-                    if (await RoyalAuthority()) return true;
+                    if (await Atonement()) return true;
                     if (await RiotBlade()) return true;
+                    if (await GoringBlade()) return true;
+                    if (await RageOfHalone()) return true;
+                    if (await RoyalAuthority()) return true;
+                    if (await Atonement()) return true;
+                    if (await Confiteor()) return true;
                     return await FastBlade();
                 }
 
@@ -28,9 +34,11 @@ namespace ShinraCo.Rotations
                     Helpers.Debug("Combat - single...");
                     if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
                     if (await HolySpirit()) return true;
-                    if (await GoringBlade()) return true;
-                    if (await RoyalAuthority()) return true;
+                    if (await Atonement()) return true;
                     if (await RiotBlade()) return true;
+                    if (await GoringBlade()) return true;
+                    if (await RageOfHalone()) return true;
+                    if (await RoyalAuthority()) return true;
                     return await FastBlade();
                 }
 
@@ -38,7 +46,9 @@ namespace ShinraCo.Rotations
                 {
                     Helpers.Debug("Combat - multi...");
                     if (await TotalEclipse()) return true;
-                    return false;
+                    if (await Prominence()) return true;
+                    if (await HolyCircle()) return true;
+                    return await Confiteor();
                 }
             }
 
@@ -55,15 +65,9 @@ namespace ShinraCo.Rotations
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (await PassageOfArms()) return true;
-            if (await SwordOath()) return true;
-            if (await ShieldOath()) return true;
             if (await HallowedGround()) return true;
             if (await Sentinel()) return true;
-            if (await Bulwark()) return true;
             if (await Rampart()) return true;
-            //if (await Convalescence()) return true;
-            if (await Anticipation()) return true;
-            //if (await Awareness()) return true;
             if (await Reprisal()) return true;
             if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await Sheltron()) return true;
@@ -90,9 +94,8 @@ namespace ShinraCo.Rotations
         public override async Task<bool> PreCombatBuff()
         {
             Helpers.Debug("PreCombatBuff...");
-            if (await ShinraEx.SummonChocobo()) return true;
-            if (await SwordOath()) return true;
-            return await ShieldOath();
+            if (await IronWill()) return true;
+            return await ShinraEx.SummonChocobo();
         }
 
         #endregion
