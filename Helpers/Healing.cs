@@ -17,7 +17,7 @@ namespace ShinraCo
         public static readonly HashSet<string> HealingSpells = new HashSet<string>
         {
             "Benefic", "Benefic II", "Helios", "Aspected Helios", "Ascend",
-            "Cure", "Cure II", "Medica", "Medica II", "Raise",
+            "Cure", "Cure II", "Cure III", "Medica", "Medica II", "Afflatus Rapture", "Afflatus Solace", "Raise",
             "Physick", "Adloquium", "Succor", "Resurrection", "Esuna"
         };
 
@@ -36,7 +36,7 @@ namespace ShinraCo
                                            hm.Distance2D(Core.Player) - hm.CombatReach - Core.Player.CombatReach <= radius);
         }
 
-        public static bool IsHealable(this BattleCharacter c)
+        private static bool IsHealable(this GameObject c)
         {
             return c.IsTargetable && c.InLineOfSight() && Core.Player.UnitDistance(c, 25, false);
         }
@@ -101,7 +101,6 @@ namespace ShinraCo
             return score;
         }
 
-		//TODO: Add New Tank
         public static bool IsTank(this Character c)
         {
             switch (c.CurrentJob)

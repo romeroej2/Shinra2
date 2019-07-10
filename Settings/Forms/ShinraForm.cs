@@ -291,15 +291,10 @@ namespace ShinraCo.Settings.Forms
             #region Role
 
             DarkKnightRampart.Checked = ShinraEx.Settings.DarkKnightRampart;
-            DarkKnightConvalescence.Checked = ShinraEx.Settings.DarkKnightConvalescence;
-            DarkKnightAnticipation.Checked = ShinraEx.Settings.DarkKnightAnticipation;
             DarkKnightReprisal.Checked = ShinraEx.Settings.DarkKnightReprisal;
-            DarkKnightAwareness.Checked = ShinraEx.Settings.DarkKnightAwareness;
+            DarkKnightArmsLength.Checked = ShinraEx.Settings.DarkKnightArmsLength;
 
             DarkKnightRampartPct.Value = ShinraEx.Settings.DarkKnightRampartPct;
-            DarkKnightConvalescencePct.Value = ShinraEx.Settings.DarkKnightConvalescencePct;
-            DarkKnightAnticipationPct.Value = ShinraEx.Settings.DarkKnightAnticipationPct;
-            DarkKnightAwarenessPct.Value = ShinraEx.Settings.DarkKnightAwarenessPct;
 
             #endregion
 
@@ -608,34 +603,23 @@ namespace ShinraCo.Settings.Forms
             #region Role
 
             PaladinRampart.Checked = ShinraEx.Settings.PaladinRampart;
-            PaladinConvalescence.Checked = ShinraEx.Settings.PaladinConvalescence;
-            PaladinAnticipation.Checked = ShinraEx.Settings.PaladinAnticipation;
             PaladinReprisal.Checked = ShinraEx.Settings.PaladinReprisal;
-            PaladinAwareness.Checked = ShinraEx.Settings.PaladinAwareness;
+            PaladinArmsLength.Checked = ShinraEx.Settings.PaladinArmsLength;
 
             PaladinRampartPct.Value = ShinraEx.Settings.PaladinRampartPct;
-            PaladinConvalescencePct.Value = ShinraEx.Settings.PaladinConvalescencePct;
-            PaladinAnticipationPct.Value = ShinraEx.Settings.PaladinAnticipationPct;
-            PaladinAwarenessPct.Value = ShinraEx.Settings.PaladinAwarenessPct;
-
-            #endregion
-
-            #region Damage
-
-            PaladinGoringBlade.Checked = ShinraEx.Settings.PaladinGoringBlade;
 
             #endregion
 
             #region AoE
 
-            PaladinFlash.Checked = ShinraEx.Settings.PaladinFlash;
             PaladinTotalEclipse.Checked = ShinraEx.Settings.PaladinTotalEclipse;
+            PaladinProminence.Checked = ShinraEx.Settings.PaladinProminence;
+            PaladinHolyCircle.Checked = ShinraEx.Settings.PaladinHolyCircle;
 
             #endregion
 
             #region Cooldown
 
-            PaladinShieldSwipe.Checked = ShinraEx.Settings.PaladinShieldSwipe;
             PaladinSpiritsWithin.Checked = ShinraEx.Settings.PaladinSpiritsWithin;
             PaladinCircleOfScorn.Checked = ShinraEx.Settings.PaladinCircleOfScorn;
             PaladinRequiescat.Checked = ShinraEx.Settings.PaladinRequiescat;
@@ -645,12 +629,10 @@ namespace ShinraCo.Settings.Forms
             #region Buff
 
             PaladinFightOrFlight.Checked = ShinraEx.Settings.PaladinFightOrFlight;
-            PaladinBulwark.Checked = ShinraEx.Settings.PaladinBulwark;
             PaladinSentinel.Checked = ShinraEx.Settings.PaladinSentinel;
             PaladinHallowedGround.Checked = ShinraEx.Settings.PaladinHallowedGround;
             PaladinSheltron.Checked = ShinraEx.Settings.PaladinSheltron;
 
-            PaladinBulwarkPct.Value = ShinraEx.Settings.PaladinBulwarkPct;
             PaladinSentinelPct.Value = ShinraEx.Settings.PaladinSentinelPct;
             PaladinHallowedGroundPct.Value = ShinraEx.Settings.PaladinHallowedGroundPct;
 
@@ -660,12 +642,6 @@ namespace ShinraCo.Settings.Forms
 
             PaladinClemency.Checked = ShinraEx.Settings.PaladinClemency;
             PaladinClemencyPct.Value = ShinraEx.Settings.PaladinClemencyPct;
-
-            #endregion
-
-            #region Oath
-
-            PaladinOath.Text = Convert.ToString(ShinraEx.Settings.PaladinOath);
 
             #endregion
 
@@ -929,15 +905,10 @@ namespace ShinraCo.Settings.Forms
             #region Role
 
             WarriorRampart.Checked = ShinraEx.Settings.WarriorRampart;
-            WarriorConvalescence.Checked = ShinraEx.Settings.WarriorConvalescence;
-            WarriorAnticipation.Checked = ShinraEx.Settings.WarriorAnticipation;
             WarriorReprisal.Checked = ShinraEx.Settings.WarriorReprisal;
-            WarriorAwareness.Checked = ShinraEx.Settings.WarriorAwareness;
+            WarriorArmsLength.Checked = ShinraEx.Settings.WarriorArmsLength;
 
             WarriorRampartPct.Value = ShinraEx.Settings.WarriorRampartPct;
-            WarriorConvalescencePct.Value = ShinraEx.Settings.WarriorConvalescencePct;
-            WarriorAnticipationPct.Value = ShinraEx.Settings.WarriorAnticipationPct;
-            WarriorAwarenessPct.Value = ShinraEx.Settings.WarriorAwarenessPct;
 
             #endregion
 
@@ -1728,44 +1699,19 @@ namespace ShinraCo.Settings.Forms
             ShinraEx.Settings.DarkKnightRampart = DarkKnightRampart.Checked;
         }
 
-        private void DarkKnightConvalescence_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.DarkKnightConvalescence = DarkKnightConvalescence.Checked;
-        }
-
-        private void DarkKnightAnticipation_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.DarkKnightAnticipation = DarkKnightAnticipation.Checked;
-        }
-
         private void DarkKnightReprisal_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.DarkKnightReprisal = DarkKnightReprisal.Checked;
         }
 
-        private void DarkKnightAwareness_CheckedChanged(object sender, EventArgs e)
+        private void DarkKnightArmsLength_CheckedChanged(object sender, EventArgs e)
         {
-            ShinraEx.Settings.DarkKnightAwareness = DarkKnightAwareness.Checked;
+            ShinraEx.Settings.DarkKnightArmsLength = DarkKnightArmsLength.Checked;
         }
 
         private void DarkKnightRampartPct_ValueChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.DarkKnightRampartPct = Convert.ToInt32(DarkKnightRampartPct.Value);
-        }
-
-        private void DarkKnightConvalescencePct_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.DarkKnightConvalescencePct = Convert.ToInt32(DarkKnightConvalescencePct.Value);
-        }
-
-        private void DarkKnightAnticipationPct_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.DarkKnightAnticipationPct = Convert.ToInt32(DarkKnightAnticipationPct.Value);
-        }
-
-        private void DarkKnightAwarenessPct_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.DarkKnightAwarenessPct = Convert.ToInt32(DarkKnightAwarenessPct.Value);
         }
 
         #endregion
@@ -2590,24 +2536,14 @@ namespace ShinraCo.Settings.Forms
             ShinraEx.Settings.PaladinRampart = PaladinRampart.Checked;
         }
 
-        private void PaladinConvalescence_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.PaladinConvalescence = PaladinConvalescence.Checked;
-        }
-
-        private void PaladinAnticipation_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.PaladinAnticipation = PaladinAnticipation.Checked;
-        }
-
         private void PaladinReprisal_CheckedChanged(object sender, EventArgs e)
         {
-            ShinraEx.Settings.PaladinReprisal = PaladinReprisal.Checked;
+            ShinraEx.Settings.PaladinReprisal = PaladinArmsLength.Checked;
         }
 
-        private void PaladinAwareness_CheckedChanged(object sender, EventArgs e)
+        private void PaladinArmsLength_CheckedChanged(object sender, EventArgs e)
         {
-            ShinraEx.Settings.PaladinAwareness = PaladinAwareness.Checked;
+            ShinraEx.Settings.PaladinArmsLength = PaladinArmsLength.Checked;
         }
 
         private void PaladinRampartPct_ValueChanged(object sender, EventArgs e)
@@ -2615,52 +2551,28 @@ namespace ShinraCo.Settings.Forms
             ShinraEx.Settings.PaladinRampartPct = Convert.ToInt32(PaladinRampartPct.Value);
         }
 
-        private void PaladinConvalescencePct_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.PaladinConvalescencePct = Convert.ToInt32(PaladinConvalescencePct.Value);
-        }
-
-        private void PaladinAnticipationPct_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.PaladinAnticipationPct = Convert.ToInt32(PaladinAnticipationPct.Value);
-        }
-
-        private void PaladinAwarenessPct_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.PaladinAwarenessPct = Convert.ToInt32(PaladinAwarenessPct.Value);
-        }
-
-        #endregion
-
-        #region Damage
-
-        private void PaladinGoringBlade_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.PaladinGoringBlade = PaladinGoringBlade.Checked;
-        }
-
         #endregion
 
         #region AoE
-
-        private void PaladinFlash_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.PaladinFlash = PaladinFlash.Checked;
-        }
 
         private void PaladinTotalEclipse_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.PaladinTotalEclipse = PaladinTotalEclipse.Checked;
         }
 
+        private void PaladinProminence_CheckedChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.PaladinProminence = PaladinProminence.Checked;
+        }
+
+        private void PaladinHolyCircle_CheckedChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.PaladinHolyCircle = PaladinHolyCircle.Checked;
+        }
+
         #endregion
 
         #region Cooldown
-
-        private void PaladinShieldSwipe_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.PaladinShieldSwipe = PaladinShieldSwipe.Checked;
-        }
 
         private void PaladinSpiritsWithin_CheckedChanged(object sender, EventArgs e)
         {
@@ -2686,11 +2598,6 @@ namespace ShinraCo.Settings.Forms
             ShinraEx.Settings.PaladinFightOrFlight = PaladinFightOrFlight.Checked;
         }
 
-        private void PaladinBulwark_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.PaladinBulwark = PaladinBulwark.Checked;
-        }
-
         private void PaladinSentinel_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.PaladinSentinel = PaladinSentinel.Checked;
@@ -2704,11 +2611,6 @@ namespace ShinraCo.Settings.Forms
         private void PaladinSheltron_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.PaladinSheltron = PaladinSheltron.Checked;
-        }
-
-        private void PaladinBulwarkPct_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.PaladinBulwarkPct = Convert.ToInt32(PaladinBulwarkPct.Value);
         }
 
         private void PaladinSentinelPct_ValueChanged(object sender, EventArgs e)
@@ -2733,17 +2635,6 @@ namespace ShinraCo.Settings.Forms
         private void PaladinClemencyPct_ValueChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.PaladinClemencyPct = Convert.ToInt32(PaladinClemencyPct.Value);
-        }
-
-        #endregion
-
-        #region Oath
-
-        private void PaladinOath_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (PaladinOath.Text == @"None") ShinraEx.Settings.PaladinOath = PaladinOaths.None;
-            if (PaladinOath.Text == @"Shield") ShinraEx.Settings.PaladinOath = PaladinOaths.Shield;
-            if (PaladinOath.Text == @"Sword") ShinraEx.Settings.PaladinOath = PaladinOaths.Sword;
         }
 
         #endregion
@@ -3353,24 +3244,14 @@ namespace ShinraCo.Settings.Forms
             ShinraEx.Settings.WarriorRampart = WarriorRampart.Checked;
         }
 
-        private void WarriorConvalescence_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.WarriorConvalescence = WarriorConvalescence.Checked;
-        }
-
-        private void WarriorAnticipation_CheckedChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.WarriorAnticipation = WarriorAnticipation.Checked;
-        }
-
         private void WarriorReprisal_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.WarriorReprisal = WarriorReprisal.Checked;
         }
 
-        private void WarriorAwareness_CheckedChanged(object sender, EventArgs e)
+        private void WarriorArmsLength_CheckedChanged(object sender, EventArgs e)
         {
-            ShinraEx.Settings.WarriorAwareness = WarriorAwareness.Checked;
+            ShinraEx.Settings.WarriorArmsLength = WarriorArmsLength.Checked;
         }
 
         private void WarriorRampartPct_ValueChanged(object sender, EventArgs e)
@@ -3378,20 +3259,6 @@ namespace ShinraCo.Settings.Forms
             ShinraEx.Settings.WarriorRampartPct = Convert.ToInt32(WarriorRampartPct.Value);
         }
 
-        private void WarriorConvalescencePct_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.WarriorConvalescencePct = Convert.ToInt32(WarriorConvalescencePct.Value);
-        }
-
-        private void WarriorAnticipationPct_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.WarriorAnticipationPct = Convert.ToInt32(WarriorAnticipationPct.Value);
-        }
-
-        private void WarriorAwarenessPct_ValueChanged(object sender, EventArgs e)
-        {
-            ShinraEx.Settings.WarriorAwarenessPct = Convert.ToInt32(WarriorAwarenessPct.Value);
-        }
 
         #endregion
 
@@ -3675,7 +3542,7 @@ namespace ShinraCo.Settings.Forms
 
         private void WhiteMageAfflatusSolce_CheckedChanged(object sender, EventArgs e)
         {
-            ShinraEx.Settings.WhiteMageAfflatusSolace = WhiteMageAfflatusRapture.Checked;
+            ShinraEx.Settings.WhiteMageAfflatusSolace = WhiteMageAfflatusSolace.Checked;
         }
 
         private void WhiteMageBenediction_CheckedChanged(object sender, EventArgs e)
