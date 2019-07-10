@@ -191,10 +191,6 @@ namespace ShinraCo
                     return new Warrior();
                 case ClassJobType.WhiteMage:
                     return new WhiteMage();
-                case ClassJobType.Dancer:
-                    return new Dancer();
-                case ClassJobType.Gunbreaker:
-                    return new Gunbreaker();
                 default:
                     Logging.Write(Colors.OrangeRed, $@"[ShinraEx] {classJob} is not supported.");
                     return new Default();
