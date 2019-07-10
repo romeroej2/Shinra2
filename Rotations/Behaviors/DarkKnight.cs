@@ -21,7 +21,7 @@ namespace ShinraCo.Rotations
                   //  if (await Bloodspiller()) return true;
                     if (await Souleater()) return true;
                     if (await SyphonStrike()) return true;
-                  //  if (await PowerSlash()) return true;
+                    if (await CarveAndSpit()) return true;
                     if (await SpinningSlash()) return true;
                         if (await FloodOfDarkness()) return true;
                         if (await EdgeOfDarkness()) return true;
@@ -38,8 +38,8 @@ namespace ShinraCo.Rotations
                     //if (await Bloodspiller()) return true;
                     if (await Souleater()) return true;
                     if (await SyphonStrike()) return true;
-                   // if (await PowerSlash()) return true;
-                    if (await SpinningSlash()) return true;
+                        if (await CarveAndSpit()) return true;
+                        if (await SpinningSlash()) return true;
                         if (await FloodOfDarkness()) return true;
                         if (await EdgeOfDarkness()) return true;
                         if (await Unmend()) return true;

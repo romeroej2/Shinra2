@@ -84,12 +84,18 @@ namespace ShinraCo
             {
                 if (Core.Player.CurrentHealthPercent < 15)
                 {
+                    Logging.Write(Colors.Yellow, "[ShinraEx] Try to use Potion");
                     BagSlot item = null;
                     foreach (var potionId in Helpers.PotionIds.Health)
                     {
                         item = InventoryManager.FilledSlots.FirstOrDefault(s => potionId == s.RawItemId);
                         if (item != null || item.CanUse())
+                        {
+                            Logging.Write(Colors.Yellow, $@"[ShinraEx] Trying to use >>> {item.Name}");
                             break;
+                            
+
+                        }
                     }
 
 

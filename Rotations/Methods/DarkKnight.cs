@@ -183,28 +183,20 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        /*
+        
         private async Task<bool> CarveAndSpit()
         {
             if (ShinraEx.Settings.DarkKnightCarveAndSpit)
             {
-                if (ShinraEx.Settings.DarkKnightCarveArts && ActionManager.CanCast(MySpells.CarveAndSpit.Name, Core.Player.CurrentTarget))
-                {
-                    
-                    if (await MySpells.DarkArts.Cast())
-                    {
-                        await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.DarkArts.Name));
-                    }
-                }
+               
 
-                if (Core.Player.HasAura(MySpells.DarkArts.Name) || Core.Player.CurrentManaPercent < 30 ||
-                    !ShinraEx.Settings.DarkKnightCarveArts && Core.Player.CurrentManaPercent < 70)
+                if (Core.Player.CurrentManaPercent < 70)
                 {
-                    return await MySpells.CarveAndSpit.Cast(null, !Core.Player.HasAura(MySpells.DarkArts.Name));
+                    return await MySpells.CarveAndSpit.Cast(null, false);
                 }
             }
             return false;
-        }*/
+        }
 
         #endregion
 

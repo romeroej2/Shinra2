@@ -97,7 +97,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Foul()
         {
-            if (UmbralIce)
+            if (Resource.PolyglotStatus)
             {
                 return await MySpells.Foul.Cast();
             }
