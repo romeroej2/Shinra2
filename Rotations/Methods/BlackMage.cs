@@ -399,6 +399,8 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+      
+
         #endregion
 
         #region PVP

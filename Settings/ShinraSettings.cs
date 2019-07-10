@@ -163,6 +163,10 @@ namespace ShinraCo.Settings
         [Setting, DefaultValue(true)]
         public bool RestHealth { get; set; }
 
+
+        [Setting, DefaultValue(true)]
+        public bool UseHealthPotion { get; set; }
+
         [Setting, DefaultValue(true)]
         public bool RestEnergy { get; set; }
 

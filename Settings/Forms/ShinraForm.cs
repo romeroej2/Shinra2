@@ -3782,9 +3782,13 @@ namespace ShinraCo.Settings.Forms
 
         private void pauseCheck_CheckedChanged(object sender, EventArgs e)
         {
-            ShinraEx.Settings.CrPaused = ShinraEx.Settings.CrPaused != true;
+            ShinraEx.Settings.CrPaused = !ShinraEx.Settings.CrPaused ;
             ShinraEx.Overlay.UpdateText();
         }
 
+        private void UserHealthPotion_CheckedChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.UseHealthPotion = !ShinraEx.Settings.CrPaused ;
+        }
     }
 }

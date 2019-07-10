@@ -507,6 +507,19 @@ namespace ShinraCo.Spells
                     case ClassJobType.BlackMage:
                         if (DataManager.GetSpellData(142).Cooldown.TotalMilliseconds < 1000) return false;
                         break;
+                    case ClassJobType.Dancer:
+                        if (DataManager.GetSpellData(15989).Cooldown.TotalMilliseconds < 1000)
+                        {
+                            return false;
+                        }
+                        break;
+                    case ClassJobType.Gunbreaker:
+                        if (DataManager.GetSpellData(16137).Cooldown.TotalMilliseconds < 1000)
+                        {
+                            return false;
+                        }
+                        break;
+
                 }
 
             #endregion

@@ -101,6 +101,7 @@ namespace ShinraCo.Rotations
         public override async Task<bool> Heal()
         {
             Helpers.Debug("Heal...");
+            if (await Helpers.UseHealthPotion()) return true;
             return false;
         }
 

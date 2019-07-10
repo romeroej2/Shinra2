@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -92,9 +92,11 @@
     <Compile Include="Rotations\Behaviors\Bard.cs" />
     <Compile Include="Rotations\Behaviors\BasicClass.cs" />
     <Compile Include="Rotations\Behaviors\BlackMage.cs" />
+    <Compile Include="Rotations\Behaviors\Dancer - Behaviour.cs" />
     <Compile Include="Rotations\Behaviors\DarkKnight.cs" />
     <Compile Include="Rotations\Behaviors\Default.cs" />
     <Compile Include="Rotations\Behaviors\Dragoon.cs" />
+    <Compile Include="Rotations\Behaviors\Gunbreaker - Behaviour.cs" />
     <Compile Include="Rotations\Behaviors\Machinist.cs" />
     <Compile Include="Rotations\Behaviors\Monk.cs" />
     <Compile Include="Rotations\Behaviors\Ninja.cs" />
@@ -109,9 +111,11 @@
     <Compile Include="Rotations\Methods\Bard.cs" />
     <Compile Include="Rotations\Methods\BasicClass.cs" />
     <Compile Include="Rotations\Methods\BlackMage.cs" />
+    <Compile Include="Rotations\Methods\Dancer - Methods.cs" />
     <Compile Include="Rotations\Methods\DarkKnight.cs" />
     <Compile Include="Rotations\Methods\Default.cs" />
     <Compile Include="Rotations\Methods\Dragoon.cs" />
+    <Compile Include="Rotations\Methods\Gunbreaker - Methods.cs" />
     <Compile Include="Rotations\Methods\Machinist.cs" />
     <Compile Include="Rotations\Methods\Monk.cs" />
     <Compile Include="Rotations\Methods\Ninja.cs" />
@@ -148,8 +152,10 @@
     <Compile Include="Spells\Main\BardSpells.cs" />
     <Compile Include="Spells\Main\BasicClassSpells.cs" />
     <Compile Include="Spells\Main\BlackMageSpells.cs" />
+    <Compile Include="Spells\Main\DancerSpells.cs" />
     <Compile Include="Spells\Main\DarkKnightSpells.cs" />
     <Compile Include="Spells\Main\DragoonSpells.cs" />
+    <Compile Include="Spells\Main\GunbreakerSpells.cs" />
     <Compile Include="Spells\Main\MachinistSpells.cs" />
     <Compile Include="Spells\Main\MonkSpells.cs" />
     <Compile Include="Spells\Main\NinjaSpells.cs" />

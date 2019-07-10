@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using Buddy.Coroutines;
+using ff14bot;
 using ff14bot.Helpers;
 using ff14bot.Managers;
 
@@ -51,6 +52,17 @@ namespace ShinraCo
                 24265,  // Grade 3 Infusion of Mind
                 27790 //Tincture
             };
+
+
+            public static readonly List<uint> Health = new List<uint>
+            {
+                
+                23167,  //Super Potion
+                4554,  //X-Potion
+                13637, // Max-Potion
+                4552,  // Hi-Potion
+                4551,  // Potion
+            };
         }
 
         internal static async Task<bool> UsePotion(ICollection<uint> potionType)
@@ -64,5 +76,32 @@ namespace ShinraCo
             Logging.Write(Colors.Yellow, $@"[ShinraEx] Using >>> {item.Name}");
             return true;
         }
+
+
+        internal static async Task<bool> UseHealthPotion()
+        {
+            if (ShinraEx.Settings.UseHealthPotion)
+            {
+                if (Core.Player.CurrentHealthPercent < 15)
+                {
+                    BagSlot item = null;
+                    foreach (var potionId in Helpers.PotionIds.Health)
+                    {
+                        item = InventoryManager.FilledSlots.FirstOrDefault(s => potionId == s.RawItemId);
+                        if (item != null || item.CanUse())
+                            break;
+                    }
+
+
+                    item.UseItem();
+                    await Coroutine.Wait(1000, () => !item.CanUse());
+                    Logging.Write(Colors.Yellow, $@"[ShinraEx] Using >>> {item.Name}");
+                    return true;
+                }
+            }
+            return false;
+        }
+
+       
     }
 }
