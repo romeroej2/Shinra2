@@ -32,18 +32,19 @@ namespace ShinraCo.Rotations
         private async Task<bool> RuinII()
         {
             
-            if (Spell.RecentSpell.ContainsKey(MySpells.DreadwyrmTrance.Name) || Core.Player.HasAura("Everlasting Flight"))
+            if (CurrentForm.Equals(SummonerForm.DreadwormTrance)|| CurrentForm.Equals(SummonerForm.FirebirdTrance))
                 return false;
             
 
             if (MovementManager.IsMoving ||
-                Core.Player.HasAura("Further Ruin") ||
+                //Core.Player.HasAura("Further Ruin") ||
                 UseBane ||
                 UseFester ||
                 UsePainflare ||
                 UseTriDisaster ||
-                (ResourceArcanist.Aetherflow == 0 && 
-                MySpells.EnergyDrain.Cooldown() <= 0) ||                
+                (ResourceArcanist.Aetherflow == 0 && MySpells.EnergyDrain.Cooldown() <= 0) ||
+                ActionManager.CanCast(MySpells.EnkindleBahamut.Name, Core.Player) ||
+                ActionManager.CanCast(MySpells.EnkindlePhoenix.Name, Core.Player) ||
                 ActionManager.CanCast(MySpells.SummonBahamut.Name, Core.Player) ||
                 ActionManager.CanCast(MySpells.DreadwyrmTrance.Name, Core.Player) ||
                 ActionManager.CanCast(MySpells.FirebirdTrance.Name, Core.Player))
@@ -60,7 +61,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> FountainOfFire()
         {
-            if (Core.Player.HasAura("Everlasting Flight"))
+            if (CurrentForm.Equals(SummonerForm.FirebirdTrance))
             {
                 return await MySpells.BrandOfPurgatory.Cast();
             }
@@ -69,7 +70,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BrandOfPurgatory()
         {
-            if (Core.Player.HasAura("Hellish Conduit") &&  Resource.Timer.TotalMilliseconds > 2500 && Resource.DreadwyrmTrance)
+            if (Core.Player.HasAura("Hellish Conduit") && CurrentForm.Equals(SummonerForm.FirebirdTrance))
             {
                 return await MySpells.BrandOfPurgatory.Cast();
             }
@@ -254,17 +255,27 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> DreadwyrmTrance()
         {
-            if (ShinraEx.Settings.SummonerDreadwyrmTrance)
+            if (ShinraEx.Settings.SummonerDreadwyrmTrance && !PreviousTrance.Equals(SummonerForm.DreadwormTrance))
             {
-                return await MySpells.DreadwyrmTrance.Cast();
+                if (await MySpells.DreadwyrmTrance.Cast())
+                {
+                    CurrentForm = PreviousTrance = SummonerForm.DreadwormTrance;
+                    SetCurrentFormTimer(TimeSpan.FromSeconds(15));
+                    return true;
+                }
             }
             return false;
         }
         private async Task<bool> FirebirdTrance()
         {
-            if (ShinraEx.Settings.SummonerDreadwyrmTrance)
+            if (ShinraEx.Settings.SummonerDreadwyrmTrance && !PreviousTrance.Equals(SummonerForm.FirebirdTrance))
             {
-                return await MySpells.FirebirdTrance.Cast();
+                if (await MySpells.FirebirdTrance.Cast())
+                {
+                    CurrentForm = PreviousTrance = SummonerForm.FirebirdTrance;
+                    SetCurrentFormTimer(TimeSpan.FromSeconds(20));
+                    return true;
+                }
             }
             return false;
         }
@@ -285,6 +296,8 @@ namespace ShinraCo.Rotations
                 if (await MySpells.SummonBahamut.Cast())
                 {
                     Spell.RecentSpell.Add("Summon Bahamut", DateTime.UtcNow + TimeSpan.FromMilliseconds(22000));
+                    SetCurrentFormTimer(TimeSpan.FromSeconds(20));
+                    CurrentForm = SummonerForm.Bahamut;
                     return true;
                 }
             }
@@ -293,7 +306,10 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> EgiAssault()
         {
-            if (PetExists && ActionManager.CanCast(MySpells.EgiAssault.Name, Core.Player) && (ActionManager.LastSpell.Name == "Ruin II" || ActionManager.LastSpell.Name == "Ruin IV"))
+            if (PetExists && 
+                (!CurrentForm.Equals(SummonerForm.Bahamut) || !CurrentForm.Equals(SummonerForm.FirebirdTrance)) && 
+                ActionManager.CanCast(MySpells.EgiAssault.Name, Core.Player) && 
+                (ActionManager.LastSpell.Name == "Ruin II" || ActionManager.LastSpell.Name == "Ruin IV"))
             {
                 return await MySpells.EgiAssault.Cast();
             }
@@ -302,9 +318,12 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> EgiAssaultII()
         {
-            if (PetExists && ActionManager.CanCast(MySpells.EgiAssaultII.Name, Core.Player) && (ActionManager.LastSpell.Name == "Ruin II" || ActionManager.LastSpell.Name == "Ruin IV"))
+            if (PetExists &&
+                (!CurrentForm.Equals(SummonerForm.Bahamut) || !CurrentForm.Equals(SummonerForm.FirebirdTrance)) &&
+                ActionManager.CanCast(MySpells.EgiAssaultII.Name, Core.Player) && 
+                (ActionManager.LastSpell.Name == "Ruin II" || ActionManager.LastSpell.Name == "Ruin IV"))
             {
-                return await MySpells.EgiAssault.Cast();
+                return await MySpells.EgiAssaultII.Cast();
             }
             return false;
         }
@@ -567,6 +586,41 @@ namespace ShinraCo.Rotations
         #endregion
 
         #region Custom
+
+        public enum SummonerForm : byte
+        {
+            Normal = 0,
+            DreadwormTrance = 1,
+            Bahamut = 2,
+            FirebirdTrance = 3
+        }
+
+        public static SummonerForm PreviousTrance { get; set; }
+        public static SummonerForm CurrentForm { get; set; }
+        public static DateTime CurrentFormExpireTime { get; set; }
+
+        private void CheckCurrentFormState()
+        {
+            Helpers.Debug("Form:  " +CurrentForm.ToString());
+            if (!PreviousTrance.Equals(SummonerForm.FirebirdTrance) && Core.Player.HasAura("Everlasting Flight"))
+                PreviousTrance = SummonerForm.FirebirdTrance;
+
+            if (!CurrentForm.Equals(SummonerForm.Normal) && IsCurrentFormExpired())
+            {
+                Helpers.Debug("Set form to Normal");
+                CurrentForm = SummonerForm.Normal;
+            }
+        }
+
+        private void SetCurrentFormTimer(TimeSpan duration)
+        {
+            CurrentFormExpireTime = DateTime.UtcNow + duration;
+        }
+
+        public bool IsCurrentFormExpired()
+        {
+            return DateTime.UtcNow > CurrentFormExpireTime;
+        }
 
         private static int AoECount => ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 2;
         private static string BioDebuff => Core.Player.ClassLevel >= 66 ? "Bio III" : Core.Player.ClassLevel >= 26 ? "Bio II" : "Bio";
