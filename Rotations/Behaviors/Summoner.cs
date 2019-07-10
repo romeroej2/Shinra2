@@ -35,7 +35,7 @@ namespace ShinraCo.Rotations
             if (await EnkindleBahamut()) return true;
             if (await EnkindlePhoenix()) return true;
             //Pets
-            // if (await Sic()) return true;
+            if (await Sic()) return true;
             if (await SummonIII()) return true;
             if (await SummonII()) return true;
             if (await Summon()) return true;

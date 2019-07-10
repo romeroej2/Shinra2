@@ -412,7 +412,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Sic()
         {
-            if (PetManager.ActivePetType == PetType.Ifrit_Egi && PetManager.PetMode != PetMode.Sic)
+            if (PetManager.PetMode != PetMode.Sic)
             {
                 if (await Coroutine.Wait(1000, () => PetManager.DoAction("Sic", Core.Player)))
                 {

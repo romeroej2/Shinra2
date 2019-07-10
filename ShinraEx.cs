@@ -163,6 +163,8 @@ namespace ShinraCo
                     return new Bard();
                 case ClassJobType.BlackMage:
                     return new BlackMage();
+                case ClassJobType.Dancer:
+                    return new Dancer();
                 case ClassJobType.DarkKnight:
                     return new DarkKnight();
                 case ClassJobType.Dragoon:
