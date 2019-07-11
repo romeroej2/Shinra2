@@ -230,11 +230,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> PassageOfArms()
         {
-            if (Core.Player.HasAura(MySpells.PassageOfArms.Name))
-            {
-                return true;
-            }
-            return false;
+            return Core.Player.HasAura(MySpells.PassageOfArms.Name);
         }
 
         #endregion
@@ -271,11 +267,49 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        private async Task<bool> LowBlow()
+        {
+            if (ShinraEx.Settings.PaladinLowBlow && (Core.Player.CurrentTarget.IsInterruptible() ||
+                                                     Core.Player.CurrentTarget.IsInterruptibleSpell()))
+            {
+                return await MySpells.Role.LowBlow.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> Provoke()
+        {
+            if (ShinraEx.Settings.PaladinProvoke)
+            {
+                return await MySpells.Role.Provoke.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> Interject()
+        {
+            if (ShinraEx.Settings.PaladinInterject && (Core.Player.CurrentTarget.IsInterruptible() || 
+                                                       Core.Player.CurrentTarget.IsInterruptibleSpell()))
+            {
+                return await MySpells.Role.Interject.Cast();
+            }
+            return false;
+        }
+        
         private async Task<bool> Reprisal()
         {
             if (ShinraEx.Settings.PaladinReprisal)
             {
                 return await MySpells.Role.Reprisal.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> ArmsLength()
+        {
+            if (ShinraEx.Settings.PaladinArmsLength)
+            {
+                return await MySpells.Role.ArmsLength.Cast();
             }
             return false;
         }

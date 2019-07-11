@@ -12,11 +12,11 @@ So you should see the `ShinraEx.cs`  in `<rebornbuddy folder>\Routines\Shinra2`.
 
 |Job|PvE|PvP|
 |--|--|--|
-| ![PLD](https://i.imgur.com/u627R4Z.png) | 4.5* |?|
+| ![PLD](https://i.imgur.com/u627R4Z.png) | ***5.0***(Lvl80) |?|
 | ![WAR](https://i.imgur.com/YYL973s.png) | 4.5* |?|
 | ![DRK](https://i.imgur.com/aoGrDnT.png) | ***5.0***(Lvl60) |?|
 | ![GNB](https://i.imgur.com/yu8gtk8.png) | ***5.0*** |?|
-| ![WHM](https://i.imgur.com/wqK5obw.png) | ***5.0**** |?|
+| ![WHM](https://i.imgur.com/wqK5obw.png) | ***5.0***(Lvl80) |?|
 | ![AST](https://i.imgur.com/9oUCKUm.png) | ***5.0***(Lvl50) |?|
 | ![SCH](https://i.imgur.com/M1WjOO8.png) | ***5.0**** |?|
 | ![MNK](https://i.imgur.com/UBs3T6K.png) | 4.5* |?|
@@ -37,6 +37,6 @@ With <3 for y2krazy and zzi and Freiheit
 
 Also kudos to all the pull request. Feel free to update this Readme on your next pull :)
  - CimmeriaCode
- - miracle091
+ - miracle091 aka spearmint
 
 Use at your own risk. Or better use the original one.
