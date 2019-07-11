@@ -7,31 +7,33 @@ namespace ShinraCo.Spells.Opener
     {
         private static PaladinSpells Spells { get; } = new PaladinSpells();
 
-        public static List<Spell> List = new List<Spell>
+        public static readonly List<Spell> List = new List<Spell>
         {
             Spells.FastBlade,
             Spells.RiotBlade,
             Spells.FightOrFlight,
             Spells.GoringBlade,
-            Spells.CircleOfScorn,
-            Spells.SpiritsWithin,
-            Spells.FastBlade,
-            Spells.RiotBlade,
+            Spells.RageOfHalone,
             Spells.RoyalAuthority,
-            Spells.FastBlade,
-            Spells.RiotBlade,
-            Spells.RoyalAuthority,
+            Spells.Atonement,
+            Spells.Atonement,
+            Spells.Atonement,
             Spells.FastBlade,
             Spells.RiotBlade,
             Spells.GoringBlade,
             Spells.Requiescat,
             Spells.HolySpirit,
-            Spells.CircleOfScorn,
             Spells.HolySpirit,
             Spells.HolySpirit,
             Spells.HolySpirit,
-            Spells.SpiritsWithin,
-            Spells.HolySpirit
+            Spells.Confiteor,
+            Spells.FastBlade,
+            Spells.RiotBlade,
+            Spells.RageOfHalone,
+            Spells.RoyalAuthority,
+            Spells.Atonement,
+            Spells.Atonement,
+            Spells.Atonement
         };
     }
 }

@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using ShinraCo.Settings;
 
 namespace ShinraCo.Rotations
 {
@@ -8,8 +9,8 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
+            Helpers.Debug("Combat...");
             // if (Shinra.Settings.DancerOpener) {if (await Helpers.ExecuteOpener()) return true; }
-
             if (await Emboite()) return true;
             if (await Entrechat()) return true;
             if (await Jete()) return true;
@@ -35,6 +36,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
+            Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             // if (Shinra.Settings.DancerOpener) { if (await Helpers.ExecuteOpener()) return true; }
@@ -42,8 +44,7 @@ namespace ShinraCo.Rotations
             if (await Flourish()) return true;
             if (await FanDanceIII()) return true;
             if (await FanDanceII()) return true;
-            if (await FanDanceI()) return true;
-            return false;
+            return await FanDanceI();
         }
 
         #endregion
@@ -52,6 +53,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
+            Helpers.Debug("Heal...");
             return false;
         }
 
@@ -61,8 +63,8 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
-            if (await ShinraEx.SummonChocobo()) return true;
-            return false;
+            Helpers.Debug("PreCombatBuff...");
+            return await ShinraEx.SummonChocobo();
         }
 
         #endregion
@@ -71,6 +73,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
+            Helpers.Debug("Pull...");
             return await Combat();
         }
 
@@ -80,6 +83,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
+            Helpers.Debug("CombatPVP...");
             return false;
         }
 

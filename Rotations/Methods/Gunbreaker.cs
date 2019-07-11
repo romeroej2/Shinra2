@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using ff14bot;
 using ff14bot.Managers;
-using ShinraCo.Settings;
 using ShinraCo.Spells.Main;
 using Resource = ff14bot.Managers.ActionResourceManager.Gunbreaker;
 

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Buddy.Coroutines;
+﻿using System.Threading.Tasks;
 using ff14bot;
 using ff14bot.Managers;
-using ShinraCo.Settings;
-using ShinraCo.Spells;
 using ShinraCo.Spells.Main;
 using Resource = ff14bot.Managers.ActionResourceManager.Dancer;
-using static ShinraCo.Constants;
 
 namespace ShinraCo.Rotations
 {
@@ -227,11 +221,9 @@ namespace ShinraCo.Rotations
 
         #region PVP
 
-
         #endregion
 
         #region Custom
-
 
         #endregion
     }

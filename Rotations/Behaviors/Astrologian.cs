@@ -14,14 +14,13 @@ namespace ShinraCo.Rotations
                 case Modes.Smart:
                 {
                     Helpers.Debug("Combat - smart ...");
-                    
                     if (await EarthlyStar()) return true;
                     if (await Gravity()) return true;
-                        if (await CombustIII()) return true;
-                        if (await CombustII()) return true;
+                    if (await CombustIII()) return true;
+                    if (await CombustII()) return true;
                     if (await Combust()) return true;
-                        if (await MaleficIV()) return true;
-                        if (await MaleficIII()) return true;
+                    if (await MaleficIV()) return true;
+                    if (await MaleficIII()) return true;
                     if (await MaleficII()) return true;
                     return await Malefic();
                 }
@@ -32,8 +31,8 @@ namespace ShinraCo.Rotations
                     if (await CombustIII()) return true;
                     if (await CombustII()) return true;
                     if (await Combust()) return true;
-                        if (await MaleficIV()) return true;
-                        if (await MaleficIII()) return true;
+                    if (await MaleficIV()) return true;
+                    if (await MaleficIII()) return true;
                     if (await MaleficII()) return true;
                     return await Malefic();
                 }
@@ -41,14 +40,13 @@ namespace ShinraCo.Rotations
                 case Modes.Multi:
                 {
                     Helpers.Debug("Combat - multi...");
-                    
                     if (await EarthlyStar()) return true;
                     if (await Gravity()) return true;
                     if (await CombustII()) return true;
                     return await Combust();
                 }
             }
-            
+
             return false;
         }
 
@@ -58,7 +56,6 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
-            
             Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
@@ -67,20 +64,20 @@ namespace ShinraCo.Rotations
             if (await CelestialOpposition()) return true;
             if (await LucidDreaming()) return true;
             if (await NeutralSect()) return true;
-            
+
             if (ShinraEx.Settings.AstrologianDraw)
             {
                 if (await LordOfCrowns()) return true;
                 if (await SleeveDraw()) return true;
                 if (await Draw()) return true;
-                
+
                 if (await Redraw()) return true;
                 if (await MinorArcana()) return true;
                 if (await Undraw()) return true;
-                
+
                 if (await DrawTargetted()) return true;
-                
             }
+
             return false;
         }
 
@@ -97,8 +94,8 @@ namespace ShinraCo.Rotations
             if (await CelestialIntersection()) return true;
             if (await Lightspeed()) return true;
             if (await Synastry()) return true;
-           // if (await EyeForAnEye()) return true;
-           
+            // if (await EyeForAnEye()) return true;
+
             if (await LadyOfCrowns()) return true;
             if (await AspectedHelios()) return true;
             if (await Horoscope()) return true;
@@ -126,8 +123,8 @@ namespace ShinraCo.Rotations
                 if (await Redraw()) return true;
                 if (await MinorArcana()) return true;
                 if (await Undraw()) return true;
-                
             }
+
             return false;
         }
 

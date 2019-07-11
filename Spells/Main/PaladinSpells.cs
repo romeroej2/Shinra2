@@ -64,8 +64,8 @@ namespace ShinraCo.Spells.Main
             ID = 28,
             Level = 10,
             GCDType = GCDType.On,
-            SpellType = SpellType.Damage,
-            CastType = CastType.Target
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
         };
         
         public Spell ShieldLob { get; } = new Spell

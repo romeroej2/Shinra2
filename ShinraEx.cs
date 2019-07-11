@@ -61,7 +61,6 @@ namespace ShinraCo
         public static ShinraSettings Settings = ShinraSettings.Instance;
         public static readonly ShinraOverlay Overlay = new ShinraOverlay();
      
-
         public sealed override void OnButtonPress()
         {
             if (_configForm == null || _configForm.IsDisposed || _configForm.Disposing)

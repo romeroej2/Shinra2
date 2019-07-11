@@ -102,7 +102,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> TotalEclipse()
         {
-            var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
+            var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 5;
             
             if (ShinraEx.Settings.PaladinTotalEclipse && Helpers.EnemiesNearTarget(5) >= count)
             {
@@ -113,7 +113,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Prominence()
         {
-            var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
+            var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 5;
             
             if (ShinraEx.Settings.PaladinProminence && Core.Player.CurrentManaPercent < 30 && Helpers.EnemiesNearTarget(5) >= count)
             {
@@ -124,7 +124,7 @@ namespace ShinraCo.Rotations
         
         private async Task<bool> HolyCircle()
         {
-            var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
+            var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 5;
             
             if (ShinraEx.Settings.PaladinHolyCircle && Core.Player.CurrentManaPercent < 20 && Helpers.EnemiesNearTarget(5) >= count)
             {
@@ -179,7 +179,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> IronWill()
         {
-            if (ShinraEx.Settings.TankMode != TankModes.DPS && Core.Player.HasAura(MySpells.IronWill.Name))
+            if (ShinraEx.Settings.TankMode == TankModes.DPS && Core.Player.HasAura(MySpells.IronWill.Name, true))
             {
                 return false;
             }

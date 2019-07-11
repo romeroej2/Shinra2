@@ -9,17 +9,18 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-          if (await WickedTalon()) return true;
-          if (await SavageClaw()) return true;
-          if (await GnashingFang()) return true;
-          if (await FatedCircle()) return true;
-          if (await DemonSlaughter()) return true;
-          if (await DemonSlice()) return true;
-          if (await SonicBreak()) return true;
-          if (await BurstStrike()) return true;
-          if (await SolidBarrel()) return true;
-          if (await BrutalShell()) return true;
-          return await KeenEdge();
+            Helpers.Debug("Combat...");
+            if (await WickedTalon()) return true;
+            if (await SavageClaw()) return true;
+            if (await GnashingFang()) return true;
+            if (await FatedCircle()) return true;
+            if (await DemonSlaughter()) return true;
+            if (await DemonSlice()) return true;
+            if (await SonicBreak()) return true;
+            if (await BurstStrike()) return true;
+            if (await SolidBarrel()) return true;
+            if (await BrutalShell()) return true;
+            return await KeenEdge();
         }
 
         #endregion
@@ -28,6 +29,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
+            Helpers.Debug("CombatBuff...");
             if (await Bloodfest()) return true;
             if (await NoMercy()) return true;
             if (await EyeGouge()) return true;
@@ -43,6 +45,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
+            Helpers.Debug("Heal...");
             return false;
         }
 
@@ -52,8 +55,8 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
-            if (await ShinraEx.SummonChocobo()) return true;
-            return false;
+            Helpers.Debug("PreCombatBuff...");
+            return await ShinraEx.SummonChocobo();
         }
 
         #endregion
@@ -62,7 +65,8 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
-            //if (Shinra.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            Helpers.Debug("Pull...");
+            //if (Shinra.Settings.GunbreakerOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await LightningShot()) return true;
             return await Combat();
         }
@@ -73,6 +77,7 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
+            Helpers.Debug("CombatPVP...");
             return false;
         }
 
