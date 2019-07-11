@@ -15,36 +15,39 @@ namespace ShinraCo.Rotations
                 {
                     Helpers.Debug("Combat - smart...");
                     if (ShinraEx.Settings.DarkKnightOpener) { if (await Helpers.ExecuteOpener()) return true; }
-                   // if (await Quietus()) return true;
+                    if (await LowBlow()) return true;
+                    if (await Interject()) return true;
+                    //if (await Quietus()) return true;
                     if (await AbyssalDrain()) return true;
                     if (await Unleash()) return true;
-                  //  if (await Bloodspiller()) return true;
+                    //if (await Bloodspiller()) return true;
                     if (await Souleater()) return true;
                     if (await SyphonStrike()) return true;
                     if (await CarveAndSpit()) return true;
                     if (await SpinningSlash()) return true;
-                        if (await FloodOfDarkness()) return true;
-                        if (await EdgeOfDarkness()) return true;
-                        if (await Unmend()) return true;
-                        
-                        if (await LowBlow()) return true;
-                        return await HardSlash();
+                    if (await FloodOfDarkness()) return true;
+                    if (await EdgeOfDarkness()) return true;
+                    if (await Unmend()) return true;
+                    if (await LowBlow()) return true;
+                    return await HardSlash();
                 }
 
                 case Modes.Single:
                 {
                     Helpers.Debug("Combat - single...");
                     if (ShinraEx.Settings.DarkKnightOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await LowBlow()) return true;
+                    if (await Interject()) return true;
                     //if (await Bloodspiller()) return true;
                     if (await Souleater()) return true;
                     if (await SyphonStrike()) return true;
-                        if (await CarveAndSpit()) return true;
-                        if (await SpinningSlash()) return true;
-                        if (await FloodOfDarkness()) return true;
-                        if (await EdgeOfDarkness()) return true;
-                        if (await Unmend()) return true;
-                        if (await LowBlow()) return true;
-                        return await HardSlash();
+                    if (await CarveAndSpit()) return true; 
+                    if (await SpinningSlash()) return true;
+                    if (await FloodOfDarkness()) return true; 
+                    if (await EdgeOfDarkness()) return true;
+                    if (await Unmend()) return true;
+                    if (await LowBlow()) return true;
+                    return await HardSlash();
                 }
 
                 case Modes.Multi:
@@ -72,6 +75,7 @@ namespace ShinraCo.Rotations
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.DarkKnightOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            if (await ArmsLength()) return true;
             if (await Grit()) return true;
             if (await LivingDead()) return true;
             if (await ShadowWall()) return true;
@@ -81,8 +85,7 @@ namespace ShinraCo.Rotations
             if (await Reprisal()) return true;
             if (await Plunge()) return true;
             if (await BloodWeapon()) return true;
-            if (await SaltedEarth()) return true;
-            return false;
+            return await SaltedEarth();
         }
 
         #endregion
@@ -116,6 +119,7 @@ namespace ShinraCo.Rotations
         public override async Task<bool> Pull()
         {
             Helpers.Debug("Pull...");
+            if (await Provoke()) return true;
             return await Combat();
         }
 

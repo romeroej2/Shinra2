@@ -282,6 +282,35 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        private async Task<bool> LowBlow()
+        {
+            if (ShinraEx.Settings.WarriorLowBlow && (Core.Player.CurrentTarget.IsInterruptible() ||
+                                                     Core.Player.CurrentTarget.IsInterruptibleSpell()))
+            {
+                return await MySpells.Role.LowBlow.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> Provoke()
+        {
+            if (ShinraEx.Settings.WarriorProvoke)
+            {
+                return await MySpells.Role.Provoke.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> Interject()
+        {
+            if (ShinraEx.Settings.WarriorInterject && (Core.Player.CurrentTarget.IsInterruptible() || 
+                                                       Core.Player.CurrentTarget.IsInterruptibleSpell()))
+            {
+                return await MySpells.Role.Interject.Cast();
+            }
+            return false;
+        }
+        
         private async Task<bool> Reprisal()
         {
             if (ShinraEx.Settings.WarriorReprisal)
@@ -291,6 +320,15 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        private async Task<bool> ArmsLength()
+        {
+            if (ShinraEx.Settings.WarriorArmsLength)
+            {
+                return await MySpells.Role.ArmsLength.Cast();
+            }
+            return false;
+        }
+        
         #endregion
 
         #region Custom

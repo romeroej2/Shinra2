@@ -60,16 +60,6 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        private async Task<bool> LowBlow()
-        {
-            //if ()
-            {
-                return await MySpells.Role.LowBlow.Cast();
-            }
-            //return false;
-        }
-
-
         private async Task<bool> FloodOfDarkness()
         {
             if (Core.Player.CurrentMana > 3500 && ActionManager.LastSpell.Name != MySpells.FloodOfDarkness.Name)
@@ -324,6 +314,35 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+        private async Task<bool> LowBlow()
+        {
+            if (ShinraEx.Settings.DarkKnightLowBlow && (Core.Player.CurrentTarget.IsInterruptible() || 
+                                                        Core.Player.CurrentTarget.IsInterruptibleSpell()))
+            {
+                return await MySpells.Role.LowBlow.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> Provoke()
+        {
+            if (ShinraEx.Settings.DarkKnightProvoke)
+            {
+                return await MySpells.Role.Provoke.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> Interject()
+        {
+            if (ShinraEx.Settings.DarkKnightInterject && (Core.Player.CurrentTarget.IsInterruptible() || 
+                                                          Core.Player.CurrentTarget.IsInterruptibleSpell()))
+            {
+                return await MySpells.Role.Interject.Cast();
+            }
+            return false;
+        }
+        
         private async Task<bool> Reprisal()
         {
             if (ShinraEx.Settings.DarkKnightReprisal)
@@ -335,22 +354,12 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> ArmsLength()
         {
-            if (ShinraEx.Settings.DarkKnightReprisal)
+            if (ShinraEx.Settings.DarkKnightArmsLength)
             {
                 return await MySpells.Role.ArmsLength.Cast();
             }
             return false;
         }
-
-        /*
-        private async Task<bool> Awareness()
-        {
-            if (ShinraEx.Settings.DarkKnightAwareness && Core.Player.CurrentHealthPercent < ShinraEx.Settings.DarkKnightAwarenessPct)
-            {
-                return await MySpells.Role.Awareness.Cast();
-            }
-            return false;
-        }*/
 
         #endregion
 
