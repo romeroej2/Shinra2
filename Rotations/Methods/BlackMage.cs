@@ -88,8 +88,8 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Xenoglossy()
         {
-            //if (Resource.PolyglotStatus)
-            if (ActionResourceManager.CostTypesStruct.offset_E.Equals(1))
+            if (Resource.PolyglotStatus)
+            //if (ActionResourceManager.CostTypesStruct.offset_E.Equals(1))
             {
                 return await MySpells.Xenoglossy.Cast();
             }
@@ -102,7 +102,8 @@ namespace ShinraCo.Rotations
             //struct: ResourceTable: { timer: 0, timer2: 14759, offset_8: 0, offset_9: 0, offset_A: 167, offset_B: 57, offset_C: 3, offset_D: 0, offset_E: 1 }
 
 
-            if (ActionResourceManager.CostTypesStruct.offset_E.Equals(1))
+            //if (ActionResourceManager.CostTypesStruct.offset_E.Equals(1))
+            if (Resource.PolyglotStatus)
             {
                 return await MySpells.Foul.Cast();
             }
