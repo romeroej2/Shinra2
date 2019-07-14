@@ -71,10 +71,8 @@ namespace ShinraCo.Rotations
             if (await Geirskogul()) return true;
             if (await DragonfireDive()) return true;
             if (await SpineshatterDive()) return true;
-            if (await Jump()) return true;
-            if (await Invigorate()) return true;
             await Helpers.UpdateParty();
-            return await Goad();
+            return await Jump();
         }
 
         #endregion

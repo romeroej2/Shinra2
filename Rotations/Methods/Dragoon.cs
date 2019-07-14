@@ -93,7 +93,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> DoomSpike()
         {
-            if (Core.Player.CurrentTPPercent > 30 && Core.Player.HasAura(MySpells.HeavyThrust.Name))
+            if (Core.Player.HasAura(MySpells.Disembowel.Name))
             {
                 var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
 
@@ -107,8 +107,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SonicThrust()
         {
-            if (ActionManager.LastSpell.Name == MySpells.DoomSpike.Name && Core.Player.CurrentTPPercent > 30 &&
-                Core.Player.HasAura(MySpells.HeavyThrust.Name))
+            if (ActionManager.LastSpell.Name == MySpells.DoomSpike.Name && Core.Player.HasAura(MySpells.Disembowel.Name))
             {
                 var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
 
@@ -127,7 +126,7 @@ namespace ShinraCo.Rotations
         private async Task<bool> Jump()
         {
             if (ShinraEx.Settings.DragoonJump && !MovementManager.IsMoving && !RecentJump && UseJump &&
-                Core.Player.HasAura(MySpells.HeavyThrust.Name))
+                Core.Player.HasAura(MySpells.Disembowel.Name))
             {
                 return await MySpells.Jump.Cast();
             }
@@ -137,7 +136,7 @@ namespace ShinraCo.Rotations
         private async Task<bool> SpineshatterDive()
         {
             if (ShinraEx.Settings.DragoonSpineshatter && !MovementManager.IsMoving && !RecentJump && UseJump &&
-                Core.Player.HasAura(MySpells.HeavyThrust.Name))
+                Core.Player.HasAura(MySpells.Disembowel.Name))
             {
                 return await MySpells.SpineshatterDive.Cast();
             }
@@ -147,7 +146,7 @@ namespace ShinraCo.Rotations
         private async Task<bool> DragonfireDive()
         {
             if (ShinraEx.Settings.DragoonDragonfire && !MovementManager.IsMoving && !RecentJump &&
-                Core.Player.HasAura(MySpells.HeavyThrust.Name))
+                Core.Player.HasAura(MySpells.Disembowel.Name))
             {
                 return await MySpells.DragonfireDive.Cast();
             }
@@ -156,7 +155,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Geirskogul()
         {
-            if (ShinraEx.Settings.DragoonGeirskogul && Core.Player.HasAura(MySpells.HeavyThrust.Name))
+            if (ShinraEx.Settings.DragoonGeirskogul && Core.Player.HasAura(MySpells.Disembowel.Name))
             {
                 if (Resource.DragonGaze == 3 || !RecentJump && !Core.Player.HasAura(1243) && JumpCooldown > 25 && SpineCooldown > 25 ||
                     Core.Player.ClassLevel < 70)
@@ -169,7 +168,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Nastrond()
         {
-            if (ShinraEx.Settings.DragoonGeirskogul && Core.Player.HasAura(MySpells.HeavyThrust.Name))
+            if (ShinraEx.Settings.DragoonGeirskogul && Core.Player.HasAura(MySpells.Disembowel.Name))
             {
                 return await MySpells.Nastrond.Cast();
             }
@@ -178,7 +177,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> MirageDive()
         {
-            if (ShinraEx.Settings.DragoonMirage && !MovementManager.IsMoving && !RecentJump && Core.Player.HasAura(MySpells.HeavyThrust.Name))
+            if (ShinraEx.Settings.DragoonMirage && !MovementManager.IsMoving && !RecentJump && Core.Player.HasAura(MySpells.Disembowel.Name))
             {
                 return await MySpells.MirageDive.Cast();
             }
@@ -251,34 +250,11 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        private async Task<bool> Invigorate()
-        {
-            if (ShinraEx.Settings.DragoonInvigorate && Core.Player.CurrentTPPercent < ShinraEx.Settings.DragoonInvigoratePct)
-            {
-                return await MySpells.Role.Invigorate.Cast();
-            }
-            return false;
-        }
-
         private async Task<bool> Bloodbath()
         {
             if (ShinraEx.Settings.DragoonBloodbath && Core.Player.CurrentHealthPercent < ShinraEx.Settings.DragoonBloodbathPct)
             {
                 return await MySpells.Role.Bloodbath.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Goad()
-        {
-            if (ShinraEx.Settings.DragoonGoad)
-            {
-                var target = Helpers.GoadManager.FirstOrDefault(gm => gm.CurrentTPPercent < ShinraEx.Settings.DragoonGoadPct);
-
-                if (target != null)
-                {
-                    return await MySpells.Role.Goad.Cast(target);
-                }
             }
             return false;
         }
