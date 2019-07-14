@@ -15,6 +15,8 @@ namespace ShinraCo.Rotations
                 {
                     Helpers.Debug("Combat - smart...");
                     if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await LowBlow()) return true;
+                    if (await Interject()) return true;
                     if (await TotalEclipse()) return true;
                     if (await Prominence()) return true;
                     if (await HolyCircle()) return true;
@@ -33,6 +35,8 @@ namespace ShinraCo.Rotations
                 {
                     Helpers.Debug("Combat - single...");
                     if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await LowBlow()) return true;
+                    if (await Interject()) return true;
                     if (await HolySpirit()) return true;
                     if (await Atonement()) return true;
                     if (await RiotBlade()) return true;
@@ -69,6 +73,7 @@ namespace ShinraCo.Rotations
             if (await Sentinel()) return true;
             if (await Rampart()) return true;
             if (await Reprisal()) return true;
+            if (await ArmsLength()) return true;
             if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await Sheltron()) return true;
             if (await Requiescat()) return true;
@@ -106,6 +111,7 @@ namespace ShinraCo.Rotations
         {
             Helpers.Debug("Pull...");
             if (ShinraEx.Settings.PaladinOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            if (await Provoke()) return true;
             if (await ShieldLob()) return true;
             return await Combat();
         }

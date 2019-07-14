@@ -546,6 +546,15 @@ namespace ShinraCo.Settings
         public bool DarkKnightRampart { get; set; }
 
         [Setting, DefaultValue(true)]
+        public bool DarkKnightLowBlow { get; set; }
+
+        [Setting, DefaultValue(true)]
+        public bool DarkKnightProvoke { get; set; }
+
+        [Setting, DefaultValue(true)]
+        public bool DarkKnightInterject { get; set; }
+
+        [Setting, DefaultValue(true)]
         public bool DarkKnightReprisal { get; set; }
 
         [Setting, DefaultValue(true)]
@@ -1105,6 +1114,15 @@ namespace ShinraCo.Settings
         public bool PaladinRampart { get; set; }
 
         [Setting, DefaultValue(true)]
+        public bool PaladinLowBlow { get; set; }
+        
+        [Setting, DefaultValue(true)]
+        public bool PaladinProvoke { get; set; }
+        
+        [Setting, DefaultValue(true)]
+        public bool PaladinInterject { get; set; }
+
+        [Setting, DefaultValue(true)]
         public bool PaladinReprisal { get; set; }
 
         [Setting, DefaultValue(true)]
@@ -1595,6 +1613,15 @@ namespace ShinraCo.Settings
 
         [Setting, DefaultValue(true)]
         public bool WarriorRampart { get; set; }
+
+        [Setting, DefaultValue(true)]
+        public bool WarriorLowBlow { get; set; }
+
+        [Setting, DefaultValue(true)]
+        public bool WarriorProvoke { get; set; }
+
+        [Setting, DefaultValue(true)]
+        public bool WarriorInterject { get; set; }
 
         [Setting, DefaultValue(true)]
         public bool WarriorReprisal { get; set; }

@@ -15,6 +15,8 @@ namespace ShinraCo.Rotations
                 {
                     Helpers.Debug("Combat - smart...");
                     if (ShinraEx.Settings.WarriorOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await LowBlow()) return true;
+                    if (await Interject()) return true;
                     if (await Decimate()) return true;
                     if (await SteelCyclone()) return true;
                     if (await FellCleave()) return true;
@@ -32,6 +34,8 @@ namespace ShinraCo.Rotations
                 {
                     Helpers.Debug("Combat - single...");
                     if (ShinraEx.Settings.WarriorOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await LowBlow()) return true;
+                    if (await Interject()) return true;
                     if (await FellCleave()) return true;
                     if (await InnerBeast()) return true;
                     if (await StormsEye()) return true;
@@ -68,6 +72,7 @@ namespace ShinraCo.Rotations
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.WarriorOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            if (await ArmsLength()) return true;
             if (await Deliverance()) return true;
             if (await Defiance()) return true;
             if (await ThrillOfBattle()) return true;
@@ -113,6 +118,7 @@ namespace ShinraCo.Rotations
         public override async Task<bool> Pull()
         {
             Helpers.Debug("Pull...");
+            if (await Provoke()) return true;
             return await Combat();
         }
 

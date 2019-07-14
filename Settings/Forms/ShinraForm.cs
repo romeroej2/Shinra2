@@ -293,9 +293,11 @@ namespace ShinraCo.Settings.Forms
             #region Role
 
             DarkKnightRampart.Checked = ShinraEx.Settings.DarkKnightRampart;
+            DarkKnightLowBlow.Checked = ShinraEx.Settings.DarkKnightLowBlow;
+            DarkKnightProvoke.Checked = ShinraEx.Settings.DarkKnightProvoke;
+            DarkKnightInterject.Checked = ShinraEx.Settings.DarkKnightInterject;
             DarkKnightReprisal.Checked = ShinraEx.Settings.DarkKnightReprisal;
             DarkKnightArmsLength.Checked = ShinraEx.Settings.DarkKnightArmsLength;
-
             DarkKnightRampartPct.Value = ShinraEx.Settings.DarkKnightRampartPct;
 
             #endregion
@@ -605,9 +607,11 @@ namespace ShinraCo.Settings.Forms
             #region Role
 
             PaladinRampart.Checked = ShinraEx.Settings.PaladinRampart;
+            PaladinLowBlow.Checked = ShinraEx.Settings.PaladinLowBlow;
+            PaladinProvoke.Checked = ShinraEx.Settings.PaladinProvoke;
+            PaladinInterject.Checked = ShinraEx.Settings.PaladinInterject;
             PaladinReprisal.Checked = ShinraEx.Settings.PaladinReprisal;
             PaladinArmsLength.Checked = ShinraEx.Settings.PaladinArmsLength;
-
             PaladinRampartPct.Value = ShinraEx.Settings.PaladinRampartPct;
 
             #endregion
@@ -907,9 +911,11 @@ namespace ShinraCo.Settings.Forms
             #region Role
 
             WarriorRampart.Checked = ShinraEx.Settings.WarriorRampart;
+            WarriorLowBlow.Checked = ShinraEx.Settings.WarriorLowBlow;
+            WarriorProvoke.Checked = ShinraEx.Settings.WarriorProvoke;
+            WarriorInterject.Checked = ShinraEx.Settings.WarriorInterject;
             WarriorReprisal.Checked = ShinraEx.Settings.WarriorReprisal;
             WarriorArmsLength.Checked = ShinraEx.Settings.WarriorArmsLength;
-
             WarriorRampartPct.Value = ShinraEx.Settings.WarriorRampartPct;
 
             #endregion
@@ -1017,6 +1023,7 @@ namespace ShinraCo.Settings.Forms
             WhiteMageInterruptOverheal.Checked = ShinraEx.Settings.WhiteMageInterruptOverheal;
             WhiteMageCure.Checked = ShinraEx.Settings.WhiteMageCure;
             WhiteMageCureII.Checked = ShinraEx.Settings.WhiteMageCureII;
+            WhiteMageCureIII.Checked = ShinraEx.Settings.WhiteMageCureIII;
             WhiteMageTetragrammaton.Checked = ShinraEx.Settings.WhiteMageTetragrammaton;
             WhiteMageAfflatusSolace.Checked = ShinraEx.Settings.WhiteMageAfflatusSolace;
             WhiteMageBenediction.Checked = ShinraEx.Settings.WhiteMageBenediction;
@@ -1029,6 +1036,7 @@ namespace ShinraCo.Settings.Forms
             WhiteMageRaise.Checked = ShinraEx.Settings.WhiteMageRaise;
             WhiteMageCurePct.Value = ShinraEx.Settings.WhiteMageCurePct;
             WhiteMageCureIIPct.Value = ShinraEx.Settings.WhiteMageCureIIPct;
+            WhiteMageCureIIIPct.Value = ShinraEx.Settings.WhiteMageCureIIIPct;
             WhiteMageTetragrammatonPct.Value = ShinraEx.Settings.WhiteMageTetragrammatonPct;
             WhiteMageAfflatusSolacePct.Value = ShinraEx.Settings.WhiteMageAfflatusSolacePct;
             WhiteMageBenedictionPct.Value = ShinraEx.Settings.WhiteMageBenedictionPct;
@@ -1699,6 +1707,21 @@ namespace ShinraCo.Settings.Forms
         private void DarkKnightRampart_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.DarkKnightRampart = DarkKnightRampart.Checked;
+        }
+
+        private void DarkKnightLowBlow_CheckedChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.DarkKnightLowBlow = DarkKnightLowBlow.Checked;
+        }
+
+        private void DarkKnightProvoke_CheckedChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.DarkKnightProvoke = DarkKnightProvoke.Checked;
+        }
+
+        private void DarkKnightInterject_CheckedChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.DarkKnightInterject = DarkKnightInterject.Checked;
         }
 
         private void DarkKnightReprisal_CheckedChanged(object sender, EventArgs e)
@@ -2538,9 +2561,24 @@ namespace ShinraCo.Settings.Forms
             ShinraEx.Settings.PaladinRampart = PaladinRampart.Checked;
         }
 
+        private void PaladinLowBlow_CheckedChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.PaladinLowBlow = PaladinLowBlow.Checked;
+        }
+
+        private void PaladinProvoke_CheckedChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.PaladinProvoke = PaladinProvoke.Checked;
+        }
+
+        private void PaladinInterject_CheckedChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.PaladinInterject = PaladinInterject.Checked;
+        }
+
         private void PaladinReprisal_CheckedChanged(object sender, EventArgs e)
         {
-            ShinraEx.Settings.PaladinReprisal = PaladinArmsLength.Checked;
+            ShinraEx.Settings.PaladinReprisal = PaladinReprisal.Checked;
         }
 
         private void PaladinArmsLength_CheckedChanged(object sender, EventArgs e)
@@ -3246,6 +3284,21 @@ namespace ShinraCo.Settings.Forms
             ShinraEx.Settings.WarriorRampart = WarriorRampart.Checked;
         }
 
+        private void WarriorLowBlow_CheckedChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.WarriorLowBlow = WarriorLowBlow.Checked;
+        }
+
+        private void WarriorProvoke_CheckedChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.WarriorProvoke = WarriorProvoke.Checked;
+        }
+
+        private void WarriorInterject_CheckedChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.WarriorInterject = WarriorInterject.Checked;
+        }
+
         private void WarriorReprisal_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.WarriorReprisal = WarriorReprisal.Checked;
@@ -3537,6 +3590,11 @@ namespace ShinraCo.Settings.Forms
             ShinraEx.Settings.WhiteMageCureII = WhiteMageCureII.Checked;
         }
 
+        private void WhiteMageCureIII_CheckedChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.WhiteMageCureIII = WhiteMageCureIII.Checked;
+        }
+
         private void WhiteMageTetragrammaton_CheckedChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.WhiteMageTetragrammaton = WhiteMageTetragrammaton.Checked;
@@ -3595,6 +3653,11 @@ namespace ShinraCo.Settings.Forms
         private void WhiteMageCureIIPct_ValueChanged(object sender, EventArgs e)
         {
             ShinraEx.Settings.WhiteMageCureIIPct = Convert.ToInt32(WhiteMageCureIIPct.Value);
+        }
+
+        private void WhiteMageCureIIIPct_ValueChanged(object sender, EventArgs e)
+        {
+            ShinraEx.Settings.WhiteMageCureIIIPct = Convert.ToInt32(WhiteMageCureIIIPct.Value);
         }
 
         private void WhiteMageTetragrammatonPct_ValueChanged(object sender, EventArgs e)
