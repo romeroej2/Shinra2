@@ -52,7 +52,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Disembowel()
         {
-            if (ActionManager.LastSpell.Name == MySpells.ImpulseDrive.Name)
+            if ((ActionManager.LastSpell.Name == MySpells.TrueThrust.Name || ActionManager.LastSpell.Name == MySpells.RaidenThrust.Name) &&!Core.Player.HasAura(MySpells.Disembowel.Name, true, 6000))
             {
                 return await MySpells.Disembowel.Cast();
             }
@@ -64,15 +64,6 @@ namespace ShinraCo.Rotations
             if (ActionManager.LastSpell.Name == MySpells.Disembowel.Name)
             {
                 return await MySpells.ChaosThrust.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> HeavyThrust()
-        {
-            if (!Core.Player.HasAura(MySpells.HeavyThrust.Name, true, 6000))
-            {
-                return await MySpells.HeavyThrust.Cast();
             }
             return false;
         }
@@ -157,7 +148,7 @@ namespace ShinraCo.Rotations
         {
             if (ShinraEx.Settings.DragoonGeirskogul && Core.Player.HasAura(MySpells.Disembowel.Name))
             {
-                if (Resource.DragonGaze == 3 || !RecentJump && !Core.Player.HasAura(1243) && JumpCooldown > 25 && SpineCooldown > 25 ||
+                if (Resource.DragonGaze == 2 || !RecentJump && !Core.Player.HasAura(1243) && JumpCooldown > 25 && SpineCooldown > 25 ||
                     Core.Player.ClassLevel < 70)
                 {
                     return await MySpells.Geirskogul.Cast();
