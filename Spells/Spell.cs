@@ -606,11 +606,13 @@ namespace ShinraCo.Spells
             }
 
             if (SpellType == SpellType.Damage || SpellType == SpellType.DoT)
+            {
                 if (!Helpers.OpenerFinished && !RecentSpell.ContainsKey("Opener") && await CastComplete(this, true))
                 {
                     var val = DateTime.UtcNow + DataManager.GetSpellData(ID).AdjustedCastTime + TimeSpan.FromSeconds(3);
                     RecentSpell.Add("Opener", val);
                 }
+            }
 
             #endregion
 

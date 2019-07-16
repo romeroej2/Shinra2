@@ -26,7 +26,6 @@ namespace ShinraCo.Rotations
             }
             return false;
         }
-
         
         private async Task<bool> Stone()
         {
@@ -80,7 +79,7 @@ namespace ShinraCo.Rotations
         private async Task<bool> Aero()
         {
             if (!ActionManager.HasSpell(MySpells.AeroII.Name) && !StopDots &&
-                !Core.Player.CurrentTarget.HasAura(MySpells.Aero.Name, true, 3000))
+                !Core.Player.CurrentTarget.HasAura(143, true, 3000))
             {
                 return await MySpells.Aero.Cast();
             }
@@ -89,7 +88,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> AeroII()
         {
-            if (!StopDots && !Core.Player.CurrentTarget.HasAura(MySpells.AeroII.Name, true, 3000))
+            if (!StopDots && !Core.Player.CurrentTarget.HasAura(144, true, 3000))
             {
                 return await MySpells.AeroII.Cast();
             }
@@ -98,7 +97,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Dia()
         {
-            if (!StopDots && !Core.Player.CurrentTarget.HasAura(MySpells.Dia.Name, true, 3000))
+            if (!StopDots && !Core.Player.CurrentTarget.HasAura(1871, true, 3000))
             {
                 return await MySpells.Dia.Cast();
             }
@@ -119,7 +118,7 @@ namespace ShinraCo.Rotations
                 {
                     if (await MySpells.ThinAir.Cast(null, false))
                     {
-                        await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.ThinAir.Name));
+                        await Coroutine.Wait(3000, () => Core.Player.HasAura(1217, true));
                     }
                 }
                 if (!StopDamage) return await MySpells.Holy.Cast();
@@ -131,14 +130,13 @@ namespace ShinraCo.Rotations
         {
             var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
             
-            // This require bloodlilies to be implemented
             if (!MovementManager.IsMoving && (ShinraEx.Settings.RotationMode == Modes.Multi || Helpers.EnemiesNearPlayer(5) >= count))
             {
                 if (ShinraEx.Settings.WhiteMageThinAir && ActionManager.CanCast(MySpells.AfflatusMisery.Name, Core.Player))
                 {
                     if (await MySpells.ThinAir.Cast(null, false))
                     {
-                        await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.ThinAir.Name));
+                        await Coroutine.Wait(3000, () => Core.Player.HasAura(1217, true));
                     }
                 }
                 if (!StopDamage) return await MySpells.AfflatusMisery.Cast();
@@ -153,26 +151,22 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> PresenceOfMind()
         {
-            if (ShinraEx.Settings.WhiteMagePartyHeal && ShinraEx.Settings.WhiteMagePresenceOfMind)
-            {
-                if (Helpers.HealManager.Count(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMagePresenceOfMindPct) >=
-                    ShinraEx.Settings.WhiteMagePresenceOfMindCount)
-                {
-                    return await MySpells.PresenceOfMind.Cast(null, false);
-                }
+            if (ShinraEx.Settings.WhiteMagePartyHeal && ShinraEx.Settings.WhiteMagePresenceOfMind &&
+                Helpers.HealManager.Count(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMagePresenceOfMindPct)
+                >= ShinraEx.Settings.WhiteMagePresenceOfMindCount)
+            { 
+                return await MySpells.PresenceOfMind.Cast(null, false);
             }
             return false;
         }
 
         private async Task<bool> Temperance()
         {
-            if (ShinraEx.Settings.WhiteMagePartyHeal && ShinraEx.Settings.WhiteMageTemperance)
+            if (ShinraEx.Settings.WhiteMagePartyHeal && ShinraEx.Settings.WhiteMageTemperance &&
+                Helpers.HealManager.Count(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageTemperancePct) 
+                >= ShinraEx.Settings.WhiteMageTemperanceCount)
             {
-                if (Helpers.HealManager.Count(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageTemperancePct) >=
-                    ShinraEx.Settings.WhiteMageTemperanceCount)
-                {
-                    return await MySpells.Temperance.Cast(null, false);
-                }
+                return await MySpells.Temperance.Cast(null, false);
             }
             return false;
         }
@@ -181,7 +175,7 @@ namespace ShinraCo.Rotations
 
         #region Heal
 
-        private async Task<bool> UpdateHealing()
+        private static async Task<bool> UpdateHealing()
         {
             return ShinraEx.Settings.WhiteMagePartyHeal && !await Helpers.UpdateHealManager();
         }
@@ -192,21 +186,18 @@ namespace ShinraCo.Rotations
             {
                 var target = GameObjectManager.GetObjectByObjectId(Core.Player.SpellCastInfo.TargetId);
                 var spellName = Core.Player.SpellCastInfo.Name;
-                var freeCure = Core.Player.HasAura(155) ? ShinraEx.Settings.WhiteMageCurePct : ShinraEx.Settings.WhiteMageCureIIPct;
+                var freeCure = Core.Player.HasAura(155, true) ? ShinraEx.Settings.WhiteMageCurePct : ShinraEx.Settings.WhiteMageCureIIPct;
 
-                if (target != null)
+                if (target != null || spellName == MySpells.Cure.Name && target.CurrentHealthPercent >= ShinraEx.Settings.WhiteMageCurePct + 10 
+                                   || spellName == MySpells.CureII.Name && target.CurrentHealthPercent >= freeCure + 10 
+                                   || spellName == MySpells.Raise.Name && target.HasAura(148))
                 {
-                    if (spellName == MySpells.Cure.Name && target.CurrentHealthPercent >= ShinraEx.Settings.WhiteMageCurePct + 10 ||
-                        spellName == MySpells.CureII.Name && target.CurrentHealthPercent >= freeCure + 10 ||
-                        spellName == MySpells.Raise.Name && target.HasAura("Raise"))
-                    {
-                        var debugSetting = spellName == MySpells.Cure.Name ? ShinraEx.Settings.WhiteMageCurePct
+                    var debugSetting = spellName == MySpells.Cure.Name ? ShinraEx.Settings.WhiteMageCurePct
                             : ShinraEx.Settings.WhiteMageCureIIPct;
-                        Helpers.Debug($@"Target HP: {target.CurrentHealthPercent}, Setting: {debugSetting}, Adjusted: {debugSetting + 10}");
-                        Logging.Write(Colors.Yellow, $@"[ShinraEx] Interrupting >>> {spellName}");
-                        ActionManager.StopCasting();
-                        await Coroutine.Wait(500, () => !Core.Player.IsCasting);
-                    }
+                    Helpers.Debug($@"Target HP: {target.CurrentHealthPercent}, Setting: {debugSetting}, Adjusted: {debugSetting + 10}");
+                    Logging.Write(Colors.Yellow, $@"[ShinraEx] Interrupting >>> {spellName}");
+                    ActionManager.StopCasting(); 
+                    await Coroutine.Wait(500, () => !Core.Player.IsCasting);
                 }
             }
             return false;
@@ -220,14 +211,11 @@ namespace ShinraCo.Rotations
                     ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageCurePct)
                     : Core.Player.CurrentHealthPercent < ShinraEx.Settings.WhiteMageCurePct ? Core.Player : null;
 
-                if (target != null)
+                if (target != null || ShinraEx.Settings.WhiteMageCureII && Core.Player.HasAura(155, true))
                 {
-                    if (ShinraEx.Settings.WhiteMageCureII && Core.Player.HasAura(155))
-                    {
-                        return await MySpells.CureII.Cast(target);
-                    }
-                    return await MySpells.Cure.Cast(target);
+                    return await MySpells.CureII.Cast(target);
                 }
+                return await MySpells.Cure.Cast(target);
             }
             return false;
         }
@@ -256,9 +244,7 @@ namespace ShinraCo.Rotations
                     ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageCureIIIPct)
                     : Core.Player.CurrentHealthPercent < ShinraEx.Settings.WhiteMageCureIIIPct ? Core.Player : null;
 
-                var count = Helpers.FriendsNearPlayer(ShinraEx.Settings.WhiteMageCureIIIPct);
-
-                if (target != null && count > 2)
+                if (target != null && Helpers.FriendsNearPlayer(ShinraEx.Settings.WhiteMageCureIIIPct) > 2)
                 {
                     return await MySpells.CureIII.Cast(target);
                 }
@@ -304,9 +290,9 @@ namespace ShinraCo.Rotations
             {
                 var target = ShinraEx.Settings.WhiteMagePartyHeal
                     ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageRegenPct &&
-                                                               !hm.HasAura(MySpells.Regen.Name))
-                    : Core.Player.CurrentHealthPercent < ShinraEx.Settings.WhiteMageRegenPct && !Core.Player.HasAura(MySpells.Regen.Name) 
-                        ? Core.Player : null;
+                                                               !hm.HasAura(158, true))
+                    : Core.Player.CurrentHealthPercent < ShinraEx.Settings.WhiteMageRegenPct 
+                      && !Core.Player.HasAura(158, true) ? Core.Player : null;
 
                 if (target != null)
                 {
@@ -318,29 +304,23 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Medica()
         {
-            if (ShinraEx.Settings.WhiteMageMedica && ShinraEx.Settings.WhiteMagePartyHeal && UseAoEHeals)
+            if (ShinraEx.Settings.WhiteMageMedica && 
+                ShinraEx.Settings.WhiteMagePartyHeal && UseAoEHeals && 
+                Helpers.FriendsNearPlayer(ShinraEx.Settings.WhiteMageMedicaPct) > 2)
             {
-                var count = Helpers.FriendsNearPlayer(ShinraEx.Settings.WhiteMageMedicaPct);
-
-                if (count > 2)
-                {
-                    return await MySpells.Medica.Cast();
-                }
+                return await MySpells.Medica.Cast();
             }
             return false;
         }
 
         private async Task<bool> MedicaII()
         {
-            if (ShinraEx.Settings.WhiteMageMedicaII && ShinraEx.Settings.WhiteMagePartyHeal && UseAoEHeals &&
-                !Core.Player.HasAura(MySpells.MedicaII.Name, true))
+            if (ShinraEx.Settings.WhiteMageMedicaII && 
+                ShinraEx.Settings.WhiteMagePartyHeal && UseAoEHeals &&
+                !Core.Player.HasAura(150, true) 
+                && Helpers.FriendsNearPlayer(ShinraEx.Settings.WhiteMageMedicaIIPct) > 2)
             {
-                var count = Helpers.FriendsNearPlayer(ShinraEx.Settings.WhiteMageMedicaIIPct);
-
-                if (count > 2)
-                {
-                    return await MySpells.MedicaII.Cast();
-                }
+                return await MySpells.MedicaII.Cast();
             }
             return false;
         }
@@ -380,15 +360,12 @@ namespace ShinraCo.Rotations
         
         private async Task<bool> Assize()
         {
-            if (ShinraEx.Settings.WhiteMageAssize && ShinraEx.Settings.WhiteMagePartyHeal && UseAoEHeals && 
-                Core.Player.CurrentManaPercent < 85)
-            {
-                var count = Helpers.FriendsNearPlayer(ShinraEx.Settings.WhiteMageAssizePct);
-
-                if (count > 2)
-                {
-                    return await MySpells.Assize.Cast(null, false);
-                }
+            if (ShinraEx.Settings.WhiteMageAssize && 
+                ShinraEx.Settings.WhiteMagePartyHeal && UseAoEHeals && 
+                Core.Player.CurrentManaPercent <= 75 && 
+                Helpers.FriendsNearPlayer(ShinraEx.Settings.WhiteMageAssizePct) > 2)
+            { 
+                return await MySpells.Assize.Cast(null, false);
             }
             return false;
         }
@@ -397,9 +374,7 @@ namespace ShinraCo.Rotations
         {
             if (ShinraEx.Settings.WhiteMagePlenary && ShinraEx.Settings.WhiteMagePartyHeal && UseAoEHeals)
             {
-                var count = Helpers.FriendsNearPlayer(ShinraEx.Settings.WhiteMagePlenaryPct);
-
-                if (count > 2)
+                if (Helpers.FriendsNearPlayer(ShinraEx.Settings.WhiteMagePlenaryPct) > 2)
                 {
                     return await MySpells.PlenaryIndulgence.Cast(null, false);
                 }
@@ -413,19 +388,15 @@ namespace ShinraCo.Rotations
                 (ShinraEx.Settings.WhiteMageSwiftcast && ActionManager.CanCast(MySpells.Role.Swiftcast.Name, Core.Player) ||
                  !Helpers.HealManager.Any(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageCurePct)))
             {
-                var target = Helpers.RessManager.FirstOrDefault(pm => !pm.HasAura("Raise"));
+                var target = Helpers.RessManager.FirstOrDefault(pm => !pm.HasAura(148));
 
-                if (target != null)
+                if (target != null || ShinraEx.Settings.WhiteMageSwiftcast && ActionManager.CanCast(MySpells.Raise.Name, target))
                 {
-                    if (ShinraEx.Settings.WhiteMageSwiftcast && ActionManager.CanCast(MySpells.Raise.Name, target))
-                    {
-                        if (await MySpells.Role.Swiftcast.Cast(null, false))
-                        {
-                            await Coroutine.Wait(1000, () => Core.Player.HasAura(MySpells.Role.Swiftcast.Name));
-                        }
+                    if (await MySpells.Role.Swiftcast.Cast(null, false)) {
+                        await Coroutine.Wait(1000, () => Core.Player.HasAura(167, true));
                     }
-                    return await MySpells.Raise.Cast(target);
                 }
+                return await MySpells.Raise.Cast(target);
             }
             return false;
         }
