@@ -17,10 +17,10 @@ namespace ShinraCo.Rotations
                     if (ShinraEx.Settings.DarkKnightOpener) { if (await Helpers.ExecuteOpener()) return true; }
                     if (await LowBlow()) return true;
                     if (await Interject()) return true;
-                    //if (await Quietus()) return true;
+                    if (await Quietus()) return true;
                     if (await AbyssalDrain()) return true;
                     if (await Unleash()) return true;
-                    //if (await Bloodspiller()) return true;
+                    if (await Bloodspiller()) return true;
                     if (await Souleater()) return true;
                     if (await SyphonStrike()) return true;
                     if (await CarveAndSpit()) return true;
@@ -38,7 +38,7 @@ namespace ShinraCo.Rotations
                     if (ShinraEx.Settings.DarkKnightOpener) { if (await Helpers.ExecuteOpener()) return true; }
                     if (await LowBlow()) return true;
                     if (await Interject()) return true;
-                    //if (await Bloodspiller()) return true;
+                    if (await Bloodspiller()) return true;
                     if (await Souleater()) return true;
                     if (await SyphonStrike()) return true;
                     if (await CarveAndSpit()) return true; 
@@ -82,6 +82,7 @@ namespace ShinraCo.Rotations
             if (await BlackestNight()) return true;
             if (await Rampart()) return true;
             if (await ArmsLength()) return true;
+            //if (await Delirium()) return true;
             if (await Reprisal()) return true;
             if (await Plunge()) return true;
             if (await BloodWeapon()) return true;

@@ -14,7 +14,7 @@ So you should see the `ShinraEx.cs`  in `<rebornbuddy folder>\Routines\Shinra2`.
 |--|--|--|
 | ![PLD](https://i.imgur.com/u627R4Z.png) | ***5.0***(Lvl80) |?|
 | ![WAR](https://i.imgur.com/YYL973s.png) | 4.5* |?|
-| ![DRK](https://i.imgur.com/aoGrDnT.png) | ***5.0***(Lvl60) |?|
+| ![DRK](https://i.imgur.com/aoGrDnT.png) | ***5.0***(Lvl68) |?|
 | ![GNB](https://i.imgur.com/yu8gtk8.png) | ***5.0*** |?|
 | ![WHM](https://i.imgur.com/wqK5obw.png) | ***5.0***(Lvl80) |?|
 | ![AST](https://i.imgur.com/9oUCKUm.png) | ***5.0***(Lvl50) |?|

@@ -88,15 +88,24 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        /*
+        
         private async Task<bool> Bloodspiller()
         {
-            if (ShinraEx.Settings.DarkKnightBloodspiller && BloodValue >= 50 ))//&& Core.Player.HasAura(MySpells.DarkArts.Name
+
+            if (  ActionManager.CanCast(MySpells.Delirium.Name, Core.Player) )
+            {
+                if (await MySpells.Delirium.Cast(null, false))
+                {
+                    await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.Delirium.Name));
+                }
+            }
+
+            if (ShinraEx.Settings.DarkKnightBloodspiller && BloodValue >= 50 || Core.Player.HasAura(MySpells.Delirium.Name) )
             {
                 return await MySpells.Bloodspiller.Cast();
             }
             return false;
-        }*/
+        }
 
         #endregion
 
@@ -113,25 +122,15 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> AbyssalDrain()
         {
-            if (Core.Player.CurrentManaPercent > 30)
+            if (Core.Player.CurrentManaPercent > 30 || Core.Player.CurrentHealthPercent < 30)
             {
-                var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
-
-                if (ShinraEx.Settings.DarkKnightAbyssalArts && Core.Player.CurrentHealthPercent < 70 && Core.Player.CurrentManaPercent > 60 &&
-                    ActionManager.CanCast(MySpells.AbyssalDrain.Name, Core.Player.CurrentTarget) && Helpers.EnemiesNearTarget(5) >= count)
-                {
-                    /*
-                    if (await MySpells.DarkArts.Cast(null, false))
-                    {
-                        await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.DarkArts.Name));
-                    }*/
-                }
+                          
                 return await MySpells.AbyssalDrain.Cast();
             }
             return false;
         }
 
-        /*
+        
         private async Task<bool> Quietus()
         {
             if (ShinraEx.Settings.DarkKnightQuietus && Core.Player.CurrentManaPercent < 70 && BloodValue >= 50)
@@ -139,17 +138,17 @@ namespace ShinraCo.Rotations
                 var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
 
                 if (ShinraEx.Settings.DarkKnightQuietusArts && Core.Player.CurrentManaPercent > 40 &&
-                    ActionManager.CanCast(MySpells.Quietus.Name, Core.Player) && Helpers.EnemiesNearPlayer(5) >= count)
+                    ActionManager.CanCast(MySpells.Delirium.Name, Core.Player) && Helpers.EnemiesNearPlayer(5) >= count)
                 {
-                    if (await MySpells.DarkArts.Cast(null, false))
+                    if (await MySpells.Delirium.Cast(null, false))
                     {
-                        await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.DarkArts.Name));
+                        await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.Delirium.Name));
                     }
                 }
                 return await MySpells.Quietus.Cast();
             }
             return false;
-        }*/
+        }
 
         #endregion
 
@@ -257,17 +256,17 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        /*
+        
         private async Task<bool> Delirium()
         {
             if (!ShinraEx.Settings.DarkKnightDelirium) return false;
 
-            if (Core.Player.HasAura(MySpells.BloodWeapon.Name) || Core.Player.HasAura(MySpells.BloodPrice.Name))
+            if (Core.Player.HasAura(MySpells.BloodWeapon.Name) )
             {
                 return await MySpells.Delirium.Cast();
             }
             return false;
-        }*/
+        }
 
         private async Task<bool> BlackestNight()
         {
