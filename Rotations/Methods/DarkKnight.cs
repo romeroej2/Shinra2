@@ -165,7 +165,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Plunge()
         {
-            if (ShinraEx.Settings.DarkKnightPlunge && Core.Player.TargetDistance(10))
+            if (ShinraEx.Settings.DarkKnightPlunge )//&& Core.Player.TargetDistance(10))
             {
                 return await MySpells.Plunge.Cast(null, false);
             }
