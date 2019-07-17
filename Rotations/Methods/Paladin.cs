@@ -30,7 +30,7 @@ namespace ShinraCo.Rotations
         private async Task<bool> GoringBlade()
         {
             if (ActionManager.LastSpell.Name == MySpells.RiotBlade.Name &&
-                !Core.Player.CurrentTarget.HasAura(MySpells.GoringBlade.Name, true, 2100))
+                !Core.Player.CurrentTarget.HasAura(725, true, 2100))
             {
                 return await MySpells.GoringBlade.Cast();
             }
@@ -57,10 +57,9 @@ namespace ShinraCo.Rotations
         
         private async Task<bool> HolySpirit()
         {
-            if (ShinraEx.Settings.TankMode == TankModes.Enmity || MovementManager.IsMoving) return false;
-
-            if (ShinraEx.LastSpell.Name == MySpells.Requiescat.Name ||
-                Core.Player.HasAura(MySpells.Requiescat.Name, true, 1200))
+            if (!MovementManager.IsMoving &&
+                (ShinraEx.LastSpell.Name == MySpells.Requiescat.Name ||
+                Core.Player.HasAura(1368, true, 1200)))
             {
                 return await MySpells.HolySpirit.Cast();
             }
@@ -70,7 +69,7 @@ namespace ShinraCo.Rotations
         private async Task<bool> Atonement()
         {
             if (ActionManager.LastSpell.Name == MySpells.RoyalAuthority.Name || 
-                Core.Player.HasAura("Sword Oath", true))
+                Core.Player.HasAura(1902, true))
             {
                 return await MySpells.Atonement.Cast();
             }
@@ -80,7 +79,7 @@ namespace ShinraCo.Rotations
         private async Task<bool> Confiteor()
         {
             if (ShinraEx.LastSpell.Name == MySpells.Requiescat.Name ||
-                Core.Player.HasAura(MySpells.Requiescat.Name, true, 1200))
+                Core.Player.HasAura(1368, true, 1200))
             {
                 return await MySpells.Confiteor.Cast();
             }
@@ -159,9 +158,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Requiescat()
         {
-            if (!ShinraEx.Settings.PaladinRequiescat || !Core.Player.CurrentTarget.HasAura(MySpells.GoringBlade.Name, true, 12000) ||
+            if (!ShinraEx.Settings.PaladinRequiescat || !Core.Player.CurrentTarget.HasAura(725, true) ||
                 MovementManager.IsMoving || Core.Player.CurrentManaPercent < 80 || ShinraEx.LastSpell.Name == MySpells.FightOrFlight.Name ||
-                Core.Player.HasAura(MySpells.FightOrFlight.Name))
+                Core.Player.HasAura(76, true))
             {
                 return false;
             }
@@ -179,7 +178,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> IronWill()
         {
-            if (ShinraEx.Settings.TankMode == TankModes.DPS && Core.Player.HasAura(MySpells.IronWill.Name, true))
+            if (ShinraEx.Settings.TankMode == TankModes.DPS && Core.Player.HasAura(79, true))
             {
                 return false;
             }
@@ -190,7 +189,7 @@ namespace ShinraCo.Rotations
         private async Task<bool> FightOrFlight()
         {
             if (!ShinraEx.Settings.PaladinFightOrFlight || ShinraEx.LastSpell.Name == MySpells.Requiescat.Name ||
-                Core.Player.HasAura(MySpells.Requiescat.Name) || !Core.Player.TargetDistance(5, false))
+                Core.Player.HasAura(1368, true) || !Core.Player.TargetDistance(5, false))
             {
                 return false;
             }
@@ -218,7 +217,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Sheltron()
         {
-            if (ShinraEx.Settings.PaladinSheltron && !Core.Player.HasAura(MySpells.Sheltron.Name))
+            if (ShinraEx.Settings.PaladinSheltron && !Core.Player.HasAura(728, true))
             {
                 if (OathValue == 100 || OathValue > 50)
                 {
@@ -230,7 +229,8 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> PassageOfArms()
         {
-            return Core.Player.HasAura(MySpells.PassageOfArms.Name);
+            // Core.Player.HasAura(1175, true, 18000)
+            return false;
         }
 
         #endregion
@@ -243,11 +243,9 @@ namespace ShinraCo.Rotations
             {
                 if (Core.Player.CurrentManaPercent > 40 && !MovementManager.IsMoving)
                 {
-                    var target = Core.Player;
-
-                    if (target != null)
+                    if (Core.Player != null)
                     {
-                        return await MySpells.Clemency.Cast(target);
+                        return await MySpells.Clemency.Cast(Core.Player);
                     }
                 }
             }
