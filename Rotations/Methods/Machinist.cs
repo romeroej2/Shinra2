@@ -1,7 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using Buddy.Coroutines;
 using ff14bot;
+using ff14bot.Helpers;
 using ff14bot.Managers;
 using ShinraCo.Settings;
 using ShinraCo.Spells.Main;
@@ -17,59 +20,50 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SplitShot()
         {
-            return await MySpells.SplitShot.Cast();
+			if(!isHypercharge)
+			{
+				return await MySpells.SplitShot.Cast();
+			}
+			return false;
         }
 
         private async Task<bool> SlugShot()
         {
-            if (ShinraEx.Settings.MachinistSyncWildfire && !Core.Player.HasAura("Cleaner Shot") && WildfireCooldown <= 8000)
-            {
-                return await MySpells.SlugShot.Cast();
-            }
-            if (Core.Player.HasAura("Enhanced Slug Shot") && (!ShinraEx.Settings.MachinistSyncWildfire ||
-                                                              Core.Player.CurrentTarget.HasAura(MySpells.Wildfire.Name, true) ||
-                                                              WildfireCooldown > 8000))
-            {
-                return await MySpells.SlugShot.Cast();
-            }
-            return false;
+            if (ActionManager.LastSpell.Name == MySpells.SplitShot.Name && !isHypercharge)
+			{
+				return await MySpells.SlugShot.Cast();
+			}
+			return false;
         }
 
         private async Task<bool> CleanShot()
         {
-            if (Core.Player.HasAura("Cleaner Shot") && (!ShinraEx.Settings.MachinistSyncWildfire ||
-                                                        Core.Player.CurrentTarget.HasAura(MySpells.Wildfire.Name, true) ||
-                                                        WildfireCooldown > 8000))
-            {
-                return await MySpells.CleanShot.Cast();
-            }
-            return false;
+            if (ActionManager.LastSpell.Name == MySpells.SlugShot.Name && !isHypercharge)
+			{
+				return await MySpells.CleanShot.Cast();
+			}
+			return false;
         }
 
-        private async Task<bool> HotShot()
+        public async Task<bool> HotShot()
         {
-            if (!Core.Player.HasAura(MySpells.HotShot.Name, true, 6000) ||
-                !Core.Player.HasAura(MySpells.HotShot.Name, true, 55000) && Resource.Heat == 0 &&
-                Resource.Battery >1) //Prolly Broken as well.
-            {
-                return await MySpells.HotShot.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Cooldown()
+			if(!isHypercharge){
+				return await MySpells.HotShot.Cast();
+			}
+			return false;
+		}
+		
+		public async Task<bool> Drill()
         {
-            if (!ShinraEx.Settings.MachinistCooldown) return false;
-
-            if (Overheated && !Core.Player.HasAura("Enhanced Slug Shot") && !Core.Player.HasAura("Cleaner Shot") && Resource.Battery < 2)
-                return await MySpells.Cooldown.Cast();
-
-            if (Overheated || Resource.Heat < 95 || Resource.Battery > 0) return false;
-
-            if (!ActionManager.CanCast(MySpells.BarrelStabilizer.Name, Core.Player) || !UseWildfire || WildfireCooldown > 3000)
-                return await MySpells.Cooldown.Cast();
-
-            return false;
+			if(!isHypercharge){
+				return await MySpells.Drill.Cast();
+			}
+			return false;
+		}
+		
+		public async Task<bool> HeatBlast()
+        {
+            return await MySpells.Heatblast.Cast();
         }
 
         #endregion
@@ -78,13 +72,30 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SpreadShot()
         {
-            if (Core.Player.CurrentTPPercent > 40)
+            if (Helpers.EnemiesNearTarget(5) >= AoECount)
             {
-                if (ShinraEx.Settings.RotationMode == Modes.Multi || ShinraEx.Settings.RotationMode == Modes.Smart &&
-                    Helpers.EnemiesNearTarget(5) >= AoECount)
-                {
-                    return await MySpells.SpreadShot.Cast();
-                }
+                return await MySpells.SpreadShot.Cast();
+            }
+            return false;
+        }
+		
+		private async Task<bool> Crossbow()
+        {
+            if (Helpers.EnemiesNearTarget(5) >= AoECount)
+            {
+                return await MySpells.Crossbow.Cast();
+            }
+            return false;
+        }
+		
+		private async Task<bool> Bioblaster()
+        {
+            if (Helpers.EnemiesNearTarget(5) >= AoECount && !MovementManager.IsMoving)
+            {
+                    if (await MySpells.Bioblaster.Cast())
+                    {
+                        return await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.Bioblaster.Name));
+                    }
             }
             return false;
         }
@@ -93,62 +104,41 @@ namespace ShinraCo.Rotations
 
         #region Cooldown
 
-        private async Task<bool> Heartbreak()
-        {
-            return await MySpells.Heartbreak.Cast();
-        }
-
         private async Task<bool> Wildfire()
         {
-            if (UseWildfire && (!ShinraEx.Settings.MachinistSyncOverheat || Overheated))
-            {
-                return await MySpells.Wildfire.Cast();
-            }
-            return false;
+            if(Helpers.EnemiesNearTarget(5) < AoECount && (!Core.Player.CurrentTarget.HasAura(MySpells.Wildfire.Name, true) || Core.Player.CurrentTarget.CurrentHealthPercent <= 5))
+			{
+				return await MySpells.Wildfire.Cast();
+			}
+			return false;
         }
 
         private async Task<bool> GaussRound()
         {
-            if (!ShinraEx.Settings.MachinistSyncWildfire || MySpells.Wildfire.Cooldown() > 15000)
-            {
-                return await MySpells.GaussRound.Cast();
-            }
-            return false;
+			if(WildfireCooldown >= 30000)
+			{
+				return await MySpells.GaussRound.Cast();
+			}
+			return false;
         }
 
         private async Task<bool> Ricochet()
         {
-            if (ShinraEx.Settings.MachinistRicochet)
-            {
-                if (!ShinraEx.Settings.MachinistSyncWildfire || Core.Player.CurrentTarget.HasAura(MySpells.Wildfire.Name, true))
-                {
-                    return await MySpells.Ricochet.Cast();
-                }
-            }
-            return false;
+			if(WildfireCooldown >= 30000)
+			{
+				return await MySpells.Ricochet.Cast();
+			}
+			return false;
         }
 
         private async Task<bool> Flamethrower()
         {
-            if (ShinraEx.Settings.MachinistFlamethrower && Resource.Heat < 100 && !MovementManager.IsMoving)
+            if (!MovementManager.IsMoving)
             {
-                if (BarrelCooldown < 30000 && UseWildfire && WildfireCooldown < 3000 || UseFlamethrower)
-                {
                     if (await MySpells.Flamethrower.Cast())
                     {
                         return await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.Flamethrower.Name));
                     }
-                }
-            }
-            return false;
-        }
-
-        private async Task<bool> FlamethrowerBuff()
-        {
-            if (Core.Player.HasAura(MySpells.Flamethrower.Name) &&
-                (!ShinraEx.Settings.MachinistFlamethrower || Resource.Heat < 100 || UseFlamethrower))
-            {
-                return true;
             }
             return false;
         }
@@ -156,72 +146,19 @@ namespace ShinraCo.Rotations
         #endregion
 
         #region Buff
-
-        private async Task<bool> Reload()
-        {
-            if (!ShinraEx.Settings.MachinistReload || ShinraEx.LastSpell.Name == MySpells.QuickReload.Name || Resource.Battery > 0)
-                return false;
-
-            return await MySpells.Reload.Cast();
-        }
-
-        private async Task<bool> Reassemble()
-        {
-            if (ShinraEx.Settings.MachinistReassemble)
-            {
-                if (!ShinraEx.Settings.MachinistSyncWildfire || Core.Player.CurrentTarget.HasAura(MySpells.Wildfire.Name, true))
-                {
-                    if (Core.Player.HasAura("Cleaner Shot") && ShinraEx.LastSpell.Name != MySpells.CleanShot.Name ||
-                        !ActionManager.HasSpell(MySpells.CleanShot.Name) && Core.Player.HasAura("Enhanced Slug Shot") &&
-                        ShinraEx.LastSpell.Name != MySpells.SlugShot.Name)
-                    {
-                        return await MySpells.Reassemble.Cast();
-                    }
-                }
-            }
-            return false;
-        }
-
-        private async Task<bool> QuickReload()
-        {
-            if (ShinraEx.LastSpell.Name == MySpells.Reload.Name || Resource.Battery == 3) return false;
-
-            return await MySpells.QuickReload.Cast();
-        }
-
-        private async Task<bool> QuickReloadPre()
-        {
-            if (Resource.Battery < 2 && ShinraEx.LastSpell.Name != MySpells.HotShot.Name && ShinraEx.LastSpell.Name != MySpells.GaussRound.Name)
-            {
-                return await MySpells.QuickReload.Cast(null, false);
-            }
-            return false;
-        }
-
-        private async Task<bool> RapidFire()
-        {
-            if (ShinraEx.Settings.MachinistRapidFire)
-            {
-                if (!ShinraEx.Settings.MachinistSyncWildfire || Core.Player.CurrentTarget.HasAura(MySpells.Wildfire.Name, true))
-                {
-                    return await MySpells.RapidFire.Cast();
-                }
-            }
-            return false;
-        }
-
-        private async Task<bool> GaussBarrel()
-        {
-            if (ShinraEx.Settings.MachinistGaussBarrel && Resource.Battery>1) //Prolly Broken
-            {
-                return await MySpells.GaussBarrel.Cast(null, false);
-            }
-            return false;
-        }
-
+		
+		public async Task<bool> Reassemble()
+		{
+			if(!isHypercharge)
+			{
+				return await MySpells.Reassemble.Cast();
+			}
+			return false;
+		}
+		
         private async Task<bool> Hypercharge()
         {
-            if (ShinraEx.Settings.MachinistHypercharge && TurretExists)
+            if (Resource.Heat >= 50)
             {
                 return await MySpells.Hypercharge.Cast();
             }
@@ -230,40 +167,20 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BarrelStabilizer()
         {
-            if (ShinraEx.Settings.MachinistBarrelStabilizer)
-            {
-                if (Resource.Heat < 30 && (!ShinraEx.Settings.MachinistFlamethrower || !ActionManager.HasSpell(MySpells.Flamethrower.Name) ||
-                                           FlamethrowerCooldown > 3000))
+                if (Resource.Heat <=  50 && !isHypercharge)
                 {
                     return await MySpells.BarrelStabilizer.Cast();
                 }
-            }
+
             return false;
         }
 
         private async Task<bool> RookOverdrive()
         {
-            if (ShinraEx.Settings.MachinistRookOverdrive && TurretExists && PetManager.ActivePetType == PetType.Rook_Autoturret)
-            {
-                if (Core.Player.CurrentTarget.HasAura(MySpells.Wildfire.Name, true) &&
-                    !Core.Player.CurrentTarget.HasAura(MySpells.Wildfire.Name, true, 4000))
+			if (IsCurrentFormExpired() || Core.Player.CurrentTarget.CurrentHealthPercent <= 5)
                 {
-                    return await MySpells.RookOverdrive.Cast();
+					return await MySpells.RookOverdrive.Cast();	
                 }
-            }
-            return false;
-        }
-
-        private async Task<bool> BishopOverdrive()
-        {
-            if (ShinraEx.Settings.MachinistBishopOverdrive && TurretExists && PetManager.ActivePetType == PetType.Bishop_Autoturret)
-            {
-                if (Core.Player.CurrentTarget.HasAura(MySpells.Wildfire.Name, true) &&
-                    !Core.Player.CurrentTarget.HasAura(MySpells.Wildfire.Name, true, 4000))
-                {
-                    return await MySpells.BishopOverdrive.Cast();
-                }
-            }
             return false;
         }
 
@@ -273,37 +190,14 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> RookAutoturret()
         {
-            if (ShinraEx.Settings.MachinistTurret == MachinistTurrets.Rook || ShinraEx.Settings.MachinistTurret == MachinistTurrets.Bishop &&
-                !ActionManager.HasSpell(MySpells.BishopAutoturret.Name))
-            {
-                if (!Core.Player.HasAura("Turret Reset"))
-                {
-                    if (PetManager.ActivePetType != PetType.Rook_Autoturret || TurretDistance > 23)
-                    {
-                        var castLocation = ShinraEx.Settings.MachinistTurretLocation == CastLocations.Self ? Core.Player
-                            : Core.Player.CurrentTarget;
-
-                        return await MySpells.RookAutoturret.Cast(castLocation);
-                    }
-                }
-            }
-            return false;
-        }
-
-        private async Task<bool> BishopAutoturret()
-        {
-            if (ShinraEx.Settings.MachinistTurret == MachinistTurrets.Bishop)
-            {
-                if (!Core.Player.HasAura("Turret Reset"))
-                {
-                    if (PetManager.ActivePetType != PetType.Bishop_Autoturret || TurretDistance > 23)
-                    {
-                        var castLocation = ShinraEx.Settings.MachinistTurretLocation == CastLocations.Self ? Core.Player
-                            : Core.Player.CurrentTarget;
-
-                        return await MySpells.BishopAutoturret.Cast(castLocation);
-                    }
-                }
+			if (Resource.Battery == 100 && !isHypercharge)
+			{
+				 if(await MySpells.RookAutoturret.Cast())
+					{
+							SetCurrentFormTimer(TimeSpan.FromSeconds(Resource.Battery * 2 / 10));
+							return true;
+					}
+               
             }
             return false;
         }
@@ -314,96 +208,45 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SecondWind()
         {
-            if (ShinraEx.Settings.MachinistSecondWind && Core.Player.CurrentHealthPercent < ShinraEx.Settings.MachinistSecondWindPct)
+            if (Core.Player.CurrentHealthPercent < 20)
             {
                 return await MySpells.Role.SecondWind.Cast();
             }
             return false;
         }
-
-        private async Task<bool> Peloton()
+		
+		 public async Task<bool> Peloton()
         {
-            if (ShinraEx.Settings.MachinistPeloton && !Core.Player.HasAura(MySpells.Role.Peloton.Name) && !Core.Player.HasTarget &&
+            if (!Core.Player.HasAura(MySpells.Role.Peloton.Name) && !Core.Player.HasTarget &&
                 (MovementManager.IsMoving || BotManager.Current.EnglishName == "DeepDive"))
             {
-                return await MySpells.Role.Peloton.Cast(null, false);
-            }
-            return false;
-        }
-
-        private async Task<bool> Invigorate()
-        {
-            if (ShinraEx.Settings.MachinistInvigorate && Core.Player.CurrentTPPercent < ShinraEx.Settings.MachinistInvigoratePct)
-            {
-                return await MySpells.Role.Invigorate.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Tactician()
-        {
-            if (ShinraEx.Settings.MachinistTactician)
-            {
-                var target = Core.Player.CurrentTPPercent < ShinraEx.Settings.MachinistTacticianPct ? Core.Player
-                    : Helpers.GoadManager.FirstOrDefault(gm => gm.CurrentTPPercent < ShinraEx.Settings.MachinistTacticianPct);
-
-                if (target != null)
-                {
-                    return await MySpells.Role.Tactician.Cast();
-                }
-            }
-            return false;
-        }
-
-        private async Task<bool> Refresh()
-        {
-            if (ShinraEx.Settings.MachinistRefresh)
-            {
-                var target = Helpers.HealManager.FirstOrDefault(hm => hm.CurrentManaPercent < ShinraEx.Settings.MachinistRefreshPct &&
-                                                                      hm.IsHealer());
-
-                if (target != null)
-                {
-                    return await MySpells.Role.Refresh.Cast();
-                }
-            }
-            return false;
-        }
-
-        private async Task<bool> Palisade()
-        {
-            if (ShinraEx.Settings.MachinistPalisade)
-            {
-                var target = Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.MachinistPalisadePct &&
-                                                                      hm.IsTank());
-
-                if (target != null)
-                {
-                    return await MySpells.Role.Palisade.Cast(target);
-                }
+                return await MySpells.Role.Peloton.Cast();
             }
             return false;
         }
 
         #endregion
 
+		public static DateTime CurrentFormExpireTime { get; set; }
+
+		private void SetCurrentFormTimer(TimeSpan duration)
+        {
+            CurrentFormExpireTime = DateTime.UtcNow + duration;
+        }
+
+        public bool IsCurrentFormExpired()
+        {
+            return DateTime.UtcNow > CurrentFormExpireTime;
+        }
+
         #region Custom
 
         private static int AoECount => ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
-        private static double FlamethrowerCooldown => DataManager.GetSpellData(7418).Cooldown.TotalMilliseconds;
+        private static double HyperchargeCooldown => DataManager.GetSpellData(17209).Cooldown.TotalMilliseconds;
         private static double WildfireCooldown => DataManager.GetSpellData(2878).Cooldown.TotalMilliseconds;
-        private static double BarrelCooldown => DataManager.GetSpellData(7414).Cooldown.TotalMilliseconds;
-        private static bool Overheated => Resource.Heat == 100; //&& Resource.Battery.TotalMilliseconds > 0; //Broken
-        private static bool UseFlamethrower => ShinraEx.Settings.RotationMode == Modes.Multi ||
-                                               ShinraEx.Settings.RotationMode == Modes.Smart && Helpers.EnemiesNearTarget(5) >= AoECount;
+		
+		private static bool isHypercharge => HyperchargeCooldown > 2000;
 
-        private static bool UseWildfire => ShinraEx.Settings.MachinistWildfire &&
-                                           (Core.Player.CurrentTarget.IsBoss() ||
-                                            Core.Player.CurrentTarget.CurrentHealth > ShinraEx.Settings.MachinistWildfireHP);
-
-        private static bool TurretExists => Core.Player.Pet != null;
-        private static float TurretDistance => TurretExists && Core.Player.HasTarget && Core.Player.CurrentTarget.CanAttack
-            ? Core.Player.Pet.Distance2D(Core.Player.CurrentTarget) - Core.Player.CurrentTarget.CombatReach : 0;
 
         #endregion
     }
