@@ -80,10 +80,10 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> CombustIII()
         {
-         
+
             //if (!StopDots && !Core.Player.CurrentTarget.HasAura(MySpells.CombustIII.Name, true, 4000))
-                if (!StopDots && !Core.Player.CurrentTarget.HasAura(1881))
-                {
+            if (!StopDots && !Core.Player.CurrentTarget.HasAura(1881))
+            {
                 return await MySpells.CombustIII.Cast();
             }
             return false;
@@ -116,7 +116,7 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-      
+
 
         #endregion
 
@@ -153,7 +153,7 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-      
+
 
         private async Task<bool> CelestialOpposition()
         {
@@ -390,7 +390,7 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-      
+
 
         private async Task<bool> Draw()
         {
@@ -401,9 +401,9 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-       
 
-       
+
+
         private async Task<bool> Redraw()
         {
             if (!CardOffensive && (BuffShared || !CardSupport))
@@ -425,7 +425,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Play()
         {
-            if (HasCard && ActionManager.CanCast(MySpells.Draw.ID,Core.Player))
+            if (HasCard && ActionManager.CanCast(MySpells.Draw.ID, Core.Player))
             {
                 return await MySpells.Play.Cast();
             }
@@ -455,7 +455,7 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-       
+
 
         private async Task<bool> LadyOfCrowns()
         {
@@ -597,23 +597,27 @@ namespace ShinraCo.Rotations
         private static bool StopDamage => ShinraEx.Settings.AstrologianStopDamage && Core.Player.CurrentManaPercent <= ShinraEx.Settings.AstrologianStopDamagePct;
         private static bool StopDots => ShinraEx.Settings.AstrologianStopDots && Core.Player.CurrentManaPercent <= ShinraEx.Settings.AstrologianStopDotsPct;
 
-        private static bool HasCard => Resource.Cards[0] != Resource.AstrologianCard.None;
-        private static bool HasSpread => Resource.Cards[1] != Resource.AstrologianCard.None;
+
+
+        private static bool HasCard => Resource.Arcana != Resource.AstrologianCard.None;
+        private static bool HasSpread => Resource.DivinationSeals[0] == Resource.AstrologianSeal.Celestial_Seal || Resource.DivinationSeals[0] == Resource.AstrologianSeal.Lunar_Seal || Resource.DivinationSeals[0] == Resource.AstrologianSeal.Solar_Seal;
         private static bool HasArcana => Resource.Arcana != Resource.AstrologianCard.None;
 
-        private static bool BuffShared => Resource.Buff == Resource.AstrologianCardBuff.Shared;
+        //private static bool BuffShared => Resource.Buff == Resource.AstrologianCard.Shared;
+        private static bool BuffShared => true;
 
         private static bool CardLord => Resource.Arcana == Resource.AstrologianCard.LordofCrowns;
         private static bool CardLady => Resource.Arcana == Resource.AstrologianCard.LadyofCrowns;
-        private static bool CardBole => Resource.Cards[0] == Resource.AstrologianCard.Bole;
-        private static bool CardEwer => Resource.Cards[0] == Resource.AstrologianCard.Ewer;
-        private static bool CardSpire => Resource.Cards[0] == Resource.AstrologianCard.Spire;
-        private static bool CardSupport => Resource.Cards[0] == Resource.AstrologianCard.Ewer || Resource.Cards[0] == Resource.AstrologianCard.Spire;
-        private static bool CardOffensive => Resource.Cards[0] == Resource.AstrologianCard.Balance || Resource.Cards[0] == Resource.AstrologianCard.Arrow ||
-                                             Resource.Cards[0] == Resource.AstrologianCard.Spear;
+        private static bool CardBole => Resource.Arcana == Resource.AstrologianCard.Bole;
+        private static bool CardEwer => Resource.Arcana == Resource.AstrologianCard.Ewer;
+        private static bool CardSpire => Resource.Arcana == Resource.AstrologianCard.Spire;
+        private static bool CardSupport => Resource.Arcana == Resource.AstrologianCard.Ewer || Resource.Arcana == Resource.AstrologianCard.Spire;
+        private static bool CardOffensive => Resource.Arcana == Resource.AstrologianCard.Balance || Resource.Arcana == Resource.AstrologianCard.Arrow ||
+                                             Resource.Arcana == Resource.AstrologianCard.Spear;
 
-        private static bool SpreadOffensive => Resource.Cards[1] == Resource.AstrologianCard.Balance || Resource.Cards[1] == Resource.AstrologianCard.Arrow ||
-                                             Resource.Cards[1] == Resource.AstrologianCard.Spear;
+        
+        private static bool SpreadOffensive => HasSpread &&(Resource.Arcana == Resource.AstrologianCard.Balance || Resource.Arcana == Resource.AstrologianCard.Arrow ||
+                                             Resource.Arcana == Resource.AstrologianCard.Spear);
 
         private bool UseAoEHeals => ShinraEx.LastSpell.Name != MySpells.Helios.Name && ShinraEx.LastSpell.Name != MySpells.AspectedHelios.Name;
         private bool SectActive => Core.Player.HasAura(MySpells.DiurnalSect.Name) || Core.Player.HasAura(MySpells.NocturnalSect.Name);
