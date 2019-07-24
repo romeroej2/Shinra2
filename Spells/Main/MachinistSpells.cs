@@ -26,26 +26,6 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
-        public Spell Reload { get; } = new Spell
-        {
-            Name = "Reload",
-            ID = 2867,
-            Level = 4,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };
-
-        public Spell Heartbreak { get; } = new Spell
-        {
-            Name = "Heartbreak",
-            ID = 2875,
-            Level = 6,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Cooldown,
-            CastType = CastType.Target
-        };
-
         public Spell Reassemble { get; } = new Spell
         {
             Name = "Reassemble",
@@ -54,16 +34,6 @@ namespace ShinraCo.Spells.Main
             GCDType = GCDType.Off,
             SpellType = SpellType.Buff,
             CastType = CastType.Self
-        };
-
-        public Spell Blank { get; } = new Spell
-        {
-            Name = "Blank",
-            ID = 2888,
-            Level = 15,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Cooldown,
-            CastType = CastType.Target
         };
 
         public Spell SpreadShot { get; } = new Spell
@@ -75,15 +45,15 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Damage,
             CastType = CastType.Target
         };
-
-        public Spell QuickReload { get; } = new Spell
+		
+		public Spell Crossbow { get; } = new Spell
         {
-            Name = "Quick Reload",
-            ID = 2879,
-            Level = 26,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
+            Name = "Auto Crossbow",
+            ID = 16497,
+            Level = 25,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
         };
 
         public Spell HotShot { get; } = new Spell
@@ -94,16 +64,6 @@ namespace ShinraCo.Spells.Main
             GCDType = GCDType.On,
             SpellType = SpellType.Damage,
             CastType = CastType.Target
-        };
-
-        public Spell RapidFire { get; } = new Spell
-        {
-            Name = "Rapid Fire",
-            ID = 2881,
-            Level = 30,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
         };
 
         public Spell CleanShot { get; } = new Spell
@@ -133,46 +93,6 @@ namespace ShinraCo.Spells.Main
             Level = 40,
             GCDType = GCDType.Off,
             SpellType = SpellType.Buff,
-            CastType = CastType.TargetLocation
-        };
-
-        public Spell TurretRetrieval { get; } = new Spell
-        {
-            Name = "Turret Retrieval",
-            ID = 3487,
-            Level = 40,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };
-
-        public Spell BishopAutoturret { get; } = new Spell
-        {
-            Name = "Bishop Autoturret",
-            ID = 2865,
-            Level = 50,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.TargetLocation
-        };
-
-        public Spell GaussBarrel { get; } = new Spell
-        {
-            Name = "Gauss Barrel",
-            ID = 2880,
-            Level = 52,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };
-
-        public Spell RemoveBarrel { get; } = new Spell
-        {
-            Name = "Remove Barrel",
-            ID = 9015,
-            Level = 52,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
             CastType = CastType.Self
         };
 
@@ -186,21 +106,11 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
-        public Spell Dismantle { get; } = new Spell
-        {
-            Name = "Dismantle",
-            ID = 2887,
-            Level = 56,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Cooldown,
-            CastType = CastType.Target
-        };
-
         public Spell Hypercharge { get; } = new Spell
         {
             Name = "Hypercharge",
-            ID = 2885,
-            Level = 58,
+            ID = 17209,
+            Level = 30,
             GCDType = GCDType.Off,
             SpellType = SpellType.Buff,
             CastType = CastType.Self
@@ -213,16 +123,6 @@ namespace ShinraCo.Spells.Main
             Level = 60,
             GCDType = GCDType.Off,
             SpellType = SpellType.Cooldown,
-            CastType = CastType.Target
-        };
-
-        public Spell Cooldown { get; } = new Spell
-        {
-            Name = "Cooldown",
-            ID = 7410,
-            Level = 62,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Damage,
             CastType = CastType.Target
         };
 
@@ -246,16 +146,6 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
-        public Spell BishopOverdrive { get; } = new Spell
-        {
-            Name = "Bishop Overdrive",
-            ID = 9372,
-            Level = 68,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Cooldown,
-            CastType = CastType.Self
-        };
-
         public Spell Flamethrower { get; } = new Spell
         {
             Name = "Flamethrower",
@@ -264,6 +154,36 @@ namespace ShinraCo.Spells.Main
             GCDType = GCDType.On,
             SpellType = SpellType.Cooldown,
             CastType = CastType.Self
+        };
+		
+		public Spell Bioblaster { get; } = new Spell
+        {
+            Name = "Bioblaster",
+            ID = 16499,
+            Level = 72,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Cooldown,
+            CastType = CastType.Target
+        };
+		
+		public Spell Drill { get; } = new Spell
+        {
+            Name = "Drill",
+            ID = 16498,
+            Level = 58,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Cooldown,
+            CastType = CastType.Target
+        };
+		
+		public Spell Heatblast { get; } = new Spell
+        {
+            Name = "Heat Blast",
+            ID = 7410,
+            Level = 35,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Cooldown,
+            CastType = CastType.Target
         };
     }
 }

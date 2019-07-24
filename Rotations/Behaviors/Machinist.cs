@@ -8,12 +8,13 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            Helpers.Debug("Combat...");
             if (ShinraEx.Settings.MachinistOpener) {if (await Helpers.ExecuteOpener()) return true; }
-            if (await HotShot()) return true;
-            if (await Flamethrower()) return true;
-            if (await SpreadShot()) return true;
-            if (await Cooldown()) return true;
+            if (await Bioblaster()) return true;
+			if (await Crossbow()) return true;
+			if (await SpreadShot()) return true;
+			if (await Reassemble()) return true;
+			if (await Drill()) return true;
+			if (await HotShot()) return true;
             if (await CleanShot()) return true;
             if (await SlugShot()) return true;
             return await SplitShot();
@@ -25,32 +26,21 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
-            Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.MachinistOpener) { if (await Helpers.ExecuteOpener()) return true; }
-            if (await FlamethrowerBuff()) return true;
-            if (await BarrelStabilizer()) return true;
-            if (await GaussBarrel()) return true;
-            if (await BishopAutoturret()) return true;
-            if (await RookAutoturret()) return true;
-            if (await BishopOverdrive()) return true;
-            if (await RookOverdrive()) return true;
-            if (await Hypercharge()) return true;
-            if (await Heartbreak()) return true;
-            if (await GaussRound()) return true;
-            if (await Reload()) return true;
-            if (await Wildfire()) return true;
-            if (await Reassemble()) return true;
-            if (await QuickReload()) return true;
-            if (await RapidFire()) return true;
+			if (await HeatBlast()) return true;
+			if (await GaussRound()) return true;
             if (await Ricochet()) return true;
+            if (await RookAutoturret()) return true;
+            if (await RookOverdrive()) return true;
+			if (await BarrelStabilizer()) return true;
+			if (await Wildfire()) return true;
+            if (await Hypercharge()) return true;
+
             // Role
             await Helpers.UpdateParty();
-            if (await Palisade()) return true;
-            if (await Refresh()) return true;
-            if (await Tactician()) return true;
-            return await Invigorate();
+            return false;
         }
 
         #endregion
@@ -59,7 +49,6 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
-            Helpers.Debug("Heal...");
             return await SecondWind();
         }
 
@@ -69,11 +58,8 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
-            Helpers.Debug("PreCombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
-            if (await QuickReloadPre()) return true;
-            if (await GaussBarrel()) return true;
-            return await Peloton();
+			return false;
         }
 
         #endregion
@@ -82,7 +68,6 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
-            Helpers.Debug("Pull...");
             return await Combat();
         }
 
@@ -91,8 +76,7 @@ namespace ShinraCo.Rotations
         #region CombatPVP
 
         public override async Task<bool> CombatPVP()
-        {
-            Helpers.Debug("CombatPVP...");
+        {;
             return false;
         }
 
