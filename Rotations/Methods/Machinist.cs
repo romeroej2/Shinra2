@@ -20,16 +20,13 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SplitShot()
         {
-			if(!isHypercharge)
-			{
-				return await MySpells.SplitShot.Cast();
-			}
-			return false;
+			return await MySpells.SplitShot.Cast();
+
         }
 
         private async Task<bool> SlugShot()
         {
-            if (ActionManager.LastSpell.Name == MySpells.SplitShot.Name && !isHypercharge)
+            if (ActionManager.LastSpell.Name == MySpells.SplitShot.Name)
 			{
 				return await MySpells.SlugShot.Cast();
 			}
@@ -38,7 +35,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> CleanShot()
         {
-            if (ActionManager.LastSpell.Name == MySpells.SlugShot.Name && !isHypercharge)
+            if (ActionManager.LastSpell.Name == MySpells.SlugShot.Name)
 			{
 				return await MySpells.CleanShot.Cast();
 			}
@@ -47,18 +44,12 @@ namespace ShinraCo.Rotations
 
         public async Task<bool> HotShot()
         {
-			if(!isHypercharge){
-				return await MySpells.HotShot.Cast();
-			}
-			return false;
+			return await MySpells.HotShot.Cast();
 		}
 		
 		public async Task<bool> Drill()
         {
-			if(!isHypercharge){
-				return await MySpells.Drill.Cast();
-			}
-			return false;
+			return await MySpells.Drill.Cast();
 		}
 		
 		public async Task<bool> HeatBlast()
@@ -149,11 +140,7 @@ namespace ShinraCo.Rotations
 		
 		public async Task<bool> Reassemble()
 		{
-			if(!isHypercharge)
-			{
 				return await MySpells.Reassemble.Cast();
-			}
-			return false;
 		}
 		
         private async Task<bool> Hypercharge()
@@ -167,7 +154,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BarrelStabilizer()
         {
-                if (Resource.Heat <=  50 && !isHypercharge)
+                if (Resource.Heat <=  50)
                 {
                     return await MySpells.BarrelStabilizer.Cast();
                 }
@@ -177,7 +164,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> RookOverdrive()
         {
-			if (IsCurrentFormExpired() || Core.Player.CurrentTarget.CurrentHealthPercent <= 5)
+			if (IsCurrentFormExpired())
                 {
 					return await MySpells.RookOverdrive.Cast();	
                 }
@@ -190,7 +177,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> RookAutoturret()
         {
-			if (Resource.Battery == 100 && !isHypercharge)
+			if (Resource.Battery == 100)
 			{
 				 if(await MySpells.RookAutoturret.Cast())
 					{
@@ -244,8 +231,6 @@ namespace ShinraCo.Rotations
         private static int AoECount => ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
         private static double HyperchargeCooldown => DataManager.GetSpellData(17209).Cooldown.TotalMilliseconds;
         private static double WildfireCooldown => DataManager.GetSpellData(2878).Cooldown.TotalMilliseconds;
-		
-		private static bool isHypercharge => HyperchargeCooldown > 2000;
 
 
         #endregion
