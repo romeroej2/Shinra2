@@ -179,11 +179,11 @@ namespace ShinraCo.Rotations
         {
 			if (Resource.Battery == 100)
 			{
-				 if(await MySpells.RookAutoturret.Cast())
-					{
-							SetCurrentFormTimer(TimeSpan.FromSeconds(Resource.Battery * 2 / 10));
-							return true;
-					}
+				if(await MySpells.RookAutoturret.Cast())
+				{
+					SetCurrentFormTimer(TimeSpan.FromSeconds(Resource.Battery * 2 / 10));
+					return true;
+				}
                
             }
             return false;
@@ -214,9 +214,15 @@ namespace ShinraCo.Rotations
 
         #endregion
 
-		public static DateTime CurrentFormExpireTime { get; set; }
+        #region Custom
 
-		private void SetCurrentFormTimer(TimeSpan duration)
+        private static int AoECount => ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
+        private static double HyperchargeCooldown => DataManager.GetSpellData(17209).Cooldown.TotalMilliseconds;
+        private static double WildfireCooldown => DataManager.GetSpellData(2878).Cooldown.TotalMilliseconds;
+
+        public static DateTime CurrentFormExpireTime { get; set; }
+
+        private void SetCurrentFormTimer(TimeSpan duration)
         {
             CurrentFormExpireTime = DateTime.UtcNow + duration;
         }
@@ -225,13 +231,6 @@ namespace ShinraCo.Rotations
         {
             return DateTime.UtcNow > CurrentFormExpireTime;
         }
-
-        #region Custom
-
-        private static int AoECount => ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
-        private static double HyperchargeCooldown => DataManager.GetSpellData(17209).Cooldown.TotalMilliseconds;
-        private static double WildfireCooldown => DataManager.GetSpellData(2878).Cooldown.TotalMilliseconds;
-
 
         #endregion
     }

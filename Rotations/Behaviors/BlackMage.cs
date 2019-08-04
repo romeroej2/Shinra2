@@ -1,4 +1,8 @@
 ﻿using System.Threading.Tasks;
+using System.Windows.Media;
+using ff14bot;
+using ff14bot.Helpers;
+using ff14bot.Managers;
 using ShinraCo.Settings;
 
 namespace ShinraCo.Rotations
@@ -10,6 +14,13 @@ namespace ShinraCo.Rotations
         public override async Task<bool> Combat()
         {
             Helpers.Debug("Combat...");
+
+            if (MovementManager.IsMoving)
+            {
+                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Skiping Combat because we are moving!...");                
+                return false;
+            }
+
             if (ShinraEx.Settings.RotationMode == Modes.Multi || ShinraEx.Settings.RotationMode == Modes.Smart &&
                 Helpers.EnemiesNearTarget(5) > 2)
             {
@@ -69,6 +80,7 @@ namespace ShinraCo.Rotations
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.BlackMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            if (await BetweenTheLines()) return true;
             if (await Convert()) return true;
             if (await Enochian()) return true;
             if (await UmbralSoul()) return true;

@@ -9,8 +9,6 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            Helpers.Debug("Combat...");
-            // if (Shinra.Settings.DancerOpener) {if (await Helpers.ExecuteOpener()) return true; }
             if (await Emboite()) return true;
             if (await Entrechat()) return true;
             if (await Jete()) return true;
@@ -36,10 +34,6 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
-            Helpers.Debug("CombatBuff...");
-            if (await ShinraEx.SummonChocobo()) return true;
-            if (await ShinraEx.ChocoboStance()) return true;
-            // if (Shinra.Settings.DancerOpener) { if (await Helpers.ExecuteOpener()) return true; }
             if (await Devilment()) return true;
             if (await Flourish()) return true;
             if (await FanDanceIII()) return true;
@@ -53,8 +47,8 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
-            Helpers.Debug("Heal...");
-            return false;
+            if (await CuringWaltz()) return true;
+            return await SecondWind();
         }
 
         #endregion
@@ -63,7 +57,6 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
-            Helpers.Debug("PreCombatBuff...");
             return await ShinraEx.SummonChocobo();
         }
 
@@ -73,7 +66,6 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
-            Helpers.Debug("Pull...");
             return await Combat();
         }
 
@@ -83,7 +75,6 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
-            Helpers.Debug("CombatPVP...");
             return false;
         }
 

@@ -9,12 +9,16 @@ using ShinraCo.Spells;
 using ShinraCo.Spells.Main;
 using System.Windows.Media;
 using Resource = ff14bot.Managers.ActionResourceManager.BlackMage;
+using ff14bot.Objects;
+using Clio.Utilities;
 
 namespace ShinraCo.Rotations
 {
     public sealed partial class BlackMage
     {
         private BlackMageSpells MySpells { get; } = new BlackMageSpells();
+
+        private Vector3 LeyLinesVector;
 
         #region Damage
 
@@ -78,11 +82,29 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Despair()
         {
-            if (AstralFire && Resource.Enochian)
-            {
+            
+                if (AstralFire && Resource.StackTimer.TotalMilliseconds > 6000 && (Core.Player.CurrentManaPercent < 25 || Core.Player.ClassLevel >= 72 && Resource.UmbralHearts > 0))
+                {
+                    if (ShinraEx.Settings.BlackMageConvert && ActionManager.HasSpell(MySpells.Despair.Name) &&
+                        !ActionManager.CanCast(MySpells.Despair.Name, Core.Player.CurrentTarget))
+                    {
+                        if (await MySpells.Convert.Cast(null, false))
+                        {
+                            await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.Despair.Name, Core.Player.CurrentTarget));
+                        }
+                    }
+                    if (ShinraEx.Settings.BlackMageSwiftcast && ActionManager.CanCast(MySpells.Despair.Name, Core.Player.CurrentTarget) &&
+                        !RecentTriplecast)
+                    {
+                        if (await MySpells.Role.Swiftcast.Cast(null, false))
+                        {
+                            await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.Role.Swiftcast.Name));
+                        }
+                    }
                 return await MySpells.Despair.Cast();
             }
-            return false;
+                return false;
+           
         }
 
 
@@ -266,6 +288,24 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+
+
+        private async Task<bool> BetweenTheLines()
+        {
+
+            if(Core.Player.HasAura(MySpells.LeyLines.Name))
+                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: BetweenLines Distance {0}", Core.Me.Distance2D(this.LeyLinesVector));
+
+            if (MovementManager.IsMoving == false && Core.Player.HasAura(MySpells.LeyLines.Name) && Core.Me.Distance2D(this.LeyLinesVector) >= 3 && Core.Me.Distance2D(this.LeyLinesVector) <= 15)
+            {
+                
+                    return await MySpells.BetweenTheLines.Cast();
+                
+            }
+            return false;
+        }
+
+
         private async Task<bool> ThunderIV()
         {
             if (ShinraEx.Settings.BlackMageThunder)
@@ -307,6 +347,7 @@ namespace ShinraCo.Rotations
             {
                 if (Core.Player.CurrentManaPercent > 80 || ActionManager.LastSpell.Name == MySpells.FireII.Name)
                 {
+                    LeyLinesVector = new Vector3(Core.Me.X,Core.Me.Y,Core.Me.Z); // CorePlayer Copy? 
                     return await MySpells.LeyLines.Cast(null, false);
                 }
             }
