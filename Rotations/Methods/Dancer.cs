@@ -1,6 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Media;
+using Buddy.Coroutines;
 using ff14bot;
+using ff14bot.Helpers;
 using ff14bot.Managers;
+using ShinraCo.Settings;
 using ShinraCo.Spells.Main;
 using Resource = ff14bot.Managers.ActionResourceManager.Dancer;
 
@@ -164,14 +170,22 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> StandardStep()
         {
-            return await MySpells.StandardStep.Cast();
+            if (!Core.Player.HasAura(MySpells.StandardFinish.Name) || IsCurrentBuffExpired()==true)
+            {
+                if (await MySpells.StandardStep.Cast())
+                {
+                    SetCurrentBuffTimer(TimeSpan.FromSeconds(55));
+                    return true;
+                }
+            }
+            return false;
         }
 
         private async Task<bool> StandardFinish()
         {
           if (Resource.CurrentStep == Resource.DanceStep.Finish && Core.Player.Distance(Core.Player.CurrentTarget) <= 15)
           {
-              return await MySpells.StandardFinish.Cast();
+                return await MySpells.StandardFinish.Cast();
           }
           return false;
         }
@@ -206,17 +220,30 @@ namespace ShinraCo.Rotations
 
         #endregion
 
+        #region Heal
+
+        private async Task<bool> CuringWaltz()
+        {
+            if (Core.Player.CurrentHealthPercent < 70)
+            {
+                return await MySpells.CuringWaltz.Cast();
+            }
+            return false;
+        }
+
+        #endregion
+
         #region Role
-        /*
+
         private async Task<bool> SecondWind()
         {
-            if (Shinra.Settings.DancerSecondWind && Core.Player.CurrentHealthPercent < Shinra.Settings.DancerSecondWindPct)
+            if (Core.Player.CurrentHealthPercent < 30)
             {
                 return await MySpells.Role.SecondWind.Cast();
             }
             return false;
         }
-        */
+
         #endregion
 
         #region PVP
@@ -224,6 +251,18 @@ namespace ShinraCo.Rotations
         #endregion
 
         #region Custom
+
+        public static DateTime CurrentBuffExpireTime { get; set; }
+
+        private void SetCurrentBuffTimer(TimeSpan duration)
+        {
+            CurrentBuffExpireTime = DateTime.UtcNow + duration;
+        }
+
+        public bool IsCurrentBuffExpired()
+        {
+            return DateTime.UtcNow > CurrentBuffExpireTime;
+        }
 
         #endregion
     }
