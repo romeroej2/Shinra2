@@ -15,11 +15,12 @@ namespace ShinraCo.Rotations
         {
             Helpers.Debug("Combat...");
 
+            /*
             if (MovementManager.IsMoving)
             {
                 Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Skiping Combat because we are moving!...");                
                 return false;
-            }
+            }*/
 
             if (ShinraEx.Settings.RotationMode == Modes.Multi || ShinraEx.Settings.RotationMode == Modes.Smart &&
                 Helpers.EnemiesNearTarget(5) > 2)

@@ -83,7 +83,7 @@ namespace ShinraCo.Rotations
         private async Task<bool> Despair()
         {
             
-                if (AstralFire && Resource.StackTimer.TotalMilliseconds > 6000 && (Core.Player.CurrentManaPercent < 25 || Core.Player.ClassLevel >= 72 && Resource.UmbralHearts > 0))
+                if (AstralFire && Resource.StackTimer.TotalMilliseconds > 6000 && (Core.Player.CurrentManaPercent < 25 ))
                 {
                     if (ShinraEx.Settings.BlackMageConvert && ActionManager.HasSpell(MySpells.Despair.Name) &&
                         !ActionManager.CanCast(MySpells.Despair.Name, Core.Player.CurrentTarget))
@@ -343,12 +343,17 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> LeyLines()
         {
-            if (ShinraEx.Settings.BlackMageLeyLines && !MovementManager.IsMoving)
+            if (ShinraEx.Settings.BlackMageLeyLines && !MovementManager.IsMoving && ActionManager.ActionReady(ff14bot.Enums.ActionType.Spell, MySpells.LeyLines.ID))
             {
                 if (Core.Player.CurrentManaPercent > 80 || ActionManager.LastSpell.Name == MySpells.FireII.Name)
                 {
-                    LeyLinesVector = new Vector3(Core.Me.X,Core.Me.Y,Core.Me.Z); // CorePlayer Copy? 
-                    return await MySpells.LeyLines.Cast(null, false);
+                    
+                    bool returnVln = await MySpells.LeyLines.Cast(null, false);
+
+                    if (returnVln)
+                        LeyLinesVector = new Vector3(Core.Me.X, Core.Me.Y, Core.Me.Z); // CorePlayer Copy? 
+
+                    return returnVln;
                 }
             }
             return false;
