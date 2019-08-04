@@ -1,6 +1,9 @@
 using System.Threading.Tasks;
+using System.Linq;
 using ff14bot;
+using ff14bot.Helpers;
 using ff14bot.Managers;
+using ShinraCo.Settings;
 using ShinraCo.Spells.Main;
 using Resource = ff14bot.Managers.ActionResourceManager.Gunbreaker;
 
@@ -10,7 +13,29 @@ namespace ShinraCo.Rotations
     {
         private GunbreakerSpells MySpells { get; } = new GunbreakerSpells();
 
-        #region Damage
+        #region Pull
+
+		private async Task<bool> LightningShot()
+        {
+            if (Helpers.TargetDistance(Core.Player, 3) && Core.Player.HasAura("Royal Guard"))
+            {
+				return await MySpells.LightningShot.Cast();
+            }
+            return false;
+        }
+
+        private async Task<bool> RoughDivide()
+        {
+            if (Helpers.TargetDistance(Core.Player,3))
+            {
+                return await MySpells.RoughDivide.Cast();
+            }
+            return false;
+        }
+
+        #endregion
+
+        #region Single Target Damage
 
         private async Task<bool> KeenEdge()
         {
@@ -35,14 +60,78 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        private async Task<bool> LightningShot()
+		private async Task<bool> SonicBreak()
         {
-            if (Core.Player.TargetDistance(10))
+            if (!Core.Player.CurrentTarget.HasAura(MySpells.SonicBreak.Name))
             {
-                return await MySpells.LightningShot.Cast();
+                return await MySpells.SonicBreak.Cast();
             }
             return false;
         }
+		
+		private async Task<bool> DangerZone()
+        {
+              return await MySpells.DangerZone.Cast();
+        }
+		
+		private async Task<bool> BlastingZone()
+        {
+              return await MySpells.BlastingZone.Cast();
+        }
+		
+		private async Task<bool> BurstStrike()
+        {
+            if (Resource.Cartridge > 0)
+            {
+                return await MySpells.BurstStrike.Cast();
+            }
+            return false;
+        }
+		
+		#endregion
+		
+		#region AOE Damage
+
+		private async Task<bool> DemonSlice()
+        {
+			if(Helpers.EnemiesNearPlayer(5) > 2)
+			{	
+				return await MySpells.DemonSlice.Cast();
+			}
+			return false;
+        }
+
+        private async Task<bool> DemonSlaughter()
+        {
+            if (ActionManager.LastSpell.Name == MySpells.DemonSlice.Name)
+            {
+                return await MySpells.DemonSlaughter.Cast();
+            }
+            return false;
+        }
+
+		private async Task<bool> FatedCircle()
+        {
+            if (Resource.Cartridge > 0  && ActionManager.LastSpell.Name == MySpells.DemonSlaughter.Name)
+            {
+                return await MySpells.FatedCircle.Cast();
+            }
+            return false;
+        }
+
+
+        private async Task<bool> BowShock()
+        {
+            if (!Core.Player.CurrentTarget.HasAura(MySpells.BowShock.Name) && Helpers.EnemiesNearPlayer(5) > 0)
+            {
+                return await MySpells.BowShock.Cast();
+            }
+            return false;
+        }
+
+        #endregion
+
+        #region Special Combo
 
         private async Task<bool> GnashingFang()
         {
@@ -70,84 +159,6 @@ namespace ShinraCo.Rotations
             }
             return false;
         }
-
-        private async Task<bool> NoMercy()
-        {
-            return await MySpells.NoMercy.Cast();
-        }
-
-        private async Task<bool> SonicBreak()
-        {
-            if (Core.Player.HasAura("No Mercy"))
-            {
-                return await MySpells.SonicBreak.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> BlastingZone()
-        {
-          if (DataManager.GetSpellData(MySpells.NoMercy.ID).Cooldown.TotalMilliseconds > 5000)
-          {
-              return await MySpells.BlastingZone.Cast();
-          }
-          return false;
-        }
-
-        private async Task<bool> DemonSlice()
-        {
-
-            return await MySpells.DemonSlice.Cast();
-        }
-
-        private async Task<bool> DemonSlaughter()
-        {
-            if (ActionManager.LastSpell.Name == MySpells.DemonSlice.Name)
-            {
-                return await MySpells.DemonSlaughter.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> BurstStrike()
-        {
-            if ((Resource.Cartridge == 2 || (DataManager.GetSpellData(MySpells.Bloodfest.ID).Cooldown.TotalMilliseconds < 6000) && Resource.Cartridge == 1))
-            {
-                return await MySpells.BurstStrike.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> FatedCircle()
-        {
-            if ((Resource.Cartridge == 2 ||
-                   (DataManager.GetSpellData(MySpells.Bloodfest.ID).Cooldown.TotalMilliseconds < 6000 && Resource.Cartridge == 1) ||
-                   (Resource.Cartridge > 0  && Helpers.EnemiesNearPlayer(5) > 2)) && 
-                   Core.Player.TargetDistance(5, false))
-            {
-                return await MySpells.FatedCircle.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Bloodfest()
-        {
-            if (Resource.Cartridge == 0)
-            {
-                return await MySpells.Bloodfest.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> BowShock()
-        {
-            if (Core.Player.HasAura("No Mercy") && Helpers.EnemiesNearPlayer(5) > 0)
-            {
-                return await MySpells.BowShock.Cast();
-            }
-            return false;
-        }
-
 
         private async Task<bool> JugularRip()
         {
@@ -179,18 +190,80 @@ namespace ShinraCo.Rotations
         #endregion
 
         #region Cooldown
+		
+		private async Task<bool> Bloodfest()
+        {
+            if (Resource.Cartridge == 0)
+            {
+                return await MySpells.Bloodfest.Cast();
+            }
+            return false;
+        }
 
         #endregion
 
         #region Buff
+		
+		private async Task<bool> NoMercy()
+        {
+            return await MySpells.NoMercy.Cast();
+        }
+		
+		private async Task<bool> Camouflage()
+        {
+			if(Helpers.EnemiesNearPlayer(5) > 2)
+			{	
+				return await MySpells.Camouflage.Cast();
+			}
+			return false;
+		}
+		
+		private async Task<bool> Nebula()
+        {
+			if (Helpers.EnemiesNearPlayer(5) > 5 && Core.Player.CurrentHealthPercent <= 70 && !Core.Player.HasAura(MySpells.Role.Rampart.Name))
+			{	
+				return await MySpells.Nebula.Cast();
+			}
+			return false;
+		}
+		
+		private async Task<bool> Superbolide()
+        {
+			if(Core.Player.CurrentHealthPercent <= 10)
+			{
+				return await MySpells.Superbolide.Cast();
+			}
+			return false;
+		}
 
         #endregion
 
         #region Heal
+		
+		private async Task<bool> Aurora()
+        {
+			var target = ShinraEx.Settings.WhiteMagePartyHeal
+                ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < 70)
+                : Core.Player.CurrentHealthPercent < 50 ? Core.Player : null;
+			if(target != null)
+			{
+				return await MySpells.Aurora.Cast(target);
+			}				
+			return false;
+		}
 
         #endregion
 
         #region Role
+		
+		private async Task<bool> Rampart()
+        {
+			if(Helpers.EnemiesNearPlayer(5) > 4 && Core.Player.CurrentHealthPercent <= 70 && !Core.Player.HasAura(MySpells.Nebula.Name))
+			{	
+				return await MySpells.Role.Rampart.Cast();
+			}
+			return false;
+		}
 
         #endregion
 

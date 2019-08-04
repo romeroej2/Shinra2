@@ -8,15 +8,15 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            if (ShinraEx.Settings.MachinistOpener) {if (await Helpers.ExecuteOpener()) return true; }
-			if (await HeatBlast()) return true;
+            if (await CleanShot()) return true;
+            if (await SlugShot()) return true;
+
+            if (await HeatBlast()) return true;
             if (await Bioblaster()) return true;
 			if (await Crossbow()) return true;
 			if (await SpreadShot()) return true;
 			if (await Drill()) return true;
 			if (await HotShot()) return true;
-            if (await CleanShot()) return true;
-            if (await SlugShot()) return true;
             return await SplitShot();
         }
 
@@ -28,7 +28,6 @@ namespace ShinraCo.Rotations
         {
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
-            if (ShinraEx.Settings.MachinistOpener) { if (await Helpers.ExecuteOpener()) return true; }
 			if (await Reassemble()) return true;
 			if (await GaussRound()) return true;
             if (await Ricochet()) return true;
@@ -37,9 +36,6 @@ namespace ShinraCo.Rotations
 			if (await BarrelStabilizer()) return true;
 			if (await Wildfire()) return true;
             if (await Hypercharge()) return true;
-
-            // Role
-            await Helpers.UpdateParty();
             return false;
         }
 

@@ -9,17 +9,18 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
-            Helpers.Debug("Combat...");
-            if (await WickedTalon()) return true;
-            if (await SavageClaw()) return true;
-            if (await GnashingFang()) return true;
+
             if (await FatedCircle()) return true;
             if (await DemonSlaughter()) return true;
-            if (await DemonSlice()) return true;
-            if (await SonicBreak()) return true;
-            if (await BurstStrike()) return true;
+            if (await WickedTalon()) return true;
+            if (await SavageClaw()) return true;
             if (await SolidBarrel()) return true;
             if (await BrutalShell()) return true;
+     
+            if (await BurstStrike()) return true;
+            if (await SonicBreak()) return true;
+            if (await DemonSlice()) return true;
+            if (await GnashingFang()) return true;
             return await KeenEdge();
         }
 
@@ -29,14 +30,22 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
-            Helpers.Debug("CombatBuff...");
-            if (await Bloodfest()) return true;
-            if (await NoMercy()) return true;
-            if (await EyeGouge()) return true;
+			if (await Superbolide()) return true;
+			if (await Nebula()) return true;
+			if (await Rampart()) return true;
+			if (await Camouflage()) return true;
+			if (await Aurora()) return true;
+
             if (await AbdomenTear()) return true;
             if (await JugularRip()) return true;
+
+            if (await Bloodfest()) return true;
+            if (await NoMercy()) return true;
+
             if (await BowShock()) return true;
-            return await BlastingZone();
+            if (await DangerZone()) return true;
+            return await EyeGouge();
+ 
         }
 
         #endregion
@@ -45,7 +54,6 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
-            Helpers.Debug("Heal...");
             return false;
         }
 
@@ -55,7 +63,6 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
-            Helpers.Debug("PreCombatBuff...");
             return await ShinraEx.SummonChocobo();
         }
 
@@ -65,10 +72,9 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
-            Helpers.Debug("Pull...");
-            //if (Shinra.Settings.GunbreakerOpener) { if (await Helpers.ExecuteOpener()) return true; }
-            if (await LightningShot()) return true;
-            return await Combat();
+           if (await LightningShot()) return true;
+           if (await RoughDivide()) return true;
+           return await Combat();
         }
 
         #endregion
@@ -77,7 +83,6 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
-            Helpers.Debug("CombatPVP...");
             return false;
         }
 

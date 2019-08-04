@@ -6,6 +6,56 @@ namespace ShinraCo.Spells.Main
     {
         public TankSpells Role { get; } = new TankSpells();
 
+		public Spell KeenEdge { get; } = new Spell
+        {
+            Name = "Keen Edge",
+            ID = 16137,
+            Level = 1,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+
+		public Spell NoMercy { get; } = new Spell
+        {
+            Name = "No Mercy",
+            ID = 16138,
+            Level = 2,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
+        };
+
+		public Spell BrutalShell { get; } = new Spell
+        {
+            Name = "Brutal Shell",
+            ID = 16139,
+            Level = 4,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+
+		public Spell Camouflage { get; } = new Spell
+        {
+            Name = "Camouflage",
+            ID = 16140,
+            Level = 6,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
+        };
+		
+		public Spell DemonSlice { get; } = new Spell
+        {
+            Name = "Demon Slice",
+            ID = 16141,
+            Level = 10,
+            GCDType = GCDType.On,
+            SpellType = SpellType.AoE,
+            CastType = CastType.Self
+        };
+		
         public Spell LightningShot { get; } = new Spell
         {
             Name = "Lightning Shot",
@@ -16,27 +66,16 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
-        // Single Target
-        public Spell KeenEdge { get; } = new Spell
+		public Spell DangerZone { get; } = new Spell
         {
-            Name = "Keen Edge",
-            ID = 16137,
-            Level = 1,
-            GCDType = GCDType.On,
+            Name = "Danger Zone",
+            ID = 16144,
+            Level = 18,
+            GCDType = GCDType.Off,
             SpellType = SpellType.Damage,
             CastType = CastType.Target
         };
-
-        public Spell BrutalShell { get; } = new Spell
-        {
-            Name = "Brutal Shell",
-            ID = 16139,
-            Level = 4,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Damage,
-            CastType = CastType.Target
-        };
-
+       
         public Spell SolidBarrel { get; } = new Spell
         {
             Name = "Solid Barrel",
@@ -47,13 +86,23 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
-        public Spell DemonSlice { get; } = new Spell
+        public Spell BurstStrike { get; } = new Spell
         {
-            Name = "Demon Slice",
-            ID = 16141,
-            Level = 10,
+            Name = "Burst Strike",
+            ID = 16162,
+            Level = 30,
             GCDType = GCDType.On,
-            SpellType = SpellType.AoE,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+		
+		public Spell Nebula { get; } = new Spell
+        {
+            Name = "Nebula",
+            ID = 16148,
+            Level = 30,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
             CastType = CastType.Self
         };
 
@@ -66,7 +115,47 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.AoE,
             CastType = CastType.Self
         };
+		
+		public Spell Aurora { get; } = new Spell
+        {
+            Name = "Aurora",
+            ID = 16151,
+            Level = 45,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Target
+        };
+		
+		public Spell Superbolide { get; } = new Spell
+        {
+            Name = "Superbolide",
+            ID = 16152,
+            Level = 50,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
+        };
 
+		public Spell SonicBreak { get; } = new Spell
+        {
+            Name = "Sonic Break",
+            ID = 16153,
+            Level = 54,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+		
+		public Spell RoughDivide { get; } = new Spell
+        {
+            Name = "Rough Divide",
+            ID = 16154,
+            Level = 56,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+		
         public Spell GnashingFang { get; } = new Spell
         {
             Name = "GnashingFang",
@@ -97,36 +186,6 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
-        public Spell SonicBreak { get; } = new Spell
-        {
-            Name = "Sonic Break",
-            ID = 16153,
-            Level = 54,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Damage,
-            CastType = CastType.Target
-        };
-
-        public Spell BlastingZone { get; } = new Spell
-        {
-            Name = "Blasting Zone",
-            ID = 16144,
-            Level = 18,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Damage,
-            CastType = CastType.Target
-        };
-
-        public Spell BurstStrike { get; } = new Spell
-        {
-            Name = "Burst Strike",
-            ID = 16162,
-            Level = 30,
-            GCDType = GCDType.On,
-            SpellType = SpellType.Damage,
-            CastType = CastType.Target
-        };
-
         public Spell BowShock { get; } = new Spell
         {
             Name = "Bow Shock",
@@ -135,6 +194,16 @@ namespace ShinraCo.Spells.Main
             GCDType = GCDType.Off,
             SpellType = SpellType.Damage,
             CastType = CastType.Self
+        };
+
+		public Spell Continuation { get; } = new Spell
+        {
+            Name = "Continuation",
+            ID = 16155,
+            Level = 70,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
         };
 
         public Spell FatedCircle { get; } = new Spell
@@ -157,14 +226,14 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
-        public Spell NoMercy { get; } = new Spell
+       public Spell BlastingZone { get; } = new Spell
         {
-            Name = "No Mercy",
-            ID = 16138,
-            Level = 2,
+            Name = "Blasting Zone",
+            ID = 16165,
+            Level = 80,
             GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
         };
 
         public Spell JugularRip { get; } = new Spell
@@ -176,6 +245,7 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Damage,
             CastType = CastType.Target
         };
+		
         public Spell AbdomenTear { get; } = new Spell
         {
             Name = "Abdomen Tear",
@@ -185,6 +255,7 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Damage,
             CastType = CastType.Target
         };
+		
         public Spell EyeGouge { get; } = new Spell
         {
             Name = "Eye Gouge",
@@ -194,17 +265,5 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Damage,
             CastType = CastType.Target
         };
-        public Spell Continuation { get; } = new Spell
-        {
-            Name = "Continuation",
-            ID = 16155,
-            Level = 70,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Damage,
-            CastType = CastType.Target
-        };
-        // ShieldSamba
-        // Improvisation
-        // En Avant
     }
 }
