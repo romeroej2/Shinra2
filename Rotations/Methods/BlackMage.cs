@@ -70,9 +70,15 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+
+        private Boolean hasEnochian()
+        {
+            return Resource.StackTimer.TotalMilliseconds > 6000;
+        }
+
         private async Task<bool> FireIV()
         {
-            if (Resource.StackTimer.TotalMilliseconds > 6000)
+            if (hasEnochian())
             {
                 return await MySpells.FireIV.Cast();
             }
@@ -83,7 +89,7 @@ namespace ShinraCo.Rotations
         private async Task<bool> Despair()
         {
             
-                if (AstralFire && Resource.StackTimer.TotalMilliseconds > 6000 && (Core.Player.CurrentManaPercent < 25 ))
+                if (AstralFire && hasEnochian() && (Core.Player.CurrentManaPercent < 25 ))
                 {
                     if (ShinraEx.Settings.BlackMageConvert && ActionManager.HasSpell(MySpells.Despair.Name) &&
                         !ActionManager.CanCast(MySpells.Despair.Name, Core.Player.CurrentTarget))
@@ -370,8 +376,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Enochian()
         {
-            if (ShinraEx.Settings.BlackMageEnochian && Core.Player.ClassLevel >= 60 && !Resource.Enochian &&
-                Resource.StackTimer.TotalMilliseconds > 6000)
+            if (ShinraEx.Settings.BlackMageEnochian && Core.Player.ClassLevel >= 60 && !hasEnochian())
             {
                 return await MySpells.Enochian.Cast(null, false);
             }
@@ -381,7 +386,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> UmbralSoul()
         {
-            if (Resource.Enochian && UmbralIce && Core.Player.ClassLevel >= 76)
+            if (hasEnochian() && UmbralIce && Core.Player.ClassLevel >= 76)
             {
                 return await MySpells.UmbralSoul.Cast(null, false);
             }
@@ -498,7 +503,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> EnochianPVP()
         {
-            if (!Resource.Enochian && Resource.StackTimer.TotalMilliseconds > 6000)
+            if (!hasEnochian() && Resource.StackTimer.TotalMilliseconds > 6000)
             {
                 return await MySpells.PVP.Enochian.Cast(null, false);
             }
