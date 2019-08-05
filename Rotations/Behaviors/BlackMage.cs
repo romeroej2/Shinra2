@@ -39,7 +39,7 @@ namespace ShinraCo.Rotations
             if (await Swiftcast()) return true;
             if (await Sharpcast()) return true;
             if (await Foul()) return true;
-            if (await UmbralSoul()) return true;
+            
             if (await Thundercloud()) return true;                       
             if (await Xenoglossy()) return true;           
             if (await ThunderIII()) return true;
@@ -81,10 +81,12 @@ namespace ShinraCo.Rotations
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.BlackMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            
             if (await BetweenTheLines()) return true;
+            if (await UmbralSoul()) return true;
             if (await Convert()) return true;
             if (await Enochian()) return true;
-            if (await UmbralSoul()) return true;
+            
             if (await LeyLines()) return true;
             return await LucidDreaming();
         }

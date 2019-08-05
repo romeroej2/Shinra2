@@ -73,7 +73,7 @@ namespace ShinraCo.Rotations
 
         private Boolean hasEnochian()
         {
-            return Resource.StackTimer.TotalMilliseconds > 6000;
+            return ActionResourceManager.CostTypesStruct.timer > 2000;
         }
 
         private async Task<bool> FireIV()
@@ -299,8 +299,9 @@ namespace ShinraCo.Rotations
         private async Task<bool> BetweenTheLines()
         {
 
-            if(Core.Player.HasAura(MySpells.LeyLines.Name))
-                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: BetweenLines Distance {0}", Core.Me.Distance2D(this.LeyLinesVector));
+            
+            //if(Core.Player.HasAura(MySpells.LeyLines.Name))
+            //    Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: BetweenLines Distance {0}", Core.Me.Distance2D(this.LeyLinesVector));
 
             if (MovementManager.IsMoving == false && Core.Player.HasAura(MySpells.LeyLines.Name) && Core.Me.Distance2D(this.LeyLinesVector) >= 3 && Core.Me.Distance2D(this.LeyLinesVector) <= 15)
             {
@@ -386,6 +387,10 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> UmbralSoul()
         {
+            if (hasEnochian() && AstralFire && ActionManager.CanCast(MySpells.UmbralSoul.Name, Core.Player) && ActionManager.CanCast(MySpells.Transpose.Name, Core.Player))
+                await MySpells.Transpose.Cast(null, false);
+               
+
             if (hasEnochian() && UmbralIce && Core.Player.ClassLevel >= 76)
             {
                 return await MySpells.UmbralSoul.Cast(null, false);
