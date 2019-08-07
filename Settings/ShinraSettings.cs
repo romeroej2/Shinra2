@@ -505,6 +505,8 @@ namespace ShinraCo.Settings
         [Setting, DefaultValue(true)]
         public bool BlackMageThunder { get; set; }
 
+      
+
         #endregion
 
         #region Buff
@@ -523,6 +525,9 @@ namespace ShinraCo.Settings
 
         [Setting, DefaultValue(true)]
         public bool BlackMageTriplecast { get; set; }
+
+        [Setting, DefaultValue(false)]
+        public bool BlackMageBetweenTheLines { get; set; }
 
         #endregion
 

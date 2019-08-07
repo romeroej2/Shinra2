@@ -299,7 +299,9 @@ namespace ShinraCo.Rotations
         private async Task<bool> BetweenTheLines()
         {
 
-            
+            if (ShinraEx.Settings.BlackMageBetweenTheLines == false)
+                return false;
+
             //if(Core.Player.HasAura(MySpells.LeyLines.Name))
             //    Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: BetweenLines Distance {0}", Core.Me.Distance2D(this.LeyLinesVector));
 
@@ -387,7 +389,11 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> UmbralSoul()
         {
-            if (hasEnochian() && AstralFire && ActionManager.CanCast(MySpells.UmbralSoul.Name, Core.Player) && ActionManager.CanCast(MySpells.Transpose.Name, Core.Player))
+
+            if (Resource.UmbralHearts > 0)
+                return false;
+
+            if (   hasEnochian() && AstralFire && ActionManager.CanCast(MySpells.UmbralSoul.Name, Core.Player) && ActionManager.CanCast(MySpells.Transpose.Name, Core.Player))
                 await MySpells.Transpose.Cast(null, false);
                
 
