@@ -35,7 +35,8 @@ namespace ShinraCo.Rotations
             //blow it up
             if (await EnkindlePhoenix()) return true;
             if (await EnkindleBahamut()) return true;
-            
+            //Buff it baby
+            if (await Aetherpact()) return true;
             //Pets
             //if (await Sic()) return true;
             if (await SummonIII()) return true;
@@ -55,7 +56,6 @@ namespace ShinraCo.Rotations
             if (await FirebirdTrance()) return true;
             //General
             if (await Bane()) return true;
-            if (await Aetherpact()) return true;
             if (await Painflare()) return true;
             if (await Fester()) return true;
             if (await EnergySiphon()) return true;

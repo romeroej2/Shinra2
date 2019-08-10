@@ -223,9 +223,13 @@ namespace ShinraCo.Rotations
             var target = !PartyManager.IsInParty && ChocoboManager.Summoned ? ChocoboManager.Object
                 : Managers.DragonSight.FirstOrDefault();
 
-            if (target == null) return false;
+            if (target != null && ActionManager.CanCast(MySpells.DragonSight.Name, Core.Player))
+            {
+                Helpers.Debug("Dragon Sight Target:" + target.Name);
 
-            return await MySpells.DragonSight.Cast(target);
+                return await MySpells.DragonSight.Cast(target);
+            }
+            return false;
         }
 
         #endregion

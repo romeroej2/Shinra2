@@ -31,7 +31,6 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> RuinII()
         {
-            
             if (CurrentForm.Equals(SummonerForm.DreadwormTrance)|| CurrentForm.Equals(SummonerForm.FirebirdTrance))
                 return false;
             
@@ -41,13 +40,14 @@ namespace ShinraCo.Rotations
                 UseBane ||
                 UseFester ||
                 UsePainflare ||
-                UseTriDisaster ||
+                UseTriDisaster || 
+                (CurrentForm.Equals(SummonerForm.Bahamut) && Resource.Timer.TotalMilliseconds <= 5000)  || //Maximize primal attacks
                 (ResourceArcanist.Aetherflow == 0 && MySpells.EnergyDrain.Cooldown() <= 0) ||
                 ActionManager.CanCast(MySpells.EnkindleBahamut.Name, Core.Player) ||
                 ActionManager.CanCast(MySpells.EnkindlePhoenix.Name, Core.Player) ||
                 ActionManager.CanCast(MySpells.SummonBahamut.Name, Core.Player) ||
                 ActionManager.CanCast(MySpells.DreadwyrmTrance.Name, Core.Player) ||
-                ActionManager.CanCast(MySpells.FirebirdTrance.Name, Core.Player))
+                ActionManager.CanCast(MySpells.FirebirdTrance.Name, Core.Player)                )
             {
                 return await MySpells.RuinII.Cast();
             }
@@ -70,8 +70,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BrandOfPurgatory()
         {
-            if (Core.Player.HasAura("Hellish Conduit") && CurrentForm.Equals(SummonerForm.FirebirdTrance))
+            if (Core.Player.HasAura("Hellish Conduit") && Resource.DreadwyrmTrance)
             {
+                CurrentForm = SummonerForm.FirebirdTrance;
                 return await MySpells.BrandOfPurgatory.Cast();
             }
             return false;
@@ -601,11 +602,13 @@ namespace ShinraCo.Rotations
 
         private void CheckCurrentFormState()
         {
+
             Helpers.Debug("Form:  " +CurrentForm.ToString());
+
             if (!PreviousTrance.Equals(SummonerForm.FirebirdTrance) && Core.Player.HasAura("Everlasting Flight"))
                 PreviousTrance = SummonerForm.FirebirdTrance;
 
-            if (!CurrentForm.Equals(SummonerForm.Normal) && IsCurrentFormExpired())
+            if (!CurrentForm.Equals(SummonerForm.Normal) && IsCurrentFormExpired() && (!ShinraEx.Settings.SummonerOpener || Helpers.OpenerFinished))
             {
                 Helpers.Debug("Set form to Normal");
                 CurrentForm = SummonerForm.Normal;

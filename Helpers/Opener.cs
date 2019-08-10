@@ -126,7 +126,7 @@ namespace ShinraCo
                 case ClassJobType.Summoner:
                     current = SummonerOpener.List;
                     usePotion = ShinraEx.Settings.SummonerPotion;
-                    potionStep = 2;
+                    potionStep = 11;
                     potionType = PotionIds.Int;
                     break;
 
@@ -392,13 +392,31 @@ namespace ShinraCo
                     //        return true;
                     //    }
                     //}
+                    if (spell.Name == Summoner.DreadwyrmTrance.Name)
+                    {
+                        Debug($"Set Dreadwyrm");
+                        Rotations.Summoner.CurrentForm = Rotations.Summoner.SummonerForm.DreadwormTrance;
+                        Rotations.Summoner.CurrentFormExpireTime = DateTime.UtcNow + TimeSpan.FromSeconds(15);
+                    }
+                    if (spell.Name == Summoner.SummonBahamut.Name)
+                    {
+                        Debug($"Set Bahamut");
+                        Rotations.Summoner.CurrentForm = Rotations.Summoner.SummonerForm.Bahamut;
+                        Rotations.Summoner.CurrentFormExpireTime = DateTime.UtcNow + TimeSpan.FromSeconds(20);
+                    }
+                    if (spell.Name == Summoner.FirebirdTrance.Name)
+                    {
+                        Debug($"Set Firebird");
+                        Rotations.Summoner.CurrentForm = Rotations.Summoner.SummonerForm.FirebirdTrance;
+                        Rotations.Summoner.CurrentFormExpireTime = DateTime.UtcNow + TimeSpan.FromSeconds(20);
+                    }
                     if (spell.Name == Summoner.Fester.Name)
                     {
                         if (Resource.Arcanist.Aetherflow > 0 && spell.Cooldown() > 0)
                         {
                             return true;
                         }
-                        if (Resource.Arcanist.Aetherflow == 0)
+                        if (Resource.Arcanist.Aetherflow == 0 && !current[OpenerStep-1].Name.Equals(Summoner.EnergyDrain.Name, StringComparison.InvariantCultureIgnoreCase))
                         {
                             Debug($"Skipping opener step {OpenerStep} due to Aetherflow charges >>> {spell.Name}");
                             OpenerStep++;
@@ -408,6 +426,14 @@ namespace ShinraCo
                     if (spell.Name == Summoner.RuinIII.Name)
                     {
                         if (MovementManager.IsMoving)
+                        {
+                            spell = Summoner.RuinII;
+                        }
+                    }
+                    if (spell.Name == Summoner.RuinIV.Name)
+                    {
+
+                        if (!Me.HasAura("Further Ruin"))
                         {
                             spell = Summoner.RuinII;
                         }
@@ -492,8 +518,9 @@ namespace ShinraCo
 
                 #endregion
             }
-            else if (spell.Cooldown(true) > 3000 && spell.Cooldown() > 500 && !Me.IsCasting)
+            else if (spell.Cooldown(true) > 3000 && spell.Cooldown() > 500 && DataManager.GetSpellData(spell.Name).Charges < 1 && !Me.IsCasting)
             {
+                Debug($" Cooldown Adjusted= {spell.Cooldown(true)} , Cooldown= {spell.Cooldown()} , Charges= {DataManager.GetSpellData(spell.Name).Charges}");
                 Debug($"Skipped opener step {OpenerStep} due to cooldown >>> {spell.Name}");
                 OpenerStep++;
             }
