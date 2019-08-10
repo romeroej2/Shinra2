@@ -18,7 +18,9 @@ namespace ShinraCo
                 19888, // Infusion of Vitality
                 22449, // Grade 2 Infusion of Vitality
                 24263,  // Grade 3 Infusion of Vitality
-                27788   //Tincture
+                27788,  //Tincture
+                27997   //grade 2 tincture
+
             };
             
             public static readonly HashSet<uint> Str = new HashSet<uint>
@@ -26,7 +28,9 @@ namespace ShinraCo
                 19886, // Infusion of Strength
                 22447, // Grade 2 Infusion of Strength
                 24261,  // Grade 3 Infusion of Strength
-                27786   //Tincture
+                27786,  //Tincture
+                27995   //grade 2 tincture
+
             };
 
             public static readonly HashSet<uint> Dex = new HashSet<uint>
@@ -34,7 +38,8 @@ namespace ShinraCo
                 19887, // Infusion of Dexterity
                 22448, // Grade 2 Infusion of Dexterity
                 24262,  // Grade 3 Infusion of Dexterity
-                27787   //Tincture
+                27787,  //Tincture
+                27996   //grade 2 tincture
             };
 
             public static readonly HashSet<uint> Int = new HashSet<uint>
@@ -42,7 +47,8 @@ namespace ShinraCo
                 19889, // Infusion of Intelligence
                 22450, // Grade 2 Infusion of Intelligence
                 24264,  // Grade 3 Infusion of Intelligence
-                27789   //Tincture
+                27789,  //Tincture
+                27998   //grade 2 tincture
             };
 
             public static readonly HashSet<uint> Mnd = new HashSet<uint>
@@ -50,7 +56,8 @@ namespace ShinraCo
                 19890, // Infusion of Mind
                 22451, // Grade 2 Infusion of Mind
                 24265,  // Grade 3 Infusion of Mind
-                27790 //Tincture
+                27790,  //Tincture
+                27999   //grade 2 tincture
             };
 
 
