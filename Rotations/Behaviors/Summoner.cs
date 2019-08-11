@@ -35,18 +35,18 @@ namespace ShinraCo.Rotations
             //blow it up
             if (await EnkindlePhoenix()) return true;
             if (await EnkindleBahamut()) return true;
-            //Buff it baby
-            if (await Aetherpact()) return true;
             //Pets
             //if (await Sic()) return true;
             if (await SummonIII()) return true;
             if (await SummonII()) return true;
             if (await Summon()) return true;
+            //Buff it baby
+            if (await Aetherpact()) return true;
+            //Dot Refresh
+            if (await TriDisaster()) return true;
             //Egi
             if (await EgiAssault()) return true;
             if (await EgiAssaultII()) return true;
-            //Dot Refresh
-            if (await TriDisaster()) return true;
             //Bahamut
             if (await SummonBahamut()) return true;
             //Dread Trance
