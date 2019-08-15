@@ -7,62 +7,88 @@ namespace ShinraCo.Rotations
     {
         #region Combat
 
+
+
         public override async Task<bool> Combat()
         {
-            switch (ShinraEx.Settings.RotationMode)
+            Helpers.Debug("Combat...");
+
+            /*
+            if (MovementManager.IsMoving)
             {
-                case Modes.Smart:
-                {
-                    Helpers.Debug("Combat - smart...");
-                    if (ShinraEx.Settings.DarkKnightOpener) { if (await Helpers.ExecuteOpener()) return true; }
-                    if (await LowBlow()) return true;
-                    if (await Interject()) return true;
-                    if (await Quietus()) return true;
-                    if (await AbyssalDrain()) return true;
-                    if (await Unleash()) return true;
-                    if (await Bloodspiller()) return true;
-                    if (await Souleater()) return true;
-                    if (await SyphonStrike()) return true;
-                    if (await CarveAndSpit()) return true;
-                    if (await SpinningSlash()) return true;
-                    if (await FloodOfDarkness()) return true;
-                    if (await EdgeOfDarkness()) return true;
-                    if (await Unmend()) return true;
-                    if (await LowBlow()) return true;
-                    return await HardSlash();
-                }
+                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Skiping Combat because we are moving!...");                
+                return false;
+            }*/
 
-                case Modes.Single:
-                {
-                    Helpers.Debug("Combat - single...");
-                    if (ShinraEx.Settings.DarkKnightOpener) { if (await Helpers.ExecuteOpener()) return true; }
-                    if (await LowBlow()) return true;
-                    if (await Interject()) return true;
-                    if (await Bloodspiller()) return true;
-                    if (await Souleater()) return true;
-                    if (await SyphonStrike()) return true;
-                    if (await CarveAndSpit()) return true; 
-                    if (await SpinningSlash()) return true;
-                    if (await FloodOfDarkness()) return true; 
-                    if (await EdgeOfDarkness()) return true;
-                    if (await Unmend()) return true;
-                    if (await LowBlow()) return true;
-                    return await HardSlash();
-                }
-
-                case Modes.Multi:
-                {
-                    Helpers.Debug("Combat - multi...");
-                    //if (await Quietus()) return true;
-                    if (await AbyssalDrain()) return true;
-                    if (await Unleash()) return true;
-                    if (await Souleater()) return true;
-                    if (await SyphonStrike()) return true;
-                    return await HardSlash();
-                }
+            if (ShinraEx.Settings.RotationMode == Modes.Multi || ShinraEx.Settings.RotationMode == Modes.Smart &&
+                Helpers.EnemiesNearTarget(5) > 2)
+            {
+                return await Multi();
             }
+            return await Single();
+        }
+
+
+
+        private async Task<bool> Single()
+        {
+            Helpers.Debug("Combat - single...");
+          
+            if (ShinraEx.Settings.DarkKnightOpener) { if (await Helpers.ExecuteOpener()) return true; }
+
+            if (await Bloodspiller()) return true;
+            if (await EdgeOfDarkness()) return true;
+            if (await FloodOfDarkness()) return true;
+            if (await CarveAndSpit()) return true;
+            if (await Plunge()) return true;
+            if (await AbyssalDrain()) return true;
+
+
+            //if (await SpinningSlash()) return true;
             
-            return false;
+            //if (await Unmend()) return true;
+            //if (await LowBlow()) return true;
+            //if (await Interject()) return true;
+            //if (await Quietus()) return true;
+            //if (await Unleash()) return true;
+
+            if (await Souleater()) return true;
+            if (await SyphonStrike()) return true;
+
+          
+
+            return await HardSlash();
+        }
+
+        private async Task<bool> Multi()
+        {
+            Helpers.Debug("Combat - multi...");
+
+            if (await Unleash()) return true;
+            if (await StalwartSoul()) return true;
+            if (await Quietus()) return true;
+            //if (await Bloodspiller()) return true;
+            if (await EdgeOfDarkness()) return true;
+            if (await FloodOfDarkness()) return true;
+            if (await CarveAndSpit()) return true;
+            if (await Plunge()) return true;
+            if (await AbyssalDrain()) return true;
+
+
+            //if (await SpinningSlash()) return true;
+
+            //if (await Unmend()) return true;
+            //if (await LowBlow()) return true;
+            //if (await Interject()) return true;
+            
+            
+
+            if (await Souleater()) return true;
+            if (await SyphonStrike()) return true;
+
+
+
+            return await HardSlash();
         }
 
         #endregion
@@ -75,6 +101,7 @@ namespace ShinraCo.Rotations
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.DarkKnightOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            if (await LivingShadow()) return true;
             if (await ArmsLength()) return true;
             if (await Grit()) return true;
             if (await LivingDead()) return true;
@@ -82,9 +109,8 @@ namespace ShinraCo.Rotations
             if (await BlackestNight()) return true;
             if (await Rampart()) return true;
             if (await ArmsLength()) return true;
-            //if (await Delirium()) return true;
-            if (await Reprisal()) return true;
-            if (await Plunge()) return true;
+            if (await Delirium()) return true;
+            if (await Reprisal()) return true;            
             if (await BloodWeapon()) return true;
             return await SaltedEarth();
         }
@@ -120,6 +146,7 @@ namespace ShinraCo.Rotations
         public override async Task<bool> Pull()
         {
             Helpers.Debug("Pull...");
+            if (await Plunge()) return true;
             if (await Provoke()) return true;
             return await Combat();
         }

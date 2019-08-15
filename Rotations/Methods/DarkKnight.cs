@@ -14,10 +14,14 @@ namespace ShinraCo.Rotations
 
         #region Damage
 
+
         private async Task<bool> HardSlash()
         {
             return await MySpells.HardSlash.Cast();
         }
+
+
+      
 
         private async Task<bool> SpinningSlash()
         {
@@ -28,15 +32,7 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        /*
-        private async Task<bool> PowerSlash()
-        {
-            if (ActionManager.LastSpell.Name == MySpells.SpinningSlash.Name)
-            {
-                return await MySpells.PowerSlash.Cast();
-            }
-            return false;
-        } */
+       
 
         private async Task<bool> SyphonStrike()
         {
@@ -47,6 +43,18 @@ namespace ShinraCo.Rotations
                 {
                     return await MySpells.SyphonStrike.Cast();
                 }
+            }
+            return false;
+        }
+
+
+        private async Task<bool> StalwartSoul()
+        {
+            if (ActionManager.LastSpell.Name == MySpells.Unleash.Name)
+            {
+                
+                    return await MySpells.StalwartSoul.Cast();
+                
             }
             return false;
         }
@@ -62,6 +70,11 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> FloodOfDarkness()
         {
+            if (Core.Player.ClassLevel >= 74 && Core.Player.CurrentMana > 3500)
+            {
+                return await MySpells.FloodOfShadow.Cast();
+            }
+
             if (Core.Player.CurrentMana > 3500 && ActionManager.LastSpell.Name != MySpells.FloodOfDarkness.Name)
             {
                 return await MySpells.FloodOfDarkness.Cast();
@@ -71,6 +84,12 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> EdgeOfDarkness()
         {
+
+            if (Core.Player.ClassLevel >= 74 && Core.Player.CurrentMana > 3500)
+            {
+                return await MySpells.EdgeOfShadow.Cast();
+            }
+
             //if ()
             {
                 return await MySpells.EdgeOfDarkness.Cast();
@@ -130,7 +149,18 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        
+
+
+        private async Task<bool> LivingShadow()
+        {
+            if (BloodValue >= 50)
+            {
+               
+                return await MySpells.LivingShadow.Cast();
+            }
+            return false;
+        }
+
         private async Task<bool> Quietus()
         {
             if (ShinraEx.Settings.DarkKnightQuietus && Core.Player.CurrentManaPercent < 70 && BloodValue >= 50)
