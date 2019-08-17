@@ -21,7 +21,7 @@ namespace ShinraCo.Rotations
             }*/
 
             if (ShinraEx.Settings.RotationMode == Modes.Multi || ShinraEx.Settings.RotationMode == Modes.Smart &&
-                Helpers.EnemiesNearTarget(5) > 2)
+                Helpers.EnemiesNearTarget(5) >= 2)
             {
                 return await Multi();
             }
@@ -35,7 +35,7 @@ namespace ShinraCo.Rotations
             Helpers.Debug("Combat - single...");
           
             if (ShinraEx.Settings.DarkKnightOpener) { if (await Helpers.ExecuteOpener()) return true; }
-
+            if (await Interject()) return true;
             if (await Bloodspiller()) return true;
             if (await EdgeOfDarkness()) return true;
             if (await FloodOfDarkness()) return true;
@@ -63,7 +63,7 @@ namespace ShinraCo.Rotations
         private async Task<bool> Multi()
         {
             Helpers.Debug("Combat - multi...");
-
+            if (await Interject()) return true;
             if (await Unleash()) return true;
             if (await StalwartSoul()) return true;
             if (await Quietus()) return true;
@@ -79,7 +79,7 @@ namespace ShinraCo.Rotations
 
             //if (await Unmend()) return true;
             //if (await LowBlow()) return true;
-            //if (await Interject()) return true;
+            
             
             
 

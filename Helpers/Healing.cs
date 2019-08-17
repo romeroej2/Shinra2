@@ -44,7 +44,8 @@ namespace ShinraCo
         public static async Task<bool> UpdateHealManager()
         {
             var healList = new List<BattleCharacter>();
-            if (PartyManager.IsInParty)
+         
+            if (!PartyManager.IsInParty)
             {
                 healList.AddRange(PartyMembers.Where(pm => pm.IsAlive));
                 RessManager = new List<BattleCharacter>();

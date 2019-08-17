@@ -38,10 +38,11 @@ namespace ShinraCo.Rotations
             if (await Triplecast()) return true;
             if (await Swiftcast()) return true;
             if (await Sharpcast()) return true;
-            if (await Foul()) return true;
-            
+            if (await MaintainPoliglot()) return true;
+
             if (await Thundercloud()) return true;                       
-            if (await Xenoglossy()) return true;           
+            if (await Xenoglossy()) return true;
+            if (await Foul()) return true;
             if (await ThunderIII()) return true;
             if (await Thunder()) return true;
             if (await BlizzardIV()) return true;
@@ -58,6 +59,7 @@ namespace ShinraCo.Rotations
         {
             Helpers.Debug("Combat - multi...");
             //if (await Drain()) return true; //Deprecated
+            //if (await Xenoglossy()) return true;
             if (await Foul()) return true;
             if (await ThunderIV()) return true;
             if (await ThunderII()) return true;
