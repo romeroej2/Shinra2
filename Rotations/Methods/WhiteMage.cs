@@ -144,7 +144,9 @@ namespace ShinraCo.Rotations
             
             return false;
         }
-        
+
+
+
         #endregion
 
         #region Buff
@@ -190,7 +192,7 @@ namespace ShinraCo.Rotations
 
                 
                
-                if (target != null && Helpers.HealManager.Contains(target))
+                if ( (target != null && Helpers.HealManager.Contains(target)))
                 {
                     if ( (spellName == MySpells.Cure.Name && target.CurrentHealthPercent >= ShinraEx.Settings.WhiteMageCurePct + 10)
                                      || (spellName == MySpells.CureII.Name && target.CurrentHealthPercent >= freeCure + 10)
@@ -216,19 +218,15 @@ namespace ShinraCo.Rotations
         {
             if (ShinraEx.Settings.WhiteMageCure)
             {
-                //Logging.Write(Colors.Yellow, $@"[ShinraEx] CurePct >>> {ShinraEx.Settings.WhiteMageCurePct}");
+               
                 
-                foreach( var hm in Helpers.HealManager)
-                {
-                    Logging.Write(Colors.Yellow, $@"[ShinraEx] {hm.Name} >>> {hm.CurrentHealthPercent}");
-                }
 
                 var target = ShinraEx.Settings.WhiteMagePartyHeal
                     ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageCurePct)
                     : Core.Player.CurrentHealthPercent < ShinraEx.Settings.WhiteMageCurePct ? Core.Player : null;
 
 
-                //Logging.Write(Colors.Yellow, target.ToString());
+                
 
                 if (target != null || ShinraEx.Settings.WhiteMageCureII && Core.Player.HasAura(155, true))
                 {
@@ -380,6 +378,8 @@ namespace ShinraCo.Rotations
             return false;
         }
         
+
+        
         private async Task<bool> Assize()
         {
             if (ShinraEx.Settings.WhiteMageAssize && 
@@ -406,6 +406,13 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Raise()
         {
+
+            foreach (var hm in Helpers.RessManager)
+            {
+                Logging.Write(Colors.Yellow, $@"[ShinraEx] Ress {hm.Name} >>> {hm.CurrentHealthPercent}");
+            }
+
+
             if (ShinraEx.Settings.WhiteMageRaise &&
                 (ShinraEx.Settings.WhiteMageSwiftcast && ActionManager.CanCast(MySpells.Role.Swiftcast.Name, Core.Player) ||
                  !Helpers.HealManager.Any(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageCurePct)))

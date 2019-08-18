@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using ff14bot;
 using ff14bot.Enums;
+using ff14bot.Helpers;
 using ff14bot.Managers;
 using ff14bot.Objects;
 
@@ -45,7 +47,7 @@ namespace ShinraCo
         {
             var healList = new List<BattleCharacter>();
          
-            if (!PartyManager.IsInParty)
+            if (PartyManager.IsInParty)
             {
                 healList.AddRange(PartyMembers.Where(pm => pm.IsAlive));
                 RessManager = new List<BattleCharacter>();
@@ -54,6 +56,7 @@ namespace ShinraCo
             else
             {
                 healList.Add(Core.Player);
+                RessManager = new List<BattleCharacter>();
             }
             //if (Core.Player.Pet != null && (int)PetManager.ActivePetType < 10)
             //{
@@ -64,6 +67,18 @@ namespace ShinraCo
                 healList.Add(ChocoboManager.Object);
             }
             HealManager = healList.OrderBy(HPScore).ToList();
+
+            
+            foreach (var hm in Helpers.HealManager)
+            {
+                Logging.Write(Colors.Yellow, $@"[ShinraEx] PM {hm.Name} >>> {hm.CurrentHealthPercent}");
+            }
+
+            foreach (var hm in Helpers.RessManager)
+            {
+                Logging.Write(Colors.Yellow, $@"[ShinraEx] RS {hm.Name} >>> {hm.CurrentHealthPercent}");
+            }
+
             return true;
         }
 
