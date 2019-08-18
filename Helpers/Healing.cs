@@ -68,7 +68,7 @@ namespace ShinraCo
             }
             HealManager = healList.OrderBy(HPScore).ToList();
 
-            
+            /*
             foreach (var hm in Helpers.HealManager)
             {
                 Logging.Write(Colors.Yellow, $@"[ShinraEx] PM {hm.Name} >>> {hm.CurrentHealthPercent}");
@@ -77,7 +77,7 @@ namespace ShinraCo
             foreach (var hm in Helpers.RessManager)
             {
                 Logging.Write(Colors.Yellow, $@"[ShinraEx] RS {hm.Name} >>> {hm.CurrentHealthPercent}");
-            }
+            }*/
 
             return true;
         }

@@ -407,17 +407,15 @@ namespace ShinraCo.Rotations
         private async Task<bool> Raise()
         {
 
-            foreach (var hm in Helpers.RessManager)
-            {
-                Logging.Write(Colors.Yellow, $@"[ShinraEx] Ress {hm.Name} >>> {hm.CurrentHealthPercent}");
-            }
-
+           
 
             if (ShinraEx.Settings.WhiteMageRaise &&
                 (ShinraEx.Settings.WhiteMageSwiftcast && ActionManager.CanCast(MySpells.Role.Swiftcast.Name, Core.Player) ||
                  !Helpers.HealManager.Any(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageCurePct)))
             {
+
                 var target = Helpers.RessManager.FirstOrDefault(pm => !pm.HasAura(148));
+
 
                 if (target != null || ShinraEx.Settings.WhiteMageSwiftcast && ActionManager.CanCast(MySpells.Raise.Name, target) && Helpers.HealManager.Contains(target))
                 {
@@ -425,7 +423,10 @@ namespace ShinraCo.Rotations
                         await Coroutine.Wait(1000, () => Core.Player.HasAura(167, true));
                     }
                 }
-                return await MySpells.Raise.Cast(target);
+                if (target != null)
+                {
+                    return await MySpells.Raise.Cast(target);
+                }
             }
             return false;
         }
