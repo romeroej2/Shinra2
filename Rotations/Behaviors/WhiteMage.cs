@@ -73,7 +73,7 @@ namespace ShinraCo.Rotations
         {
             Helpers.Debug("Heal...");
             if (await UpdateHealing()) return true;
-            //if (await StopCasting()) return true;
+            if (await StopCasting()) return true;
             if (await Benediction()) return true;
             if (await Tetragrammaton()) return true;
             if (await PresenceOfMind()) return true;
@@ -81,10 +81,12 @@ namespace ShinraCo.Rotations
             if (await Assize()) return true;
             if (await AfflatusRapture()) return true;
             if (await MedicaII()) return true;
+            if (await Asylum()) return true;
             if (await Medica()) return true;
             if (await CureIII()) return true;
             if (await AfflatusSolace()) return true;
             if (await CureII()) return true;
+            if (await DivineBenison()) return true;
             if (await Cure()) return true;
             if (await Regen()) return true;
             if (await Raise()) return true;

@@ -243,6 +243,27 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+
+
+        private async Task<bool> DivineBenison()
+        {
+            if (ShinraEx.Settings.WhiteMageCure)
+            {
+                var target = ShinraEx.Settings.WhiteMagePartyHeal
+                    ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageCureIIPct)
+                    : Core.Player.CurrentHealthPercent < ShinraEx.Settings.WhiteMageCureIIPct ? Core.Player : null;
+
+                if (target != null)
+                    Logging.Write($@"Target HP DivineBenison: {target.Name} {target.CurrentHealthPercent} < {ShinraEx.Settings.WhiteMageCure}");
+
+                if (target != null)
+                {
+                    return await MySpells.DivineBenison.Cast(target);
+                }
+            }
+            return false;
+        }
+
         private async Task<bool> CureII()
         {
             if (ShinraEx.Settings.WhiteMageCureII)
@@ -324,6 +345,18 @@ namespace ShinraCo.Rotations
                 {
                     return await MySpells.Regen.Cast(target);
                 }
+            }
+            return false;
+        }
+
+
+        private async Task<bool> Asylum()
+        {
+            if (ShinraEx.Settings.WhiteMageMedica &&
+                ShinraEx.Settings.WhiteMagePartyHeal && UseAoEHeals &&
+                Helpers.FriendsNearPlayer(ShinraEx.Settings.WhiteMageMedicaPct) > 2)
+            {
+                return await MySpells.Asylum.Cast();
             }
             return false;
         }
