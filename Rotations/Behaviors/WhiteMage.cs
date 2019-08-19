@@ -73,7 +73,7 @@ namespace ShinraCo.Rotations
         {
             Helpers.Debug("Heal...");
             if (await UpdateHealing()) return true;
-            if (await StopCasting()) return true;
+            //if (await StopCasting()) return true;
             if (await Benediction()) return true;
             if (await Tetragrammaton()) return true;
             if (await PresenceOfMind()) return true;

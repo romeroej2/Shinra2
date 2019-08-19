@@ -190,8 +190,8 @@ namespace ShinraCo.Rotations
                 var spellName = Core.Player.SpellCastInfo.Name;
                 var freeCure = Core.Player.HasAura(155, true) ? ShinraEx.Settings.WhiteMageCurePct : ShinraEx.Settings.WhiteMageCureIIPct;
 
-                
-               
+                UpdateHealing();
+
                 if ( (target != null && Helpers.HealManager.Contains(target)))
                 {
                     if ( (spellName == MySpells.Cure.Name && target.CurrentHealthPercent >= ShinraEx.Settings.WhiteMageCurePct + 10)
@@ -204,9 +204,10 @@ namespace ShinraCo.Rotations
 
                         var debugSetting = spellName == MySpells.Cure.Name ? ShinraEx.Settings.WhiteMageCurePct
                                 : ShinraEx.Settings.WhiteMageCureIIPct;
-                        Helpers.Debug($@"Target HP: {target.CurrentHealthPercent}, Setting: {debugSetting}, Adjusted: {debugSetting + 10}");
+                        Logging.Write($@"Target HP: {target.CurrentHealthPercent}, Setting: {debugSetting}, Adjusted: {debugSetting + 10}");
                         Logging.Write(Colors.Yellow, $@"[ShinraEx] Interrupting >>> {spellName}");
                         ActionManager.StopCasting();
+                        UpdateHealing();
                         await Coroutine.Wait(500, () => !Core.Player.IsCasting);
                     }
                 }
@@ -220,20 +221,22 @@ namespace ShinraCo.Rotations
             {
                
                 
-
                 var target = ShinraEx.Settings.WhiteMagePartyHeal
                     ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageCurePct)
                     : Core.Player.CurrentHealthPercent < ShinraEx.Settings.WhiteMageCurePct ? Core.Player : null;
 
-
+                if (target != null)
+                    Logging.Write($@"Target HP Cure: {target.Name} {target.CurrentHealthPercent} < {ShinraEx.Settings.WhiteMageCurePct} Cure2Aura {Core.Player.HasAura(155, true)}");
                 
 
-                if (target != null || ShinraEx.Settings.WhiteMageCureII && Core.Player.HasAura(155, true))
+                if (target != null && ShinraEx.Settings.WhiteMageCureII && Core.Player.HasAura(155, true))
                 {
+                    
                     return await MySpells.CureII.Cast(target);
                 }
                 if (target != null)
                 {
+                    
                     return await MySpells.Cure.Cast(target);
                 }
             }
@@ -247,6 +250,9 @@ namespace ShinraCo.Rotations
                 var target = ShinraEx.Settings.WhiteMagePartyHeal
                     ? Helpers.HealManager.FirstOrDefault(hm => hm.CurrentHealthPercent < ShinraEx.Settings.WhiteMageCureIIPct)
                     : Core.Player.CurrentHealthPercent < ShinraEx.Settings.WhiteMageCureIIPct ? Core.Player : null;
+
+                if (target != null)
+                    Logging.Write($@"Target HP Cure2: {target.Name} {target.CurrentHealthPercent} < {ShinraEx.Settings.WhiteMageCureIIPct}");
 
                 if (target != null)
                 {

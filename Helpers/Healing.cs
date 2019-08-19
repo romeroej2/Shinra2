@@ -34,6 +34,12 @@ namespace ShinraCo
 
         public static int FriendsNearPlayer(int hp, float radius = 15)
         {
+            /*
+            foreach (var hm in HealManager)
+            {
+                Logging.Write(Colors.Yellow, $@"[ShinraEx] PM {hm.Name} >>> {hm.Distance2D(Core.Player) - hm.CombatReach - Core.Player.CombatReach}");
+            }*/
+
             return HealManager.Count(hm => hm.CurrentHealthPercent < hp &&
                                            hm.Distance2D(Core.Player) - hm.CombatReach - Core.Player.CombatReach <= radius);
         }
