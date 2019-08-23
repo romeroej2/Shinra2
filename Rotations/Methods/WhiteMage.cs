@@ -130,15 +130,8 @@ namespace ShinraCo.Rotations
         {
             var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
             
-            if (!MovementManager.IsMoving && (ShinraEx.Settings.RotationMode == Modes.Multi || Helpers.EnemiesNearPlayer(5) >= count))
+            if (ActionResourceManager.WhiteMage.BloodLily >=1 &&  !MovementManager.IsMoving && Helpers.EnemiesNearPlayer(5) >= count )
             {
-                if (ShinraEx.Settings.WhiteMageThinAir && ActionManager.CanCast(MySpells.AfflatusMisery.Name, Core.Player))
-                {
-                    if (await MySpells.ThinAir.Cast(null, false))
-                    {
-                        await Coroutine.Wait(3000, () => Core.Player.HasAura(1217, true));
-                    }
-                }
                 if (!StopDamage) return await MySpells.AfflatusMisery.Cast();
             }
             
