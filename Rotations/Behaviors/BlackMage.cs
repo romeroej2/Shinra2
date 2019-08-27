@@ -15,11 +15,12 @@ namespace ShinraCo.Rotations
         {
             Helpers.Debug("Combat...");
 
+            /*
             if (MovementManager.IsMoving)
             {
                 Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Skiping Combat because we are moving!...");                
                 return false;
-            }
+            }*/
 
             if (ShinraEx.Settings.RotationMode == Modes.Multi || ShinraEx.Settings.RotationMode == Modes.Smart &&
                 Helpers.EnemiesNearTarget(5) > 2)
@@ -37,10 +38,11 @@ namespace ShinraCo.Rotations
             if (await Triplecast()) return true;
             if (await Swiftcast()) return true;
             if (await Sharpcast()) return true;
-            if (await Foul()) return true;
-            if (await UmbralSoul()) return true;
+            if (await MaintainPoliglot()) return true;
+
             if (await Thundercloud()) return true;                       
-            if (await Xenoglossy()) return true;           
+            if (await Xenoglossy()) return true;
+            if (await Foul()) return true;
             if (await ThunderIII()) return true;
             if (await Thunder()) return true;
             if (await BlizzardIV()) return true;
@@ -57,6 +59,7 @@ namespace ShinraCo.Rotations
         {
             Helpers.Debug("Combat - multi...");
             //if (await Drain()) return true; //Deprecated
+            //if (await Xenoglossy()) return true;
             if (await Foul()) return true;
             if (await ThunderIV()) return true;
             if (await ThunderII()) return true;
@@ -80,10 +83,12 @@ namespace ShinraCo.Rotations
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
             if (ShinraEx.Settings.BlackMageOpener) { if (await Helpers.ExecuteOpener()) return true; }
+            
             if (await BetweenTheLines()) return true;
+            if (await UmbralSoul()) return true;
             if (await Convert()) return true;
             if (await Enochian()) return true;
-            if (await UmbralSoul()) return true;
+            
             if (await LeyLines()) return true;
             return await LucidDreaming();
         }

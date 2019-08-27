@@ -601,7 +601,7 @@ namespace ShinraCo.Spells
                 await CastComplete(this))
             {
                 var key = target.ObjectId.ToString("X") + "-" + Name;
-                var val = DateTime.UtcNow + DataManager.GetSpellData(ID).AdjustedCastTime + TimeSpan.FromSeconds(3);
+                var val = DateTime.UtcNow + DataManager.GetSpellData(ID).AdjustedCastTime + TimeSpan.FromSeconds(1);
                 RecentSpell.Add(key, val);
             }
 
@@ -609,7 +609,7 @@ namespace ShinraCo.Spells
             {
                 if (!Helpers.OpenerFinished && !RecentSpell.ContainsKey("Opener") && await CastComplete(this, true))
                 {
-                    var val = DateTime.UtcNow + DataManager.GetSpellData(ID).AdjustedCastTime + TimeSpan.FromSeconds(3);
+                    var val = DateTime.UtcNow + DataManager.GetSpellData(ID).AdjustedCastTime + TimeSpan.FromSeconds(1);
                     RecentSpell.Add("Opener", val);
                 }
             }

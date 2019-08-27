@@ -20,13 +20,16 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SplitShot()
         {
-			return await MySpells.SplitShot.Cast();
-
+            if (!heated && !Core.Player.CurrentTarget.HasAura(MySpells.Reassemble.Name, true))
+            {
+                return await MySpells.SplitShot.Cast();
+            }
+            return false;
         }
 
         private async Task<bool> SlugShot()
         {
-            if (ActionManager.LastSpell.Name == MySpells.SplitShot.Name)
+            if (!heated && !Core.Player.CurrentTarget.HasAura(MySpells.Reassemble.Name, true) && ActionManager.LastSpell.Name == MySpells.SplitShot.Name)
 			{
 				return await MySpells.SlugShot.Cast();
 			}
@@ -35,7 +38,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> CleanShot()
         {
-            if (ActionManager.LastSpell.Name == MySpells.SlugShot.Name)
+            if (!heated && !Core.Player.CurrentTarget.HasAura(MySpells.Reassemble.Name, true) && ActionManager.LastSpell.Name == MySpells.SlugShot.Name)
 			{
 				return await MySpells.CleanShot.Cast();
 			}
@@ -44,17 +47,29 @@ namespace ShinraCo.Rotations
 
         public async Task<bool> HotShot()
         {
-			return await MySpells.HotShot.Cast();
-		}
+            if (!heated)
+            {
+                return await MySpells.HotShot.Cast();
+            }
+            return false;
+        }
 		
 		public async Task<bool> Drill()
         {
-			return await MySpells.Drill.Cast();
+            if (!heated)
+            {
+                return await MySpells.Drill.Cast();
+            }
+            return false;
 		}
 		
 		public async Task<bool> HeatBlast()
         {
-            return await MySpells.Heatblast.Cast();
+            if (heated)
+            {
+                return await MySpells.Heatblast.Cast();
+            }
+            return false;
         }
 
         #endregion
@@ -63,7 +78,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SpreadShot()
         {
-            if (Helpers.EnemiesNearTarget(5) >= AoECount)
+            if (!heated && Helpers.EnemiesNearTarget(5) >= AoECount)
             {
                 return await MySpells.SpreadShot.Cast();
             }
@@ -72,7 +87,7 @@ namespace ShinraCo.Rotations
 		
 		private async Task<bool> Crossbow()
         {
-            if (Helpers.EnemiesNearTarget(5) >= AoECount)
+            if (heated && Helpers.EnemiesNearTarget(5) >= AoECount)
             {
                 return await MySpells.Crossbow.Cast();
             }
@@ -81,7 +96,7 @@ namespace ShinraCo.Rotations
 		
 		private async Task<bool> Bioblaster()
         {
-            if (Helpers.EnemiesNearTarget(5) >= AoECount && !MovementManager.IsMoving)
+            if (!heated && Helpers.EnemiesNearTarget(5) >= AoECount && !MovementManager.IsMoving)
             {
                     if (await MySpells.Bioblaster.Cast())
                     {
@@ -97,16 +112,25 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Wildfire()
         {
-            if(Helpers.EnemiesNearTarget(5) < AoECount && (!Core.Player.CurrentTarget.HasAura(MySpells.Wildfire.Name, true) || Core.Player.CurrentTarget.CurrentHealthPercent <= 5))
+            if(!Core.Player.CurrentTarget.HasAura(MySpells.Reassemble.Name, true) && Helpers.EnemiesNearTarget(5) < AoECount && !Core.Player.CurrentTarget.HasAura(MySpells.Wildfire.Name, true) && Resource.Heat >= 50 && HyperchargeReady)
 			{
 				return await MySpells.Wildfire.Cast();
 			}
 			return false;
         }
 
+        private async Task<bool> WildfireExplode()
+        {
+            if (Core.Player.CurrentTarget.HasAura(MySpells.Wildfire.Name, true) && Core.Player.CurrentTarget.CurrentHealthPercent <= 1)
+            {
+                return await MySpells.Wildfire.Cast();
+            }
+            return false;
+        }
+
         private async Task<bool> GaussRound()
         {
-			if(WildfireCooldown >= 30000)
+			if(!Core.Player.CurrentTarget.HasAura(MySpells.Reassemble.Name, true))
 			{
 				return await MySpells.GaussRound.Cast();
 			}
@@ -115,7 +139,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Ricochet()
         {
-			if(WildfireCooldown >= 30000)
+			if(!Core.Player.CurrentTarget.HasAura(MySpells.Reassemble.Name, true))
 			{
 				return await MySpells.Ricochet.Cast();
 			}
@@ -140,12 +164,16 @@ namespace ShinraCo.Rotations
 		
 		public async Task<bool> Reassemble()
 		{
-				return await MySpells.Reassemble.Cast();
+            if (DrillReady || HotshotReady )
+            {
+                return await MySpells.Reassemble.Cast();
+            }
+            return false;
 		}
 		
         private async Task<bool> Hypercharge()
         {
-            if (Resource.Heat >= 50)
+            if (Resource.Heat >= 50 && (Helpers.EnemiesNearTarget(5) >= AoECount ||  WildfireCooldown >= 11000))
             {
                 return await MySpells.Hypercharge.Cast();
             }
@@ -154,20 +182,11 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BarrelStabilizer()
         {
-                if (Resource.Heat <=  50)
+                if (!heated && Resource.Heat <=  50)
                 {
                     return await MySpells.BarrelStabilizer.Cast();
                 }
 
-            return false;
-        }
-
-        private async Task<bool> RookOverdrive()
-        {
-			if (IsCurrentFormExpired())
-                {
-					return await MySpells.RookOverdrive.Cast();	
-                }
             return false;
         }
 
@@ -177,14 +196,27 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> RookAutoturret()
         {
-			if (Resource.Battery == 100)
+			if (Resource.Battery > 80)
 			{
-				if(await MySpells.RookAutoturret.Cast())
+                var duration = 13;
+                if (Resource.Battery == 90){ duration = 18;}
+                if (Resource.Battery == 100) { duration = 20;}
+                if (await MySpells.RookAutoturret.Cast())
 				{
-					SetCurrentFormTimer(TimeSpan.FromSeconds(Resource.Battery * 2 / 10));
+					SetCurrentFormTimer(TimeSpan.FromSeconds(duration));
 					return true;
 				}
                
+            }
+            return false;
+        }
+
+
+        private async Task<bool> RookOverdrive()
+        {
+            if (IsCurrentFormExpired())
+            {
+                return await MySpells.RookOverdrive.Cast();
             }
             return false;
         }
@@ -216,9 +248,12 @@ namespace ShinraCo.Rotations
 
         #region Custom
 
+		private static bool heated => DataManager.GetSpellData(17209).Cooldown.TotalMilliseconds > 1000;
+        private static bool HyperchargeReady => DataManager.GetSpellData(17209).Cooldown.TotalMilliseconds <= 0;
         private static int AoECount => ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
-        private static double HyperchargeCooldown => DataManager.GetSpellData(17209).Cooldown.TotalMilliseconds;
         private static double WildfireCooldown => DataManager.GetSpellData(2878).Cooldown.TotalMilliseconds;
+        private static bool DrillReady => DataManager.GetSpellData(16498).Cooldown.TotalMilliseconds <= 0;
+        private static bool HotshotReady => DataManager.GetSpellData(2872).Cooldown.TotalMilliseconds <= 0;
 
         public static DateTime CurrentFormExpireTime { get; set; }
 

@@ -13,8 +13,7 @@ namespace ShinraCo.Rotations
             {
                 case Modes.Smart:
                 {
-                    Helpers.Debug("Combat - smart...");
-                    if (ShinraEx.Settings.SamuraiOpener) { if (await Helpers.ExecuteOpener()) return true; }
+                    if (await KaeshiSetsugekka()) return true;
                     if (await MidareSetsugekka()) return true;
                     if (await TenkaGoken()) return true;
                     if (await Higanbana()) return true;
@@ -37,9 +36,8 @@ namespace ShinraCo.Rotations
 
                 case Modes.Single:
                 {
-                    Helpers.Debug("Combat - single...");
-                    if (ShinraEx.Settings.SamuraiOpener) { if (await Helpers.ExecuteOpener()) return true; }
                     if (await MidareSetsugekka()) return true;
+                    if (await KaeshiSetsugekka()) return true;
                     if (await Higanbana()) return true;
                     if (await Kaiten()) return true;
                     if (await Meikyo()) return true;
@@ -56,10 +54,11 @@ namespace ShinraCo.Rotations
                 }
 
                 case Modes.Multi:
-                {
-                    Helpers.Debug("Combat - multi...");
+                {            
                     if (await MidareSetsugekka()) return true;
+                    if (await KaeshiSetsugekka()) return true;
                     if (await TenkaGoken()) return true;
+                    if (await KaeshiTenkaGoken()) return true;
                     if (await Kaiten()) return true;
                     if (await Meikyo()) return true;
                     if (await Kasha()) return true;
@@ -83,24 +82,18 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatBuff()
         {
-            Helpers.Debug("CombatBuff...");
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
-            if (ShinraEx.Settings.SamuraiOpener) { if (await Helpers.ExecuteOpener()) return true; }
-            if (await Meditate()) return true;
+            if (await KaeshiSetsugekka()) return true;
             if (await HissatsuKaiten()) return true;
             if (await HissatsuGyoten()) return true;
-            if (await TrueNorth()) return true;
             if (await MeikyoShisui()) return true;
             if (await HissatsuGuren()) return true;
+            if (await HissatsuSenei()) return true;
             if (await HissatsuKyuten()) return true;
             if (await HissatsuSeigan()) return true;
             if (await HissatsuShinten()) return true;
-            if (await Hagakure()) return true;
-            if (await Ageha()) return true;
-            if (await Invigorate()) return true;
-            await Helpers.UpdateParty();
-            return await Goad();
+            return await Ikishoten();
         }
 
         #endregion
@@ -109,7 +102,6 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Heal()
         {
-            Helpers.Debug("Heal...");
             if (await SecondWind()) return true;
             if (await MercifulEyes()) return true;
             return await Bloodbath();
@@ -121,7 +113,6 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> PreCombatBuff()
         {
-            Helpers.Debug("PreCombatBuff...");
             return await ShinraEx.SummonChocobo();
         }
 
@@ -131,9 +122,6 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Pull()
         {
-            Helpers.Debug("Pull...");
-            if (await HissatsuGyoten()) return true;
-            if (await Enpi()) return true;
             return await Combat();
         }
 
@@ -143,7 +131,6 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
-            Helpers.Debug("CombatPVP...");
             if (await MeikyoShisuiPVP()) return true;
             if (await HissatsuShintenPVP()) return true;
             if (await MidareSetsugekkaPVP()) return true;

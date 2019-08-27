@@ -3722,5 +3722,10 @@ namespace ShinraCo.Settings.Forms
         {
             ShinraEx.Settings.UseHealthPotion = userHealthPotion.Checked;
         }
+
+        private void CustomCheck1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

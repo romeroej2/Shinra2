@@ -70,9 +70,54 @@ namespace ShinraCo.Rotations
             return false;
         }
 
+
+        private async Task<bool> MaintainPoliglot()
+        {
+            int enochianPendingTime = 3000;
+
+
+
+            if (ActionResourceManager.CostTypesStruct.timer < enochianPendingTime && ActionResourceManager.CostTypesStruct.timer >= 1 )
+            {
+                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Enochian About to Expire. Should Reset it");
+            }
+            else
+                return false;
+
+            if (ActionResourceManager.CostTypesStruct.timer < enochianPendingTime && AstralFire && Core.Player.CurrentMana >= 800)
+            {
+                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Reseting AstralFire to UmbralIce!...");
+                return await MySpells.BlizzardIV.Cast();
+            }else  if (ActionResourceManager.CostTypesStruct.timer < enochianPendingTime && AstralFire )
+            {
+                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Reseting AstralFire to UmbralIce!...");
+                return await MySpells.BlizzardIII.Cast();
+            }else if (ActionResourceManager.CostTypesStruct.timer < enochianPendingTime && UmbralIce && Core.Player.CurrentMana >= 800)
+            {
+
+                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Reseting UmbralIce to AstralFire!...");
+                return await MySpells.FireIV.Cast();
+            }
+            else if (ActionResourceManager.CostTypesStruct.timer < enochianPendingTime && UmbralIce)
+            {
+
+                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Reseting UmbralIce to AstralFire!...");
+                return await MySpells.Fire.Cast();
+            }
+
+
+            Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: No Able to Reset Enochian");
+            return false;
+        }
+
+        private Boolean hasEnochian()
+        {
+            return ActionResourceManager.CostTypesStruct.timer > 2000;
+        }
+
         private async Task<bool> FireIV()
         {
-            if (Resource.StackTimer.TotalMilliseconds > 6000)
+            if (hasEnochian())
             {
                 return await MySpells.FireIV.Cast();
             }
@@ -83,7 +128,7 @@ namespace ShinraCo.Rotations
         private async Task<bool> Despair()
         {
             
-                if (AstralFire && Resource.StackTimer.TotalMilliseconds > 6000 && (Core.Player.CurrentManaPercent < 25 || Core.Player.ClassLevel >= 72 && Resource.UmbralHearts > 0))
+                if (AstralFire && hasEnochian() && (Core.Player.CurrentManaPercent < 25 ))
                 {
                     if (ShinraEx.Settings.BlackMageConvert && ActionManager.HasSpell(MySpells.Despair.Name) &&
                         !ActionManager.CanCast(MySpells.Despair.Name, Core.Player.CurrentTarget))
@@ -111,7 +156,7 @@ namespace ShinraCo.Rotations
         private async Task<bool> Xenoglossy()
         {
             if (Resource.PolyglotStatus)
-            //if (ActionResourceManager.CostTypesStruct.offset_E.Equals(1))
+           
             {
                 return await MySpells.Xenoglossy.Cast();
             }
@@ -293,8 +338,11 @@ namespace ShinraCo.Rotations
         private async Task<bool> BetweenTheLines()
         {
 
-            if(Core.Player.HasAura(MySpells.LeyLines.Name))
-                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: BetweenLines Distance {0}", Core.Me.Distance2D(this.LeyLinesVector));
+            if (ShinraEx.Settings.BlackMageBetweenTheLines == false)
+                return false;
+
+            //if(Core.Player.HasAura(MySpells.LeyLines.Name))
+            //    Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: BetweenLines Distance {0}", Core.Me.Distance2D(this.LeyLinesVector));
 
             if (MovementManager.IsMoving == false && Core.Player.HasAura(MySpells.LeyLines.Name) && Core.Me.Distance2D(this.LeyLinesVector) >= 3 && Core.Me.Distance2D(this.LeyLinesVector) <= 15)
             {
@@ -343,12 +391,17 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> LeyLines()
         {
-            if (ShinraEx.Settings.BlackMageLeyLines && !MovementManager.IsMoving)
+            if (ShinraEx.Settings.BlackMageLeyLines && !MovementManager.IsMoving && ActionManager.ActionReady(ff14bot.Enums.ActionType.Spell, MySpells.LeyLines.ID))
             {
                 if (Core.Player.CurrentManaPercent > 80 || ActionManager.LastSpell.Name == MySpells.FireII.Name)
                 {
-                    LeyLinesVector = new Vector3(Core.Me.X,Core.Me.Y,Core.Me.Z); // CorePlayer Copy? 
-                    return await MySpells.LeyLines.Cast(null, false);
+                    
+                    bool returnVln = await MySpells.LeyLines.Cast(null, false);
+
+                    if (returnVln)
+                        LeyLinesVector = new Vector3(Core.Me.X, Core.Me.Y, Core.Me.Z); // CorePlayer Copy? 
+
+                    return returnVln;
                 }
             }
             return false;
@@ -365,8 +418,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Enochian()
         {
-            if (ShinraEx.Settings.BlackMageEnochian && Core.Player.ClassLevel >= 60 && !Resource.Enochian &&
-                Resource.StackTimer.TotalMilliseconds > 6000)
+            if (ShinraEx.Settings.BlackMageEnochian && Core.Player.ClassLevel >= 60 && !hasEnochian())
             {
                 return await MySpells.Enochian.Cast(null, false);
             }
@@ -376,7 +428,15 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> UmbralSoul()
         {
-            if (Resource.Enochian && UmbralIce && Core.Player.ClassLevel >= 76)
+
+            if (Resource.UmbralHearts > 0)
+                return false;
+
+            if (   hasEnochian() && AstralFire && ActionManager.CanCast(MySpells.UmbralSoul.Name, Core.Player) && ActionManager.CanCast(MySpells.Transpose.Name, Core.Player))
+                await MySpells.Transpose.Cast(null, false);
+               
+
+            if (hasEnochian() && UmbralIce && Core.Player.ClassLevel >= 76)
             {
                 return await MySpells.UmbralSoul.Cast(null, false);
             }
@@ -493,7 +553,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> EnochianPVP()
         {
-            if (!Resource.Enochian && Resource.StackTimer.TotalMilliseconds > 6000)
+            if (!hasEnochian() && Resource.StackTimer.TotalMilliseconds > 6000)
             {
                 return await MySpells.PVP.Enochian.Cast(null, false);
             }

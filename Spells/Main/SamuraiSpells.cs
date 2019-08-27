@@ -38,16 +38,6 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Self
         };
 
-        public Spell Ageha { get; } = new Spell
-        {
-            Name = "Ageha",
-            ID = 7500,
-            Level = 10,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Cooldown,
-            CastType = CastType.Target
-        };
-
         public Spell Enpi { get; } = new Spell
         {
             Name = "Enpi",
@@ -98,12 +88,32 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Target
         };
 
+        public Spell KaeshiHiganbana { get; } = new Spell
+        {
+            Name = "Kaeshi: Higanbana",
+            ID = 16484,
+            Level = 76,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+
         public Spell TenkaGoken { get; } = new Spell
         {
             Name = "Tenka Goken",
             ID = 7867,
-            Level = 30,
+            Level = 40,
             GCDType = GCDType.On,
+            SpellType = SpellType.AoE,
+            CastType = CastType.Target
+        };
+
+        public Spell KaeshiTenkaGoken { get; } = new Spell
+        {
+            Name = "Kaeshi: Goken",
+            ID = 16485,
+            Level = 76,
+            GCDType = GCDType.Off,
             SpellType = SpellType.AoE,
             CastType = CastType.Target
         };
@@ -112,7 +122,17 @@ namespace ShinraCo.Spells.Main
         {
             Name = "Midare Setsugekka",
             ID = 7867,
-            Level = 30,
+            Level = 50,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+
+        public Spell KaeshiSetsugekka { get; } = new Spell
+        {
+            Name = "Kaeshi: Setsugekka",
+            ID = 16486,
+            Level = 76,
             GCDType = GCDType.On,
             SpellType = SpellType.Damage,
             CastType = CastType.Target
@@ -258,6 +278,16 @@ namespace ShinraCo.Spells.Main
             CastType = CastType.Self
         };
 
+        public Spell Ikishoten { get; } = new Spell
+        {
+            Name = "Ikishoten",
+            ID = 16482,
+            Level = 68,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Buff,
+            CastType = CastType.Self
+        };
+
         public Spell HissatsuGuren { get; } = new Spell
         {
             Name = "Hissatsu: Guren",
@@ -267,5 +297,36 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Cooldown,
             CastType = CastType.Target
         };
+
+        public Spell HissatsuSenei { get; } = new Spell
+        {
+            Name = "Hissatsu: Senei",
+            ID = 16481,
+            Level = 72,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Cooldown,
+            CastType = CastType.Target
+        };
+
+        public Spell TsunameGaeshi { get; } = new Spell
+        {
+            Name = "Tsubame-gaeshi",
+            ID = 16483,
+            Level = 76,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Cooldown,
+            CastType = CastType.Target
+        };
+
+        public Spell Shoha { get; } = new Spell
+        {
+            Name = "Shoha",
+            ID = 16487,
+            Level = 80,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Cooldown,
+            CastType = CastType.Target
+        };
+
     }
 }

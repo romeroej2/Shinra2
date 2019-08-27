@@ -8,16 +8,18 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> Combat()
         {
+            if (await Crossbow()) return true;
+            if (await HeatBlast()) return true;
+
+            if (await Bioblaster()) return true;
+            if (await SpreadShot()) return true;
+
+            if (await Drill()) return true;
+            if (await HotShot()) return true;
             if (await CleanShot()) return true;
             if (await SlugShot()) return true;
-
-            if (await HeatBlast()) return true;
-            if (await Bioblaster()) return true;
-			if (await Crossbow()) return true;
-			if (await SpreadShot()) return true;
-			if (await Drill()) return true;
-			if (await HotShot()) return true;
             return await SplitShot();
+ 
         }
 
         #endregion
@@ -28,15 +30,18 @@ namespace ShinraCo.Rotations
         {
             if (await ShinraEx.SummonChocobo()) return true;
             if (await ShinraEx.ChocoboStance()) return true;
-			if (await Reassemble()) return true;
+
+            if (await Reassemble()) return true;
+            if (await BarrelStabilizer()) return true;
+            if (await Wildfire()) return true;
+            if (await Hypercharge()) return true;
+
 			if (await GaussRound()) return true;
             if (await Ricochet()) return true;
+
             if (await RookAutoturret()) return true;
-            if (await RookOverdrive()) return true;
-			if (await BarrelStabilizer()) return true;
-			if (await Wildfire()) return true;
-            if (await Hypercharge()) return true;
-            return false;
+            return await RookOverdrive();
+  
         }
 
         #endregion
@@ -55,7 +60,8 @@ namespace ShinraCo.Rotations
         public override async Task<bool> PreCombatBuff()
         {
             if (await ShinraEx.SummonChocobo()) return true;
-			return false;
+            if (await ShinraEx.ChocoboStance()) return true;
+            return false;
         }
 
         #endregion
