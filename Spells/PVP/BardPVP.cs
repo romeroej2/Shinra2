@@ -2,12 +2,21 @@
 {
     public class BardPVP
     {
-        public Spell StraightShot { get; } = new Spell
+        public Spell BurstShot { get; } = new Spell
         {
-            Name = "Straight Shot",
-            ID = 8835,
-            Combo = 16,
+            Name = "Burst Shot",
+            ID = 17745,
             GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
+            CastType = CastType.Target
+        };
+
+        public Spell CausticBite { get; } = new Spell
+        {
+            Name = "Caustic Bite",
+            ID = 8836,
+            GCDType = GCDType.On,
+            Combo = 17,
             SpellType = SpellType.PVP,
             CastType = CastType.Target
         };
@@ -16,8 +25,8 @@
         {
             Name = "Stormbite",
             ID = 8837,
-            Combo = 17,
             GCDType = GCDType.On,
+            Combo = 17,
             SpellType = SpellType.PVP,
             CastType = CastType.Target
         };
@@ -40,12 +49,12 @@
             CastType = CastType.Target
         };
 
-        public Spell Bloodletter { get; } = new Spell
+        public Spell ApexArrow { get; } = new Spell
         {
-            Name = "Bloodletter",
-            ID = 9624,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Cooldown,
+            Name = "Apex Arrow",
+            ID = 17747,
+            GCDType = GCDType.On,
+            SpellType = SpellType.Damage,
             CastType = CastType.Target
         };
 
@@ -64,6 +73,15 @@
             ID = 8843,
             GCDType = GCDType.Off,
             SpellType = SpellType.Cooldown,
+            CastType = CastType.Target
+        };
+
+        public Spell PitchPerfect { get; } = new Spell
+        {
+            Name = "Pitch Perfect",
+            ID = 8842,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Damage,
             CastType = CastType.Target
         };
 

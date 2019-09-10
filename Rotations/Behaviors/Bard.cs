@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Resource = ff14bot.Managers.ActionResourceManager.Bard;
 
 namespace ShinraCo.Rotations
 {
@@ -93,16 +94,16 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
-            Helpers.Debug("CombatPVP...");
             if (await TroubadourPVP()) return true;
             if (await BarragePVP()) return true;
-            if (await BloodletterPVP()) return true;
+            if (await PitchPerfectPVP()) return true;
             if (await WanderersMinuetPVP()) return true;
-            if (await ArmysPaeonPVP()) return true;
+            else if (await ArmysPaeonPVP()) return true;
             if (await EmpyrealArrowPVP()) return true;
             if (await SidewinderPVP()) return true;
+            if (await ApexArrowPVP()) return true;
             if (await StormbitePVP()) return true;
-            return await StraightShotPVP();
+            return await BurstShotPVP();
         }
 
         #endregion
