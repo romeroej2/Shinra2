@@ -71,6 +71,45 @@ namespace ShinraCo.Rotations
         }
 
 
+        private async Task<bool> MaintainPoliglot()
+        {
+            int enochianPendingTime = 3000;
+
+
+
+            if (ActionResourceManager.CostTypesStruct.timer < enochianPendingTime && ActionResourceManager.CostTypesStruct.timer >= 1 )
+            {
+                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Enochian About to Expire. Should Reset it");
+            }
+            else
+                return false;
+
+            if (ActionResourceManager.CostTypesStruct.timer < enochianPendingTime && AstralFire && Core.Player.CurrentMana >= 800)
+            {
+                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Reseting AstralFire to UmbralIce!...");
+                return await MySpells.BlizzardIV.Cast();
+            }else  if (ActionResourceManager.CostTypesStruct.timer < enochianPendingTime && AstralFire )
+            {
+                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Reseting AstralFire to UmbralIce!...");
+                return await MySpells.BlizzardIII.Cast();
+            }else if (ActionResourceManager.CostTypesStruct.timer < enochianPendingTime && UmbralIce && Core.Player.CurrentMana >= 800)
+            {
+
+                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Reseting UmbralIce to AstralFire!...");
+                return await MySpells.FireIV.Cast();
+            }
+            else if (ActionResourceManager.CostTypesStruct.timer < enochianPendingTime && UmbralIce)
+            {
+
+                Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: Reseting UmbralIce to AstralFire!...");
+                return await MySpells.Fire.Cast();
+            }
+
+
+            Logging.Write(Colors.Yellow, @"[ShinraEx] Debug: No Able to Reset Enochian");
+            return false;
+        }
+
         private Boolean hasEnochian()
         {
             return ActionResourceManager.CostTypesStruct.timer > 2000;
@@ -117,7 +156,7 @@ namespace ShinraCo.Rotations
         private async Task<bool> Xenoglossy()
         {
             if (Resource.PolyglotStatus)
-            //if (ActionResourceManager.CostTypesStruct.offset_E.Equals(1))
+           
             {
                 return await MySpells.Xenoglossy.Cast();
             }
