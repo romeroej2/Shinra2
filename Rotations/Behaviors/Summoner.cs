@@ -16,6 +16,9 @@ namespace ShinraCo.Rotations
             if (await Bio()) return true;
             if (await BrandOfPurgatory()) return true;
             if (await FountainOfFire()) return true;
+            //Egi
+            if (await EgiAssault()) return true;
+            if (await EgiAssaultII()) return true;
             if (await RuinII()) return true;
             if (await Outburst()) return true;
             if (await RuinIII()) return true;
@@ -44,9 +47,7 @@ namespace ShinraCo.Rotations
             if (await Aetherpact()) return true;
             //Dot Refresh
             if (await TriDisaster()) return true;
-            //Egi
-            if (await EgiAssault()) return true;
-            if (await EgiAssaultII()) return true;
+
             //Bahamut
             if (await SummonBahamut()) return true;
             //Dread Trance

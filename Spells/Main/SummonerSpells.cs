@@ -62,7 +62,7 @@ namespace ShinraCo.Spells.Main
             Name = "Egi Assault",
             ID = 16509,
             Level = 10,
-            GCDType = GCDType.Off,
+            GCDType = GCDType.On,
             SpellType = SpellType.Damage,
             CastType = CastType.Target
         };
@@ -142,7 +142,7 @@ namespace ShinraCo.Spells.Main
             Name = "Egi Assault II",
             ID = 16512,
             Level = 40,
-            GCDType = GCDType.Off,
+            GCDType = GCDType.On,
             SpellType = SpellType.Damage,
             CastType = CastType.Target
         };

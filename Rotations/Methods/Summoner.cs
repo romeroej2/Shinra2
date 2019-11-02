@@ -231,7 +231,7 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Deathflare()
         {
-            if (Resource.DreadwyrmTrance && Resource.Timer.TotalMilliseconds < 2500)
+            if (Resource.DreadwyrmTrance && Resource.Timer.TotalMilliseconds < 2100)
             {
                 return await MySpells.Deathflare.Cast();
             }
@@ -310,8 +310,7 @@ namespace ShinraCo.Rotations
         {
             if (PetExists && 
                 (!CurrentForm.Equals(SummonerForm.Bahamut) || !CurrentForm.Equals(SummonerForm.FirebirdTrance)) && 
-                ActionManager.CanCast(MySpells.EgiAssault.Name, Core.Player) && 
-                (ActionManager.LastSpell.Name == "Ruin II" || ActionManager.LastSpell.Name == "Ruin IV"))
+                ActionManager.CanCast(MySpells.EgiAssault.Name, Core.Player) && Core.Me.InCombat)
             {
                 return await MySpells.EgiAssault.Cast();
             }
@@ -322,8 +321,7 @@ namespace ShinraCo.Rotations
         {
             if (PetExists &&
                 (!CurrentForm.Equals(SummonerForm.Bahamut) || !CurrentForm.Equals(SummonerForm.FirebirdTrance)) &&
-                ActionManager.CanCast(MySpells.EgiAssaultII.Name, Core.Player) && 
-                (ActionManager.LastSpell.Name == "Ruin II" || ActionManager.LastSpell.Name == "Ruin IV"))
+                ActionManager.CanCast(MySpells.EgiAssaultII.Name, Core.Player) && Core.Me.InCombat)
             {
                 return await MySpells.EgiAssaultII.Cast();
             }
