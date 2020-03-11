@@ -390,8 +390,15 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> BurstShotPVP()
         {
+            if (Resource.ActiveSong.Equals(Resource.BardSong.None))
+            {
+                CurrentSong = BardSong.None;
+            }
+
             Helpers.Debug("Burst Shot");
             return await MySpells.PVP.BurstShot.Cast();
+            
+                
         }
 
         private int dotCount = 0;
@@ -418,18 +425,17 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> SidewinderPVP()
         {
-            if (Core.Player.CurrentTarget.HasAura("Caustic Bite", true, 1000) && Core.Player.CurrentTarget.HasAura("Stormbite", true, 1000))
-            {
                 return await MySpells.PVP.Sidewinder.Cast();
-            }
-            return false;
         }
 
         private async Task<bool> EmpyrealArrowPVP()
         {
             return await MySpells.PVP.EmpyrealArrow.Cast();
         }
-
+        private async Task<bool> ShadowbitePVP()
+        {
+            return await MySpells.PVP.Shadowbite.Cast();
+        }
         private async Task<bool> PitchPerfectPVP()
         {
 
@@ -448,13 +454,23 @@ namespace ShinraCo.Rotations
             }
             return false;
         }
-
-
+        public enum BardSong : byte
+        {
+            None = 0,
+            Wanderer = 1,
+            Army = 2
+        }
+        public static BardSong CurrentSong { get; set; }
         private async Task<bool> WanderersMinuetPVP()
         {
-            if (Resource.ActiveSong.Equals(Resource.BardSong.None))
+            if (Resource.ActiveSong.Equals(Resource.BardSong.None) && CurrentSong != BardSong.Army)
             {
                 Helpers.Debug("cast Minuet");
+                if(await MySpells.PVP.WanderersMinuet.Cast())
+                {
+                    CurrentSong = BardSong.Wanderer;
+                    return true;
+                }
                 return await MySpells.PVP.WanderersMinuet.Cast();
             }
             return false;
@@ -462,10 +478,14 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> ArmysPaeonPVP()
         {
-            if (Resource.ActiveSong.Equals(Resource.BardSong.None) && !(await MySpells.PVP.WanderersMinuet.Cast()))
+            if (Resource.ActiveSong.Equals(Resource.BardSong.None) &&  CurrentSong != BardSong.Wanderer)
             {
                 Helpers.Debug("cast Peon");
-                return await MySpells.PVP.ArmysPaeon.Cast();
+                if(await MySpells.PVP.ArmysPaeon.Cast())
+                {
+                    CurrentSong = BardSong.Army;
+                    return true;
+                }
             }
             return false;
         }
@@ -479,14 +499,6 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        private async Task<bool> TroubadourPVP()
-        {
-            if (Resource.ActiveSong.Equals(Resource.BardSong.ArmysPaeon) || Resource.ActiveSong.Equals(Resource.BardSong.WanderersMinuet))
-            {
-                return await MySpells.PVP.Troubadour.Cast();
-            }
-            return false;
-        }
 
         #endregion
 

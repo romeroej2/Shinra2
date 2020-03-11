@@ -94,15 +94,13 @@ namespace ShinraCo.Rotations
 
         public override async Task<bool> CombatPVP()
         {
-            if (await TroubadourPVP()) return true;
-            if (await BarragePVP()) return true;
+            if (await ShadowbitePVP()) return true;
             if (await PitchPerfectPVP()) return true;
             if (await WanderersMinuetPVP()) return true;
             else if (await ArmysPaeonPVP()) return true;
             if (await EmpyrealArrowPVP()) return true;
             if (await SidewinderPVP()) return true;
             if (await ApexArrowPVP()) return true;
-            if (await StormbitePVP()) return true;
             return await BurstShotPVP();
         }
 

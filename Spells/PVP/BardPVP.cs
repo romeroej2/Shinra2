@@ -11,25 +11,6 @@
             CastType = CastType.Target
         };
 
-        public Spell CausticBite { get; } = new Spell
-        {
-            Name = "Caustic Bite",
-            ID = 8836,
-            GCDType = GCDType.On,
-            Combo = 17,
-            SpellType = SpellType.PVP,
-            CastType = CastType.Target
-        };
-
-        public Spell Stormbite { get; } = new Spell
-        {
-            Name = "Stormbite",
-            ID = 8837,
-            GCDType = GCDType.On,
-            Combo = 17,
-            SpellType = SpellType.PVP,
-            CastType = CastType.Target
-        };
 
         public Spell EmpyrealArrow { get; } = new Spell
         {
@@ -49,6 +30,15 @@
             CastType = CastType.Target
         };
 
+        public Spell Shadowbite { get; } = new Spell
+        {
+            Name = "Shadowbite",
+            ID = 18931,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Cooldown,
+            CastType = CastType.Target
+        };
+
         public Spell ApexArrow { get; } = new Spell
         {
             Name = "Apex Arrow",
@@ -58,14 +48,6 @@
             CastType = CastType.Target
         };
 
-        public Spell Barrage { get; } = new Spell
-        {
-            Name = "Barrage",
-            ID = 9625,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };
 
         public Spell WanderersMinuet { get; } = new Spell
         {
@@ -94,13 +76,5 @@
             CastType = CastType.Target
         };
 
-        public Spell Troubadour { get; } = new Spell
-        {
-            Name = "Troubadour",
-            ID = 10023,
-            GCDType = GCDType.Off,
-            SpellType = SpellType.Buff,
-            CastType = CastType.Self
-        };
     }
 }
