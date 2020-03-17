@@ -562,6 +562,7 @@ namespace ShinraCo.Spells
                 default:
                     if (SpellType == SpellType.PVP)
                     {
+                        Helpers.Debug($"Combo {Combo}  {ActionManager.GetPvPComboCurrentAction(Combo).Name}");
                         if (!await Coroutine.Wait(1000, () => ActionManager.DoPvPCombo(Combo, target))) return false;
                         Logging.Write(Colors.Orange, $@"DoAction Combo {Combo} 0x{target.ObjectId:X}");
                     }
