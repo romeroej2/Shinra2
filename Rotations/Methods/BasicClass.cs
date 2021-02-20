@@ -4,6 +4,7 @@ using ff14bot;
 using ff14bot.Managers;
 using ShinraCo.Settings;
 using ShinraCo.Spells.Main;
+using Resource = ff14bot.Managers.ActionResourceManager.Paladin;
 
 namespace ShinraCo.Rotations
 {
@@ -209,13 +210,7 @@ namespace ShinraCo.Rotations
         #endregion
 
         #region Gladiator
-
-        private async Task<bool> FastBlade()
-        {
-            return await MySpells.Gladiator.FastBlade.Cast();
-        }
-
-        private async Task<bool> FightOrFlight()
+		private async Task<bool> FightOrFlight()
         {
             if (ShinraEx.Settings.PaladinFightOrFlight)
             {
@@ -226,16 +221,31 @@ namespace ShinraCo.Rotations
             }
             return false;
         }
+		
+        private async Task<bool> FastBlade()
+        {
+            return await MySpells.Gladiator.FastBlade.Cast();
+        }
 
         private async Task<bool> RiotBlade()
         {
-            if (ActionManager.LastSpell.Name == MySpells.Gladiator.FastBlade.Name && Core.Player.CurrentManaPercent < 40)
+            if (ActionManager.LastSpell.Name == MySpells.Gladiator.FastBlade.Name)
             {
                 return await MySpells.Gladiator.RiotBlade.Cast();
             }
             return false;
         }
-
+		
+		private async Task<bool> TotalEclipse()
+        {
+            var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
+            
+            if (ShinraEx.Settings.PaladinTotalEclipse && Helpers.EnemiesNearTarget(3) >= count)
+            {
+                return await MySpells.Gladiator.TotalEclipse.Cast();
+            }
+            return false;
+        }
 
         #endregion
 
