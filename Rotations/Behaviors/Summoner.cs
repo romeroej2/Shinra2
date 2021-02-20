@@ -16,6 +16,9 @@ namespace ShinraCo.Rotations
             if (await Bio()) return true;
             if (await BrandOfPurgatory()) return true;
             if (await FountainOfFire()) return true;
+            //Egi
+            if (await EgiAssault()) return true;
+            if (await EgiAssaultII()) return true;
             if (await RuinII()) return true;
             if (await Outburst()) return true;
             if (await RuinIII()) return true;
@@ -35,18 +38,16 @@ namespace ShinraCo.Rotations
             //blow it up
             if (await EnkindlePhoenix()) return true;
             if (await EnkindleBahamut()) return true;
-            //Buff it baby
-            if (await Aetherpact()) return true;
             //Pets
             //if (await Sic()) return true;
             if (await SummonIII()) return true;
             if (await SummonII()) return true;
             if (await Summon()) return true;
-            //Egi
-            if (await EgiAssault()) return true;
-            if (await EgiAssaultII()) return true;
+            //Buff it baby
+            if (await Aetherpact()) return true;
             //Dot Refresh
             if (await TriDisaster()) return true;
+
             //Bahamut
             if (await SummonBahamut()) return true;
             //Dread Trance

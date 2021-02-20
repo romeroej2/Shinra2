@@ -23,11 +23,11 @@ So you should see the `ShinraEx.cs`  in `<rebornbuddy folder>\Routines\Shinra2`.
 | DRG | ![DRG](https://i.imgur.com/DEoeugi.png) | ***5.0**** |?|
 | NIN |![NIN](https://i.imgur.com/Li0uJx2.png) | 4.5* |?|
 | SAM |![SAM](https://i.imgur.com/dqdzpVI.png) | 4.5* |?|
-| BRD | ![BRD](https://i.imgur.com/jbsqctJ.png) | 4.5* |?|
+| BRD | ![BRD](https://i.imgur.com/jbsqctJ.png) | 4.5* |5.0|
 | MCH | ![MCH](https://i.imgur.com/zr3zWkj.png) | 4.5* |?|
 | DNC | ![DNC](https://i.imgur.com/zSbRvhu.png) | ***5.0*** |?|
 | BLM | ![BLM](https://i.imgur.com/Ow0iuBQ.png) | ***5.0***(Lvl80 (Theonn)) |?|
-| SMN | ![SMN](https://i.imgur.com/W6cu7WL.png) | ***5.0*** (WIP) |?|
+| SMN | ![SMN](https://i.imgur.com/W6cu7WL.png) | ***5.0*** |?|
 | RDM | ![RDM](https://i.imgur.com/zza5SV5.png) | ***5.0*** |?|
 
 *Current status unknown
