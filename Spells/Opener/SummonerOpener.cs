@@ -9,62 +9,37 @@ namespace ShinraCo.Spells.Opener
 
         public static List<Spell> List = new List<Spell>
         {
-            Spells.TriDisaster,
-            Spells.RuinII,
-            Spells.EgiAssault,
-            Spells.DreadwyrmTrance,
-            Spells.RuinIII, //1 
+
+            Spells.EgiAssault,//1
             Spells.EnergyDrain,
-            Spells.EgiAssaultII,
-            Spells.RuinIII, //2
-            Spells.EgiAssault,
+            Spells.TriDisaster,
+            Spells.EgiAssaultII,//2 potion
+            Spells.EgiAssault,//3
             Spells.Aetherpact,
-            Spells.RuinIII, //3
-            Spells.RuinIII, //4
+            Spells.DreadwyrmTrance,
+            Spells.EgiAssaultII,//4
+            Spells.Role.LucidDreaming,
             Spells.Enkindle,
-            Spells.EgiAssaultII,
-            Spells.RuinIII, //5
+            Spells.RuinIII,//5
             Spells.Fester,
             Spells.TriDisaster,
-            Spells.RuinIII, //6
+            Spells.RuinIII,//6
             Spells.Deathflare,
             Spells.SummonBahamut,
-            Spells.RuinIV,
+            Spells.RuinIV,//7
             Spells.EnkindleBahamut,
             Spells.Fester,
-            Spells.RuinIII,
-            Spells.RuinIII,
-            Spells.RuinIII,
-            Spells.RuinIII,
-            Spells.RuinIV,
+            Spells.RuinIV,//8
+            Spells.RuinIII,//9
+            Spells.RuinIII,//10
+            Spells.RuinIV,//11
             Spells.EnkindleBahamut,
+            Spells.RuinIII,//12
+            Spells.RuinIV,//13
+            Spells.EnergyDrain,
             Spells.Role.Swiftcast,
-            Spells.RuinIII,
-            Spells.EnergyDrain,
-            Spells.Fester,
-            Spells.RuinIV,
-            Spells.EgiAssault,
-            Spells.RuinIII,
-            Spells.MiasmaIII,
-            Spells.BioIII,
-            Spells.EgiAssaultII,
-            Spells.Fester,
-            Spells.RuinIII,
-            Spells.RuinIII,
-            Spells.RuinIII,
-            Spells.RuinIII,
-            Spells.RuinIII,
-            Spells.RuinIII,
-            Spells.RuinIII,
-            Spells.RuinIV,
-            Spells.EnergyDrain,
-            Spells.EgiAssault,
-            Spells.RuinIV,
-            Spells.EgiAssaultII,
-            Spells.RuinIII,
-            Spells.RuinIV,
-            Spells.TriDisaster,
-            Spells.FirebirdTrance
+            Spells.RuinIII,//14
+            Spells.Fester
         };
     }
 }

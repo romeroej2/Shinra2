@@ -101,9 +101,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> TotalEclipse()
         {
-            var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 5;
+            var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
             
-            if (ShinraEx.Settings.PaladinTotalEclipse && Helpers.EnemiesNearTarget(5) >= count)
+            if (ShinraEx.Settings.PaladinTotalEclipse && Helpers.EnemiesNearTarget(3) >= count)
             {
                 return await MySpells.TotalEclipse.Cast();
             }
@@ -112,9 +112,9 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> Prominence()
         {
-            var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 5;
+            var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
             
-            if (ShinraEx.Settings.PaladinProminence && Core.Player.CurrentManaPercent < 30 && Helpers.EnemiesNearTarget(5) >= count)
+            if (ShinraEx.Settings.PaladinProminence && Core.Player.CurrentManaPercent < 30 && Helpers.EnemiesNearTarget(3) >= count)
             {
                 return await MySpells.Prominence.Cast();
             }
@@ -123,9 +123,9 @@ namespace ShinraCo.Rotations
         
         private async Task<bool> HolyCircle()
         {
-            var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 5;
+            var count = ShinraEx.Settings.CustomAoE ? ShinraEx.Settings.CustomAoECount : 3;
             
-            if (ShinraEx.Settings.PaladinHolyCircle && Core.Player.CurrentManaPercent < 20 && Helpers.EnemiesNearTarget(5) >= count)
+            if (ShinraEx.Settings.PaladinHolyCircle && Core.Player.CurrentManaPercent < 20 && Helpers.EnemiesNearTarget(3) >= count)
             {
                 return await MySpells.HolyCircle.Cast();
             }

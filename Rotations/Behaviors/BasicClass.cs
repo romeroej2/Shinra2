@@ -25,6 +25,7 @@ namespace ShinraCo.Rotations
             if (await StoneII()) return true;
             if (await Stone()) return true;
             // Gladiator
+			if (await TotalEclipse()) return true;
             if (await RiotBlade()) return true;
             if (await FastBlade()) return true;
             // Lancer

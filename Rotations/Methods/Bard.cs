@@ -388,48 +388,89 @@ namespace ShinraCo.Rotations
 
         #region PVP
 
-        private async Task<bool> StraightShotPVP()
+        private async Task<bool> BurstShotPVP()
         {
-            return await MySpells.PVP.StraightShot.Cast();
+            if (Resource.ActiveSong.Equals(Resource.BardSong.None))
+            {
+                CurrentSong = BardSong.None;
+            }
+
+            Helpers.Debug("Burst Shot");
+            return await MySpells.PVP.BurstShot.Cast();
+            
+                
         }
 
+        private int dotCount = 0;
         private async Task<bool> StormbitePVP()
         {
-            if (!Core.Player.CurrentTarget.HasAura("Caustic Bite", true, 4000) ||
-                !Core.Player.CurrentTarget.HasAura("Stormbite", true, 4000))
-            {
-                return await MySpells.PVP.Stormbite.Cast();
+            if ((!Core.Player.CurrentTarget.HasAura("Caustic Bite", true, 4000) ||
+                !Core.Player.CurrentTarget.HasAura("Stormbite", true, 4000)) && dotCount <2) {
+                if (await Coroutine.Wait(1000, () => ActionManager.DoPvPCombo(17, Core.Player.CurrentTarget)))
+                {
+                    dotCount++;
+                    Helpers.Debug($"Dot Count: {dotCount}");
+                    return true;
+                }
+                else
+                {
+                    dotCount--;
+                    Helpers.Debug($"Dot Count: {dotCount}");
+                }
+                
             }
+
             return false;
         }
 
         private async Task<bool> SidewinderPVP()
         {
-            if (Core.Player.CurrentTarget.HasAura("Caustic Bite", true, 1000) && Core.Player.CurrentTarget.HasAura("Stormbite", true, 1000))
-            {
                 return await MySpells.PVP.Sidewinder.Cast();
-            }
-            return false;
         }
 
         private async Task<bool> EmpyrealArrowPVP()
         {
             return await MySpells.PVP.EmpyrealArrow.Cast();
         }
-
-        private async Task<bool> BloodletterPVP()
+        private async Task<bool> ShadowbitePVP()
         {
-            if (!MinuetActive || NumRepertoire == 3 || MinuetActive && SongTimer < 3000)
+            return await MySpells.PVP.Shadowbite.Cast();
+        }
+        private async Task<bool> PitchPerfectPVP()
+        {
+
+            if ((MinuetActive && NumRepertoire == 3) || (MinuetActive && SongTimer < 2000))
             {
-                return await MySpells.PVP.Bloodletter.Cast();
+                return await MySpells.PVP.WanderersMinuet.Cast();
             }
             return false;
         }
 
+        private async Task<bool> ApexArrowPVP()
+        {
+            if (Resource.SoulVoice == 100)
+            {
+                return await MySpells.PVP.ApexArrow.Cast();
+            }
+            return false;
+        }
+        public enum BardSong : byte
+        {
+            None = 0,
+            Wanderer = 1,
+            Army = 2
+        }
+        public static BardSong CurrentSong { get; set; }
         private async Task<bool> WanderersMinuetPVP()
         {
-            if (!MinuetActive)
+            if (Resource.ActiveSong.Equals(Resource.BardSong.None) && CurrentSong != BardSong.Army)
             {
+                Helpers.Debug("cast Minuet");
+                if(await MySpells.PVP.WanderersMinuet.Cast())
+                {
+                    CurrentSong = BardSong.Wanderer;
+                    return true;
+                }
                 return await MySpells.PVP.WanderersMinuet.Cast();
             }
             return false;
@@ -437,31 +478,27 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> ArmysPaeonPVP()
         {
-            if (NoSong)
+            if (Resource.ActiveSong.Equals(Resource.BardSong.None) &&  CurrentSong != BardSong.Wanderer)
             {
-                return await MySpells.PVP.ArmysPaeon.Cast();
+                Helpers.Debug("cast Peon");
+                if(await MySpells.PVP.ArmysPaeon.Cast())
+                {
+                    CurrentSong = BardSong.Army;
+                    return true;
+                }
             }
             return false;
         }
 
         private async Task<bool> BarragePVP()
         {
-            if (ShinraEx.LastSpell.Name != MySpells.PVP.StraightShot.Name &&
-                ActionManager.GetPvPComboCurrentActionId(MySpells.PVP.StraightShot.Combo) == MySpells.PVP.StraightShot.ID)
+            if (Resource.ActiveSong.Equals(Resource.BardSong.ArmysPaeon))
             {
-                return await MySpells.PVP.Barrage.Cast();
+                return await MySpells.PVP.ArmysPaeon.Cast();
             }
             return false;
         }
 
-        private async Task<bool> TroubadourPVP()
-        {
-            if (MinuetActive)
-            {
-                return await MySpells.PVP.Troubadour.Cast();
-            }
-            return false;
-        }
 
         #endregion
 
